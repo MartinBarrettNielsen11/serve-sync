@@ -1,0 +1,3 @@
+namespace sports_club_training_management_system.Instructor;
+
+public class InstructorErrors;
