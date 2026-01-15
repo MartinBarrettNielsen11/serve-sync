@@ -10,3 +10,15 @@
 /Users/martinnielsen/Desktop/notes/projects/other/tbd-v3/SharedKernel/obj/Debug/net8.0/refint/SharedKernel.dll
 /Users/martinnielsen/Desktop/notes/projects/other/tbd-v3/SharedKernel/obj/Debug/net8.0/SharedKernel.pdb
 /Users/martinnielsen/Desktop/notes/projects/other/tbd-v3/SharedKernel/obj/Debug/net8.0/ref/SharedKernel.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/bin/Debug/net8.0/SharedKernel.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/bin/Debug/net8.0/SharedKernel.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/bin/Debug/net8.0/SharedKernel.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/SharedKernel.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/SharedKernel.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/SharedKernel.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/SharedKernel.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/SharedKernel.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/SharedKernel.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/refint/SharedKernel.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/SharedKernel.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/Debug/net8.0/ref/SharedKernel.dll

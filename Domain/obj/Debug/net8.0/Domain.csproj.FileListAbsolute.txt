@@ -4,3 +4,9 @@
 /Users/martinnielsen/Desktop/notes/projects/other/tbd-v3/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
 /Users/martinnielsen/Desktop/notes/projects/other/tbd-v3/Domain/obj/Debug/net8.0/Domain.csproj.CoreCompileInputs.cache
 /Users/martinnielsen/Desktop/notes/projects/other/tbd-v3/Domain/obj/Debug/net8.0/Domain.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Domain/obj/Debug/net8.0/Domain.csproj.AssemblyReference.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Domain/obj/Debug/net8.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Domain/obj/Debug/net8.0/Domain.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Domain/obj/Debug/net8.0/Domain.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Domain/obj/Debug/net8.0/Domain.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Domain/obj/Debug/net8.0/Domain.sourcelink.json
