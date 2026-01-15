@@ -1,15 +1,48 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Rider ignored files
-/contentModel.xml
-/.idea.tbd-v3.iml
-/projectSettingsUpdater.xml
-/modules.xml
-# Ignored default folder with query files
-/queries/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-# Editor-based HTTP Client requests
-/httpRequests/
+# ========================
+# macOS
+# ========================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ========================
+# JetBrains Rider
+# ========================
+.idea/
+*.iml
+contentModel.xml
+modules.xml
+projectSettingsUpdater.xml
+workspace.xml
+shelf/
+
+# Rider caches
+**/rider.project.*
+**/*.nuget.g.props
+**/*.nuget.g.targets
+**/*.nuget.dgspec.json
+**/project.assets.json
+
+# ========================
+# .NET build output
+# ========================
+bin/
+obj/
+**/bin/
+**/obj/
+
+# ========================
+# Rider HTTP Client
+# ========================
+httpRequests/
+
+# ========================
+# Rider Datasources
+# ========================
+dataSources/
+dataSources.local.xml
+
+# ========================
+# Rider Queries
+# ========================
+queries/
