@@ -1,0 +1,144 @@
+{
+  "version": 3,
+  "targets": {
+    "net10.0": {
+      "Meziantou.Analyzer/2.0.278": {
+        "type": "package",
+        "build": {
+          "buildTransitive/Meziantou.Analyzer.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Meziantou.Analyzer.props": {}
+        }
+      },
+      "SharedKernel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/SharedKernel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SharedKernel.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Meziantou.Analyzer/2.0.278": {
+      "sha512": "TOCwbpgXahs7Y6TzobPyl3Nula2+WXKLpmbPVBeQouq/Qfu/2G2j5Me9209DofKouLpnKEK9z4fmhxAWgzZM1w==",
+      "type": "package",
+      "path": "meziantou.analyzer/2.0.278",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "analyzers/dotnet/roslyn3.8/cs/Meziantou.Analyzer.CodeFixers.dll",
+        "analyzers/dotnet/roslyn3.8/cs/Meziantou.Analyzer.dll",
+        "analyzers/dotnet/roslyn4.14/cs/Meziantou.Analyzer.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.14/cs/Meziantou.Analyzer.dll",
+        "analyzers/dotnet/roslyn4.2/cs/Meziantou.Analyzer.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.2/cs/Meziantou.Analyzer.dll",
+        "analyzers/dotnet/roslyn4.4/cs/Meziantou.Analyzer.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.4/cs/Meziantou.Analyzer.dll",
+        "analyzers/dotnet/roslyn4.6/cs/Meziantou.Analyzer.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.6/cs/Meziantou.Analyzer.dll",
+        "analyzers/dotnet/roslyn4.8/cs/Meziantou.Analyzer.CodeFixers.dll",
+        "analyzers/dotnet/roslyn4.8/cs/Meziantou.Analyzer.dll",
+        "build/Meziantou.Analyzer.props",
+        "buildMultiTargeting/Meziantou.Analyzer.props",
+        "buildTransitive/Meziantou.Analyzer.props",
+        "configuration/default.editorconfig",
+        "configuration/none.editorconfig",
+        "icon.png",
+        "meziantou.analyzer.2.0.278.nupkg.sha512",
+        "meziantou.analyzer.nuspec"
+      ]
+    },
+    "SharedKernel/1.0.0": {
+      "type": "project",
+      "path": "../SharedKernel/SharedKernel.csproj",
+      "msbuildProject": "../SharedKernel/SharedKernel.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net10.0": [
+      "Meziantou.Analyzer >= 2.0.278",
+      "SharedKernel >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/martinnielsen/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/ServeSync.Domain.csproj",
+      "projectName": "ServeSync.Domain",
+      "projectPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/ServeSync.Domain.csproj",
+      "packagesPath": "/Users/martinnielsen/.nuget/packages/",
+      "outputPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/martinnielsen/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net10.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net10.0": {
+          "targetAlias": "net10.0",
+          "projectReferences": {
+            "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/SharedKernel.csproj": {
+              "projectPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/SharedKernel.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "10.0.100"
+    },
+    "frameworks": {
+      "net10.0": {
+        "targetAlias": "net10.0",
+        "dependencies": {
+          "Meziantou.Analyzer": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[2.0.278, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/Users/martinnielsen/.dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

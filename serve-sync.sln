@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serve-sync.Domain", "Serve-sync.Domain\Serve-sync.Domain.csproj", "{867BDE18-B9D0-4D43-9B1C-17415252EA60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServeSync.Domain", "ServeSync.Domain\ServeSync.Domain.csproj", "{867BDE18-B9D0-4D43-9B1C-17415252EA60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{B563517A-45F8-4CF0-B1D0-62B86F2FEDC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServeSync.Domain.UnitTests", "ServeSync.Domain.UnitTests\ServeSync.Domain.UnitTests.csproj", "{7CDA81C7-125A-434B-BD90-8470710E0BD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{B563517A-45F8-4CF0-B1D0-62B86F2FEDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B563517A-45F8-4CF0-B1D0-62B86F2FEDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B563517A-45F8-4CF0-B1D0-62B86F2FEDC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CDA81C7-125A-434B-BD90-8470710E0BD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CDA81C7-125A-434B-BD90-8470710E0BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CDA81C7-125A-434B-BD90-8470710E0BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CDA81C7-125A-434B-BD90-8470710E0BD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

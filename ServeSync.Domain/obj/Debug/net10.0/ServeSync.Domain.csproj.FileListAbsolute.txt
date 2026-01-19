@@ -1,0 +1,16 @@
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.csproj.AssemblyReference.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/bin/Debug/net10.0/SharedKernel.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/bin/Debug/net10.0/SharedKernel.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSyn.494109B3.Up2Date
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/refint/ServeSync.Domain.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain/obj/Debug/net10.0/ref/ServeSync.Domain.dll

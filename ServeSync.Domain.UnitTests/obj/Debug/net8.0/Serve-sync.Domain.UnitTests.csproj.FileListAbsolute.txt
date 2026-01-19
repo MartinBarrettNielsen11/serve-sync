@@ -1,0 +1,5 @@
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain.UnitTests/obj/Debug/net8.0/Serve-sync.Domain.UnitTests.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain.UnitTests/obj/Debug/net8.0/Serve-sync.Domain.UnitTests.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain.UnitTests/obj/Debug/net8.0/Serve-sync.Domain.UnitTests.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain.UnitTests/obj/Debug/net8.0/Serve-sync.Domain.UnitTests.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain.UnitTests/obj/Debug/net8.0/Serve-sync.Domain.UnitTests.sourcelink.json
