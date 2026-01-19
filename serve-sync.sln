@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{867BDE18-B9D0-4D43-9B1C-17415252EA60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serve-sync.Domain", "Serve-sync.Domain\Serve-sync.Domain.csproj", "{867BDE18-B9D0-4D43-9B1C-17415252EA60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "SharedKernel\SharedKernel.csproj", "{B563517A-45F8-4CF0-B1D0-62B86F2FEDC7}"
 EndProject

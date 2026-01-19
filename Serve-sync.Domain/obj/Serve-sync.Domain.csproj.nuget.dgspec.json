@@ -1,0 +1,146 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain/Serve-sync.Domain.csproj": {}
+  },
+  "projects": {
+    "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain/Serve-sync.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain/Serve-sync.Domain.csproj",
+        "projectName": "Serve-sync.Domain",
+        "projectPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain/Serve-sync.Domain.csproj",
+        "packagesPath": "/Users/martinnielsen/.nuget/packages/",
+        "outputPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Serve-sync.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/martinnielsen/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net10.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net10.0": {
+            "targetAlias": "net10.0",
+            "projectReferences": {
+              "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/SharedKernel.csproj": {
+                "projectPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/SharedKernel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net10.0": {
+          "targetAlias": "net10.0",
+          "dependencies": {
+            "Meziantou.Analyzer": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.278, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/Users/martinnielsen/.dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/SharedKernel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/SharedKernel.csproj",
+        "projectName": "SharedKernel",
+        "projectPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/SharedKernel.csproj",
+        "packagesPath": "/Users/martinnielsen/.nuget/packages/",
+        "outputPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SharedKernel/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/martinnielsen/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net10.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net10.0": {
+            "targetAlias": "net10.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net10.0": {
+          "targetAlias": "net10.0",
+          "dependencies": {
+            "Meziantou.Analyzer": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.278, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/Users/martinnielsen/.dotnet/sdk/10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
