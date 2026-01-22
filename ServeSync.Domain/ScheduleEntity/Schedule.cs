@@ -1,14 +1,15 @@
 using ServeSync.Domain.Common;
+using SharedKernel;
 
 namespace ServeSync.Domain.ScheduleEntity;
 
-public class Schedule
+public class Schedule : Entity
 { 
     private readonly Guid _id;
     private readonly Dictionary<DateTime, List<TimeRange>> _calendar;
 
     public Schedule(Dictionary<DateTime, List<TimeRange>>? calendar,
-                    Guid id)
+                    Guid id) : base(id)
     {
         _calendar = calendar;
         _id = id;
