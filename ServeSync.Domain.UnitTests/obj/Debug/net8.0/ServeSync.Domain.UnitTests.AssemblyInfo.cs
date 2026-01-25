@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServeSync.Domain.UnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bad539dff28ad98af13056c5fa7831c2a8699afa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54c64a513c85d5fa72af8ce9b3588e4dc3179621")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServeSync.Domain.UnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServeSync.Domain.UnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
