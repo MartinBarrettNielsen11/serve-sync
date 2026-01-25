@@ -1,6 +1,6 @@
-using ServeSync.Domain.ScheduleEntity;
+using ServeSync.Domain.ScheduleAggregate;
 
-namespace ServeSync.Domain.InstructorEntity;
+namespace ServeSync.Domain.InstructorAggregate;
 
 public class Instructor
 {

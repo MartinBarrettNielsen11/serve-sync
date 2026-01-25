@@ -1,4 +1,4 @@
-namespace ServeSync.Domain.SessionEntity;
+namespace ServeSync.Domain.SessionAggregate;
 
 public class Session
 {

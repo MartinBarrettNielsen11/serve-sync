@@ -1,6 +1,6 @@
-using ServeSync.Domain.ScheduleEntity;
+using ServeSync.Domain.ScheduleAggregate;
 
-namespace ServeSync.Domain.PlayerEntity;
+namespace ServeSync.Domain.PlayerAggregate;
 
 public class Player
 {

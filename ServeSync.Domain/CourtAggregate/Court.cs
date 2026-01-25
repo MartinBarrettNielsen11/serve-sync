@@ -1,6 +1,6 @@
-using ServeSync.Domain.ScheduleEntity;
+using ServeSync.Domain.ScheduleAggregate;
 
-namespace ServeSync.Domain.CourtEntity;
+namespace ServeSync.Domain.CourtAggregate;
 
 public class Court
 {

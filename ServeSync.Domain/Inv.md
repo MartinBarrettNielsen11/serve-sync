@@ -3,7 +3,7 @@
 
 ## Session Invariants
 - A session must never exceed its maximum player capacity
-- A reservation may not be canceled free of charge within 24 hours of the session start time
+- A booking may not be canceled free of charge within 24 hours of the session start time
 
 
 ## Club Invariants
@@ -20,7 +20,7 @@
 
 
 ## Player Invariants
-- A player cannot reserve overlapping sessions
+- A player cannot book overlapping sessions
 
 
 ## Subscription Invariants

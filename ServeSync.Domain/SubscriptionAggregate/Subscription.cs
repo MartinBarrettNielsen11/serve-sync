@@ -1,4 +1,4 @@
-namespace ServeSync.Domain.SubscriptionEntity;
+namespace ServeSync.Domain.SubscriptionAggregate;
 
 public class Subscription
 {

@@ -1,7 +1,7 @@
 using ServeSync.Domain.Common;
 using SharedKernel;
 
-namespace ServeSync.Domain.ScheduleEntity;
+namespace ServeSync.Domain.ScheduleAggregate;
 
 public class Schedule : Entity
 { 

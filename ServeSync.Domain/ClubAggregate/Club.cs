@@ -1,4 +1,4 @@
-namespace ServeSync.Domain.ClubEntity;
+namespace ServeSync.Domain.ClubAggregate;
 
 public class Club
 {
