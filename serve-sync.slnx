@@ -1,8 +1,6 @@
 <Solution>
   <Project Path="ServeSync.Domain.UnitTests/ServeSync.Domain.UnitTests.csproj" />
-  <Project Path="ServeSync.Domain/ServeSync.Domain.csproj">
-    <BuildType Solution="Debug|*" Project="?" />
-    <Platform Solution="Debug|*" Project="?" />
-  </Project>
+  <Project Path="ServeSync.Domain/ServeSync.Domain.csproj" />
+  <Project Path="ServeSync.WebApi/ServeSync.WebApi.csproj" />
   <Project Path="SharedKernel/SharedKernel.csproj" />
 </Solution>

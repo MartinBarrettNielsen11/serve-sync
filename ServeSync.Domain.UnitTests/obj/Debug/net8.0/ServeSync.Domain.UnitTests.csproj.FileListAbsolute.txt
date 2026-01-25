@@ -3,3 +3,10 @@
 /Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net8.0/ServeSync.Domain.UnitTests.AssemblyInfo.cs
 /Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net8.0/ServeSync.Domain.UnitTests.csproj.CoreCompileInputs.cache
 /Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net8.0/ServeSync.Domain.UnitTests.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/bin/Debug/net8.0/ServeSync.Domain.UnitTests.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/bin/Debug/net8.0/ServeSync.Domain.UnitTests.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/bin/Debug/net8.0/ServeSync.Domain.UnitTests.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net8.0/ServeSync.Domain.UnitTests.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net8.0/refint/ServeSync.Domain.UnitTests.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net8.0/ServeSync.Domain.UnitTests.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net8.0/ref/ServeSync.Domain.UnitTests.dll

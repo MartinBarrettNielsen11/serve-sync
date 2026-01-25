@@ -1,0 +1,15 @@
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.runtimeconfig.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/refint/ServeSync.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.genruntimeconfig.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.WebApi/obj/Debug/net10.0/ref/ServeSync.WebApi.dll
