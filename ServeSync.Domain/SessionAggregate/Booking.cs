@@ -4,13 +4,11 @@ namespace ServeSync.Domain.SessionAggregate;
 
 public class Booking : Entity
 {
-    private readonly Guid _participantId;
-    
-    public Booking(Guid participantId, Guid? id = null)
+    public Guid PlayerId { get; }
+
+    public Booking(Guid playerId, Guid? id = null)
         : base(id ?? Guid.NewGuid())
     {
-        _participantId = participantId;
+        PlayerId = playerId;
     }
-
-    public Guid ParticipantId => _participantId;
 }

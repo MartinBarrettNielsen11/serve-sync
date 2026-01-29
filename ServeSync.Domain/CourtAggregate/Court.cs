@@ -9,8 +9,6 @@ public class Court : RootAggregate
     private readonly int _maxDailySessions;
     private readonly Guid _clubId;
     private readonly Schedule _schedule = Schedule.Empty();
-    
-    public Guid? Id { get; }
 
     public Court(
         int maxDailySessions,
@@ -21,7 +19,6 @@ public class Court : RootAggregate
         _maxDailySessions = maxDailySessions;
         _clubId = clubId;
         _schedule = schedule;
-        Id = id;
     }
     
 }
