@@ -2,7 +2,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.SessionAggregate;
 
-public class Session : Entity
+public class Session : RootAggregate
 {
     public Session(Guid? id = null) : base(id ?? Guid.NewGuid()) { }
     
