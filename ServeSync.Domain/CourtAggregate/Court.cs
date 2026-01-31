@@ -20,5 +20,4 @@ public class Court : RootAggregate
         _clubId = clubId;
         _schedule = schedule;
     }
-    
 }

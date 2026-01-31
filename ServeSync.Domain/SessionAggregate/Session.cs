@@ -1,5 +1,6 @@
 using ServeSync.Domain.Common;
 using SharedKernel;
+using SharedKernel.Results;
 
 namespace ServeSync.Domain.SessionAggregate;
 
@@ -21,5 +22,27 @@ public class Session : RootAggregate
         Date = date;
         Time = time;
         _maxPlayerCapacity = maxPlayerCapacity;
+    }
+
+    public Result CancelReservation(Guid participantId, IDateTimeProvider provider)
+    {
+        if (IsTooCloseToSession(provider.UtcNow))
+        {
+            return Result.Failure(SessionErrors.CannotCancelReservationTooCloseToSession);
+        }
+
+        return Result.Success();
+    }
+    
+    
+    private bool IsTooCloseToSession(DateTime utcNow)
+    {
+        const int MinHours = 24;
+
+        var timeDifference = (Date.ToDateTime(Time.Start) - utcNow).TotalHours;
+
+        var exceedsLimit = timeDifference < MinHours;
+
+        return exceedsLimit;
     }
 }

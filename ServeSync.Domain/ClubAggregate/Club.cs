@@ -1,21 +1,28 @@
+using SharedKernel;
+using SharedKernel.Results;
+
 namespace ServeSync.Domain.ClubAggregate;
 
-public class Club
+public class Club : RootAggregate
 {
     private readonly Guid _subscriptionId;
     private readonly List<Guid> _courtIds = new();
     private readonly int _maxCourtCapacity;
     
-    public Guid Id { get; }
-
     public Club(
         Guid subscriptionId,
         int maxCourtCapacity,
-        Guid id)
+        Guid? id = null) 
+        : base(id ?? Guid.NewGuid())
     {
         _subscriptionId = subscriptionId;
         _maxCourtCapacity = maxCourtCapacity;
-        Id = id;
     }
-    
+
+    public Result AddRoom(Guid roomId)
+    {
+        if (_courtIds.Contains(roomId)) return Result.Failure(Error.Failure(code: "", description: "Room already exists in gym"));
+        
+        return Result.Success();
+    }
 }

@@ -13,5 +13,5 @@ public class Schedule : Entity
         _calendar = (Dictionary<DateTime, List<TimeRange>>?)calendar ?? new Dictionary<DateTime, List<TimeRange>>();
     }
 
-    public static Schedule Empty() => new Schedule(null, Guid.NewGuid());
+    public static Schedule Empty() => new(calendar: null, id: Guid.NewGuid());
 }

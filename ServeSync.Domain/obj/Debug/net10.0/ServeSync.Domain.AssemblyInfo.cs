@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServeSync.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2459ef76f6f69b284c13825d227f642a75777961")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22553ff6095c327c67d44cc696c47d164037fe04")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServeSync.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServeSync.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

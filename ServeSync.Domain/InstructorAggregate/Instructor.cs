@@ -5,15 +5,15 @@ namespace ServeSync.Domain.InstructorAggregate;
 
 public class Instructor : RootAggregate
 {
-    private readonly Guid? _id;
     private readonly Guid _userId;
     private readonly List<Guid> _sessionIds = new();
     private readonly Schedule _schedule = Schedule.Empty();
 
-    public Instructor(Guid userId, Schedule sch, Guid? id = null) : base(id ?? Guid.NewGuid())
+    public Instructor(Guid userId, 
+                      Schedule sch, 
+                      Guid? id = null) : base(id ?? Guid.NewGuid())
     {
         _userId = userId;
-        _schedule = sch;
-        _id = id;
+        _schedule = sch ?? _schedule;
     }
 }
