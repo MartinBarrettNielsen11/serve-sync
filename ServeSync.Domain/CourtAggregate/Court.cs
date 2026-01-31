@@ -1,5 +1,7 @@
 using ServeSync.Domain.ScheduleAggregate;
+using ServeSync.Domain.SessionAggregate;
 using SharedKernel;
+using SharedKernel.Results;
 
 namespace ServeSync.Domain.CourtAggregate;
 
@@ -13,11 +15,28 @@ public class Court : RootAggregate
     public Court(
         int maxDailySessions,
         Guid clubId,
-        Schedule schedule,
+        Schedule? schedule = null,
         Guid? id = null) : base(id ?? Guid.NewGuid())
     {
         _maxDailySessions = maxDailySessions;
         _clubId = clubId;
-        _schedule = schedule;
+        _schedule = schedule ?? Schedule.Empty();
+    }
+
+    public Result ScheduleSession(Guid sessionId)
+    {
+        if (_sessionIds.Exists(x => x == sessionId))
+        {
+            return Result.Failure(Error.Failure(code: "yo", description: "Session already exists in court"));
+        }
+        
+        if (_maxDailySessions < _sessionIds.Count)
+        {
+            return Result.Failure(CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
+        }
+        
+        _sessionIds.Add(sessionId);
+        
+        return Result.Success();
     }
 }

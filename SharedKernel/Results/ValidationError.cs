@@ -5,6 +5,14 @@ public sealed record ValidationError(Error[] Errors) :
 {
     public Error[] Errors { get; } = Errors;
 
-    public static ValidationError FromResult(IEnumerable<Result> results) =>
-        new(results.Where(r => r.IsFailure).Select(r => r.Error).ToArray());
+    public static ValidationError FromResult(IEnumerable<Result> results)
+    {
+        Error[] errors = results.Where(r => r.IsFailure)
+            .Select(r => r.Error)
+            .ToArray();
+        
+        ValidationError validationError = new(Errors: errors);
+        
+        return validationError;
+    }
 }

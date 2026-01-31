@@ -1,5 +1,6 @@
 using ServeSync.Domain.Common;
 using SharedKernel;
+using SharedKernel.Results;
 
 namespace ServeSync.Domain.ScheduleAggregate;
 
@@ -14,4 +15,14 @@ public class Schedule : Entity
     }
 
     public static Schedule Empty() => new(calendar: null, id: Guid.NewGuid());
+
+    public Result BookTimeSlot(DateTime dateTime, TimeRange time)
+    {
+        return Result.Success();
+    }
+
+    public Result RemoveBooking()
+    {
+        return Result.Success();
+    }
 }
