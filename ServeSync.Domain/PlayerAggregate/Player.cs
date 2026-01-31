@@ -6,7 +6,7 @@ namespace ServeSync.Domain.PlayerAggregate;
 
 public class Player
 {
-    private readonly Guid _userId;
+    //private readonly Guid _userId;
     private readonly Schedule _schedule = Schedule.Empty();
     private readonly List<Guid> _sessionIds = new();   
     
@@ -19,8 +19,8 @@ public class Player
         {
             return Result.Failure(
                 Error.Conflict(
-                    "Participant.SessionAlreadyExists",
-                    "Session already exists in participant's schedule"));
+                    "Player.SessionAlreadyExists",
+                    "Session already exists in player's schedule"));
         }
 
         return Result.Success();

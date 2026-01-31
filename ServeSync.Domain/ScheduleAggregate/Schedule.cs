@@ -5,14 +5,12 @@ namespace ServeSync.Domain.ScheduleAggregate;
 
 public class Schedule : Entity
 { 
-    private readonly Guid _id;
     private readonly Dictionary<DateTime, List<TimeRange>> _calendar;
 
-    public Schedule(Dictionary<DateTime, List<TimeRange>>? calendar,
-                    Guid id) : base(id)
+    public Schedule(IDictionary<DateTime, List<TimeRange>>? calendar = null,
+                    Guid? id = null) : base(id ?? Guid.NewGuid())
     {
-        _calendar = calendar;
-        _id = id;
+        _calendar = (Dictionary<DateTime, List<TimeRange>>?)calendar ?? new Dictionary<DateTime, List<TimeRange>>();
     }
 
     public static Schedule Empty() => new Schedule(null, Guid.NewGuid());
