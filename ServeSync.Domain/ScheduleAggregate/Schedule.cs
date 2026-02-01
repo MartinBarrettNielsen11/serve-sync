@@ -3,7 +3,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.ScheduleAggregate;
 
-public sealed class Schedule : Entity
+internal sealed class Schedule : Entity
 { 
     private readonly Dictionary<DateTime, List<TimeRange>> _calendar;
 
@@ -15,12 +15,29 @@ public sealed class Schedule : Entity
 
     public static Schedule Empty() => new(calendar: null, id: Guid.NewGuid());
 
-    public Result BookTimeSlot(DateTime dateTime, TimeRange time)
+    internal Result BookTimeSlot(DateTime dateTime, TimeRange time)
     {
+        var entryExists = _calendar.TryGetValue(dateTime, out List<TimeRange> timeSlots);
+        
+        if (!entryExists)
+        {
+            _calendar[dateTime] = [time];
+            return Result.Success();
+        }
+        
+        /*
+         if (timeSlots!.Any(ts => ts.OverlapsWith(time)))
+        {
+            return Result.Failure(Error.Failure(code: "no good", description: "dunno"));
+        }
+        */
+        
+        timeSlots!.Add(time);
+        
         return Result.Success();
     }
 
-    public Result RemoveBooking()
+    internal Result RemoveBooking()
     {
         return Result.Success();
     }

@@ -2,13 +2,13 @@ using SharedKernel;
 
 namespace ServeSync.Domain.ClubAggregate;
 
-public sealed class Club : RootAggregate
+internal sealed class Club : RootAggregate
 {
     private readonly Guid _subscriptionId;
     private readonly List<Guid> _courtIds = new();
     private readonly int _maxCourtCapacity;
     
-    public Club(
+    internal Club(
         Guid subscriptionId,
         int maxCourtCapacity,
         Guid? id = null) 
@@ -18,7 +18,7 @@ public sealed class Club : RootAggregate
         _maxCourtCapacity = maxCourtCapacity;
     }
 
-    public Result AddCourt(Guid courtId)
+    internal Result AddCourt(Guid courtId)
     {
         if (_courtIds.Contains(courtId))
             return Result.Failure(Error.Failure(code: "", description: "Court already exists in Club"));

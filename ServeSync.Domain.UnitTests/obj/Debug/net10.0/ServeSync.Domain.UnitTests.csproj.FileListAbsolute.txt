@@ -10,3 +10,9 @@
 /Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net10.0/refint/ServeSync.Domain.UnitTests.dll
 /Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net10.0/ServeSync.Domain.UnitTests.pdb
 /Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net10.0/ref/ServeSync.Domain.UnitTests.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/bin/Debug/net10.0/ServeSync.Domain.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/bin/Debug/net10.0/SharedKernel.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/bin/Debug/net10.0/ServeSync.Domain.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/bin/Debug/net10.0/SharedKernel.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net10.0/ServeSync.Domain.UnitTests.csproj.AssemblyReference.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTests/obj/Debug/net10.0/ServeSyn.A33E87E0.Up2Date

@@ -4,14 +4,14 @@ using SharedKernel;
 
 namespace ServeSync.Domain.CourtAggregate;
 
-public sealed class Court : RootAggregate
+internal sealed class Court : RootAggregate
 {
     private readonly List<Guid> _sessionIds = new();
     private readonly int _maxDailySessions;
     private readonly Guid _clubId;
     private readonly Schedule _schedule = Schedule.Empty();
 
-    public Court(
+    internal Court(
         int maxDailySessions,
         Guid clubId,
         Schedule? schedule = null,
@@ -22,7 +22,7 @@ public sealed class Court : RootAggregate
         _schedule = schedule ?? Schedule.Empty();
     }
 
-    public Result ScheduleSession(Guid sessionId)
+    internal Result ScheduleSession(Guid sessionId)
     {
         if (_sessionIds.Exists(x => x == sessionId))
         {

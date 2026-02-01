@@ -3,13 +3,13 @@ using SharedKernel;
 
 namespace ServeSync.Domain.InstructorAggregate;
 
-public sealed class Instructor : RootAggregate
+internal sealed class Instructor : RootAggregate
 {
     private readonly Guid _userId;
     private readonly List<Guid> _sessionIds = new();
     private readonly Schedule _schedule = Schedule.Empty();
 
-    public Instructor(Guid userId, 
+    internal Instructor(Guid userId, 
                       Schedule sch, 
                       Guid? id = null) : base(id ?? Guid.NewGuid())
     {
@@ -17,7 +17,7 @@ public sealed class Instructor : RootAggregate
         _schedule = sch ?? _schedule;
     }
 
-    public Result AddSessionToSchedule(Guid sessionId)
+    internal Result AddSessionToSchedule(Guid sessionId)
     {
         if (_sessionIds.Contains(sessionId))
             return Result.Failure(Error.Conflict(

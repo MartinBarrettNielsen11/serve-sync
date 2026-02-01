@@ -4,7 +4,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.PlayerAggregate;
 
-public sealed class Player : RootAggregate
+internal sealed class Player : RootAggregate
 {
     private readonly Guid _userId;
     private readonly Schedule _schedule = Schedule.Empty();
@@ -17,7 +17,7 @@ public sealed class Player : RootAggregate
     }
     
     // intermediate placeholder for testing "Result"
-    public Result AddToSchedule(Session session)
+    internal Result AddToSchedule(Session session)
     {
         var intermediateCond = false; 
         
