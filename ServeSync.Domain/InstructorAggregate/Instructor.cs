@@ -3,7 +3,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.InstructorAggregate;
 
-public class Instructor : RootAggregate
+public sealed class Instructor : RootAggregate
 {
     private readonly Guid _userId;
     private readonly List<Guid> _sessionIds = new();
@@ -15,5 +15,16 @@ public class Instructor : RootAggregate
     {
         _userId = userId;
         _schedule = sch ?? _schedule;
+    }
+
+    public Result AddSessionToSchedule(Guid sessionId)
+    {
+        if (_sessionIds.Contains(sessionId))
+            return Result.Failure(Error.Conflict(
+                code: "", 
+                description: "Session already exists in the schedule of the Instructor"));
+        
+        _sessionIds.Add(sessionId);
+        return Result.Success();
     }
 }

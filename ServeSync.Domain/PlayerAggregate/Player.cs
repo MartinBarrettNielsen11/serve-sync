@@ -4,7 +4,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.PlayerAggregate;
 
-public class Player : RootAggregate
+public sealed class Player : RootAggregate
 {
     private readonly Guid _userId;
     private readonly Schedule _schedule = Schedule.Empty();

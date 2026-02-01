@@ -31,7 +31,7 @@ public class Result
     public static Result<TValue> Failure<TValue>(Error error) => new(default, isSuccess: false, error: error);
 }
 
-public class Result<TValue>(TValue? value, bool isSuccess, Error error) : Result(isSuccess, error)
+public sealed class Result<TValue>(TValue? value, bool isSuccess, Error error) : Result(isSuccess, error)
 {
     [NotNull]
     public TValue Value => IsSuccess switch
@@ -50,5 +50,5 @@ public class Result<TValue>(TValue? value, bool isSuccess, Error error) : Result
         return success;
     }
 
-    public static Result<TValue> ValidationFailure(Error error) => new(default, false, error);
+    public static Result<TValue> ValidationFailure(Error error) => new(default, isSuccess: false, error: error);
 }

@@ -1,6 +1,6 @@
 namespace ServeSync.Domain.CourtAggregate;
 
-public class CourtErrors
+public static class CourtErrors
 {
     public static readonly Error NumberOfSessionsCannotExceedSubscriptionLimit = Error.Failure(
         "Court.CannotHaveMoreSessionThanSubscriptionAllows",

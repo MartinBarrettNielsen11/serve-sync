@@ -2,7 +2,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.SubscriptionAggregate;
 
-public class Subscription : RootAggregate
+public sealed class Subscription : RootAggregate
 {
         private readonly Guid _adminId;
         private readonly List<Guid> _clubIds = new();

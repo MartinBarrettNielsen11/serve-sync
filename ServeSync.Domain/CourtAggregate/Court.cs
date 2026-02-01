@@ -4,7 +4,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.CourtAggregate;
 
-public class Court : RootAggregate
+public sealed class Court : RootAggregate
 {
     private readonly List<Guid> _sessionIds = new();
     private readonly int _maxDailySessions;

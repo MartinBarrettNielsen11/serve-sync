@@ -3,7 +3,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.ScheduleAggregate;
 
-public class Schedule : Entity
+public sealed class Schedule : Entity
 { 
     private readonly Dictionary<DateTime, List<TimeRange>> _calendar;
 

@@ -3,7 +3,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.SessionAggregate;
 
-public class Session : RootAggregate
+public sealed class Session : RootAggregate
 {
     private readonly Guid _instructorId;
     private readonly List<Booking> _bookings = new();
@@ -26,9 +26,7 @@ public class Session : RootAggregate
     public Result CancelReservation(Guid participantId, IDateTimeProvider provider)
     {
         if (IsTooCloseToSession(provider.UtcNow))
-        {
             return Result.Failure(SessionErrors.CannotCancelReservationTooCloseToSession);
-        }
 
         return Result.Success();
     }

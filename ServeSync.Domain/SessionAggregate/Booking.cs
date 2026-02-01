@@ -2,7 +2,7 @@ using SharedKernel;
 
 namespace ServeSync.Domain.SessionAggregate;
 
-public class Booking : Entity
+public sealed class Booking : Entity
 {
     public Guid PlayerId { get; }
 
