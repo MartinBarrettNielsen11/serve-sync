@@ -1,7 +1,6 @@
 using ServeSync.Domain.ScheduleAggregate;
 using ServeSync.Domain.SessionAggregate;
 using SharedKernel;
-using SharedKernel.Results;
 
 namespace ServeSync.Domain.PlayerAggregate;
 

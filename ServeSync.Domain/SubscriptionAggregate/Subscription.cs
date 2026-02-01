@@ -1,5 +1,4 @@
 using SharedKernel;
-using SharedKernel.Results;
 
 namespace ServeSync.Domain.SubscriptionAggregate;
 

@@ -1,10 +1,8 @@
-using SharedKernel.Results;
-
 namespace ServeSync.Domain.InstructorAggregate;
 
 public static class InstructorErrors
 {
-    public static readonly Error CannotHaveTwoOrMoreOverlappingSessions = Error.Failure(
-        "Instructor.CannotHaveTwoOrMoreOverlappingSessions",
+    public static readonly Error CannotHaveMultipleOverlappingSessions = Error.Failure(
+        "Instructor.CannotHaveMultipleOverlappingSessions",
         "An instructor cannot have two or more overlapping sessions");
 }

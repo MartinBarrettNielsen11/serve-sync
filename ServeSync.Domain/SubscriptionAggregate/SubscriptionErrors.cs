@@ -1,5 +1,3 @@
-using SharedKernel.Results;
-
 namespace ServeSync.Domain.SubscriptionAggregate;
 
 public static class SubscriptionErrors

@@ -1,5 +1,4 @@
 using SharedKernel;
-using SharedKernel.Results;
 
 namespace ServeSync.Domain.ClubAggregate;
 
@@ -19,10 +18,19 @@ public class Club : RootAggregate
         _maxCourtCapacity = maxCourtCapacity;
     }
 
-    public Result AddRoom(Guid roomId)
+    public Result AddCourt(Guid courtId)
     {
-        if (_courtIds.Contains(roomId)) return Result.Failure(Error.Failure(code: "", description: "Room already exists in gym"));
+        if (_courtIds.Contains(courtId))
+        {
+            return Result.Failure(Error.Failure(code: "", description: "Court already exists in Club"));
+        }
         
+        if (_maxCourtCapacity < _courtIds.Count)
+        {
+            return Result.Failure(ClubErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
+        }
+        
+        _courtIds.Add(courtId);
         return Result.Success();
     }
 }
