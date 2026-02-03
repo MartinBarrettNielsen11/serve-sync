@@ -1,4 +1,3 @@
-using ServeSync.Domain.ScheduleAggregate;
 using SharedKernel;
 
 namespace ServeSync.Domain.InstructorAggregate;

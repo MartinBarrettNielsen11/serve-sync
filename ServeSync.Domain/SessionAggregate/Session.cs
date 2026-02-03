@@ -1,5 +1,5 @@
-using ServeSync.Domain.Common;
 using SharedKernel;
+using SharedKernel.Common.ValueObjects;
 
 namespace ServeSync.Domain.SessionAggregate;
 

@@ -1,3 +1,5 @@
+using SharedKernel.Common;
+
 namespace SharedKernel;
 
 public abstract class RootAggregate : Entity

@@ -1,4 +1,4 @@
-namespace SharedKernel;
+namespace SharedKernel.Common;
 
 public abstract class Entity(Guid id)
 {

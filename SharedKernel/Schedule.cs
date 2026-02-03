@@ -1,7 +1,8 @@
-using ServeSync.Domain.Common;
-using SharedKernel;
+using SharedKernel.Common;
+using SharedKernel.Common.ValueObjects;
+using SharedKernel.Results;
 
-namespace ServeSync.Domain.ScheduleAggregate;
+namespace SharedKernel;
 
 internal sealed class Schedule : Entity
 { 

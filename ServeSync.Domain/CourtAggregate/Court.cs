@@ -1,4 +1,3 @@
-using ServeSync.Domain.ScheduleAggregate;
 using ServeSync.Domain.SessionAggregate;
 using SharedKernel;
 

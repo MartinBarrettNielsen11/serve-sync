@@ -1,4 +1,4 @@
-namespace ServeSync.Domain.Common;
+namespace SharedKernel.Common.ValueObjects;
 
 public class TimeRange(TimeOnly start, TimeOnly end)
 {
