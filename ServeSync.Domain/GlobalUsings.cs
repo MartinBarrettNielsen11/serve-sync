@@ -2,5 +2,4 @@
 
 global using SharedKernel.Results;
 global using SharedKernel.Common;
-global using SharedKernel.Common.ValueObjects;
 global using SharedKernel;

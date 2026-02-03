@@ -1,10 +1,9 @@
 using SharedKernel.Common;
-using SharedKernel.Common.ValueObjects;
 using SharedKernel.Results;
 
 namespace SharedKernel;
 
-internal sealed class Schedule : Entity
+public sealed class Schedule : Entity
 { 
     private readonly Dictionary<DateTime, List<TimeRange>> _calendar;
 
