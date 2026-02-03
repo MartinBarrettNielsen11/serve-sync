@@ -14,5 +14,9 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
     </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="..\ServeSync.Domain\ServeSync.Domain.csproj" />
+    </ItemGroup>
 
 </Project>

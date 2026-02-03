@@ -9,8 +9,8 @@ internal sealed class Instructor : RootAggregate
     private readonly Schedule _schedule = Schedule.Empty();
 
     internal Instructor(Guid userId, 
-                      Schedule sch, 
-                      Guid? id = null) : base(id ?? Guid.NewGuid())
+                        Schedule sch, 
+                        Guid? id = null) : base(id ?? Guid.NewGuid())
     {
         _userId = userId;
         _schedule = sch ?? _schedule;

@@ -38,8 +38,15 @@ internal sealed class Schedule : Entity
         return Result.Success();
     }
 
-    internal Result RemoveBooking()
+    internal Result RemoveBooking(DateTime dateTime, TimeRange time)
     {
+        if (!_calendar.TryGetValue(dateTime, out List<TimeRange>? timeSlots) || !timeSlots.Contains(time))
+        {
+            return Result.Failure(Error.NotFound(code: "", description: ""));
+        }
+        
         return Result.Success();
     }
+    
+
 }
