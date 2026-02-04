@@ -8,12 +8,12 @@ public sealed class Schedule : Entity
     private readonly Dictionary<DateTime, List<TimeRange>> _calendar;
 
     public Schedule(IDictionary<DateTime, List<TimeRange>>? calendar = null,
-                    Guid? id = null) : base(id ?? Guid.NewGuid())
+                    Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         _calendar = (Dictionary<DateTime, List<TimeRange>>?)calendar ?? new Dictionary<DateTime, List<TimeRange>>();
     }
 
-    public static Schedule Empty() => new(calendar: null, id: Guid.NewGuid());
+    public static Schedule Empty() => new(calendar: null, id: Guid.CreateVersion7());
 
     internal Result BookTimeSlot(DateTime dateTime, TimeRange time)
     {

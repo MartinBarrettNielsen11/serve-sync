@@ -12,7 +12,7 @@ internal sealed class Club : RootAggregate
         Guid subscriptionId,
         int maxCourtCapacity,
         Guid? id = null) 
-        : base(id ?? Guid.NewGuid())
+        : base(id ?? Guid.CreateVersion7())
     {
         _subscriptionId = subscriptionId;
         _maxCourtCapacity = maxCourtCapacity;
@@ -27,6 +27,7 @@ internal sealed class Club : RootAggregate
             return Result.Failure(ClubErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
         
         _courtIds.Add(courtId);
+        
         return Result.Success();
     }
 }

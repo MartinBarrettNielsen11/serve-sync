@@ -10,7 +10,7 @@ internal sealed class Player : RootAggregate
     private readonly List<Guid> _sessionIds = new();
 
     public Player(Guid userId,
-                  Guid? id = null) : base(id ?? Guid.NewGuid())
+                  Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         _userId = userId;
     }

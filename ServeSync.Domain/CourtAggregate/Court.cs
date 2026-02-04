@@ -14,7 +14,7 @@ internal sealed class Court : RootAggregate
         int maxDailySessions,
         Guid clubId,
         Schedule? schedule = null,
-        Guid? id = null) : base(id ?? Guid.NewGuid())
+        Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         _maxDailySessions = maxDailySessions;
         _clubId = clubId;

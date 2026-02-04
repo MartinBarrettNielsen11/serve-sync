@@ -10,7 +10,7 @@ internal sealed class Instructor : RootAggregate
 
     internal Instructor(Guid userId, 
                         Schedule sch, 
-                        Guid? id = null) : base(id ?? Guid.NewGuid())
+                        Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         _userId = userId;
         _schedule = sch ?? _schedule;

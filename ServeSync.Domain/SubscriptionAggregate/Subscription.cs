@@ -9,7 +9,7 @@ internal sealed class Subscription : RootAggregate
     private readonly int _maxCourtsAllowed;
 
     internal Subscription(Guid adminId,
-                          Guid? id = null) : base(id ?? Guid.NewGuid())
+                          Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         _maxCourtsAllowed = GetMaxGyms();
         _adminId = adminId;

@@ -14,7 +14,7 @@ internal sealed class Session : RootAggregate
                    DateOnly date,
                    TimeRange time,
                    int maxPlayerCapacity,
-                   Guid? id = null) : base(id ?? Guid.NewGuid())
+                   Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         _instructorId = instructorId;
         Date = date;

@@ -11,7 +11,7 @@ public class Admin : RootAggregate
         Guid userId,
         Guid subscriptionId,
         Guid? id = null)
-        : base(id ?? Guid.NewGuid())
+        : base(id ?? Guid.CreateVersion7())
     {
         _userId = userId;
         _subscriptionId = subscriptionId;
