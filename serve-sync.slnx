@@ -2,7 +2,7 @@
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
   </Folder>
-  <Project Path="ServeSync.Domain.UnitTests/ServeSync.Domain.UnitTests.csproj" />
+  <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />
   <Project Path="ServeSync.Domain/ServeSync.Domain.csproj" />
   <Project Path="ServeSync.WebApi/ServeSync.WebApi.csproj" />
   <Project Path="SharedKernel/SharedKernel.csproj" />

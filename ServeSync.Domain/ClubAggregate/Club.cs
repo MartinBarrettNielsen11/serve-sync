@@ -2,13 +2,13 @@ using SharedKernel;
 
 namespace ServeSync.Domain.ClubAggregate;
 
-internal sealed class Club : RootAggregate
+public sealed class Club : RootAggregate
 {
     private readonly Guid _subscriptionId;
     private readonly List<Guid> _courtIds = new();
     private readonly int _maxCourtCapacity;
     
-    internal Club(
+    public Club(
         Guid subscriptionId,
         int maxCourtCapacity,
         Guid? id = null) 
