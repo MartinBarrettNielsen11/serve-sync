@@ -1,7 +1,12 @@
 <Solution>
-  <Folder Name="/Solution Items/">
+  <Folder Name="/docs/">
+    <File Path="Invariants.md" />
+    <File Path="Readme.md" />
+  </Folder>
+  <Folder Name="/solution-items/">
     <File Path=".editorconfig" />
     <File Path="Directory.Packages.Props" />
+    <File Path="ServeSync.Domain.csproj.DotSettings" />
   </Folder>
   <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />
   <Project Path="ServeSync.Domain/ServeSync.Domain.csproj" />
