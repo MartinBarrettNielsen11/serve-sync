@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4W3Z5w+yCqA=",
+  "dgSpecHash": "Dsts9vtm4nY=",
   "success": true,
   "projectFilePath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/Domain3/Domain3.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/martinnielsen/.nuget/packages/meziantou.analyzer/2.0.278/meziantou.analyzer.2.0.278.nupkg.sha512"
+  ],
   "logs": []
 }

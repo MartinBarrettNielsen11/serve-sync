@@ -12,4 +12,7 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="/Users/martinnielsen/.nuget/packages/" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)meziantou.analyzer/2.0.278/buildTransitive/Meziantou.Analyzer.props" Condition="Exists('$(NuGetPackageRoot)meziantou.analyzer/2.0.278/buildTransitive/Meziantou.Analyzer.props')" />
+  </ImportGroup>
 </Project>

@@ -13,6 +13,7 @@
         "packagesPath": "/Users/martinnielsen/.nuget/packages/",
         "outputPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/Domain3/obj/",
         "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
           "/Users/martinnielsen/.nuget/NuGet/NuGet.Config"
         ],
@@ -43,6 +44,28 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
+          "dependencies": {
+            "Meziantou.Analyzer": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.278, )",
+              "versionCentrallyManaged": true
+            }
+          },
+          "centralPackageVersions": {
+            "Azure.Identity": "1.15.0",
+            "coverlet.collector": "6.0.4",
+            "Meziantou.Analyzer": "2.0.278",
+            "Microsoft.Azure.Cosmos": "3.53.0",
+            "Microsoft.EntityFrameworkCore": "9.0.8",
+            "Microsoft.EntityFrameworkCore.Cosmos": "9.0.8",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.8",
+            "Microsoft.NET.Test.Sdk": "17.14.1",
+            "xunit": "2.9.3",
+            "xunit.runner.visualstudio": "3.1.4",
+            "xunit.v3": "3.2.2"
+          },
           "imports": [
             "net461",
             "net462",

@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".editorconfig" />
+    <File Path="Directory.Packages.Props" />
   </Folder>
   <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />
   <Project Path="ServeSync.Domain/ServeSync.Domain.csproj" />

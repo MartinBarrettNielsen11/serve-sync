@@ -13,6 +13,7 @@
         "packagesPath": "/Users/martinnielsen/.nuget/packages/",
         "outputPath": "/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ServeSync.Domain.UnitTestsV2/obj/",
         "projectStyle": "PackageReference",
+        "centralPackageVersionsManagementEnabled": true,
         "configFilePaths": [
           "/Users/martinnielsen/.nuget/NuGet/NuGet.Config"
         ],
@@ -50,24 +51,42 @@
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.14.1, )"
+              "version": "[17.14.1, )",
+              "versionCentrallyManaged": true
             },
             "coverlet.collector": {
               "target": "Package",
-              "version": "[6.0.4, )"
+              "version": "[6.0.4, )",
+              "versionCentrallyManaged": true
             },
             "xunit": {
               "target": "Package",
-              "version": "[2.9.3, )"
+              "version": "[2.9.3, )",
+              "versionCentrallyManaged": true
             },
             "xunit.runner.visualstudio": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[3.1.4, )",
+              "versionCentrallyManaged": true
             },
             "xunit.v3": {
               "target": "Package",
-              "version": "[3.2.2, )"
+              "version": "[3.2.2, )",
+              "versionCentrallyManaged": true
             }
+          },
+          "centralPackageVersions": {
+            "Azure.Identity": "1.15.0",
+            "coverlet.collector": "6.0.4",
+            "Meziantou.Analyzer": "2.0.278",
+            "Microsoft.Azure.Cosmos": "3.53.0",
+            "Microsoft.EntityFrameworkCore": "9.0.8",
+            "Microsoft.EntityFrameworkCore.Cosmos": "9.0.8",
+            "Microsoft.EntityFrameworkCore.Design": "9.0.8",
+            "Microsoft.NET.Test.Sdk": "17.14.1",
+            "xunit": "2.9.3",
+            "xunit.runner.visualstudio": "3.1.4",
+            "xunit.v3": "3.2.2"
           },
           "imports": [
             "net461",
