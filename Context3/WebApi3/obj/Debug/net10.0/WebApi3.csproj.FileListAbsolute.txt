@@ -1,0 +1,15 @@
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/WebApi3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/WebApi3.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/WebApi3.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/WebApi3.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/WebApi3.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/bin/Debug/net10.0/WebApi3
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/bin/Debug/net10.0/WebApi3.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/bin/Debug/net10.0/WebApi3.runtimeconfig.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/bin/Debug/net10.0/WebApi3.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/bin/Debug/net10.0/WebApi3.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/WebApi3.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/refint/WebApi3.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/WebApi3.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/WebApi3.genruntimeconfig.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context3/WebApi3/obj/Debug/net10.0/ref/WebApi3.dll
