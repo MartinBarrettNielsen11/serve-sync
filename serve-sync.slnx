@@ -6,4 +6,13 @@
   <Project Path="ServeSync.Domain/ServeSync.Domain.csproj" />
   <Project Path="ServeSync.WebApi/ServeSync.WebApi.csproj" />
   <Project Path="SharedKernel/SharedKernel.csproj" />
+  <Folder Name="/Context1/">
+     <Project Path="Context1/Domain1/Domain1.csproj" />
+  </Folder>
+  <Folder Name="/Context2/">
+    <Project Path="Context2/Domain2/Domain2.csproj" />
+  </Folder>
+  <Folder Name="/Context3/">
+    <Project Path="Context3/Domain3/Domain3.csproj" />
+  </Folder>
 </Solution>

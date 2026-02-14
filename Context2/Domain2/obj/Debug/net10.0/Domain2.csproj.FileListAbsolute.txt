@@ -1,0 +1,12 @@
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/bin/Debug/net10.0/Domain2.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/bin/Debug/net10.0/Domain2.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/bin/Debug/net10.0/Domain2.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/Domain2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/Domain2.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/Domain2.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/Domain2.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/Domain2.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/Domain2.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/refint/Domain2.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/Domain2.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/Context2/Domain2/obj/Debug/net10.0/ref/Domain2.dll
