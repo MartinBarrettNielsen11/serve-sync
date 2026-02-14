@@ -17,7 +17,9 @@ public sealed class Schedule : Entity
 
     internal Result BookTimeSlot(DateTime dateTime, TimeRange time)
     {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
         var entryExists = _calendar.TryGetValue(dateTime, out List<TimeRange> timeSlots);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
         
         if (!entryExists)
         {

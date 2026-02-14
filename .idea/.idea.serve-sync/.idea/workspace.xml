@@ -14,10 +14,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17862ca1-584f-4cb8-9b09-f82880544105" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.serve-sync/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.serve-sync/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Application1/bin/Debug/net10.0/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/bin/Debug/net10.0/Application1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Application1/bin/Debug/net10.0/Application1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/bin/Debug/net10.0/Application1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/Application1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/Application1.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/Application1.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/ref/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/ref/Application1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/refint/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/Debug/net10.0/refint/Application1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Application1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Application1/obj/project.packagespec.json" afterDir="false" />
@@ -26,27 +34,42 @@
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/bin/Debug/net10.0/Domain1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/bin/Debug/net10.0/Domain1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/Domain1.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/ref/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/ref/Domain1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/refint/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Debug/net10.0/refint/Domain1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Domain1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Domain1.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/Domain1.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/Domain1.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/Domain1/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/Domain1/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Context1/WebApi1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/WebApi1/bin/Debug/net10.0/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/bin/Debug/net10.0/WebApi1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/WebApi1/bin/Debug/net10.0/WebApi1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/bin/Debug/net10.0/WebApi1.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/WebApi1.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/ref/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/ref/WebApi1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/refint/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/Debug/net10.0/refint/WebApi1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/WebApi1.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/WebApi1.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context1/WebApi1/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Context1/WebApi1/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Application2/bin/Debug/net10.0/Application2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/bin/Debug/net10.0/Application2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Application2/bin/Debug/net10.0/Application2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/bin/Debug/net10.0/Application2.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/Application2.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/Application2.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/Application2.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/ref/Application2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/ref/Application2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/refint/Application2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/Debug/net10.0/refint/Application2.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Application2/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Application2/obj/project.packagespec.json" afterDir="false" />
@@ -55,27 +78,42 @@
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/bin/Debug/net10.0/Domain2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/bin/Debug/net10.0/Domain2.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/Domain2.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/ref/Domain2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/ref/Domain2.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/refint/Domain2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Debug/net10.0/refint/Domain2.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Domain2.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Domain2.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/Domain2.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/Domain2.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/Domain2/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/Domain2/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Context2/WebApi2/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/WebApi2/bin/Debug/net10.0/WebApi2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/bin/Debug/net10.0/WebApi2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/WebApi2/bin/Debug/net10.0/WebApi2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/bin/Debug/net10.0/WebApi2.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/WebApi2.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/ref/WebApi2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/ref/WebApi2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/refint/WebApi2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/Debug/net10.0/refint/WebApi2.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/WebApi2.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/WebApi2.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context2/WebApi2/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Context2/WebApi2/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Application3/bin/Debug/net10.0/Application3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/bin/Debug/net10.0/Application3.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Application3/bin/Debug/net10.0/Application3.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/bin/Debug/net10.0/Application3.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/Application3.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/Application3.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/Application3.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/ref/Application3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/ref/Application3.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/refint/Application3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/Debug/net10.0/refint/Application3.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Application3/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Application3/obj/project.packagespec.json" afterDir="false" />
@@ -84,92 +122,110 @@
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/bin/Debug/net10.0/Domain3.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/bin/Debug/net10.0/Domain3.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/Domain3.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/ref/Domain3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/ref/Domain3.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/refint/Domain3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Debug/net10.0/refint/Domain3.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Domain3.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Domain3.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/Domain3.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/Domain3.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/Domain3/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/Domain3/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Context3/WebApi3/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/WebApi3/bin/Debug/net10.0/WebApi3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/bin/Debug/net10.0/WebApi3.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/WebApi3/bin/Debug/net10.0/WebApi3.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/bin/Debug/net10.0/WebApi3.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/WebApi3.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/ref/WebApi3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/ref/WebApi3.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/refint/WebApi3.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/Debug/net10.0/refint/WebApi3.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/WebApi3.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/WebApi3.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context3/WebApi3/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Context3/WebApi3/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Directory.Packages.Props" beforeDir="false" afterPath="$PROJECT_DIR$/Directory.Packages.Props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Invariants.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/ServeSync.Domain.UnitTestsV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/ServeSync.Domain.UnitTestsV2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/ServeSync.Domain.UnitTestsV2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/ServeSync.Domain.UnitTestsV2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/ServeSync.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/ServeSync.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/ServeSync.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/ServeSync.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/SharedKernel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/SharedKernel.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/SharedKernel.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/bin/Debug/net10.0/SharedKernel.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ServeSync.Domain.UnitTestsV2.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ref/ServeSync.Domain.UnitTestsV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/ref/ServeSync.Domain.UnitTestsV2.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/refint/ServeSync.Domain.UnitTestsV2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/Debug/net10.0/refint/ServeSync.Domain.UnitTestsV2.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/ServeSync.Domain.UnitTestsV2.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/ServeSync.Domain.UnitTestsV2.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/ServeSync.Domain.UnitTestsV2.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/ServeSync.Domain.UnitTestsV2.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/ServeSync.Domain.UnitTestsV2.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/ServeSync.Domain.UnitTestsV2.csproj.nuget.g.targets" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/SharedKernel.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/SharedKernel.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSyn.494109B3.Up2Date" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain.csproj.DotSettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/ServeSync.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/SharedKernel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/SharedKernel.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/SharedKernel.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/bin/Debug/net10.0/SharedKernel.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.csproj.CoreCompileInputs.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.sourcelink.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ref/ServeSync.Domain.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/refint/ServeSync.Domain.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ServeSync.Domain.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ref/ServeSync.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/ref/ServeSync.Domain.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/refint/ServeSync.Domain.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/Debug/net10.0/refint/ServeSync.Domain.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/ServeSync.Domain.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/ServeSync.Domain.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/ServeSync.Domain.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/ServeSync.Domain.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.Domain/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.deps.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.runtimeconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/bin/Debug/net10.0/ServeSync.WebApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.genruntimeconfig.cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ServeSync.WebApi.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ref/ServeSync.WebApi.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/refint/ServeSync.WebApi.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ref/ServeSync.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/ref/ServeSync.WebApi.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/refint/ServeSync.WebApi.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/Debug/net10.0/refint/ServeSync.WebApi.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/ServeSync.WebApi.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/ServeSync.WebApi.csproj.nuget.dgspec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServeSync.WebApi/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ServeSync.WebApi/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SharedKernel/Results/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/Results/Result.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SharedKernel/SharedKernel.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/SharedKernel.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SharedKernel/bin/Debug/net10.0/SharedKernel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/bin/Debug/net10.0/SharedKernel.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SharedKernel/bin/Debug/net10.0/SharedKernel.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/bin/Debug/net10.0/SharedKernel.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedKernel/bin/Debug/net10.0/SharedKernel.deps.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedKernel/bin/Debug/net10.0/SharedKernel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedKernel/bin/Debug/net10.0/SharedKernel.pdb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.pdb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/SharedKernel.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/ref/SharedKernel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/ref/SharedKernel.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/refint/SharedKernel.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/refint/SharedKernel.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/ref/SharedKernel.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/Debug/net10.0/refint/SharedKernel.dll" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/SharedKernel.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/SharedKernel.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SharedKernel/obj/SharedKernel.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/SharedKernel.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SharedKernel/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/SharedKernel/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/serve-sync.sln.DotSettings.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/serve-sync.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/serve-sync.slnx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
