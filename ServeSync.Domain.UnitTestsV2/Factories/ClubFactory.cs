@@ -1,3 +1,4 @@
+/*
 using ServeSync.Domain.ClubAggregate;
 using ServeSync.Domain.UnitTestsV2.Constants;
 
@@ -13,3 +14,4 @@ internal sealed class ClubFactory
                         id: id ?? ClubConstants.Id);
     }
 }
+*/

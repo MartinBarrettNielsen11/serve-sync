@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ServeSync.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2524262e087a8acf238eb54e123c82ff28106241")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fdbbf4aa6190d6a2c3abd9bad3b0a5b47a33d09d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ServeSync.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ServeSync.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

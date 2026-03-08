@@ -1,32 +1,32 @@
 <Solution>
-  <Folder Name="/ClubAdministrationService/" />
-  <Folder Name="/ClubAdministrationService/src/">
-    <Project Path="Context3/Application3/Application3.csproj" />
-    <Project Path="Context3/Domain3/Domain3.csproj" />
-    <Project Path="Context3/WebApi3/WebApi3.csproj" />
-  </Folder>
-  <Folder Name="/ClubAdministrationService/tests/" />
   <Folder Name="/docs/">
     <File Path="docs/Invariants.md" />
     <File Path="docs/Readme.md" />
   </Folder>
-  <Folder Name="/SessionReservationService/" />
-  <Folder Name="/SessionReservationService/src/">
-    <Project Path="Context1/Application1/Application1.csproj" />
-    <Project Path="Context1/Domain1/Domain1.csproj" />
-    <Project Path="Context1/WebApi1/WebApi1.csproj" />
-  </Folder>
-  <Folder Name="/SessionReservationService/tests/" />
   <Folder Name="/solution-items/">
     <File Path="solution-items/.editorconfig" />
     <File Path="solution-items/ServeSync.Domain.csproj.DotSettings" />
     <File Path="Directory.Packages.Props" />
   </Folder>
+  <Folder Name="/ClubAdministrationService/" />
+  <Folder Name="/ClubAdministrationService/src/">
+    <Project Path="ClubAdministrationService/Application3/Application3.csproj" />
+    <Project Path="ClubAdministrationService/Domain3/Domain3.csproj" />
+    <Project Path="ClubAdministrationService/WebApi3/WebApi3.csproj" />
+  </Folder>
+  <Folder Name="/ClubAdministrationService/tests/" />
+  <Folder Name="/SessionReservationService/" />
+  <Folder Name="/SessionReservationService/src/">
+    <Project Path="SessionReservationService/Application1/Application1.csproj" />
+    <Project Path="SessionReservationService/Domain1/Domain1.csproj" />
+    <Project Path="SessionReservationService/WebApi1/WebApi1.csproj" />
+  </Folder>
+  <Folder Name="/SessionReservationService/tests/" />
   <Folder Name="/UserAdministrationService/" />
   <Folder Name="/UserAdministrationService/src/">
-    <Project Path="Context2/Application2/Application2.csproj" />
-    <Project Path="Context2/Domain2/Domain2.csproj" />
-    <Project Path="Context2/WebApi2/WebApi2.csproj" />
+    <Project Path="UserAdministrationService/Application2/Application2.csproj" />
+    <Project Path="UserAdministrationService/Domain2/Domain2.csproj" />
+    <Project Path="UserAdministrationService/WebApi2/WebApi2.csproj" />
   </Folder>
   <Folder Name="/UserAdministrationService/tests/" />
   <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />

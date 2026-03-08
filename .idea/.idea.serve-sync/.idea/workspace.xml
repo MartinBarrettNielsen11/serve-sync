@@ -14,6 +14,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17862ca1-584f-4cb8-9b09-f82880544105" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.serve-sync/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.serve-sync/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/bin/Debug/net10.0/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/bin/Debug/net10.0/Application1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/bin/Debug/net10.0/Application1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/bin/Debug/net10.0/Application1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/ref/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/ref/Application1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/refint/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/refint/Application1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/bin/Debug/net10.0/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/bin/Debug/net10.0/Domain1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/bin/Debug/net10.0/Domain1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/bin/Debug/net10.0/Domain1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/ref/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/ref/Domain1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/refint/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/refint/Domain1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/bin/Debug/net10.0/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/bin/Debug/net10.0/WebApi1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/bin/Debug/net10.0/WebApi1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/bin/Debug/net10.0/WebApi1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/ref/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/ref/WebApi1.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/refint/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/refint/WebApi1.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serve-sync.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/serve-sync.slnx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,20 +54,21 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$APPLICATION_HOME_DIR$/lib/modules/intellij.rider.jar!/schemas/msbuild/Microsoft.Build.Commontypes.xsd" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Context1/Application1/Class1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Context1/WebApi1/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Context2/Application2/Class1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Context2/WebApi2/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Context3/Application3/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClubAdministrationService/Application3/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClubAdministrationService/Domain3/ClubAggregate/Club.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClubAdministrationService/Domain3/ClubAggregate/ClubErrors.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClubAdministrationService/Domain3/SubscriptionAggregate/Subscription.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClubAdministrationService/Domain3/SubscriptionAggregate/SubscriptionErrors.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/ClubTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/Constants/ClubConstants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/Constants/SubscriptionConstatns.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ServeSync.Domain.UnitTestsV2/Factories/ClubFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ServeSync.Domain/AdminAggregate/Admin.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SessionReservationService/Application1/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/SessionReservationService/WebApi1/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SharedKernel/Common/ValueObjects/ValueObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SharedKernel/IPasswordHasher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SharedKernel/RootAggregate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/SharedKernel/k.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/userAdministrationService/Application2/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/userAdministrationService/WebApi2/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1ad41a097d8420ea7c1e6ef67b81e74c2710/6f/a4abe903/Enumerable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
@@ -179,7 +208,7 @@
       <workItem from="1771106123493" duration="3296000" />
       <workItem from="1771109461235" duration="104000" />
       <workItem from="1771111437102" duration="6027000" />
-      <workItem from="1772987920047" duration="354000" />
+      <workItem from="1772987920047" duration="1416000" />
     </task>
     <servers />
   </component>
