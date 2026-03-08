@@ -13,7 +13,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17862ca1-584f-4cb8-9b09-f82880544105" name="Changes" comment="" />
+    <list default="true" id="17862ca1-584f-4cb8-9b09-f82880544105" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/serve-sync.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/serve-sync.slnx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -177,6 +179,7 @@
       <workItem from="1771106123493" duration="3296000" />
       <workItem from="1771109461235" duration="104000" />
       <workItem from="1771111437102" duration="6027000" />
+      <workItem from="1772987920047" duration="354000" />
     </task>
     <servers />
   </component>
