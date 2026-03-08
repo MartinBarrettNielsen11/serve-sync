@@ -6,7 +6,7 @@ namespace SharedKernel;
 public sealed class Schedule : Entity
 { 
     private readonly Dictionary<DateTime, List<TimeRange>> _calendar;
-
+    
     public Schedule(IDictionary<DateTime, List<TimeRange>>? calendar = null,
                     Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {

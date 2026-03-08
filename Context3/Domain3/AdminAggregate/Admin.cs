@@ -1,6 +1,6 @@
 using SharedKernel;
 
-namespace ServeSync.Domain.AdminAggregate;
+namespace Domain3.AdminAggregate;
 
 public class Admin : RootAggregate
 {

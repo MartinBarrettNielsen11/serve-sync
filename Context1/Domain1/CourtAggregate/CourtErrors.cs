@@ -1,4 +1,6 @@
-namespace ServeSync.Domain.CourtAggregate;
+using SharedKernel.Results;
+
+namespace Domain1.CourtAggregate;
 
 public static class CourtErrors
 {

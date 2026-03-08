@@ -1,4 +1,6 @@
-namespace ServeSync.Domain.PlayerAggregate;
+using SharedKernel.Results;
+
+namespace Domain1.PlayerAggregate;
 
 public static class PlayerErrors
 {

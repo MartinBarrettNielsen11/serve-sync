@@ -1,4 +1,6 @@
-namespace ServeSync.Domain.SessionAggregate;
+using SharedKernel.Results;
+
+namespace Domain1.SessionAggregate;
 
 public static class SessionErrors
 {

@@ -1,30 +1,30 @@
 <Solution>
+  <Folder Name="/ClubAdministrationService/">
+    <Project Path="Context3/Application3/Application3.csproj" />
+    <Project Path="Context3/Domain3/Domain3.csproj" />
+    <Project Path="Context3/WebApi3/WebApi3.csproj" />
+  </Folder>
   <Folder Name="/docs/">
     <File Path="docs/Invariants.md" />
     <File Path="docs/Readme.md" />
+  </Folder>
+  <Folder Name="/SessionReservationService/">
+    <Project Path="Context1/Application1/Application1.csproj" />
+    <Project Path="Context1/Domain1/Domain1.csproj" />
+    <Project Path="Context1/WebApi1/WebApi1.csproj" />
   </Folder>
   <Folder Name="/solution-items/">
     <File Path="solution-items/.editorconfig" />
     <File Path="solution-items/ServeSync.Domain.csproj.DotSettings" />
     <File Path="Directory.Packages.Props" />
   </Folder>
-  <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />
-  <Project Path="ServeSync.Domain/ServeSync.Domain.csproj" />
-  <Project Path="ServeSync.WebApi/ServeSync.WebApi.csproj" />
-  <Project Path="SharedKernel/SharedKernel.csproj" />
-  <Folder Name="/Context1/">
-    <Project Path="Context1/Application1/Application1.csproj" />
-     <Project Path="Context1/Domain1/Domain1.csproj" />
-    <Project Path="Context1/WebApi1/WebApi1.csproj" />
-  </Folder>
-  <Folder Name="/Context2/">
+  <Folder Name="/UserAdministrationService/">
     <Project Path="Context2/Application2/Application2.csproj" />
     <Project Path="Context2/Domain2/Domain2.csproj" />
     <Project Path="Context2/WebApi2/WebApi2.csproj" />
   </Folder>
-  <Folder Name="/Context3/">
-    <Project Path="Context3/Application3/Application3.csproj" />
-    <Project Path="Context3/Domain3/Domain3.csproj" />
-    <Project Path="Context3/WebApi3/WebApi3.csproj" />
-  </Folder>
+  <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />
+  <Project Path="ServeSync.Domain/ServeSync.Domain.csproj" />
+  <Project Path="ServeSync.WebApi/ServeSync.WebApi.csproj" />
+  <Project Path="SharedKernel/SharedKernel.csproj" />
 </Solution>

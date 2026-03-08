@@ -1,7 +1,8 @@
-using ServeSync.Domain.SessionAggregate;
+using Domain1.SessionAggregate;
 using SharedKernel;
+using SharedKernel.Results;
 
-namespace ServeSync.Domain.PlayerAggregate;
+namespace Domain1.PlayerAggregate;
 
 internal sealed class Player : RootAggregate
 {

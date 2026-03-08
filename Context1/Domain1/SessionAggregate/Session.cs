@@ -1,6 +1,8 @@
+using ServeSync.Domain.SessionAggregate;
 using SharedKernel;
+using SharedKernel.Results;
 
-namespace ServeSync.Domain.SessionAggregate;
+namespace Domain1.SessionAggregate;
 
 internal sealed class Session : RootAggregate
 {

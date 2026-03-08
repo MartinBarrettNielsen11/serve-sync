@@ -1,7 +1,7 @@
-using ServeSync.Domain.SessionAggregate;
 using SharedKernel;
+using SharedKernel.Results;
 
-namespace ServeSync.Domain.CourtAggregate;
+namespace Domain1.CourtAggregate;
 
 internal sealed class Court : RootAggregate
 {
