@@ -1,4 +1,6 @@
-namespace ServeSync.Domain.ClubAggregate;
+using SharedKernel.Results;
+
+namespace Domain3.ClubAggregate;
 
 public static class ClubErrors
 {

@@ -1,6 +1,7 @@
 using SharedKernel;
+using SharedKernel.Results;
 
-namespace ServeSync.Domain.SubscriptionAggregate;
+namespace Domain3.SubscriptionAggregate;
 
 internal sealed class Subscription : RootAggregate
 {

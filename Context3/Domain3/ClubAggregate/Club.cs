@@ -1,6 +1,7 @@
 using SharedKernel;
+using SharedKernel.Results;
 
-namespace ServeSync.Domain.ClubAggregate;
+namespace Domain3.ClubAggregate;
 
 public sealed class Club : RootAggregate
 {
