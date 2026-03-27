@@ -20,7 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\ServeSync.Domain\ServeSync.Domain.csproj" />
         <InternalsVisibleTo Include="..\ServeSync.Domain\ServeSync.Domain.csproj" />
     </ItemGroup>
 
