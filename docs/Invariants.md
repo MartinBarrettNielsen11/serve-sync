@@ -16,7 +16,7 @@
 
 
 ## Instructor Invariants
-- A instructor may not be assigned to overlapping sessions
+- An instructor may not be assigned to overlapping sessions
 
 
 ## Player Invariants

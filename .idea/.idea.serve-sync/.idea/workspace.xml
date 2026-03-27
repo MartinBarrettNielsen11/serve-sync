@@ -13,37 +13,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17862ca1-584f-4cb8-9b09-f82880544105" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.serve-sync/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.serve-sync/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/bin/Debug/net10.0/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/bin/Debug/net10.0/Application1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/bin/Debug/net10.0/Application1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/bin/Debug/net10.0/Application1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/Application1.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/ref/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/ref/Application1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/refint/Application1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Application1/obj/Debug/net10.0/refint/Application1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/bin/Debug/net10.0/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/bin/Debug/net10.0/Domain1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/bin/Debug/net10.0/Domain1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/bin/Debug/net10.0/Domain1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/Domain1.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/ref/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/ref/Domain1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/refint/Domain1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/Domain1/obj/Debug/net10.0/refint/Domain1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/bin/Debug/net10.0/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/bin/Debug/net10.0/WebApi1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/bin/Debug/net10.0/WebApi1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/bin/Debug/net10.0/WebApi1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/WebApi1.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/ref/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/ref/WebApi1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/refint/WebApi1.dll" beforeDir="false" afterPath="$PROJECT_DIR$/SessionReservationService/WebApi1/obj/Debug/net10.0/refint/WebApi1.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serve-sync.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/serve-sync.slnx" afterDir="false" />
-    </list>
+    <list default="true" id="17862ca1-584f-4cb8-9b09-f82880544105" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,7 +178,7 @@
       <workItem from="1771106123493" duration="3296000" />
       <workItem from="1771109461235" duration="104000" />
       <workItem from="1771111437102" duration="6027000" />
-      <workItem from="1772987920047" duration="1416000" />
+      <workItem from="1772987920047" duration="1489000" />
     </task>
     <servers />
   </component>
