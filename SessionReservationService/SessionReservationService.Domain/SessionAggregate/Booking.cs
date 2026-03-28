@@ -1,7 +1,6 @@
-using SharedKernel;
 using SharedKernel.Common;
 
-namespace ServeSync.Domain.SessionAggregate;
+namespace SessionReservationService.Domain.SessionAggregate;
 
 internal sealed class Booking : Entity
 {

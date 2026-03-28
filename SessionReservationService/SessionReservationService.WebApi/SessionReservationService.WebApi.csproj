@@ -5,7 +5,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>WebApi1</RootNamespace>
+        <RootNamespace>SessionReservationService.WebApi</RootNamespace>
     </PropertyGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Context2;
+﻿namespace UserAdministrationService.Domain.UserAggregate;
 
 public class User
 {

@@ -1,7 +1,7 @@
 using SharedKernel;
 using SharedKernel.Results;
 
-namespace Domain3.SubscriptionAggregate;
+namespace ClubAdministrationService.Domain.SubscriptionAggregate;
 
 internal sealed class Subscription : RootAggregate
 {

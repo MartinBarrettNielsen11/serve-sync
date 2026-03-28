@@ -1,6 +1,6 @@
 using SharedKernel.Results;
 
-namespace Domain3.SubscriptionAggregate;
+namespace ClubAdministrationService.Domain.SubscriptionAggregate;
 
 public static class SubscriptionErrors
 {

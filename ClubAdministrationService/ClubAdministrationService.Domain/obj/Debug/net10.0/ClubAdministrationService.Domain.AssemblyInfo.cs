@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClubAdministrationService.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c3c9a45c31279f14486ddcd464b96ab3c1bfa83")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2671ff4ad626938c236c5c54449a1441c3866a30")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClubAdministrationService.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClubAdministrationService.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

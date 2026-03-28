@@ -1,4 +1,4 @@
-﻿namespace Application3;
+﻿namespace ClubAdministrationService.Application;
 
 public class Class1
 {

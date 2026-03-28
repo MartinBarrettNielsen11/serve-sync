@@ -1,7 +1,7 @@
 using SharedKernel;
 using SharedKernel.Results;
 
-namespace Domain1.InstructorAggregate;
+namespace SessionReservationService.Domain.InstructorAggregate;
 
 internal sealed class Instructor : RootAggregate
 {

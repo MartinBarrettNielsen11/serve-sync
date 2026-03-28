@@ -1,0 +1,15 @@
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/bin/Debug/net10.0/UserAdministrationService.WebApi
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/UserAdministrationService/UserAdministrationService.WebApi/bin/Debug/net10.0/UserAdministrationService.WebApi.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/UserAdministrationService/UserAdministrationService.WebApi/bin/Debug/net10.0/UserAdministrationService.WebApi.runtimeconfig.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/bin/Debug/net10.0/UserAdministrationService.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/bin/Debug/net10.0/UserAdministrationService.WebApi.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/UserAdministrationService.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/UserAdministrationService.WebApi.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/UserAdministrationService.WebApi.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/UserAdministrationService.WebApi.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/UserAdministrationService.WebApi.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/UserAdministrationService.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/refint/UserAdministrationService.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/userAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/UserAdministrationService.WebApi.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/UserAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/UserAdministrationService.WebApi.genruntimeconfig.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/UserAdministrationService/UserAdministrationService.WebApi/obj/Debug/net10.0/ref/UserAdministrationService.WebApi.dll

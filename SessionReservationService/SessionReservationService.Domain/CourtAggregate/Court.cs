@@ -1,7 +1,7 @@
 using SharedKernel;
 using SharedKernel.Results;
 
-namespace Domain1.CourtAggregate;
+namespace SessionReservationService.Domain.CourtAggregate;
 
 internal sealed class Court : RootAggregate
 {

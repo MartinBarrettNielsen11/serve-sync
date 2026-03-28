@@ -1,4 +1,4 @@
-﻿namespace Context3;
+﻿namespace ClubAdministrationService.Domain;
 
 public class Class1
 {

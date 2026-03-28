@@ -4,7 +4,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>Application2</RootNamespace>
+        <RootNamespace>UserAdministrationService.Application</RootNamespace>
     </PropertyGroup>
 
 </Project>

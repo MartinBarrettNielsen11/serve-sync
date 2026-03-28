@@ -1,6 +1,6 @@
 using SharedKernel;
 
-namespace Domain3.AdminAggregate;
+namespace ClubAdministrationService.Domain.AdminAggregate;
 
 public class Admin : RootAggregate
 {

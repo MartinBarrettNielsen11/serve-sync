@@ -5,7 +5,7 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>WebApi3</RootNamespace>
+        <RootNamespace>ClubAdministrationService.WebApi</RootNamespace>
     </PropertyGroup>
 
 </Project>

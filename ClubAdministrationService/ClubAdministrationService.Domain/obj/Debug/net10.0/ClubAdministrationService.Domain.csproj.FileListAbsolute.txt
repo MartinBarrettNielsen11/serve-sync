@@ -1,0 +1,16 @@
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/bin/Debug/net10.0/ClubAdministrationService.Domain.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/bin/Debug/net10.0/ClubAdministrationService.Domain.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/bin/Debug/net10.0/ClubAdministrationService.Domain.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/bin/Debug/net10.0/SharedKernel.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/bin/Debug/net10.0/SharedKernel.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdministrationService.Domain.csproj.AssemblyReference.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdministrationService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdministrationService.Domain.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdministrationService.Domain.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdministrationService.Domain.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdministrationService.Domain.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdmi.BE8DEF5F.Up2Date
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdministrationService.Domain.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/refint/ClubAdministrationService.Domain.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ClubAdministrationService.Domain.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/ClubAdministrationService/ClubAdministrationService.Domain/obj/Debug/net10.0/ref/ClubAdministrationService.Domain.dll

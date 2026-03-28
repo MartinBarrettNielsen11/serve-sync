@@ -1,4 +1,4 @@
-﻿namespace Application1;
+﻿namespace SessionReservationService.Application;
 
 public class Class1
 {

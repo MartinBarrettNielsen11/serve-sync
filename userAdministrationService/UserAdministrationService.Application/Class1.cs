@@ -1,4 +1,4 @@
-﻿namespace Application2;
+﻿namespace UserAdministrationService.Application;
 
 public class Class1
 {

@@ -1,6 +1,6 @@
 using SharedKernel.Results;
 
-namespace Domain1.CourtAggregate;
+namespace SessionReservationService.Domain.CourtAggregate;
 
 public static class CourtErrors
 {

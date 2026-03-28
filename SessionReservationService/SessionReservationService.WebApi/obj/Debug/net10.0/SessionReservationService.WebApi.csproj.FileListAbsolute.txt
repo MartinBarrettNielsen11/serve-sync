@@ -1,0 +1,15 @@
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/bin/Debug/net10.0/SessionReservationService.WebApi
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/bin/Debug/net10.0/SessionReservationService.WebApi.deps.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/bin/Debug/net10.0/SessionReservationService.WebApi.runtimeconfig.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/bin/Debug/net10.0/SessionReservationService.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/bin/Debug/net10.0/SessionReservationService.WebApi.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/SessionReservationService.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/SessionReservationService.WebApi.AssemblyInfoInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/SessionReservationService.WebApi.AssemblyInfo.cs
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/SessionReservationService.WebApi.csproj.CoreCompileInputs.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/SessionReservationService.WebApi.sourcelink.json
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/SessionReservationService.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/refint/SessionReservationService.WebApi.dll
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/SessionReservationService.WebApi.pdb
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/SessionReservationService.WebApi.genruntimeconfig.cache
+/Users/martinnielsen/Desktop/notes/projects/other/serve-sync/SessionReservationService/SessionReservationService.WebApi/obj/Debug/net10.0/ref/SessionReservationService.WebApi.dll

@@ -1,7 +1,7 @@
 using SharedKernel;
 using SharedKernel.Results;
 
-namespace Domain3.ClubAggregate;
+namespace ClubAdministrationService.Domain.ClubAggregate;
 
 public sealed class Club : RootAggregate
 {

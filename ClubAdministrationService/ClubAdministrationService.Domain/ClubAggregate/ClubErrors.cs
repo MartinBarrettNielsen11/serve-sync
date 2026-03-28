@@ -1,6 +1,6 @@
 using SharedKernel.Results;
 
-namespace Domain3.ClubAggregate;
+namespace ClubAdministrationService.Domain.ClubAggregate;
 
 public static class ClubErrors
 {
