@@ -10,6 +10,7 @@
   </Folder>
   <Folder Name="/ClubAdministrationService/" />
   <Folder Name="/ClubAdministrationService/src/">
+    <Project Path="ClubAdministrationService/ClubAdministration.Contracts/ClubAdministration.Contracts.csproj" />
     <Project Path="ClubAdministrationService\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
     <Project Path="ClubAdministrationService\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     <Project Path="ClubAdministrationService\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj" />
@@ -17,6 +18,7 @@
   <Folder Name="/ClubAdministrationService/tests/" />
   <Folder Name="/SessionReservationService/" />
   <Folder Name="/SessionReservationService/src/">
+    <Project Path="SessionReservationService/SessionReservationService.Contracts/SessionReservationService.Contracts.csproj" />
     <Project Path="SessionReservationService\SessionReservationService.Application\SessionReservationService.Application.csproj" />
     <Project Path="SessionReservationService\SessionReservationService.Domain\SessionReservationService.Domain.csproj" />
     <Project Path="SessionReservationService\SessionReservationService.WebApi\SessionReservationService.WebApi.csproj" />
@@ -24,6 +26,7 @@
   <Folder Name="/SessionReservationService/tests/" />
   <Folder Name="/UserAdministrationService/" />
   <Folder Name="/UserAdministrationService/src/">
+    <Project Path="userAdministrationService/UserManagementService.Contracts/UserManagementService.Contracts.csproj" />
     <Project Path="UserAdministrationService\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
     <Project Path="UserAdministrationService\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
     <Project Path="UserAdministrationService\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj" />
