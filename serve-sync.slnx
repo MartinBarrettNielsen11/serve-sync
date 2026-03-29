@@ -15,7 +15,9 @@
     <Project Path="ClubAdministrationService\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     <Project Path="ClubAdministrationService\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj" />
   </Folder>
-  <Folder Name="/ClubAdministrationService/tests/" />
+  <Folder Name="/ClubAdministrationService/tests/">
+    <Project Path="ClubAdministrationService/ClubAdministrationService.UnitTests/ClubAdministrationService.UnitTests.csproj" />
+  </Folder>
   <Folder Name="/SessionReservationService/" />
   <Folder Name="/SessionReservationService/src/">
     <Project Path="SessionReservationService/SessionReservationService.Contracts/SessionReservationService.Contracts.csproj" />
@@ -23,7 +25,9 @@
     <Project Path="SessionReservationService\SessionReservationService.Domain\SessionReservationService.Domain.csproj" />
     <Project Path="SessionReservationService\SessionReservationService.WebApi\SessionReservationService.WebApi.csproj" />
   </Folder>
-  <Folder Name="/SessionReservationService/tests/" />
+  <Folder Name="/SessionReservationService/tests/">
+    <Project Path="SessionReservationService/SessionReservationService.UnitTests/SessionReservationService.UnitTests.csproj" />
+  </Folder>
   <Folder Name="/UserAdministrationService/" />
   <Folder Name="/UserAdministrationService/src/">
     <Project Path="userAdministrationService/UserManagementService.Contracts/UserManagementService.Contracts.csproj" />
@@ -31,7 +35,9 @@
     <Project Path="UserAdministrationService\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
     <Project Path="UserAdministrationService\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj" />
   </Folder>
-  <Folder Name="/UserAdministrationService/tests/" />
+  <Folder Name="/UserAdministrationService/tests/">
+    <Project Path="userAdministrationService/UserManagementService.UnitTests/UserManagementService.UnitTests.csproj" />
+  </Folder>
   <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />
   <Project Path="SharedKernel/SharedKernel.csproj" />
 </Solution>
