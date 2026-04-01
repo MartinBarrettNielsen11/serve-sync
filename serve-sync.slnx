@@ -41,6 +41,5 @@
     <File Path="solution-items/.editorconfig" />
     <File Path="solution-items/ServeSync.Domain.csproj.DotSettings" />
   </Folder>
-  <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />
   <Project Path="SharedKernel/SharedKernel.csproj" />
 </Solution>
