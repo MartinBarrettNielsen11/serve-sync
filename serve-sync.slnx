@@ -1,13 +1,4 @@
 <Solution>
-  <Folder Name="/docs/">
-    <File Path="docs/Invariants.md" />
-    <File Path="docs/Readme.md" />
-  </Folder>
-  <Folder Name="/solution-items/">
-    <File Path="solution-items/.editorconfig" />
-    <File Path="solution-items/ServeSync.Domain.csproj.DotSettings" />
-    <File Path="Directory.Packages.Props" />
-  </Folder>
   <Folder Name="/ClubAdministrationService/" />
   <Folder Name="/ClubAdministrationService/src/">
     <Project Path="ClubAdministrationService/ClubAdministration.Contracts/ClubAdministration.Contracts.csproj" />
@@ -40,6 +31,15 @@
   </Folder>
   <Folder Name="/UserAdministrationService/tests/">
     <Project Path="userAdministrationService/UserManagementService.UnitTests/UserManagementService.UnitTests.csproj" />
+  </Folder>
+  <Folder Name="/_docs/">
+    <File Path="docs/Invariants.md" />
+    <File Path="docs/Readme.md" />
+  </Folder>
+  <Folder Name="/_solution-items/">
+    <File Path="Directory.Packages.Props" />
+    <File Path="solution-items/.editorconfig" />
+    <File Path="solution-items/ServeSync.Domain.csproj.DotSettings" />
   </Folder>
   <Project Path="ServeSync.Domain.UnitTestsV2/ServeSync.Domain.UnitTestsV2.csproj" />
   <Project Path="SharedKernel/SharedKernel.csproj" />
