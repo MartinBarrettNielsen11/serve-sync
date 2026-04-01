@@ -12,4 +12,15 @@
       <PackageReference Include="xunit" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="PlayerAggregate\" />
+      <Folder Include="SessionAggregate\" />
+      <Folder Include="InstructorAggregate\" />
+      <Folder Include="TestsConstants\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SessionReservationService.Domain\SessionReservationService.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
