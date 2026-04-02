@@ -1,29 +1,25 @@
 <Project>
-    <PropertyGroup>
-        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    </PropertyGroup>
-    <ItemGroup>
-        <!-- EF Core -->
-        <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
-        <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8" />
-        <PackageVersion Include="Microsoft.EntityFrameworkCore.Cosmos" Version="9.0.8" />
-
-        <!-- Azure -->
-        <PackageVersion Include="Azure.Identity" Version="1.15.0" />
-        <PackageVersion Include="Microsoft.Azure.Cosmos" Version="3.53.0" />
-
-        <!--Other stuff-->
-        <PackageVersion Include="Meziantou.Analyzer" Version="2.0.278"/>
-        
-        <!--Testing-->
-        <PackageVersion Include="coverlet.collector" Version="6.0.4"/>
-        <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1"/>
-        <PackageVersion Include="xunit" Version="2.9.3"/>
-        <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.4"/>
-        <PackageVersion Include="xunit.v3" Version="3.2.2" />
-        
-        <!--Extras-->
-        <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.0.0.68202" />
-
-    </ItemGroup>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- EF Core -->
+    <PackageVersion Include="IncrementalSourceGenerator.BuilderPattern" Version="1.0.2" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Cosmos" Version="9.0.8" />
+    <!-- Azure -->
+    <PackageVersion Include="Azure.Identity" Version="1.15.0" />
+    <PackageVersion Include="Microsoft.Azure.Cosmos" Version="3.53.0" />
+    <!--Other stuff-->
+    <PackageVersion Include="Meziantou.Analyzer" Version="2.0.278" />
+    <!--Testing-->
+    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.4" />
+    <PackageVersion Include="xunit.v3" Version="3.2.2" />
+    <!--Extras-->
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.0.0.68202" />
+  </ItemGroup>
 </Project>

@@ -9,7 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="xunit" />
+        <PackageReference Include="IncrementalSourceGenerator.BuilderPattern" />
+        <PackageReference Include="xunit" />
     </ItemGroup>
 
     <ItemGroup>

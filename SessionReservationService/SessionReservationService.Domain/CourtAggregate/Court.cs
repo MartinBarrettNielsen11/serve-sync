@@ -3,14 +3,14 @@ using SharedKernel.Results;
 
 namespace SessionReservationService.Domain.CourtAggregate;
 
-internal sealed class Court : RootAggregate
+public sealed class Court : RootAggregate
 {
     private readonly List<Guid> _sessionIds = new();
     private readonly int _maxDailySessions;
     private readonly Guid _clubId;
     private readonly Schedule _schedule = Schedule.Empty();
 
-    internal Court(
+    public Court(
         int maxDailySessions,
         Guid clubId,
         Schedule? schedule = null,
