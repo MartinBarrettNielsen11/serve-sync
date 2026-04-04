@@ -3,20 +3,23 @@ using SharedKernel.Results;
 
 namespace SessionReservationService.Domain.SessionAggregate;
 
-internal sealed class Session : RootAggregate
+public sealed class Session : RootAggregate
 {
     private readonly Guid _instructorId;
     private readonly List<Booking> _bookings = new();
     private readonly int _maxPlayerCapacity;
     public DateOnly Date { get; }
     public TimeRange Time { get; }
+    public string Name { get; } = null!;
 
-    internal Session(Guid instructorId,
+    public Session(string name,
+                   Guid instructorId,
                    DateOnly date,
                    TimeRange time,
                    int maxPlayerCapacity,
                    Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
+        Name = name;
         _instructorId = instructorId;
         Date = date;
         Time = time;

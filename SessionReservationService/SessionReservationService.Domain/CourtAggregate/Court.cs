@@ -9,13 +9,16 @@ public sealed class Court : RootAggregate
     private readonly int _maxDailySessions;
     private readonly Guid _clubId;
     private readonly Schedule _schedule = Schedule.Empty();
+    public string Name { get; } = null!;
 
     public Court(
+        string name,
         int maxDailySessions,
         Guid clubId,
         Schedule? schedule = null,
         Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
+        Name = name;
         _maxDailySessions = maxDailySessions;
         _clubId = clubId;
         _schedule = schedule ?? Schedule.Empty();
@@ -36,5 +39,10 @@ public sealed class Court : RootAggregate
         _sessionIds.Add(sessionId);
         
         return Result.Success();
+    }
+    
+    public bool HasSession(Guid sessionId)
+    {
+        return _sessionIds.Contains(sessionId);
     }
 }
