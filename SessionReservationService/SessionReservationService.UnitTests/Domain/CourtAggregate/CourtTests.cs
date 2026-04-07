@@ -1,7 +1,7 @@
-using SessionReservationService.UnitTests.TestUtils;
+using SessionReservationService.UnitTests.Domain.TestUtils;
 using Xunit;
 
-namespace SessionReservationService.UnitTests.CourtAggregate;
+namespace SessionReservationService.UnitTests.Domain.CourtAggregate;
 
 public class CourtTests
 {

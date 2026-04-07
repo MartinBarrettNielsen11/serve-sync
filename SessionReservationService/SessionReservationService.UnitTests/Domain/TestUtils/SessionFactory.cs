@@ -1,7 +1,7 @@
 using SessionReservationService.Domain.SessionAggregate;
 using SharedKernel;
 
-namespace SessionReservationService.UnitTests.TestUtils;
+namespace SessionReservationService.UnitTests.Domain.TestUtils;
 
 public class SessionFactory
 {

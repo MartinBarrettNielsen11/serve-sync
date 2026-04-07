@@ -1,6 +1,6 @@
 using SessionReservationService.Domain.CourtAggregate;
 
-namespace SessionReservationService.UnitTests.TestUtils;
+namespace SessionReservationService.UnitTests.Domain.TestUtils;
 
 public static class CourtFactory
 {

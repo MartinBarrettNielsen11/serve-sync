@@ -18,10 +18,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="PlayerAggregate\" />
-      <Folder Include="SessionAggregate\" />
-      <Folder Include="InstructorAggregate\" />
-      <Folder Include="TestsConstants\" />
+      <Folder Include="Application\" />
+      <Folder Include="Domain\InstructorAggregate\" />
+      <Folder Include="Domain\PlayerAggregate\" />
+      <Folder Include="Domain\SessionAggregate\" />
+      <Folder Include="Domain\TestsConstants\" />
     </ItemGroup>
 
     <ItemGroup>
