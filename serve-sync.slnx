@@ -8,6 +8,8 @@
     <Project Path="ClubAdministrationService\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj" />
   </Folder>
   <Folder Name="/ClubAdministrationService/tests/">
+    <Project Path="ClubAdministrationService/ClubAdministrationService.ArchitectureTests/ClubAdministrationService.ArchitectureTests.csproj" />
+    <Project Path="ClubAdministrationService/ClubAdministrationService.IntegrationTests/ClubAdministrationService.IntegrationTests.csproj" />
     <Project Path="ClubAdministrationService/ClubAdministrationService.UnitTests/ClubAdministrationService.UnitTests.csproj" />
   </Folder>
   <Folder Name="/SessionReservationService/" />
@@ -19,6 +21,8 @@
     <Project Path="SessionReservationService\SessionReservationService.WebApi\SessionReservationService.WebApi.csproj" />
   </Folder>
   <Folder Name="/SessionReservationService/tests/">
+    <Project Path="SessionReservationService/SessionReservationService.ArchitectureTests/SessionReservationService.ArchitectureTests.csproj" />
+    <Project Path="SessionReservationService/SessionReservationService.IntegrationTests/SessionReservationService.IntegrationTests.csproj" />
     <Project Path="SessionReservationService/SessionReservationService.UnitTests/SessionReservationService.UnitTests.csproj" />
   </Folder>
   <Folder Name="/UserAdministrationService/" />
@@ -30,7 +34,9 @@
     <Project Path="UserAdministrationService\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj" />
   </Folder>
   <Folder Name="/UserAdministrationService/tests/">
+    <Project Path="userAdministrationService/UserManagementService.ArchitectureTests/UserManagementService.ArchitectureTests.csproj" />
     <Project Path="userAdministrationService/UserManagementService.UnitTests/UserManagementService.UnitTests.csproj" />
+    <Project Path="userAdministrationService\UserManagementService.IntegrationTests\UserManagementService.IntegrationTests.csproj" />
   </Folder>
   <Folder Name="/_docs/">
     <File Path="docs/Invariants.md" />
