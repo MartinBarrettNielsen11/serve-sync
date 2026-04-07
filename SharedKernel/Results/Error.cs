@@ -5,12 +5,14 @@ public record Error
     public string Code { get; set; }
     public string Description { get; set; }
     public ErrorType Type { get; set; }
+    public string? StackTrace { get; set; }
 
-    public Error(string code, string description, ErrorType type)
+    public Error(string code, string description, ErrorType type, string? stackTrace = null)
     {
         Code = code;
         Description = description;
         Type = type;
+        StackTrace = stackTrace;
     }
     
     public static readonly Error None = new(
@@ -27,4 +29,15 @@ public record Error
     public static Error NotFound(string code, string description) => new(code, description, ErrorType.NotFound);
     public static Error Problem(string code, string description) => new(code, description, ErrorType.Problem);
     public static Error Conflict(string code, string description) => new(code, description, ErrorType.Conflict);
+    // Intended usage pattern:
+    //try
+    //{
+    //    // something risky
+    //}
+    //catch (Exception ex)
+    //{
+    //    return Error.Unexpected("ERR001", "Unexpected failure", ex);
+    //}
+    // or as handling in global handling/filter
+    public static Error Unexpected(string code, string description) => new(code, description, ErrorType.Unexpected, Environment.StackTrace);
 }

@@ -7,4 +7,5 @@ public enum ErrorType
     Problem,
     NotFound,
     Conflict,
+    Unexpected,
 }
