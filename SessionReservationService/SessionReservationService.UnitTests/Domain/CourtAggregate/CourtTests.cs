@@ -11,8 +11,10 @@ public class CourtTests
         // Arrange
         var court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 1);
         
+        /*
         var session1 = SessionFactory.CreateSession(id: Guid.NewGuid());
         var session2 = SessionFactory.CreateSession(id: Guid.NewGuid());
+        */
         
         Assert.Equal("yo", court.Name);
     }

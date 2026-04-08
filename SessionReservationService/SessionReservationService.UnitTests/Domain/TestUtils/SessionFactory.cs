@@ -7,12 +7,12 @@ namespace SessionReservationService.UnitTests.Domain.TestUtils;
 internal static class SessionFactory
 {
     internal static Session CreateSession(
-        string name = SessionConstants.Name,
-        string description = SessionConstants.Description,
-        Guid? instructorId = null,
         DateOnly date,
         TimeRange timeRange,
         int maxPlayerCapacity,
+        string name = SessionConstants.Name,
+        string description = SessionConstants.Description,
+        Guid? instructorId = null,
         Guid? id = null)
     {
         return new Session(
