@@ -1,4 +1,5 @@
 using SessionReservationService.Domain.SessionAggregate;
+using SessionReservationService.UnitTests.Domain.Constants;
 using SharedKernel;
 
 namespace SessionReservationService.UnitTests.Domain.TestUtils;
@@ -6,8 +7,9 @@ namespace SessionReservationService.UnitTests.Domain.TestUtils;
 internal static class SessionFactory
 {
     internal static Session CreateSession(
-        string name,
-        Guid instructorId,
+        string name = SessionConstants.Name,
+        string description = SessionConstants.Description,
+        Guid? instructorId = null,
         DateOnly date,
         TimeRange timeRange,
         int maxPlayerCapacity,
@@ -15,7 +17,8 @@ internal static class SessionFactory
     {
         return new Session(
             name: name,
-            instructorId: instructorId,
+            description: description,
+            instructorId: instructorId ?? Guid.CreateVersion7(),
             date: date,
             time: timeRange,
             maxPlayerCapacity: maxPlayerCapacity,

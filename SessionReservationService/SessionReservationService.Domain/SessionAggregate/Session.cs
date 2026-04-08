@@ -11,8 +11,11 @@ internal sealed class Session : RootAggregate
     public DateOnly Date { get; }
     public TimeRange Time { get; }
     public string Name { get; } = null!;
+    public string Description { get; } = null!;
+
 
     public Session(string name,
+                   string description,
                    Guid instructorId,
                    DateOnly date,
                    TimeRange time,
@@ -20,6 +23,7 @@ internal sealed class Session : RootAggregate
                    Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         Name = name;
+        Description = description;
         _instructorId = instructorId;
         Date = date;
         Time = time;
