@@ -1,8 +1,8 @@
 namespace SharedKernel.Common;
 
-public abstract class Entity(Guid id)
+public abstract class Entity
 {
-    protected Guid Id { get; } = id;
+    public Guid Id { get; init; }
 
     public override bool Equals(object? obj)
     {
@@ -14,4 +14,6 @@ public abstract class Entity(Guid id)
     }
 
     public override int GetHashCode() => Id.GetHashCode();
+    protected Entity(Guid id) => Id = id;
+    protected Entity() { }
 }

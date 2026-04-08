@@ -3,7 +3,7 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Domain.ClubAggregate;
 
-public sealed class Club : RootAggregate
+internal sealed class Club : RootAggregate
 {
     private readonly Guid _subscriptionId;
     private readonly List<Guid> _courtIds = new();

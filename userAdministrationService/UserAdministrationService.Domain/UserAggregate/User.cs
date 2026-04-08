@@ -2,7 +2,7 @@
 
 namespace UserAdministrationService.Domain.UserAggregate;
 
-public class User : RootAggregate
+internal sealed class User : RootAggregate
 {
     public string FirstName { get; } = null!;
     public string LastName { get; } = null!;

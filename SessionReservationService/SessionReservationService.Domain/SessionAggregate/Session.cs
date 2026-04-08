@@ -3,7 +3,7 @@ using SharedKernel.Results;
 
 namespace SessionReservationService.Domain.SessionAggregate;
 
-public sealed class Session : RootAggregate
+internal sealed class Session : RootAggregate
 {
     private readonly Guid _instructorId;
     private readonly List<Booking> _bookings = new();

@@ -31,6 +31,5 @@ internal sealed class Player : RootAggregate
 
         return Result.Success();
     }
-
     
 }

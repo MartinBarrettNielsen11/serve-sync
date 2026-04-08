@@ -3,7 +3,7 @@ using SharedKernel.Results;
 
 namespace SessionReservationService.Domain.CourtAggregate;
 
-public sealed class Court : RootAggregate
+internal sealed class Court : RootAggregate
 {
     private readonly List<Guid> _sessionIds = new();
     private readonly int _maxDailySessions;

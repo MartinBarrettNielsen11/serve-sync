@@ -2,9 +2,9 @@ using SessionReservationService.Domain.CourtAggregate;
 
 namespace SessionReservationService.UnitTests.Domain.TestUtils;
 
-public static class CourtFactory
+internal static class CourtFactory
 {
-    public static Court CreateCourt(
+    internal static Court CreateCourt(
         string name = "name",
         int maxDailySessions = 1,
         Guid? clubId = null,

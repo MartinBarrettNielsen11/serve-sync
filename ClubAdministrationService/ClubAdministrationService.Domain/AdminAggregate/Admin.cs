@@ -2,18 +2,20 @@ using SharedKernel;
 
 namespace ClubAdministrationService.Domain.AdminAggregate;
 
-public class Admin : RootAggregate
+internal sealed class Admin : RootAggregate
 {
-    private readonly Guid _userId;
-    private readonly Guid _subscriptionId;
+    public Guid UserId { get; }
+    public Guid? SubscriptionId { get; private set; } = null;
 
     public Admin(
         Guid userId,
-        Guid subscriptionId,
+        Guid? subscriptionId,
         Guid? id = null)
         : base(id ?? Guid.CreateVersion7())
     {
-        _userId = userId;
-        _subscriptionId = subscriptionId;
+        UserId = userId;
+        SubscriptionId = subscriptionId;
     }
+    private Admin() { }
+
 }

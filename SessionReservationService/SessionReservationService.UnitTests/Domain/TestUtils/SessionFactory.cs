@@ -3,9 +3,9 @@ using SharedKernel;
 
 namespace SessionReservationService.UnitTests.Domain.TestUtils;
 
-public class SessionFactory
+internal static class SessionFactory
 {
-    public static Session CreateSession(
+    internal static Session CreateSession(
         string name,
         Guid instructorId,
         DateOnly date,
