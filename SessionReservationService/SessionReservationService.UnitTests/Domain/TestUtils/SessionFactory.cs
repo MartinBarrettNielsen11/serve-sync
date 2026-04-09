@@ -7,11 +7,11 @@ namespace SessionReservationService.UnitTests.Domain.TestUtils;
 internal static class SessionFactory
 {
     internal static Session CreateSession(
-        DateOnly date,
-        TimeRange timeRange,
-        int maxPlayerCapacity,
         string name = SessionConstants.Name,
         string description = SessionConstants.Description,
+        DateOnly? date = null,
+        TimeRange? timeRange = null,
+        int maxPlayerCapacity = SessionConstants.MaxPlayerCapacity,
         Guid? instructorId = null,
         Guid? id = null)
     {
@@ -19,8 +19,8 @@ internal static class SessionFactory
             name: name,
             description: description,
             instructorId: instructorId ?? Guid.CreateVersion7(),
-            date: date,
-            time: timeRange,
+            date: date ?? SessionConstants.Date,
+            time: timeRange ?? SessionConstants.Time,
             maxPlayerCapacity: maxPlayerCapacity,
             id: id ?? Guid.NewGuid());
     }

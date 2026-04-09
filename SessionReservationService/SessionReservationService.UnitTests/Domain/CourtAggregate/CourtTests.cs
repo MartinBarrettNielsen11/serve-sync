@@ -10,12 +10,13 @@ public class CourtTests
     {
         // Arrange
         var court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 1);
-        
-        /*
         var session1 = SessionFactory.CreateSession(id: Guid.NewGuid());
         var session2 = SessionFactory.CreateSession(id: Guid.NewGuid());
-        */
+        
+        var scheduleSession1Result = court.ScheduleSession(session1.Id);
+        var scheduleSession2Result = court.ScheduleSession(session2.Id);
         
         Assert.Equal("yo", court.Name);
+        Assert.Equal("yo", scheduleSession2Result.Error.Code);
     }
 }

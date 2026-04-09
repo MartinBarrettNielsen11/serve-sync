@@ -17,9 +17,9 @@ internal sealed class Session : RootAggregate
     public Session(string name,
                    string description,
                    Guid instructorId,
+                   int maxPlayerCapacity,
                    DateOnly date,
                    TimeRange time,
-                   int maxPlayerCapacity,
                    Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         Name = name;
