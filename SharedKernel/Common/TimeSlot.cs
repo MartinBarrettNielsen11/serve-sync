@@ -2,12 +2,12 @@ using SharedKernel.ValueObjects;
 
 namespace SharedKernel;
 
-public class TimeRange : ValueObject
+public class TimeSlot : ValueObject
 {
     public TimeOnly Start { get; init; }
     public TimeOnly End { get; init; }
 
-    public TimeRange(TimeOnly start, TimeOnly end)
+    public TimeSlot(TimeOnly start, TimeOnly end)
     {
         Start = start;
         End = end;
@@ -19,7 +19,7 @@ public class TimeRange : ValueObject
         yield return End;
     }
     
-    public bool IsOverlappingWith(TimeRange other)
+    public bool IsOverlappingWith(TimeSlot other)
     {
         if (Start >= other.End) return false;
         if (other.Start >= End) return false;

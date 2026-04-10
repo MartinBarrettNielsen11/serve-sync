@@ -4,7 +4,7 @@ namespace SessionReservationService.UnitTests.Domain.TestUtils;
 
 public static class TimeRangeFactory
 {
-    public static TimeRange Create(int startHour, int endHour)
+    public static TimeSlot Create(int startHour, int endHour)
     {
         if (startHour is < 0 or > 23 || startHour >= endHour)
         {
@@ -16,7 +16,7 @@ public static class TimeRangeFactory
             throw new Exception("invalid endHour");
         }
 
-        return new TimeRange(
+        return new TimeSlot(
             start: TimeOnly.MinValue.AddHours(startHour),
             end: TimeOnly.MinValue.AddHours(endHour)
         );

@@ -9,7 +9,7 @@ internal sealed class Session : RootAggregate
     private readonly List<Booking> _bookings = new();
     private readonly int _maxPlayerCapacity;
     public DateOnly Date { get; }
-    public TimeRange Time { get; }
+    public TimeSlot Time { get; }
     public string Name { get; } = null!;
     public string Description { get; } = null!;
 
@@ -19,7 +19,7 @@ internal sealed class Session : RootAggregate
                    Guid instructorId,
                    int maxPlayerCapacity,
                    DateOnly date,
-                   TimeRange time,
+                   TimeSlot time,
                    Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         Name = name;

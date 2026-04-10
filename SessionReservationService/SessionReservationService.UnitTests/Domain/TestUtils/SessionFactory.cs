@@ -10,7 +10,7 @@ internal static class SessionFactory
         string name = SessionConstants.Name,
         string description = SessionConstants.Description,
         DateOnly? date = null,
-        TimeRange? timeRange = null,
+        TimeSlot? timeRange = null,
         int maxPlayerCapacity = SessionConstants.MaxPlayerCapacity,
         Guid? instructorId = null,
         Guid? id = null)
