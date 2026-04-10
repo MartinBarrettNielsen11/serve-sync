@@ -31,7 +31,7 @@ internal sealed class Court : RootAggregate
             return Result.Failure(Error.Failure(code: "yo", description: "Session already exists in court"));
         }
         
-        if (_maxDailySessions < _sessionIds.Count)
+        if (_sessionIds.Count >= _maxDailySessions)
         {
             return Result.Failure(CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
         }

@@ -1,3 +1,4 @@
+using SessionReservationService.Domain.CourtAggregate;
 using SessionReservationService.UnitTests.Domain.TestUtils;
 using Xunit;
 
@@ -16,7 +17,6 @@ public class CourtTests
         var scheduleSession1Result = court.ScheduleSession(session1.Id);
         var scheduleSession2Result = court.ScheduleSession(session2.Id);
         
-        Assert.Equal("yo", court.Name);
-        Assert.Equal("yo", scheduleSession2Result.Error.Code);
+        Assert.Equal(scheduleSession2Result.Error, CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
     }
 }
