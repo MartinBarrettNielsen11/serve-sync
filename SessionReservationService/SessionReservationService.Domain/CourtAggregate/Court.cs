@@ -1,3 +1,4 @@
+using SessionReservationService.Domain.SessionAggregate;
 using SharedKernel;
 using SharedKernel.Results;
 
@@ -24,9 +25,9 @@ internal sealed class Court : RootAggregate
         _schedule = schedule ?? Schedule.Empty();
     }
 
-    internal Result ScheduleSession(Guid sessionId)
+    internal Result ScheduleSession(Session session)
     {
-        if (_sessionIds.Exists(x => x == sessionId))
+        if (_sessionIds.Exists(x => x == session.Id))
         {
             return Result.Failure(Error.Failure(code: "yo", description: "Session already exists in court"));
         }
@@ -36,7 +37,14 @@ internal sealed class Court : RootAggregate
             return Result.Failure(CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
         }
         
-        _sessionIds.Add(sessionId);
+        var bookingResult = _schedule.BookTimeSlot(session.Date, session.Time);
+        if (bookingResult.IsFailure)
+        {
+            return Result.Failure(CourtErrors.SessionsCannotOverlap);
+        }
+        // return error result if overlapping
+        
+        // _sessionIds.Add(sessionId);
         
         return Result.Success();
     }

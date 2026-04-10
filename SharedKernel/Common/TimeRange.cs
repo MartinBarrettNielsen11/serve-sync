@@ -18,4 +18,12 @@ public class TimeRange : ValueObject
         yield return Start;
         yield return End;
     }
+    
+    public bool IsOverlappingWith(TimeRange other)
+    {
+        if (Start >= other.End) return false;
+        if (other.Start >= End) return false;
+
+        return true;
+    }
 }

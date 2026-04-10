@@ -13,10 +13,10 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <ProjectReference Include="..\..\SharedKernel\SharedKernel.csproj" />
-        <InternalsVisibleTo Include="SessionReservationService.UnitTests" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\SharedKernel\SharedKernel.csproj" />
+        <InternalsVisibleTo Include="SessionReservationService.UnitTests" />
     </ItemGroup>
+    
 </Project>
