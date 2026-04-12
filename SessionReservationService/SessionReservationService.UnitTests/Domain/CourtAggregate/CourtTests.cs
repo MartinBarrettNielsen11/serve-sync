@@ -32,18 +32,17 @@ public class CourtTests
                                                                                  int startHourSession2,
                                                                                  int endHourSession2)
     {
-        
         // Arrange
         var court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 2);
         
         var session1 = SessionFactory.CreateSession(
             date: SessionConstants.Date,
-            timeRange: TimeRangeFactory.Create(startHourSession1, endHourSession1),
+            timeRange: TimeSlotFactory.Create(startHourSession1, endHourSession1),
             id: Guid.NewGuid());
 
         var session2 = SessionFactory.CreateSession(
             date: SessionConstants.Date,
-            timeRange: TimeRangeFactory.Create(startHourSession2, endHourSession2),
+            timeRange: TimeSlotFactory.Create(startHourSession2, endHourSession2),
             id: Guid.NewGuid());
 
         // Act

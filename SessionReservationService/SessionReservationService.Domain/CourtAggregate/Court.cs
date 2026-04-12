@@ -37,14 +37,14 @@ internal sealed class Court : RootAggregate
             return Result.Failure(CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
         }
         
-        var bookingResult = _schedule.BookTimeSlot(session.Date, session.Time);
+        Result bookingResult = _schedule.BookTimeSlot(session.Date, session.Time);
         if (bookingResult.IsFailure)
         {
             return Result.Failure(CourtErrors.SessionsCannotOverlap);
         }
         // return error result if overlapping
         
-        // _sessionIds.Add(sessionId);
+        _sessionIds.Add(session.Id);
         
         return Result.Success();
     }

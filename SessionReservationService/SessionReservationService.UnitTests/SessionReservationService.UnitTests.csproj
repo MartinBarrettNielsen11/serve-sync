@@ -19,7 +19,6 @@
 
     <ItemGroup>
       <Folder Include="Application\" />
-      <Folder Include="Domain\InstructorAggregate\" />
       <Folder Include="Domain\PlayerAggregate\" />
       <Folder Include="Domain\TestsConstants\" />
     </ItemGroup>

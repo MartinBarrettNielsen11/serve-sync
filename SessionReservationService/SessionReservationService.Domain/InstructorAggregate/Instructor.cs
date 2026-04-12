@@ -1,3 +1,4 @@
+using SessionReservationService.Domain.SessionAggregate;
 using SharedKernel;
 using SharedKernel.Results;
 
@@ -5,26 +6,36 @@ namespace SessionReservationService.Domain.InstructorAggregate;
 
 internal sealed class Instructor : RootAggregate
 {
-    private readonly Guid _userId;
-    private readonly List<Guid> _sessionIds = new();
+    private Guid UserId { get; }
+    private readonly List<Guid> _sessionIds = [];
     private readonly Schedule _schedule = Schedule.Empty();
 
     internal Instructor(Guid userId, 
-                        Schedule sch, 
+                        Schedule? sch = null,
                         Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
-        _userId = userId;
+        UserId = userId;
         _schedule = sch ?? _schedule;
     }
 
-    internal Result AddSessionToSchedule(Guid sessionId)
+    internal Result AddSessionToSchedule(Session session)
     {
-        if (_sessionIds.Contains(sessionId))
+        if (_sessionIds.Contains(session.Id))
+        {
             return Result.Failure(Error.Conflict(
-                code: "", 
-                description: "Session already exists in the schedule of the Instructor"));
+                code: "",
+                description: "Session already exists in the schedule of the Instructor")
+            );
+        }
         
-        _sessionIds.Add(sessionId);
+        Result bookingTimeSlotResult = _schedule.BookTimeSlot(session.Date, session.Time);
+
+        if (bookingTimeSlotResult.IsFailure)
+        {
+            return Result.Failure(InstructorErrors.SessionCannotOverlap);
+        }
+        
+        _sessionIds.Add(session.Id);
         return Result.Success();
     }
 }

@@ -2,7 +2,7 @@ using SharedKernel;
 
 namespace SessionReservationService.UnitTests.Domain.TestUtils;
 
-public static class TimeRangeFactory
+internal static class TimeSlotFactory
 {
     public static TimeSlot Create(int startHour, int endHour)
     {
