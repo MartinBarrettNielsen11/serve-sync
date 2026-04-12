@@ -50,7 +50,5 @@ public sealed class Result<TValue>(TValue? value, bool isSuccess, Error error) :
         return success;
     }
 
-#pragma warning disable MA0018
-    public static Result<TValue> ValidationFailure(Error error) => new(default, isSuccess: false, error: error);
-#pragma warning restore MA0018
+    public Result<TValue> ValidationFailure(Error error) => new(default, isSuccess: false, error: error);
 }

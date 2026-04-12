@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SessionReservationService.Domain\SessionReservationService.Domain.csproj" />
+      <ProjectReference Include="..\..\src\SessionReservationService.Domain\SessionReservationService.Domain.csproj" />
     </ItemGroup>
 
 </Project>

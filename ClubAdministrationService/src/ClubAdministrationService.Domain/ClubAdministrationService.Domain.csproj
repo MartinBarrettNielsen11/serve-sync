@@ -1,19 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <RootNamespace>SessionReservationService.Domain</RootNamespace>
+        <RootNamespace>ClubAdministrationService.Domain</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Meziantou.Analyzer" >
+        <PackageReference Include="Meziantou.Analyzer">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <ProjectReference Include="..\..\SharedKernel\SharedKernel.csproj" />
+        <InternalsVisibleTo Include="ClubAdministrationService.UnitTests" />
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="SessionReservationService.UnitTests" />
+      <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
     </ItemGroup>
-    
 </Project>
