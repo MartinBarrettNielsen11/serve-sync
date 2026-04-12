@@ -5,14 +5,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Meziantou.Analyzer">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <InternalsVisibleTo Include="ClubAdministrationService.UnitTests" />
+      <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
+      <PackageReference Include="Ardalis.SmartEnum" />
     </ItemGroup>
 </Project>

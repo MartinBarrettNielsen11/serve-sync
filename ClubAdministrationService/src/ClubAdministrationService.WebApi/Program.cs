@@ -1,3 +1,3 @@
-// See https://aka.ms/new-console-template for more information
-
-Console.WriteLine("Hello, World!");
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+WebApplication app = builder.Build();
+await app.RunAsync();

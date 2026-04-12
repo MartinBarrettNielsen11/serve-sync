@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- EF Core -->
+    <PackageVersion Include="Ardalis.SmartEnum" Version="8.2.0" />
     <PackageVersion Include="IncrementalSourceGenerator.BuilderPattern" Version="1.0.2" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8" />

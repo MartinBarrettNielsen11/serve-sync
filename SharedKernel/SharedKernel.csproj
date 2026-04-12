@@ -3,13 +3,6 @@
     <PropertyGroup>
         <RootNamespace>SharedKernel</RootNamespace>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Meziantou.Analyzer">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-    </ItemGroup>
     
     <ItemGroup>
         <InternalsVisibleTo Include="..\ServeSync.Domain\ServeSync.Domain.csproj" />

@@ -1,6 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <RootNamespace>SessionReservationService.WebApi</RootNamespace>
+        <InvariantGlobalization>true</InvariantGlobalization>
     </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\SessionReservationService.Application\SessionReservationService.Application.csproj" />
+      <ProjectReference Include="..\SessionReservationService.Contracts\SessionReservationService.Contracts.csproj" />
+      <ProjectReference Include="..\SessionReservationService.Infrastructure\SessionReservationService.Infrastructure.csproj" />
+    </ItemGroup>
 </Project>

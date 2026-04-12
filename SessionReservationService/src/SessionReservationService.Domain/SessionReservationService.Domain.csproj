@@ -5,15 +5,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Meziantou.Analyzer" >
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
     </ItemGroup>
-
+    
     <ItemGroup>
         <InternalsVisibleTo Include="SessionReservationService.UnitTests" />
     </ItemGroup>
-    
 </Project>

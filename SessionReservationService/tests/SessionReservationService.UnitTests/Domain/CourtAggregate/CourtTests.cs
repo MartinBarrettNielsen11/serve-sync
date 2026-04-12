@@ -1,6 +1,8 @@
 using SessionReservationService.Domain.CourtAggregate;
+using SessionReservationService.Domain.SessionAggregate;
 using SessionReservationService.UnitTests.Domain.Constants;
 using SessionReservationService.UnitTests.Domain.TestUtils;
+using SharedKernel.Results;
 using Xunit;
 
 namespace SessionReservationService.UnitTests.Domain.CourtAggregate;
@@ -11,12 +13,12 @@ public class CourtTests
     public void ScheduleSession_WhenMoreThanSubscriptionAllows_ShouldFail()
     {
         // Arrange
-        var court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 1);
-        var session1 = SessionFactory.CreateSession(id: Guid.NewGuid());
-        var session2 = SessionFactory.CreateSession(id: Guid.NewGuid());
+        Court court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 1);
+        Session session1 = SessionFactory.CreateSession(id: Guid.NewGuid());
+        Session session2 = SessionFactory.CreateSession(id: Guid.NewGuid());
         
-        var scheduleSession1Result = court.ScheduleSession(session1);
-        var scheduleSession2Result = court.ScheduleSession(session2);
+        _ = court.ScheduleSession(session1);
+        Result scheduleSession2Result = court.ScheduleSession(session2);
         
         Assert.Equal(scheduleSession2Result.Error, CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
     }
@@ -33,21 +35,21 @@ public class CourtTests
                                                                                  int endHourSession2)
     {
         // Arrange
-        var court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 2);
+        Court court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 2);
         
-        var session1 = SessionFactory.CreateSession(
+        Session session1 = SessionFactory.CreateSession(
             date: SessionConstants.Date,
             timeRange: TimeSlotFactory.Create(startHourSession1, endHourSession1),
             id: Guid.NewGuid());
 
-        var session2 = SessionFactory.CreateSession(
+        Session session2 = SessionFactory.CreateSession(
             date: SessionConstants.Date,
             timeRange: TimeSlotFactory.Create(startHourSession2, endHourSession2),
             id: Guid.NewGuid());
 
         // Act
-        var scheduleSession1Result = court.ScheduleSession(session1);
-        var scheduleSession2Result = court.ScheduleSession(session2);
+        Result scheduleSession1Result = court.ScheduleSession(session1);
+        Result scheduleSession2Result = court.ScheduleSession(session2);
 
         // Assert
         Assert.False(scheduleSession1Result.IsFailure);
