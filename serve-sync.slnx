@@ -43,6 +43,7 @@
     <File Path="docs/Readme.md" />
   </Folder>
   <Folder Name="/_solution-items/">
+    <File Path="Directory.Build.Props" />
     <File Path="Directory.Packages.Props" />
     <File Path="solution-items/.editorconfig" />
     <File Path="solution-items/ServeSync.Domain.csproj.DotSettings" />
