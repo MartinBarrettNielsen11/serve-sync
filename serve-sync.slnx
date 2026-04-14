@@ -12,18 +12,18 @@
     <Project Path="ClubAdministrationService/tests/ClubAdministrationService.IntegrationTests/ClubAdministrationService.IntegrationTests.csproj" />
     <Project Path="ClubAdministrationService/tests/ClubAdministrationService.UnitTests/ClubAdministrationService.UnitTests.csproj" />
   </Folder>
-  <Folder Name="/SessionReservationService/" />
-  <Folder Name="/SessionReservationService/src/">
-    <Project Path="SessionReservationService/src/SessionReservationService.Contracts/SessionReservationService.Contracts.csproj" />
-    <Project Path="SessionReservationService/src/SessionReservationService.Infrastructure/SessionReservationService.Infrastructure.csproj" />
-    <Project Path="SessionReservationService\src\SessionReservationService.Application\SessionReservationService.Application.csproj" />
-    <Project Path="SessionReservationService\src\SessionReservationService.Domain\SessionReservationService.Domain.csproj" />
-    <Project Path="SessionReservationService\src\SessionReservationService.WebApi\SessionReservationService.WebApi.csproj" />
+  <Folder Name="/SessionBookingService/" />
+  <Folder Name="/SessionBookingService/src/">
+    <Project Path="SessionBookingService/src/SessionBookingService.Contracts/SessionBookingService.Contracts.csproj" />
+    <Project Path="SessionBookingService/src/SessionBookingService.Infrastructure/SessionBookingService.Infrastructure.csproj" />
+    <Project Path="SessionBookingService\src\SessionBookingService.Application\SessionBookingService.Application.csproj" />
+    <Project Path="SessionBookingService\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj" />
+    <Project Path="SessionBookingService\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj" />
   </Folder>
-  <Folder Name="/SessionReservationService/tests/">
-    <Project Path="SessionReservationService/tests/SessionReservationService.ArchitectureTests/SessionReservationService.ArchitectureTests.csproj" />
-    <Project Path="SessionReservationService/tests/SessionReservationService.IntegrationTests/SessionReservationService.IntegrationTests.csproj" />
-    <Project Path="SessionReservationService/tests/SessionReservationService.UnitTests/SessionReservationService.UnitTests.csproj" />
+  <Folder Name="/SessionBookingService/tests/">
+    <Project Path="SessionBookingService/tests/SessionBookingService.ArchitectureTests/SessionBookingService.ArchitectureTests.csproj" />
+    <Project Path="SessionBookingService/tests/SessionBookingService.IntegrationTests/SessionBookingService.IntegrationTests.csproj" />
+    <Project Path="SessionBookingService/tests/SessionBookingService.UnitTests/SessionBookingService.UnitTests.csproj" />
   </Folder>
   <Folder Name="/UserAdministrationService/" />
   <Folder Name="/UserAdministrationService/src/">
