@@ -2,7 +2,7 @@ using SharedKernel;
 
 namespace ClubAdministrationService.Domain.CourtAggregate;
 
-public class Court : RootAggregate
+internal sealed class Court : RootAggregate
 {
     public string Name { get; } = null!;
 

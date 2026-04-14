@@ -4,7 +4,7 @@
         <InvariantGlobalization>true</InvariantGlobalization>
     </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\ClubAdministration.Contracts\ClubAdministration.Contracts.csproj" />
+      <ProjectReference Include="..\ClubAdministrationService.Contracts\ClubAdministrationService.Contracts.csproj" />
       <ProjectReference Include="..\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
       <ProjectReference Include="..\ClubAdministrationService.Infrastructure\ClubAdministrationService.Infrastructure.csproj" />
     </ItemGroup>

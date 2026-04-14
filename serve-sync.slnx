@@ -1,9 +1,10 @@
 <Solution>
   <Folder Name="/ClubAdministrationService/" />
   <Folder Name="/ClubAdministrationService/src/">
-    <Project Path="ClubAdministrationService/src/ClubAdministration.Contracts/ClubAdministration.Contracts.csproj" />
     <Project Path="ClubAdministrationService/src/ClubAdministrationService.Infrastructure/ClubAdministrationService.Infrastructure.csproj" />
+    <Project Path="ClubAdministrationService/src/ClubAdministrationService.Persistence/ClubAdministrationService.Persistence.csproj" />
     <Project Path="ClubAdministrationService\src\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
+    <Project Path="ClubAdministrationService\src\ClubAdministrationService.Contracts\ClubAdministrationService.Contracts.csproj" />
     <Project Path="ClubAdministrationService\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     <Project Path="ClubAdministrationService\src\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj" />
   </Folder>
@@ -16,6 +17,7 @@
   <Folder Name="/SessionBookingService/src/">
     <Project Path="SessionBookingService/src/SessionBookingService.Contracts/SessionBookingService.Contracts.csproj" />
     <Project Path="SessionBookingService/src/SessionBookingService.Infrastructure/SessionBookingService.Infrastructure.csproj" />
+    <Project Path="SessionBookingService/src/SessionBookingService.Persistence/SessionBookingService.Persistence.csproj" />
     <Project Path="SessionBookingService\src\SessionBookingService.Application\SessionBookingService.Application.csproj" />
     <Project Path="SessionBookingService\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj" />
     <Project Path="SessionBookingService\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj" />
@@ -28,6 +30,7 @@
   <Folder Name="/UserAdministrationService/" />
   <Folder Name="/UserAdministrationService/src/">
     <Project Path="userAdministrationService/src/UserAdministrationService.Infrastructure/UserAdministrationService.Infrastructure.csproj" />
+    <Project Path="UserAdministrationService/src/UserAdministrationService.Persistence/UserAdministrationService.Persistence.csproj" />
     <Project Path="userAdministrationService/src/UserManagementService.Contracts/UserManagementService.Contracts.csproj" />
     <Project Path="UserAdministrationService\src\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
     <Project Path="UserAdministrationService\src\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
