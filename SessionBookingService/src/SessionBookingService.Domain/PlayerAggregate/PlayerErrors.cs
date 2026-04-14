@@ -1,6 +1,6 @@
 using SharedKernel.Results;
 
-namespace SessionReservationService.Domain.PlayerAggregate;
+namespace SessionBookingService.Domain.PlayerAggregate;
 
 public static class PlayerErrors
 {

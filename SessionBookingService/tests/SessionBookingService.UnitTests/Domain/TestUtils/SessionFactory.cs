@@ -1,8 +1,7 @@
-using SessionReservationService.Domain.SessionAggregate;
-using SessionReservationService.UnitTests.Domain.Constants;
+using SessionBookingService.UnitTests.Domain.Constants;
 using SharedKernel;
 
-namespace SessionReservationService.UnitTests.Domain.TestUtils;
+namespace SessionBookingService.UnitTests.Domain.TestUtils;
 
 internal static class SessionFactory
 {

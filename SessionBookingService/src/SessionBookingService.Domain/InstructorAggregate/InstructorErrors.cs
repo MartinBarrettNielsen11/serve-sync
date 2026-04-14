@@ -1,6 +1,6 @@
 using SharedKernel.Results;
 
-namespace SessionReservationService.Domain.InstructorAggregate;
+namespace SessionBookingService.Domain.InstructorAggregate;
 
 public static class InstructorErrors
 {

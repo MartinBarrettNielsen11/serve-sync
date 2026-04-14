@@ -1,4 +1,4 @@
-namespace SessionReservationService.UnitTests.Domain.Constants;
+namespace SessionBookingService.UnitTests.Domain.Constants;
 
 internal static class InstructorConstants
 {

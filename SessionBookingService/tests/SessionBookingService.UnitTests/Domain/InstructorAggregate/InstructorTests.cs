@@ -1,10 +1,9 @@
-using SessionReservationService.Domain.InstructorAggregate;
-using SessionReservationService.UnitTests.Domain.Constants;
-using SessionReservationService.UnitTests.Domain.TestUtils;
-using SharedKernel;
+using SessionBookingService.Domain.InstructorAggregate;
+using SessionBookingService.UnitTests.Domain.Constants;
+using SessionBookingService.UnitTests.Domain.TestUtils;
 using Xunit;
 
-namespace SessionReservationService.UnitTests.Domain.InstructorAggregate;
+namespace SessionBookingService.UnitTests.Domain.InstructorAggregate;
 
 public class InstructorTests
 {

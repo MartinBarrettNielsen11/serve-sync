@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <IsTestProject>true</IsTestProject>
-        <RootNamespace>SessionReservationService.UnitTests</RootNamespace>
+        <RootNamespace>SessionBookingService.UnitTests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

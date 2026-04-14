@@ -1,8 +1,8 @@
-using SessionReservationService.Domain.SessionAggregate;
+using SessionBookingService.Domain.SessionAggregate;
 using SharedKernel;
 using SharedKernel.Results;
 
-namespace SessionReservationService.Domain.PlayerAggregate;
+namespace SessionBookingService.Domain.PlayerAggregate;
 
 internal sealed class Player : RootAggregate
 {

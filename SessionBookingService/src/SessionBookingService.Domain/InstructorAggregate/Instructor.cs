@@ -1,8 +1,8 @@
-using SessionReservationService.Domain.SessionAggregate;
+using SessionBookingService.Domain.SessionAggregate;
 using SharedKernel;
 using SharedKernel.Results;
 
-namespace SessionReservationService.Domain.InstructorAggregate;
+namespace SessionBookingService.Domain.InstructorAggregate;
 
 internal sealed class Instructor : RootAggregate
 {

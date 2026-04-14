@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <RootNamespace>ClubAdministrationService.Contracts</RootNamespace>
+        <RootNamespace>SessionBookingService.Contracts</RootNamespace>
     </PropertyGroup>
 </Project>

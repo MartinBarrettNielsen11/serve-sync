@@ -1,6 +1,4 @@
-using SessionReservationService.Domain.CourtAggregate;
-
-namespace SessionReservationService.UnitTests.Domain.TestUtils;
+namespace SessionBookingService.UnitTests.Domain.TestUtils;
 
 internal static class CourtFactory
 {

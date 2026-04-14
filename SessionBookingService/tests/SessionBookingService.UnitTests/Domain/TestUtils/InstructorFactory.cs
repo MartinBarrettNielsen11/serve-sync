@@ -1,7 +1,6 @@
-using SessionReservationService.Domain.InstructorAggregate;
-using SessionReservationService.UnitTests.Domain.Constants;
+using SessionBookingService.UnitTests.Domain.Constants;
 
-namespace SessionReservationService.UnitTests.Domain.TestUtils;
+namespace SessionBookingService.UnitTests.Domain.TestUtils;
 
 internal static class InstructorFactory
 {

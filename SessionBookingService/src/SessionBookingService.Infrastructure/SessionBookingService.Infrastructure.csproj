@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <RootNamespace>SessionReservationService.Infrastructure</RootNamespace>
+        <RootNamespace>SessionBookingService.Infrastructure</RootNamespace>
     </PropertyGroup>
 </Project>

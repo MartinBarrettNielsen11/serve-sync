@@ -1,11 +1,10 @@
-using SessionReservationService.Domain.CourtAggregate;
-using SessionReservationService.Domain.SessionAggregate;
-using SessionReservationService.UnitTests.Domain.Constants;
-using SessionReservationService.UnitTests.Domain.TestUtils;
+using SessionBookingService.Domain.CourtsAggregate;
+using SessionBookingService.UnitTests.Domain.Constants;
+using SessionBookingService.UnitTests.Domain.TestUtils;
 using SharedKernel.Results;
 using Xunit;
 
-namespace SessionReservationService.UnitTests.Domain.CourtAggregate;
+namespace SessionBookingService.UnitTests.Domain.CourtAggregate;
 
 public class CourtTests
 {

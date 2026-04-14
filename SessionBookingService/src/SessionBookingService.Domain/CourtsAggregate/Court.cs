@@ -1,16 +1,17 @@
-using SessionReservationService.Domain.SessionAggregate;
+using SessionBookingService.Domain.SessionAggregate;
 using SharedKernel;
 using SharedKernel.Results;
 
-namespace SessionReservationService.Domain.CourtAggregate;
+namespace SessionBookingService.Domain.CourtsAggregate;
 
 internal sealed class Court : RootAggregate
 {
     private readonly List<Guid> _sessionIds = new();
     private readonly int _maxDailySessions;
-    private readonly Guid _clubId;
     private readonly Schedule _schedule = Schedule.Empty();
     public string Name { get; } = null!;
+    public Guid ClubId { get; }
+
 
     public Court(
         string name,
@@ -21,7 +22,7 @@ internal sealed class Court : RootAggregate
     {
         Name = name;
         _maxDailySessions = maxDailySessions;
-        _clubId = clubId;
+        ClubId = clubId;
         _schedule = schedule ?? Schedule.Empty();
     }
 

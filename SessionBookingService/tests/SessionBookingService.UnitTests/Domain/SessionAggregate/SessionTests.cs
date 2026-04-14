@@ -1,7 +1,4 @@
-using SessionReservationService.UnitTests.Domain.TestUtils;
-using Xunit;
-
-namespace SessionReservationService.UnitTests.Domain.SessionAggregate;
+namespace SessionBookingService.UnitTests.Domain.SessionAggregate;
 /*
 public class SessionTests
 {
