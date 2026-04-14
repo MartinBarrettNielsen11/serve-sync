@@ -19,3 +19,6 @@ obj/
 
 # Logs
 *.log
+
+# macOS
+.DS_Store
