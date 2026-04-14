@@ -5,17 +5,21 @@ namespace ClubAdministrationService.Domain.ClubAggregate;
 
 internal sealed class Club : RootAggregate
 {
-    private readonly Guid _subscriptionId;
     private readonly List<Guid> _courtIds = new();
     private readonly int _maxCourtCapacity;
+    public string Name { get; } = null!;
+    public Guid SubscriptionId { get; }
+
     
     public Club(
+        string name,
         Guid subscriptionId,
         int maxCourtCapacity,
         Guid? id = null) 
         : base(id ?? Guid.CreateVersion7())
     {
-        _subscriptionId = subscriptionId;
+        Name = name;
+        SubscriptionId = subscriptionId;
         _maxCourtCapacity = maxCourtCapacity;
     }
 

@@ -11,4 +11,8 @@
     <ItemGroup>
       <PackageReference Include="Ardalis.SmartEnum" />
     </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="ClubAdministrationService.Application" />
+    </ItemGroup>
 </Project>

@@ -6,14 +6,16 @@ namespace SessionReservationService.Domain.PlayerAggregate;
 
 internal sealed class Player : RootAggregate
 {
-    private readonly Guid _userId;
+    public Guid UserId { get; }
     private readonly Schedule _schedule = Schedule.Empty();
-    private readonly List<Guid> _sessionIds = new();
+    private readonly List<Guid> _sessionIds = [];
 
     public Player(Guid userId,
+                  Schedule? schedule = null,
                   Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
-        _userId = userId;
+        UserId = userId;
+        _schedule = schedule ?? Schedule.Empty();
     }
     
     // intermediate placeholder for testing "Result"
@@ -29,6 +31,7 @@ internal sealed class Player : RootAggregate
                     "Session already exists in player's schedule"));
         }
 
+        _sessionIds.Add(session.Id);
         return Result.Success();
     }
     

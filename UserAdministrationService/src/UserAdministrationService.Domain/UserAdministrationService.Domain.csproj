@@ -7,4 +7,8 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="UserAdministrationService.Application" />
+    </ItemGroup>
 </Project>
