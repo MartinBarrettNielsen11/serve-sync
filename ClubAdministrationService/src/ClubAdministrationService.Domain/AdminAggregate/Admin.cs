@@ -1,3 +1,4 @@
+using ClubAdministrationService.Domain.SubscriptionAggregate;
 using SharedKernel;
 
 namespace ClubAdministrationService.Domain.AdminAggregate;
@@ -16,6 +17,19 @@ internal sealed class Admin : RootAggregate
         UserId = userId;
         SubscriptionId = subscriptionId;
     }
+    
+    public void SetSubscription(Subscription subscription)
+    {
+        if (SubscriptionId is not null)
+        {
+            throw new InvalidOperationException();
+        }
+        
+        SubscriptionId = subscription.Id;
+
+        // add domian event
+    }
+    
     private Admin() { }
 
 }

@@ -5,7 +5,9 @@ namespace ClubAdministrationService.Domain.ClubAggregate;
 
 internal sealed class Club : RootAggregate
 {
-    private readonly List<Guid> _courtIds = new();
+    private readonly List<Guid> _courtIds = [];
+    private readonly List<Guid> _instructorIds = [];
+    
     private readonly int _maxCourtCapacity;
     public string Name { get; } = null!;
     public Guid SubscriptionId { get; }
@@ -35,4 +37,28 @@ internal sealed class Club : RootAggregate
         
         return Result.Success();
     }
+    
+    internal bool HasCourt(Guid courtId) => _courtIds.Contains(courtId);
+    
+    internal Result AddTrainer(Guid trainerId)
+    {
+        if (_instructorIds.Contains(trainerId))
+        {
+            return Result.Failure(Error.Conflict(code: "", description: "Trainer already added to gym"));
+        }
+
+        _instructorIds.Add(trainerId);
+        
+        return Result.Success();
+    }
+    
+    internal bool HasInstructor(Guid instructorId) => _instructorIds.Contains(instructorId);
+    
+    public void RemoveCourt(Guid courtId)
+    {
+        _courtIds.Remove(courtId);
+        // add event regarding removal of court
+    }
+
+    private Gym() { }
 }
