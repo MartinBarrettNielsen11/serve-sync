@@ -60,5 +60,5 @@ internal sealed class Club : RootAggregate
         // add event regarding removal of court
     }
 
-    private Gym() { }
+    private Club() { }
 }
