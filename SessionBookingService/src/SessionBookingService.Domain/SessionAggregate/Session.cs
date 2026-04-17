@@ -9,7 +9,7 @@ namespace SessionBookingService.Domain.SessionAggregate;
 
 internal sealed class Session : RootAggregate
 {
-    private readonly Guid _instructorId;
+    public Guid _instructorId { get; }
     private readonly List<Booking> _bookings = new();
     
     public int MaxPlayerCapacity { get;}
@@ -41,8 +41,13 @@ internal sealed class Session : RootAggregate
         {
             return Result.Failure(SessionErrors.CannotCancelBookingTooCloseToSession);
         }
+        
+        if (IsPastSession(provider.UtcNow))
+        {
+            return Result.Failure(SessionErrors.CannotCancelPastSession);
+        }
 
-        var booking = _bookings.First(b => b.PlayerId == playerId);
+        Booking booking = _bookings.First(b => b.PlayerId == playerId);
         
         _bookings.Remove(booking);
         
@@ -56,12 +61,17 @@ internal sealed class Session : RootAggregate
             return Result.Failure(SessionErrors.CannotHaveMoreBookingsThanPlayers);
         }
         
-        var booking = new Booking(playerId: player.Id);
+        Booking booking = new Booking(playerId: player.Id);
 
         // add some events and such here
         _bookings.Add(booking);
 
         return Result.Success();
+    }
+    
+    private bool IsPastSession(DateTime utcNow)
+    {
+        return (Date.ToDateTime(Time.End) - utcNow).TotalHours < 0;
     }
     
     private bool IsTooCloseToSession(DateTime utcNow)

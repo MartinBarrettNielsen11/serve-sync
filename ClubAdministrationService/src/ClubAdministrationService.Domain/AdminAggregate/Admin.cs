@@ -6,7 +6,7 @@ namespace ClubAdministrationService.Domain.AdminAggregate;
 internal sealed class Admin : RootAggregate
 {
     public Guid UserId { get; }
-    public Guid? SubscriptionId { get; private set; } = null;
+    public Guid? SubscriptionId { get; private set; }
 
     public Admin(
         Guid userId,

@@ -7,7 +7,7 @@ namespace ClubAdministrationService.Application.Clubs.AddInstructor;
 internal sealed class AddInstructorCommandHandler
 {
     [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-    internal sealed async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
+    internal async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
     {
         
 

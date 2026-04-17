@@ -6,7 +6,7 @@ namespace ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
 internal sealed class DeleteCourtCommandHandler
 {
     [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-    internal sealed async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
+    internal async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
     {
         
 

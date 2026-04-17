@@ -23,14 +23,20 @@ internal sealed class Player : RootAggregate
     // intermediate placeholder for testing "Result"
     internal Result AddToSchedule(Session session)
     {
-        var intermediateCond = false; 
-        
-        if (intermediateCond)
+        if (_sessionIds.Contains(session.Id))
         {
-            return Result.Failure(
-                Error.Conflict(
-                    "Player.SessionAlreadyExists",
-                    "Session already exists in player's schedule"));
+            return Result.Failure(Error.Conflict(code: "", description: "Session already exists in player's schedule"));
+        }
+
+        Result bookTimeSlotResult = _schedule.BookTimeSlot(
+            session.Date,
+            session.Time);
+
+        if (bookTimeSlotResult.IsFailure)
+        {
+            return bookTimeSlotResult.Error.Type == ErrorType.Conflict
+                ? Result.Failure(PlayerErrors.CannotHaveTwoOrMoreOverlappingSessions)
+                : Result.Failure(bookTimeSlotResult.Error);
         }
 
         _sessionIds.Add(session.Id);

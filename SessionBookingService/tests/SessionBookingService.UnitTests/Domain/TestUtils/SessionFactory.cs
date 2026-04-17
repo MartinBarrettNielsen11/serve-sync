@@ -1,3 +1,4 @@
+using System;
 using SessionBookingService.UnitTests.Domain.Constants;
 using SharedKernel;
 
