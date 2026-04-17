@@ -2,17 +2,17 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Domain.SessionAggregate;
 
-public static class SessionErrors
+internal static class SessionErrors
 {
-    public static readonly Error CannotCancelPastSession = Error.Failure(
+    internal static readonly Error CannotCancelPastSession = Error.Failure(
         "Session.CannotCancelPastSession",
         "A player cannot cancel a booking for a session that has completed");
     
-    public static readonly Error CannotHaveMoreReservationsThanPlayers = Error.Failure(
-        code: "Session.CannotHaveMoreReservationsThanPlayers",
+    internal static readonly Error CannotHaveMoreBookingsThanPlayers = Error.Failure(
+        code: "Session.CannotHaveMoreBookingsThanPlayers",
         description: "Cannot have more reservations than players");
 
-    public static readonly Error CannotCancelReservationTooCloseToSession = Error.Failure(
-        code: "Session.CannotCancelReservationTooCloseToSession",
+    internal static readonly Error CannotCancelBookingTooCloseToSession = Error.Failure(
+        code: "Session.CannotCancelBookingTooCloseToSession",
         description: "Cannot cancel reservation too close to session start time");
 }

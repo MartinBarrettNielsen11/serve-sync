@@ -1,3 +1,4 @@
+using System;
 using SharedKernel.Common;
 
 namespace SessionBookingService.Domain.SessionAggregate;
@@ -11,4 +12,6 @@ internal sealed class Booking : Entity
     {
         PlayerId = playerId;
     }
+    
+    private Booking() { }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using SessionBookingService.Domain.SessionAggregate;
 using SharedKernel;
 using SharedKernel.Results;
@@ -34,5 +36,21 @@ internal sealed class Player : RootAggregate
         _sessionIds.Add(session.Id);
         return Result.Success();
     }
-    
+
+    public Result RemoveFromSchedule(Session session)
+    {
+        if (!_sessionIds.Contains(session.Id))
+        {
+            return Result.Failure(Error.NotFound(code: "", description: "Session not found in player's schedule"));
+        }
+
+        var removeBookingResult = _schedule.RemoveBooking(session.Date, session.Time);
+        if (removeBookingResult.IsFailure)
+        {
+            // return some error
+        }
+
+        _sessionIds.Remove(session.Id);
+        return Result.Success();
+    }
 }

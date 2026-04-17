@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using SessionBookingService.Domain.PlayerAggregate;
 using SharedKernel;
 using SharedKernel.Results;
@@ -32,11 +35,17 @@ internal sealed class Session : RootAggregate
         MaxPlayerCapacity = maxPlayerCapacity;
     }
 
-    internal Result CancelReservation(Guid participantId, IDateTimeProvider provider)
+    internal Result CancelBooking(Guid playerId, IDateTimeProvider provider)
     {
         if (IsTooCloseToSession(provider.UtcNow))
-            return Result.Failure(SessionErrors.CannotCancelReservationTooCloseToSession);
+        {
+            return Result.Failure(SessionErrors.CannotCancelBookingTooCloseToSession);
+        }
 
+        var booking = _bookings.First(b => b.PlayerId == playerId);
+        
+        _bookings.Remove(booking);
+        
         return Result.Success();
     }
 
@@ -44,10 +53,15 @@ internal sealed class Session : RootAggregate
     {
         if (_bookings.Count >= MaxPlayerCapacity)
         {
-            return SessionErrors.Something;
+            return Result.Failure(SessionErrors.CannotHaveMoreBookingsThanPlayers);
         }
         
-        // ...
+        var booking = new Booking(playerId: player.Id);
+
+        // add some events and such here
+        _bookings.Add(booking);
+
+        return Result.Success();
     }
     
     private bool IsTooCloseToSession(DateTime utcNow)
