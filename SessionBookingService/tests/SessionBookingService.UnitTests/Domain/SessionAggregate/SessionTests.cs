@@ -18,8 +18,8 @@ public class SessionTests
         Player player = PlayerFactory.Create();
 
         // Act
-        Result firstReservationResult = session.BookSpot(player);
-        Result secondReservationResult = session.BookSpot(player);
+        Result<bool> firstReservationResult = session.BookSpot(player);
+        Result<bool> secondReservationResult = session.BookSpot(player);
 
         // Assert
         Assert.True(firstReservationResult.IsSuccess);
@@ -38,7 +38,7 @@ public class SessionTests
 
         // Act
         Result<bool> reservationResult = session.BookSpot(player);
-        Result cancellationResult = session.CancelBooking(
+        Result<bool> cancellationResult = session.CancelBooking(
             playerId: player.Id,
             provider: new TestDateTimeProvider(fixedDateTime: dateAndTimeOfCancellation));
 

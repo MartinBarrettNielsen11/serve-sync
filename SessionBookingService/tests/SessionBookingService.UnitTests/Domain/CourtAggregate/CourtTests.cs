@@ -19,7 +19,7 @@ public class CourtTests
         Session session2 = SessionFactory.CreateSession(id: Guid.NewGuid());
         
         _ = court.ScheduleSession(session1);
-        Result scheduleSession2Result = court.ScheduleSession(session2);
+        Result<bool> scheduleSession2Result = court.ScheduleSession(session2);
         
         Assert.Equal(scheduleSession2Result.Error, CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
     }
@@ -49,8 +49,8 @@ public class CourtTests
             id: Guid.NewGuid());
 
         // Act
-        Result scheduleSession1Result = court.ScheduleSession(session1);
-        Result scheduleSession2Result = court.ScheduleSession(session2);
+        Result<bool> scheduleSession1Result = court.ScheduleSession(session1);
+        Result<bool> scheduleSession2Result = court.ScheduleSession(session2);
 
         // Assert
         Assert.False(scheduleSession1Result.IsFailure);

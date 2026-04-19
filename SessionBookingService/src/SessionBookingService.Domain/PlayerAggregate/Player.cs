@@ -21,11 +21,11 @@ internal sealed class Player : RootAggregate
     }
     
     // intermediate placeholder for testing "Result"
-    internal Result AddToSchedule(Session session)
+    internal Result<bool> AddToSchedule(Session session)
     {
         if (_sessionIds.Contains(session.Id))
         {
-            return Result.Failure(Error.Conflict(code: "", description: "Session already exists in player's schedule"));
+            return Result.Failure<bool>(Error.Conflict(code: "", description: "Session already exists in player's schedule"));
         }
 
         Result bookTimeSlotResult = _schedule.BookTimeSlot(
@@ -35,19 +35,19 @@ internal sealed class Player : RootAggregate
         if (bookTimeSlotResult.IsFailure)
         {
             return bookTimeSlotResult.Error.Type == ErrorType.Conflict
-                ? Result.Failure(PlayerErrors.CannotHaveTwoOrMoreOverlappingSessions)
-                : Result.Failure(bookTimeSlotResult.Error);
+                ? Result.Failure<bool>(PlayerErrors.CannotHaveTwoOrMoreOverlappingSessions)
+                : Result.Failure<bool>(bookTimeSlotResult.Error);
         }
 
         _sessionIds.Add(session.Id);
-        return Result.Success();
+        return Result.Success<bool>(value: true);
     }
 
-    public Result RemoveFromSchedule(Session session)
+    public Result<bool> RemoveFromSchedule(Session session)
     {
         if (!_sessionIds.Contains(session.Id))
         {
-            return Result.Failure(Error.NotFound(code: "", description: "Session not found in player's schedule"));
+            return Result.Failure<bool>(Error.NotFound(code: "", description: "Session not found in player's schedule"));
         }
 
         var removeBookingResult = _schedule.RemoveBooking(session.Date, session.Time);
@@ -57,6 +57,6 @@ internal sealed class Player : RootAggregate
         }
 
         _sessionIds.Remove(session.Id);
-        return Result.Success();
+        return Result.Success<bool>(true);
     }
 }

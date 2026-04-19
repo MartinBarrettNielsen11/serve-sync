@@ -1,3 +1,5 @@
+using System;
+
 namespace SessionBookingService.UnitTests.Domain.Constants;
 
 internal static class InstructorConstants

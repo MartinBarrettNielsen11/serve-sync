@@ -28,28 +28,28 @@ internal sealed class Court : RootAggregate
         _schedule = schedule ?? Schedule.Empty();
     }
 
-    internal Result ScheduleSession(Session session)
+    internal Result<bool> ScheduleSession(Session session)
     {
         if (_sessionIds.Exists(x => x == session.Id))
         {
-            return Result.Failure(Error.Failure(code: "yo", description: "Session already exists in court"));
+            return Result.Failure<bool>(Error.Failure(code: "yo", description: "Session already exists in court"));
         }
         
         if (_sessionIds.Count >= _maxDailySessions)
         {
-            return Result.Failure(CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
+            return Result.Failure<bool>(CourtErrors.NumberOfSessionsCannotExceedSubscriptionLimit);
         }
         
         Result bookingResult = _schedule.BookTimeSlot(session.Date, session.Time);
         if (bookingResult.IsFailure)
         {
-            return Result.Failure(CourtErrors.SessionsCannotOverlap);
+            return Result.Failure<bool>(CourtErrors.SessionsCannotOverlap);
         }
         // return error result if overlapping
         
         _sessionIds.Add(session.Id);
         
-        return Result.Success();
+        return Result.Success<bool>(value: true);
     }
     
     public bool HasSession(Guid sessionId)

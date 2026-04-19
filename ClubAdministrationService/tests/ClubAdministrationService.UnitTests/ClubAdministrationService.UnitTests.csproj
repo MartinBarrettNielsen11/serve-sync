@@ -17,7 +17,6 @@
 
     <ItemGroup>
       <Folder Include="Application\" />
-      <Folder Include="Domain\AdminAggregate\" />
       <Folder Include="Domain\ClubAggregate\" />
       <Folder Include="Domain\SubscriptionAggregate\" />
       <Folder Include="Domain\TestConstants\" />

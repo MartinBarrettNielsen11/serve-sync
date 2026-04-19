@@ -53,6 +53,6 @@ internal sealed class Subscription : RootAggregate
         
         _clubIds.Add(club.Id);
         
-        return Result.Success();
+        return Result.Success<bool>(true);
     }
 }

@@ -20,11 +20,11 @@ internal sealed class Instructor : RootAggregate
         _schedule = sch ?? _schedule;
     }
 
-    internal Result AddSessionToSchedule(Session session)
+    internal Result<bool> AddSessionToSchedule(Session session)
     {
         if (_sessionIds.Contains(session.Id))
         {
-            return Result.Failure(Error.Conflict(
+            return Result.Failure<bool>(Error.Conflict(
                 code: "",
                 description: "Session already exists in the schedule of the Instructor")
             );
@@ -34,10 +34,10 @@ internal sealed class Instructor : RootAggregate
 
         if (bookingTimeSlotResult.IsFailure)
         {
-            return Result.Failure(InstructorErrors.SessionCannotOverlap);
+            return Result.Failure<bool>(InstructorErrors.SessionCannotOverlap);
         }
         
         _sessionIds.Add(session.Id);
-        return Result.Success();
+        return Result.Success<bool>(true);
     }
 }

@@ -1,6 +1,9 @@
+using System;
 using SessionBookingService.Domain.InstructorAggregate;
+using SessionBookingService.Domain.SessionAggregate;
 using SessionBookingService.UnitTests.Domain.Constants;
 using SessionBookingService.UnitTests.Domain.TestUtils;
+using SharedKernel.Results;
 using Xunit;
 
 namespace SessionBookingService.UnitTests.Domain.InstructorAggregate;
@@ -21,19 +24,19 @@ public class InstructorTests
         // Arrange
         Instructor sut = InstructorFactory.Create();
 
-        var session1 = SessionFactory.CreateSession(
+        Session session1 = SessionFactory.CreateSession(
             date: SessionConstants.Date,
             timeRange: TimeSlotFactory.Create(startHourSession1, endHourSession1),
-            id: Guid.NewGuid());
+            id: Guid.CreateVersion7());
 
-        var session2 = SessionFactory.CreateSession(
+        Session session2 = SessionFactory.CreateSession(
             date: SessionConstants.Date,
             timeRange: TimeSlotFactory.Create(startHourSession2, endHourSession2),
-            id: Guid.NewGuid());
+            id: Guid.CreateVersion7());
 
         // Act
-        var addSession1Result = sut.AddSessionToSchedule(session1);
-        var addSession2Result = sut.AddSessionToSchedule(session2);
+        Result<bool> addSession1Result = sut.AddSessionToSchedule(session1);
+        Result<bool> addSession2Result = sut.AddSessionToSchedule(session2);
 
         // Assert
         Assert.True(addSession1Result.IsSuccess);
