@@ -1,4 +1,9 @@
+using System;
+using SessionBookingService.Domain.PlayerAggregate;
+using SessionBookingService.Domain.SessionAggregate;
+using SessionBookingService.UnitTests.Domain.Constants;
 using SessionBookingService.UnitTests.Domain.TestUtils;
+using SharedKernel.Results;
 using Xunit;
 
 namespace SessionBookingService.UnitTests.Domain.SessionAggregate;
@@ -6,10 +11,40 @@ namespace SessionBookingService.UnitTests.Domain.SessionAggregate;
 public class SessionTests
 {
     [Fact]
-    public void ReserveSpot_WhenNoMoreCourts_ShouldFailReservation()
+    public void BookSpot_WhenNoMoreRoom_ShouldFailReservation()
     {
         // Arrange
-        var session = SessionFactory.CreateSession(maxParticipants: 1);
-        var participant = ParticipantFactory.CreateParticipant();
+        Session session = SessionFactory.CreateSession(maxPlayerCapacity: 1);
+        Player player = PlayerFactory.Create();
+
+        // Act
+        Result firstReservationResult = session.BookSpot(player);
+        Result secondReservationResult = session.BookSpot(player);
+
+        // Assert
+        Assert.True(firstReservationResult.IsSuccess);
+        Assert.True(secondReservationResult.IsFailure);
+        Assert.Equal(secondReservationResult.Error, SessionErrors.CannotHaveMoreBookingsThanPlayers);
+    }
+    
+    [Fact]
+    public void CancelBooking_WhenCancellationTimeTooCloseToSession_ShouldFailCancellation()
+    {
+        // Arrange
+        Session session = SessionFactory.CreateSession(date: SessionConstants.Date);
+        Player player = PlayerFactory.Create();
+
+        DateTime dateAndTimeOfCancellation = SessionConstants.Date.ToDateTime(TimeOnly.MinValue);
+
+        // Act
+        Result<bool> reservationResult = session.BookSpot(player);
+        Result cancellationResult = session.CancelBooking(
+            playerId: player.Id,
+            provider: new TestDateTimeProvider(fixedDateTime: dateAndTimeOfCancellation));
+
+        // Assert
+        Assert.True(reservationResult.IsSuccess);
+        Assert.True(cancellationResult.IsFailure);
+        Assert.Equal(cancellationResult.Error, SessionErrors.CannotCancelBookingTooCloseToSession);
     }
 }

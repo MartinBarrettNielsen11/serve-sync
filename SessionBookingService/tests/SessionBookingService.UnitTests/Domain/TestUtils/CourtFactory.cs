@@ -5,7 +5,7 @@ namespace SessionBookingService.UnitTests.Domain.TestUtils;
 
 internal static class CourtFactory
 {
-    internal static Court CreateCourt(
+    internal static Court Create(
         string name = "name",
         int maxDailySessions = 1,
         Guid? clubId = null,

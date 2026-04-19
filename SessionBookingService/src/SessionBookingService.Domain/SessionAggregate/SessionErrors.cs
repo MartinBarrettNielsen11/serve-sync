@@ -4,6 +4,10 @@ namespace SessionBookingService.Domain.SessionAggregate;
 
 internal static class SessionErrors
 {
+    internal static readonly Error BookingNotFound = Error.NotFound(
+        "Session.BookingNotFound",
+        "Session booking not found");
+    
     internal static readonly Error CannotCancelPastSession = Error.Failure(
         "Session.CannotCancelPastSession",
         "A player cannot cancel a booking for a session that has completed");
@@ -15,4 +19,8 @@ internal static class SessionErrors
     internal static readonly Error CannotCancelBookingTooCloseToSession = Error.Failure(
         code: "Session.CannotCancelBookingTooCloseToSession",
         description: "Cannot cancel reservation too close to session start time");
+
+    internal static readonly Error PlayerCannotReserveTwice = Error.Failure(
+        code: "Session.PlayerCannotReserveTwice",
+        description: "A player cannot reserve twice to the same session");
 }

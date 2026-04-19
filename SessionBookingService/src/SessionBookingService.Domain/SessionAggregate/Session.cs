@@ -37,6 +37,11 @@ internal sealed class Session : RootAggregate
 
     internal Result CancelBooking(Guid playerId, IDateTimeProvider provider)
     {
+        if (!_bookings.Any(reservation => reservation.PlayerId == playerId))
+        {
+            return Result.Failure(SessionErrors.BookingNotFound);
+        }
+
         if (IsTooCloseToSession(provider.UtcNow))
         {
             return Result.Failure(SessionErrors.CannotCancelBookingTooCloseToSession);
@@ -54,19 +59,24 @@ internal sealed class Session : RootAggregate
         return Result.Success();
     }
 
-    public Result BookSpot(Player player)
+    public Result<bool> BookSpot(Player player)
     {
         if (_bookings.Count >= MaxPlayerCapacity)
         {
-            return Result.Failure(SessionErrors.CannotHaveMoreBookingsThanPlayers);
+            return Result.Failure<bool>(SessionErrors.CannotHaveMoreBookingsThanPlayers);
         }
         
-        Booking booking = new Booking(playerId: player.Id);
+        Booking booking = new(playerId: player.Id);
+
+        if (_bookings.Exists(r => r.PlayerId == booking.PlayerId))
+        {
+            return Result.Failure<bool>(SessionErrors.PlayerCannotReserveTwice);
+        }
 
         // add some events and such here
         _bookings.Add(booking);
 
-        return Result.Success();
+        return Result.Success<bool>(value: true);
     }
     
     private bool IsPastSession(DateTime utcNow)

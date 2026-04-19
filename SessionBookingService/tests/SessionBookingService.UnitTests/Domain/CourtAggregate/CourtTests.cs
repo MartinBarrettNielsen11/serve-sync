@@ -14,7 +14,7 @@ public class CourtTests
     public void ScheduleSession_WhenMoreThanSubscriptionAllows_ShouldFail()
     {
         // Arrange
-        Court court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 1);
+        Court court = CourtFactory.Create(name: "yo", maxDailySessions: 1);
         Session session1 = SessionFactory.CreateSession(id: Guid.NewGuid());
         Session session2 = SessionFactory.CreateSession(id: Guid.NewGuid());
         
@@ -36,7 +36,7 @@ public class CourtTests
                                                                                  int endHourSession2)
     {
         // Arrange
-        Court court = CourtFactory.CreateCourt(name: "yo", maxDailySessions: 2);
+        Court court = CourtFactory.Create(name: "yo", maxDailySessions: 2);
         
         Session session1 = SessionFactory.CreateSession(
             date: SessionConstants.Date,

@@ -2,9 +2,9 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Domain.SubscriptionAggregate;
 
-public static class SubscriptionErrors
+internal static class SubscriptionErrors
 {
-    public static readonly Error NumberOfCourtsCannotExceedSubscriptionLimit = Error.Failure(
+    internal static readonly Error NumberOfCourtsCannotExceedSubscriptionLimit = Error.Failure(
         "Subscription.NumberOfCourtsCannotExceedSubscriptionLimit",
         "A subscription cannot have more courts than the subscription allows");
 }

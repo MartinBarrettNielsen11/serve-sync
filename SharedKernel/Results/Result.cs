@@ -25,7 +25,7 @@ public class Result
     public bool IsFailure => !IsSuccess;
     
     public static Result Success() => new(isSuccess: true, error: Error.None);
-    public static Result<TValue> Success<TValue>(TValue value) => new(value, true, Error.None);
+    public static Result<TValue> Success<TValue>(TValue value) => new(value, isSuccess: true, Error.None);
 
     public static Result Failure(Error error) => new(isSuccess: false, error: error);
     public static Result<TValue> Failure<TValue>(Error error) => new(default, isSuccess: false, error: error);

@@ -5,7 +5,7 @@ using SharedKernel.Results;
 namespace ClubAdministrationService.Application.Subscriptions.Commands.CreateSubscription;
 
 // ReSharper disable once UnusedType.Global
-public class CreateSubscriptionCommandHandler
+internal sealed class CreateSubscriptionCommandHandler
 {
 #pragma warning disable S1186
 #pragma warning disable CA1822
