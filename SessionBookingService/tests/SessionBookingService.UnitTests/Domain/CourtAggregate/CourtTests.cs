@@ -1,4 +1,6 @@
+using System;
 using SessionBookingService.Domain.CourtsAggregate;
+using SessionBookingService.Domain.SessionAggregate;
 using SessionBookingService.UnitTests.Domain.Constants;
 using SessionBookingService.UnitTests.Domain.TestUtils;
 using SharedKernel.Results;

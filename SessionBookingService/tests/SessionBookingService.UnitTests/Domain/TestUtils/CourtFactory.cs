@@ -1,4 +1,5 @@
 using System;
+using SessionBookingService.Domain.CourtsAggregate;
 
 namespace SessionBookingService.UnitTests.Domain.TestUtils;
 

@@ -1,3 +1,4 @@
+using System;
 using SharedKernel;
 
 namespace SessionBookingService.UnitTests.Domain.TestUtils;

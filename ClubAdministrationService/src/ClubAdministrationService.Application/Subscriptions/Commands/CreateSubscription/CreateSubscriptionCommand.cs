@@ -1,0 +1,5 @@
+using ClubAdministrationService.Domain.SubscriptionAggregate;
+
+namespace ClubAdministrationService.Application.Subscriptions.Commands.CreateSubscription;
+
+internal record CreateSubscriptionCommand(SubscriptionType SubscriptionType, Guid AdminId);

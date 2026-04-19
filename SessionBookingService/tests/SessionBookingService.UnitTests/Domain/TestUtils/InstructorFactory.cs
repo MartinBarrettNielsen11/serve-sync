@@ -1,4 +1,5 @@
 using System;
+using SessionBookingService.Domain.InstructorAggregate;
 using SessionBookingService.UnitTests.Domain.Constants;
 
 namespace SessionBookingService.UnitTests.Domain.TestUtils;

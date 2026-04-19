@@ -9,6 +9,6 @@
     </ItemGroup>
     
     <ItemGroup>
-        <InternalsVisibleTo Include="SessionReservationService.UnitTests" />
+        <InternalsVisibleTo Include="SessionBookingService.UnitTests" />
     </ItemGroup>
 </Project>

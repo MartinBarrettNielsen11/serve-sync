@@ -1,5 +1,8 @@
+using SessionBookingService.UnitTests.Domain.TestUtils;
+using Xunit;
+
 namespace SessionBookingService.UnitTests.Domain.SessionAggregate;
-/*
+
 public class SessionTests
 {
     [Fact]
@@ -9,4 +12,4 @@ public class SessionTests
         var session = SessionFactory.CreateSession(maxParticipants: 1);
         var participant = ParticipantFactory.CreateParticipant();
     }
-}*/
+}

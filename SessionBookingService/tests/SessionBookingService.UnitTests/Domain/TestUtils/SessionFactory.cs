@@ -1,4 +1,5 @@
 using System;
+using SessionBookingService.Domain.SessionAggregate;
 using SessionBookingService.UnitTests.Domain.Constants;
 using SharedKernel;
 
