@@ -4,19 +4,23 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Domain.SubscriptionAggregate;
 
-internal sealed class Subscription : RootAggregate
+internal sealed partial class Subscription : RootAggregate
 {
-    private readonly List<Guid> _clubIds = new();
-    private readonly int _maxCourtsAllowed;
-
-    internal SubscriptionType SubscriptionType { get; } = null!;
-
-
-    internal Subscription(SubscriptionType subscriptionType,
-                          Guid? id = null) : base(id ?? Guid.CreateVersion7())
+    public Result<bool> AddClub(Club club)
     {
-        SubscriptionType = subscriptionType;
-        _maxCourtsAllowed = GetMaxCourtsAllowed();
+        if (_clubIds.Contains(club.Id))
+        {
+            return Result.Failure<bool>(Error.Failure(code: "", description: "Gym already exists"));
+        }
+
+        if (_maxCourtsAllowed < _clubIds.Count)
+        {
+            return Result.Failure<bool>(SubscriptionErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
+        }
+        
+        _clubIds.Add(club.Id);
+        // add some event here
+        return Result.Success<bool>(value: true);
     }
 
     internal int GetMaxClubs() => SubscriptionType.Name switch
@@ -34,7 +38,7 @@ internal sealed class Subscription : RootAggregate
         nameof(SubscriptionType.Pro) => int.MaxValue,
         _ => throw new InvalidOperationException()
     };
-    
+
     public int GetMaxDailySessionsAllowed() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 4,
@@ -42,17 +46,4 @@ internal sealed class Subscription : RootAggregate
         nameof(SubscriptionType.Pro) => int.MaxValue,
         _ => throw new InvalidOperationException()
     };
-    
-    public Result AddClub(Club club)
-    {
-        if (_clubIds.Contains(club.Id))
-            return Result.Failure(Error.Failure(code: "", description: "Gym already exists"));
-
-        if (_maxCourtsAllowed < _clubIds.Count)
-            return Result.Failure(SubscriptionErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
-        
-        _clubIds.Add(club.Id);
-        
-        return Result.Success<bool>(true);
-    }
 }
