@@ -1,0 +1,72 @@
+using System;
+using System.Linq;
+using SessionBookingService.Domain.PlayerAggregate;
+using SharedKernel;
+using SharedKernel.Results;
+
+namespace SessionBookingService.Domain.SessionAggregate;
+
+internal sealed partial class Session : RootAggregate
+{
+    public Result<bool> BookSpot(Player player)
+    {
+        if (_bookings.Count >= MaxPlayerCapacity)
+        {
+            return Result.Failure<bool>(SessionErrors.CannotHaveMoreBookingsThanPlayers);
+        }
+        
+        Booking booking = new(playerId: player.Id);
+
+        if (_bookings.Exists(r => r.PlayerId == booking.PlayerId))
+        {
+            return Result.Failure<bool>(SessionErrors.PlayerCannotReserveTwice);
+        }
+
+        _bookings.Add(booking);
+        // add some events and such here
+
+        return Result.Success<bool>(value: true);
+    }
+    
+    internal Result<bool> CancelBooking(Guid playerId, IDateTimeProvider provider)
+    {
+        if (!_bookings.Exists(reservation => reservation.PlayerId == playerId))
+        {
+            return Result.Failure<bool>(SessionErrors.BookingNotFound);
+        }
+
+        if (IsTooCloseToSession(provider.UtcNow))
+        {
+            return Result.Failure<bool>(SessionErrors.CannotCancelBookingTooCloseToSession);
+        }
+        
+        if (IsPastSession(provider.UtcNow))
+        {
+            return Result.Failure<bool>(SessionErrors.CannotCancelPastSession);
+        }
+
+        Booking booking = _bookings.First(b => b.PlayerId == playerId);
+        
+        _bookings.Remove(booking);
+        
+        // trigger event
+        
+        return Result.Success<bool>(value: true);
+    }
+    
+    private bool IsPastSession(DateTime utcNow)
+    {
+        return (Date.ToDateTime(Time.End) - utcNow).TotalHours < 0;
+    }
+    
+    private bool IsTooCloseToSession(DateTime utcNow)
+    {
+        const int MinHours = 24;
+
+        var timeDifference = (Date.ToDateTime(Time.Start) - utcNow).TotalHours;
+
+        var exceedsLimit = timeDifference < MinHours;
+
+        return exceedsLimit;
+    }
+}

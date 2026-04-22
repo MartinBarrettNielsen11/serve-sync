@@ -1,25 +1,10 @@
-using System;
-using System.Collections.Generic;
 using SessionBookingService.Domain.SessionAggregate;
-using SharedKernel;
 using SharedKernel.Results;
 
 namespace SessionBookingService.Domain.InstructorAggregate;
 
-internal sealed class Instructor : RootAggregate
+internal sealed partial class Instructor
 {
-    private Guid UserId { get; }
-    private readonly List<Guid> _sessionIds = [];
-    private readonly Schedule _schedule = Schedule.Empty();
-
-    internal Instructor(Guid userId, 
-                        Schedule? sch = null,
-                        Guid? id = null) : base(id ?? Guid.CreateVersion7())
-    {
-        UserId = userId;
-        _schedule = sch ?? _schedule;
-    }
-
     internal Result<bool> AddSessionToSchedule(Session session)
     {
         if (_sessionIds.Contains(session.Id))
@@ -38,6 +23,25 @@ internal sealed class Instructor : RootAggregate
         }
         
         _sessionIds.Add(session.Id);
-        return Result.Success<bool>(true);
+        return Result.Success<bool>(value: true);
+    }
+    
+    public Result<bool> RemoveFromSchedule(Session session)
+    {
+        if (!_sessionIds.Contains(session.Id))
+        {
+            return Result.Failure<bool>(Error.NotFound(code: "", description: "Session not found in trainer's schedule"));
+        }
+
+        Result<bool> removeBookingResult = _schedule.RemoveBooking(session.Date,
+                                                                   session.Time);
+
+        if (removeBookingResult.IsFailure)
+        {
+            return Result.Failure<bool>(removeBookingResult.Error);
+        }
+
+        _sessionIds.Remove(session.Id);
+        return Result.Success<bool>(value: true);
     }
 }

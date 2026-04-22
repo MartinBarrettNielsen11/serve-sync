@@ -26,5 +26,5 @@ internal sealed partial class Court
         _schedule = schedule ?? Schedule.Empty();
     }
 
-    private Court() { }
+    private Court() { } // For EF / serialization
 }
