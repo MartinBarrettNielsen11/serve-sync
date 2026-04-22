@@ -8,10 +8,4 @@
       <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Profiles\CreateAdminProfile\" />
-      <Folder Include="Profiles\CreatePlayerProfile\" />
-      <Folder Include="Profiles\CreateTrainerProfile\" />
-    </ItemGroup>
-
 </Project>
