@@ -13,5 +13,5 @@ internal sealed class Booking : Entity
         PlayerId = playerId;
     }
     
-    private Booking() { }
+    private Booking() { } // For EF / serialization
 }
