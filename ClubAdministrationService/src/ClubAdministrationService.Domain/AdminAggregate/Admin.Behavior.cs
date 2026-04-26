@@ -7,7 +7,7 @@ internal sealed partial class Admin : RootAggregate
     public Guid UserId { get; }
     public Guid? SubscriptionId { get; private set; }
 
-    public Admin(
+    internal Admin(
         Guid userId,
         Guid? subscriptionId,
         Guid? id = null)

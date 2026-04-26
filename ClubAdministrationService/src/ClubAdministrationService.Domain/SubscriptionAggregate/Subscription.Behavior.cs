@@ -6,7 +6,7 @@ namespace ClubAdministrationService.Domain.SubscriptionAggregate;
 
 internal sealed partial class Subscription : RootAggregate
 {
-    public Result<bool> AddClub(Club club)
+    internal Result<bool> AddClub(Club club)
     {
         if (_clubIds.Contains(club.Id))
         {
@@ -46,4 +46,6 @@ internal sealed partial class Subscription : RootAggregate
         nameof(SubscriptionType.Pro) => int.MaxValue,
         _ => throw new InvalidOperationException()
     };
+    
+    public bool HasGym(Guid gymId) => _clubIds.Contains(gymId);
 }

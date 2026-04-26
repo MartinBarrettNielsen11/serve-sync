@@ -12,10 +12,10 @@ internal sealed partial class Club
     
     public IReadOnlyList<Guid> CourtIds => _courtIds;
     
-    public Club(string name,
-                int maxCourtCapacity,
-                Guid subscriptionId,
-                Guid? id = null) : base(id ?? Guid.CreateVersion7())
+    internal Club(string name,
+                  int maxCourtCapacity,
+                  Guid subscriptionId,
+                  Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         Name = name;
         SubscriptionId = subscriptionId;

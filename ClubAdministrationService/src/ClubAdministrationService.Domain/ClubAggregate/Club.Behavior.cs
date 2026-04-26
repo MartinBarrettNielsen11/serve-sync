@@ -18,6 +18,7 @@ internal sealed partial class Club : RootAggregate
         }
         
         _courtIds.Add(courtId);
+        // send domain event
         
         return Result.Success<bool>(value: true);
     }
@@ -34,7 +35,7 @@ internal sealed partial class Club : RootAggregate
         return Result.Success<bool>(value: true);
     }
     
-    public void RemoveCourt(Guid courtId)
+    internal void RemoveCourt(Guid courtId)
     {
         _courtIds.Remove(courtId);
         // add event regarding removal of court

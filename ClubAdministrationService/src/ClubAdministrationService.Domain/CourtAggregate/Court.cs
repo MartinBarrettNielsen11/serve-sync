@@ -9,7 +9,7 @@ internal sealed class Court : RootAggregate
     public Guid ClubId { get; }
     public int MaxDailySessions { get; }
     
-    public Court(string name,
+    internal Court(string name,
             Guid clubId,
             int maxDailySessions,
             Guid? id = null) : base(id ?? Guid.NewGuid())

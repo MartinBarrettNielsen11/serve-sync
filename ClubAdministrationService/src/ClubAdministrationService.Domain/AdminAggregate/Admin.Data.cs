@@ -4,7 +4,7 @@ namespace ClubAdministrationService.Domain.AdminAggregate;
 
 internal sealed partial class Admin
 {
-    public void SetSubscription(Subscription subscription)
+    internal void SetSubscription(Subscription subscription)
     {
         if (SubscriptionId is not null)
         {
