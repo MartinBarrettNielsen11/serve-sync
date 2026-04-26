@@ -2,4 +2,11 @@
     <PropertyGroup>
         <RootNamespace>SessionBookingService.Infrastructure</RootNamespace>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" />
+    </ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="SessionBookingService.WebApi" />
+    </ItemGroup>
 </Project>

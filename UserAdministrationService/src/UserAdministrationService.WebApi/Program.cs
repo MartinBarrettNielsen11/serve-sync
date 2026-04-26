@@ -1,3 +1,20 @@
-﻿WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+﻿using UserAdministrationService.Application;
+using UserAdministrationService.Infrastructure;
+using UserAdministrationService.Persistence;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseDefaultServiceProvider((_, options) =>
+    {
+        options.ValidateScopes = true;
+        options.ValidateOnBuild = true;
+    }
+);
+
+builder.Services
+    .AddServices()
+    .AddPersistence(builder.Configuration)
+    .AddInfrastructure(builder.Configuration);
+
 WebApplication app = builder.Build();
 await app.RunAsync();

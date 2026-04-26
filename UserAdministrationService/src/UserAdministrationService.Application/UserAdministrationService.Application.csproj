@@ -8,4 +8,12 @@
       <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="UserAdministrationService.WebApi" />
+    </ItemGroup>
 </Project>

@@ -31,5 +31,6 @@ internal sealed partial class Session
         MaxPlayerCapacity = maxPlayerCapacity;
     }
 
-    private Session() { } // For EF / serialization
+    // Getting some odd error here
+    // private Session() { } // For EF / serialization
 }

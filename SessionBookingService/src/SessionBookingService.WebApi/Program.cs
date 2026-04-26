@@ -1,3 +1,22 @@
-﻿WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+using SessionBookingService.Application;
+using SessionBookingService.Infrastructure;
+using SessionBookingService.Persistence;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseDefaultServiceProvider((_, options) =>
+    {
+        options.ValidateScopes = true;
+        options.ValidateOnBuild = true;
+    }
+);
+
+builder.Services
+    .AddServices()
+    .AddPersistence(builder.Configuration)
+    .AddInfrastructure(builder.Configuration);
+
 WebApplication app = builder.Build();
 await app.RunAsync();

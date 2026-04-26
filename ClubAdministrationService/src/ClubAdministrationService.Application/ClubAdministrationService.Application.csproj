@@ -8,4 +8,11 @@
     <ItemGroup>
       <Folder Include="Courts\Commands\CreateCourt\" />
     </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
+    </ItemGroup>
 </Project>
