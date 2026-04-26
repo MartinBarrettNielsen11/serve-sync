@@ -9,4 +9,6 @@ public abstract class RootAggregate : Entity
     protected RootAggregate()
     {
     }
+    
+    // maintain a list of domain events
 }

@@ -12,13 +12,13 @@ internal sealed partial class User
     private readonly string _passwordHash = null!;
     
     public User(string firstName,
-        string lastName,
-        string email,
-        string passwordHash,
-        Guid? adminId = null,
-        Guid? playerId = null,
-        Guid? instructorId = null,
-        Guid? id = null) : base(id ?? Guid.NewGuid())
+                string lastName,
+                string email,
+                string passwordHash,
+                Guid? adminId = null,
+                Guid? playerId = null,
+                Guid? instructorId = null,
+                Guid? id = null) : base(id ?? Guid.NewGuid())
     {
         FirstName = firstName;
         LastName = lastName;

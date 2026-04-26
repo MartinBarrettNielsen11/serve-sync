@@ -6,12 +6,7 @@ namespace UserAdministrationService.Domain.UserAggregate;
 
 internal sealed partial class User : RootAggregate
 {
-    public bool IsCorrectPasswordHash(string password, IPasswordHasher passwordHasher)
-    {
-        return passwordHasher.IsCorrectPassword(password, _passwordHash);
-    }
-
-    public Result<Guid> CreateAdminProfile()
+    internal Result<Guid> CreateAdminProfile()
     {
         if (AdminId is not null)
         {
@@ -24,7 +19,7 @@ internal sealed partial class User : RootAggregate
         return Result.Success<Guid>(AdminId.Value);
     }
 
-    public Result<Guid> CreatePlayerProfile()
+    internal Result<Guid> CreatePlayerProfile()
     {
         if (PlayerId is not null)
         {
@@ -37,7 +32,7 @@ internal sealed partial class User : RootAggregate
         return Result.Success<Guid>(PlayerId.Value);
     }
 
-    public Result<Guid> CreateTrainerProfile()
+    internal Result<Guid> CreateTrainerProfile()
     {
         if (InstructorId is not null)
         {
@@ -48,5 +43,10 @@ internal sealed partial class User : RootAggregate
         // Add InstructorCreatedEvent to domain events
         
         return Result.Success(InstructorId.Value);
+    }
+    
+    internal bool IsCorrectPasswordHash(string password, IPasswordHasher passwordHasher)
+    {
+        return passwordHasher.IsCorrectPassword(password, _passwordHash);
     }
 }
