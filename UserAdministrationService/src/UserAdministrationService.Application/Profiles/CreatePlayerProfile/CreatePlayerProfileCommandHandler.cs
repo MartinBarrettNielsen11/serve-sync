@@ -19,5 +19,6 @@ internal sealed class CreatePlayerProfileCommandHandler
             return Error.NotFound(description: "Instructor not found");
         }
         */
+        return null!;
     }
 }

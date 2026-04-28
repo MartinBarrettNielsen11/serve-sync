@@ -20,5 +20,6 @@ internal sealed class CreateInstructorProfileCommandHandler
             return Error.NotFound(description: "Instructor not found");
         }
         */
+        return null!;
     }
 }

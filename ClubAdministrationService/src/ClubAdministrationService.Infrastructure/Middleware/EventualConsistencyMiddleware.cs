@@ -1,9 +1,10 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using ClubAdministrationService.Persistence;
 
 namespace ClubAdministrationService.Infrastructure.Middleware;
 
-public class EventualConsistencyMiddleware(RequestDelegate next)
+internal class EventualConsistencyMiddleware(RequestDelegate next)
 {
     public const string DomainEventsKey = "DomainEventsKey";
     
@@ -14,7 +15,7 @@ public class EventualConsistencyMiddleware(RequestDelegate next)
         {
             try
             {
-                if (context.Items.TryGetValue(DomainEventsKey, out var value) && value is Queue<IDomainEvent> domainEvents)
+                if (context.Items.TryGetValue(DomainEventsKey, out var value))
                 {
                     // as long as one can extract elements from queue/stack like data structure then publish said events
                 }

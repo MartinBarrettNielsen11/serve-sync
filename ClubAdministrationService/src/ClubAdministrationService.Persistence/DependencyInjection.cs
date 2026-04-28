@@ -1,7 +1,7 @@
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ClubAdministrationService.Persistence;
+namespace ClubAdministration.Persistence2;
 
 internal static class DependencyInjection
 {

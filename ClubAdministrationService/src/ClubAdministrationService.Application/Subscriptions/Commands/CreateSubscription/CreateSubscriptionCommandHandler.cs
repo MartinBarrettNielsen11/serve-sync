@@ -15,6 +15,6 @@ internal sealed class CreateSubscriptionCommandHandler
 #pragma warning restore S1186
         CancellationToken cancellationToken)
     {
-        
+        return null!;
     }
 }

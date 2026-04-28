@@ -6,9 +6,6 @@
       <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Courts\Commands\CreateCourt\" />
-    </ItemGroup>
-    <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
     </ItemGroup>
 

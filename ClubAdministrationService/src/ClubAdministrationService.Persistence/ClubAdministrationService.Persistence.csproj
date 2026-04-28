@@ -1,24 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <RootNamespace>ClubAdministrationService.Persistence</RootNamespace>
+      <RootNamespace>ClubAdministrationService.Persistence</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="MediatR" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" />
+        <PackageReference Include="MediatR" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" />
     </ItemGroup>
-    
-    <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Application" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure" />
-    </ItemGroup>
-    
     <ItemGroup>
       <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
-      <ProjectReference Include="..\ClubAdministrationService.Infrastructure\ClubAdministrationService.Infrastructure.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure" />
     </ItemGroup>
 </Project>

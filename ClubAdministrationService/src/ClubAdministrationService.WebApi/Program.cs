@@ -1,3 +1,4 @@
+using ClubAdministration.Persistence2;
 using ClubAdministrationService.Application;
 using ClubAdministrationService.Infrastructure;
 using ClubAdministrationService.Persistence;

@@ -8,7 +8,9 @@ public abstract class RootAggregate : Entity
 
     protected RootAggregate() { }
     
+#pragma warning disable CA1051
     protected readonly ICollection<IDomainEvent> DomainEvents = [];
+#pragma warning restore CA1051
 
     public ICollection<IDomainEvent> PopDomainEvents()
     {

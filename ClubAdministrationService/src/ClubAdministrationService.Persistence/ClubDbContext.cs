@@ -1,9 +1,9 @@
 using System.Reflection;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using ClubAdministrationService.Domain.AdminAggregate;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Http;
 
 namespace ClubAdministrationService.Persistence;
 
@@ -16,7 +16,7 @@ internal sealed class ClubDbContext : DbContext
     public DbSet<Club> Clubs { get; set; } = null!;
 
     public ClubDbContext(DbContextOptions options, 
-                           IHttpContextAccessor httpContextAccessor) : base(options)
+        IHttpContextAccessor httpContextAccessor) : base(options)
     {
         _httpContextAccessor = httpContextAccessor;
     }
