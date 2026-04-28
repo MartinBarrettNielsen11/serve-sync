@@ -14,7 +14,6 @@ internal sealed class CreateClubCommandHandler
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 #pragma warning restore CA1822
     {
-        
         //var yo = new Club(command.Name, Guid.CreateVersion7(), 1, Guid.CreateVersion7());
         return null!;
     }

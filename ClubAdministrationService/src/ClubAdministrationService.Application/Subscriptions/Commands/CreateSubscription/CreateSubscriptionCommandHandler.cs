@@ -7,13 +7,14 @@ namespace ClubAdministrationService.Application.Subscriptions.Commands.CreateSub
 // ReSharper disable once UnusedType.Global
 internal sealed class CreateSubscriptionCommandHandler
 {
+    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result<Subscription>>))]
 #pragma warning disable S1186
 #pragma warning disable CA1822
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result<Subscription>>))]
-    internal async Task<Result<Subscription>> Handle(CreateSubscriptionCommand command,
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+    internal async Task<Result<Subscription>> Handle(CreateSubscriptionCommand command, CancellationToken cancellationToken)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
 #pragma warning restore CA1822
 #pragma warning restore S1186
-        CancellationToken cancellationToken)
     {
         return null!;
     }

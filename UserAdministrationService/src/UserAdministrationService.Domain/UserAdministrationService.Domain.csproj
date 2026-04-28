@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <InternalsVisibleTo Include="UserAdministrationService.Application" />
+        <InternalsVisibleTo Include="UserAdministrationService.Persistence" />
     </ItemGroup>
 
     <ItemGroup>

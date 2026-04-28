@@ -11,7 +11,7 @@ internal sealed partial class User
     
     private readonly string _passwordHash = null!;
     
-    public User(string firstName,
+    internal User(string firstName,
                 string lastName,
                 string email,
                 string passwordHash,
