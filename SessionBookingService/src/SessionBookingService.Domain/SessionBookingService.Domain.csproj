@@ -11,4 +11,8 @@
     <ItemGroup>
         <InternalsVisibleTo Include="SessionBookingService.UnitTests" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="MediatR" />
+    </ItemGroup>
 </Project>

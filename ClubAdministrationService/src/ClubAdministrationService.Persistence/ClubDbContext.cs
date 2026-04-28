@@ -15,7 +15,7 @@ internal sealed class ClubDbContext : DbContext
     public DbSet<Subscription> Subscriptions { get; set; } = null!;
     public DbSet<Club> Clubs { get; set; } = null!;
 
-    internal ClubDbContext(DbContextOptions options, 
+    public ClubDbContext(DbContextOptions options, 
                            IHttpContextAccessor httpContextAccessor) : base(options)
     {
         _httpContextAccessor = httpContextAccessor;

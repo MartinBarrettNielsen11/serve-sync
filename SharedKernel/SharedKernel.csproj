@@ -7,5 +7,9 @@
     <ItemGroup>
         <InternalsVisibleTo Include="..\ServeSync.Domain\ServeSync.Domain.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="MediatR" />
+    </ItemGroup>
 
 </Project>

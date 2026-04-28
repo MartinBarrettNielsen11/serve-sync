@@ -6,7 +6,7 @@ namespace ClubAdministrationService.Infrastructure.Middleware;
 public class EventualConsistencyMiddleware(RequestDelegate next)
 {
     public const string DomainEventsKey = "DomainEventsKey";
-
+    
     public async Task InvokeAsync(HttpContext context, IPublisher publisher, ClubDbContext dbContext)
     {
         var transaction = await dbContext.Database.BeginTransactionAsync();
@@ -14,7 +14,7 @@ public class EventualConsistencyMiddleware(RequestDelegate next)
         {
             try
             {
-                if (context.Items.TryGetValue(DomainEventsKey, out var value)) // && value is Queue<IDomainEvent> domainEvents)
+                if (context.Items.TryGetValue(DomainEventsKey, out var value) && value is Queue<IDomainEvent> domainEvents)
                 {
                     // as long as one can extract elements from queue/stack like data structure then publish said events
                 }
