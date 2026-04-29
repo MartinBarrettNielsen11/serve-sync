@@ -10,6 +10,8 @@
     
     <ItemGroup>
         <InternalsVisibleTo Include="SessionBookingService.UnitTests" />
+        <InternalsVisibleTo Include="SessionBookingService.Application" />
+        <InternalsVisibleTo Include="SessionBookingService.Persistence" />
     </ItemGroup>
     
     <ItemGroup>
