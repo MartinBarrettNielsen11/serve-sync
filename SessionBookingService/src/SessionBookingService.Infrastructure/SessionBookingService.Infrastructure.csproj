@@ -3,11 +3,17 @@
         <RootNamespace>SessionBookingService.Infrastructure</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+    <ItemGroup>
       <PackageReference Include="MediatR" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
       <PackageReference Include="Microsoft.Extensions.Configuration" />
     </ItemGroup>
     <ItemGroup>
         <InternalsVisibleTo Include="SessionBookingService.WebApi" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\SessionBookingService.Persistence\SessionBookingService.Persistence.csproj" />
     </ItemGroup>
 </Project>

@@ -1,6 +1,8 @@
+using ClubAdministrationService.Domain.EventualConsistency;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using ClubAdministrationService.Persistence;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ClubAdministrationService.Infrastructure.Middleware;
 
@@ -10,7 +12,7 @@ internal class EventualConsistencyMiddleware(RequestDelegate next)
     
     public async Task InvokeAsync(HttpContext context, IPublisher publisher, ClubDbContext dbContext)
     {
-        var transaction = await dbContext.Database.BeginTransactionAsync();
+        IDbContextTransaction transaction = await dbContext.Database.BeginTransactionAsync(context.RequestAborted);
         context.Response.OnCompleted(async () =>
         {
             try
@@ -20,7 +22,11 @@ internal class EventualConsistencyMiddleware(RequestDelegate next)
                     // as long as one can extract elements from queue/stack like data structure then publish said events
                 }
 
-                await transaction.CommitAsync();
+                await transaction.CommitAsync(context.RequestAborted);
+            }
+            catch (EventualConsistencyException)
+            {
+                // handle eventual consistency exception
             }
             finally
             {

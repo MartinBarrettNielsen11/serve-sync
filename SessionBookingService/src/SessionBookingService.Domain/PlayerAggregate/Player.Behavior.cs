@@ -14,8 +14,7 @@ internal sealed partial class Player : RootAggregate
             return Result.Failure<bool>(Error.Conflict(code: "", description: "Session already exists in player's schedule"));
         }
 
-        Result bookTimeSlotResult = _schedule.BookTimeSlot(session.Date,
-                                                           session.Time);
+        Result bookTimeSlotResult = _schedule.BookTimeSlot(session.Date, session.Time);
 
         if (bookTimeSlotResult.IsFailure)
         {
@@ -35,8 +34,7 @@ internal sealed partial class Player : RootAggregate
             return Result.Failure<bool>(Error.NotFound(code: "", description: "Session not found in player's schedule"));
         }
 
-        Result<bool> removeBookingResult = _schedule.RemoveBooking(session.Date, 
-                                                                   session.Time);
+        Result<bool> removeBookingResult = _schedule.RemoveBooking(session.Date, session.Time);
         if (removeBookingResult.IsFailure)
         {
             return Result.Failure<bool>(removeBookingResult.Error);

@@ -2,36 +2,37 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Storage;
+using SessionBookingService.Domain.EventualConsistency;
+using SessionBookingService.Persistence;
+using SharedKernel;
 
 namespace SessionBookingService.Infrastructure.Middlewares;
 
-public class EventualConsistencyMiddleware
+internal sealed class EventualConsistencyMiddleware(RequestDelegate next)
 {
-    public const string DomainEventsKey = "DomainEventsKey";
+    internal const string DomainEventsKey = "DomainEventsKey";
 
-    private readonly RequestDelegate _next;
-
-    public EventualConsistencyMiddleware(RequestDelegate next)
+    public async Task InvokeAsync(HttpContext context, IPublisher publisher, SessionBookingDbContext dbContext)
     {
-        _next = next;
-    }
-
-    public async Task InvokeAsync(HttpContext context, IPublisher publisher, SessionDbContext dbContext)
-    {
-        var transaction = await dbContext.Database.BeginTransactionAsync();
+        IDbContextTransaction transaction = await dbContext.Database.BeginTransactionAsync(context.RequestAborted);
         context.Response.OnCompleted(async () =>
         {
             try
             {
                 if (context.Items.TryGetValue(DomainEventsKey, out var value) && value is Queue<IDomainEvent> domainEvents)
                 {
-                    while (domainEvents.TryDequeue(out var nextEvent))
+                    while (domainEvents.TryDequeue(out IDomainEvent? nextEvent))
                     {
-                        await publisher.Publish(nextEvent);
+                        await publisher.Publish(nextEvent, context.RequestAborted);
                     }
                 }
 
-                await transaction.CommitAsync();
+                await transaction.CommitAsync(context.RequestAborted);
+            }
+            catch (EventualConsistencyException)
+            {
+                // handle eventual consistency exception
             }
             finally
             {
@@ -39,6 +40,6 @@ public class EventualConsistencyMiddleware
             }
         });
 
-        await _next(context);
+        await next(context);
     }
 }

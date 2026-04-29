@@ -12,6 +12,7 @@
 
     <ItemGroup>
         <InternalsVisibleTo Include="SessionBookingService.WebApi" />
+        <InternalsVisibleTo Include="SessionBookingService.Infrastructure" />
     </ItemGroup>
 
     <ItemGroup>

@@ -9,23 +9,14 @@ using SessionBookingService.Domain.SessionAggregate;
 
 namespace SessionBookingService.Persistence;
 
-internal class SessionDbContext : DbContext
+internal class SessionBookingDbContext(DbContextOptions options,
+                                       IHttpContextAccessor httpContextAccessor,
+                                       IPublisher publisher) : DbContext(options)
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly IPublisher _publisher;
-
     public DbSet<Court> Courts { get; set; } = null!;
     public DbSet<Session> Sessions { get; set; } = null!;
     public DbSet<Instructor> Instructors { get; set; } = null!;
     public DbSet<Player> Players { get; set; } = null!;
-
-    public SessionDbContext(DbContextOptions options, 
-                            IHttpContextAccessor httpContextAccessor,
-                            IPublisher publisher) : base(options)
-    {
-        _httpContextAccessor = httpContextAccessor;
-        _publisher = publisher;
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

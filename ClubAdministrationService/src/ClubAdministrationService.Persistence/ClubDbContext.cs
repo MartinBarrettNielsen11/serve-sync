@@ -9,22 +9,15 @@ using SharedKernel;
 
 namespace ClubAdministrationService.Persistence;
 
-internal sealed class ClubDbContext : DbContext
+internal sealed class ClubDbContext(
+    DbContextOptions options,
+    IHttpContextAccessor httpContextAccessor,
+    IPublisher publisher)
+    : DbContext(options)
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-    private readonly IPublisher _publisher;
-
     public DbSet<Admin> Admins { get; set; } = null!;
     public DbSet<Subscription> Subscriptions { get; set; } = null!;
     public DbSet<Club> Clubs { get; set; } = null!;
-
-    public ClubDbContext(DbContextOptions options, 
-                         IHttpContextAccessor httpContextAccessor,
-                         IPublisher publisher) : base(options)
-    {
-        _httpContextAccessor = httpContextAccessor;
-        _publisher = publisher;
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -37,7 +30,7 @@ internal sealed class ClubDbContext : DbContext
     {
         foreach (IDomainEvent domainEvent in domainEvents)
         {
-            await _publisher.Publish(domainEvent);
+            await publisher.Publish(domainEvent, httpContextAccessor.HttpContext!.RequestAborted);
         }
     }
 }

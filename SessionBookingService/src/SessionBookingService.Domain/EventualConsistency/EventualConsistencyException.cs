@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using SharedKernel.Results;
+
+namespace SessionBookingService.Domain.EventualConsistency;
+
+public sealed class EventualConsistencyException : Exception
+{
+    public Result? EventualConsistencyError { get; }
+    public ICollection<Result>? UnderlyingErrors { get; }
+
+    public EventualConsistencyException(Result eventualConsistencyError, 
+                                        ICollection<Result>? underlyingErrors = null) : base(message: eventualConsistencyError.Error.Description)
+    {
+        EventualConsistencyError = eventualConsistencyError;
+        UnderlyingErrors = underlyingErrors ?? [];
+    }
+
+    public EventualConsistencyException()
+    {
+    }
+
+    public EventualConsistencyException(string message) : base(message)
+    {
+    }
+
+    public EventualConsistencyException(string message, Exception innerException) : base(message, innerException)
+    {
+    }
+}
