@@ -16,5 +16,6 @@
     <ItemGroup>
         <InternalsVisibleTo Include="ClubAdministrationService.Application" />
         <InternalsVisibleTo Include="ClubAdministrationService.Persistence" />
+        <InternalsVisibleTo Include="ClubAdministrationService.UnitTests" />
     </ItemGroup>
 </Project>

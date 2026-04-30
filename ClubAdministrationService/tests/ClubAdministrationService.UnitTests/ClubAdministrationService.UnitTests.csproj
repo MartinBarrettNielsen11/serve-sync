@@ -17,9 +17,11 @@
 
     <ItemGroup>
       <Folder Include="Application\" />
-      <Folder Include="Domain\ClubAggregate\" />
       <Folder Include="Domain\SubscriptionAggregate\" />
-      <Folder Include="Domain\TestConstants\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     </ItemGroup>
 
 </Project>

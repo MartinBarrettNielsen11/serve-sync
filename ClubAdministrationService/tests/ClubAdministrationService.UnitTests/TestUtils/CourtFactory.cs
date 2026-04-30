@@ -1,0 +1,19 @@
+using ClubAdministrationService.Domain.CourtAggregate;
+using ClubAdministrationService.UnitTests.Domain.TestConstants;
+
+namespace ClubAdministrationService.UnitTests.TestUtils;
+
+internal static class CourtFactory
+{
+    internal static Court Create(
+        int maxDailySessions = CourtConstants.MaxDailySessions,
+        Guid? gymId = null,
+        Guid? id = null)
+    {
+        return new Court(
+            name: CourtConstants.Name,
+            maxDailySessions: maxDailySessions,
+            clubId: gymId ?? ClubConstants.Id,
+            id: id ?? CourtConstants.Id);
+    }
+}
