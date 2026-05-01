@@ -1,3 +1,4 @@
+using ClubAdministrationService.Domain.CourtAggregate;
 using SharedKernel;
 using SharedKernel.Results;
 
@@ -5,19 +6,19 @@ namespace ClubAdministrationService.Domain.ClubAggregate;
 
 internal sealed partial class Club : RootAggregate
 {
-    internal Result<bool> AddCourt(Guid courtId)
+    internal Result<bool> AddCourt(Court court)
     {
-        if (_courtIds.Contains(courtId))
+        if (_courtIds.Contains(court.Id))
         {
             return Result.Failure<bool>(ClubErrors.CourtAlreadyExistsInClub);
         }
                 
-        if (_maxCourtCapacity < _courtIds.Count)
+        if (_maxCourtCapacity <= _courtIds.Count)
         {
             return Result.Failure<bool>(ClubErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
         }
         
-        _courtIds.Add(courtId);
+        _courtIds.Add(court.Id);
         // send domain event
         
         return Result.Success<bool>(value: true);

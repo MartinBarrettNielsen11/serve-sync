@@ -1,7 +1,7 @@
 namespace ClubAdministrationService.UnitTests.Domain.TestConstants;
 
-public static class ClubConstants
+internal static class ClubConstants
 {
     public static readonly Guid Id = Guid.CreateVersion7();
-    public const string Name = "Gym";
+    public const string Name = "Club";
 }

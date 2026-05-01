@@ -17,9 +17,30 @@ public class ClubTests
         Court court2 = CourtFactory.Create(id: Guid.CreateVersion7());
 
         // Act
-        Result<bool> addRoom1Result =  club.AddCourt(court1.Id);
-        Result<bool> addRoom2Result = club.AddCourt(court2.Id);
+        Result<bool> addCourtResult1 =  club.AddCourt(court1);
+        Result<bool> addCourtResult2 = club.AddCourt(court2);
         
         // missing an assert here
+        Assert.False(addCourtResult1.IsFailure);
+        Assert.True(addCourtResult2.IsFailure);
+        Assert.Equal(addCourtResult2.Error, ClubErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
+    }
+    
+    
+    [Fact]
+    public void AddCourt_WhenSameCourtIsAddedTwice_ShouldFail()
+    {
+        // Arrange
+        Club club = ClubFactory.Create();
+        Court court1 = CourtFactory.Create();
+
+        // Act
+        Result<bool> addCourtResult1 =  club.AddCourt(court1);
+        Result<bool> addCourtResult2 = club.AddCourt(court1);
+        
+        // missing an assert here
+        Assert.False(addCourtResult1.IsFailure);
+        Assert.True(addCourtResult2.IsFailure);
+        Assert.Equal(addCourtResult2.Error, ClubErrors.CourtAlreadyExistsInClub);
     }
 }
