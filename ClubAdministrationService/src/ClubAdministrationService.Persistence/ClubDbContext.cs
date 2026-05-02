@@ -26,6 +26,17 @@ internal sealed class ClubDbContext(
         base.OnModelCreating(modelBuilder);
     }
     
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        List<IDomainEvent> domainEvents = ChangeTracker.Entries<RootAggregate>()
+            .Select(entry => entry.Entity.PopDomainEvents())
+            .SelectMany(x => x)
+            .ToList();
+
+        await PublishDomainEvents(domainEvents);
+        return await base.SaveChangesAsync(cancellationToken);
+    }
+    
     private async Task PublishDomainEvents(List<IDomainEvent> domainEvents)
     {
         foreach (IDomainEvent domainEvent in domainEvents)

@@ -1,6 +1,7 @@
 using System.Reflection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using SharedKernel;
 using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Persistence;
@@ -29,7 +30,14 @@ internal sealed class UserDbContext : DbContext
         {
             return await base.SaveChangesAsync(cancellationToken);
         }
+        
+        List<IDomainEvent> domainEvents = ChangeTracker.Entries<RootAggregate>()
+            .Select(entry => entry.Entity.PopDomainEvents())
+            .SelectMany(x => x)
+            .ToList();
+        
+        var result = await base.SaveChangesAsync(cancellationToken);
 
-        return 0;
+        return result;
     }
 }

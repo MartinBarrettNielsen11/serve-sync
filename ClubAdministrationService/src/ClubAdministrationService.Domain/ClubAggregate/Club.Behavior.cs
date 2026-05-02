@@ -1,3 +1,4 @@
+using ClubAdministrationService.Domain.ClubAggregate.Events;
 using ClubAdministrationService.Domain.CourtAggregate;
 using SharedKernel;
 using SharedKernel.Results;
@@ -19,7 +20,8 @@ internal sealed partial class Club : RootAggregate
         }
         
         _courtIds.Add(court.Id);
-        // send domain event
+
+        DomainEvents.Add(new CourtAddedEvent(this, court));
         
         return Result.Success<bool>(value: true);
     }
@@ -39,7 +41,7 @@ internal sealed partial class Club : RootAggregate
     internal void RemoveCourt(Guid courtId)
     {
         _courtIds.Remove(courtId);
-        // add event regarding removal of court
+        DomainEvents.Add(new CourtRemovedEvent(this, courtId));
     }
     
     internal bool HasInstructor(Guid instructorId) => _instructorIds.Contains(instructorId);
