@@ -1,4 +1,6 @@
 using ClubAdministrationService.Domain.ClubAggregate;
+using ClubAdministrationService.Domain.ClubAggregate.Events;
+using ClubAdministrationService.Domain.SubscriptionAggregate.Events;
 using SharedKernel;
 using SharedKernel.Results;
 
@@ -19,7 +21,8 @@ internal sealed partial class Subscription : RootAggregate
         }
         
         _clubIds.Add(club.Id);
-        // add some event here
+        
+        DomainEvents.Add(new ClubAddedToSubscriptionEvent(this, club));
         return Result.Success<bool>(value: true);
     }
 

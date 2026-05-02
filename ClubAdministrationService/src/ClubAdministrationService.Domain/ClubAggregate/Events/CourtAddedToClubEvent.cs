@@ -3,4 +3,4 @@ using SharedKernel;
 
 namespace ClubAdministrationService.Domain.ClubAggregate.Events;
 
-internal sealed record CourtAddedEvent(Club Club, Court court) : IDomainEvent;
+internal sealed record CourtAddedToClubEvent(Club Club, Court court) : IDomainEvent;
