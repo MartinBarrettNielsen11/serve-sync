@@ -9,7 +9,7 @@ internal sealed partial class Instructor : RootAggregate
 {
     private readonly List<Guid> _sessionIds = [];
     private readonly Schedule _schedule = Schedule.Empty();
-    private Guid UserId { get; }
+    internal Guid UserId { get; }
     
     internal Instructor(Guid userId, 
                         Schedule? sch = null,

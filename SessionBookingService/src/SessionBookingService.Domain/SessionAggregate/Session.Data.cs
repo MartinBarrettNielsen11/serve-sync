@@ -14,6 +14,9 @@ internal sealed partial class Session
     public TimeSlot Time { get; }
     public string Name { get; } = null!;
     public string Description { get; } = null!;
+    internal Guid CourtId { get; }
+    
+    public IReadOnlyList<SessionCategory> Categories => _categories;
 
     public Session(string name,
         string description,
