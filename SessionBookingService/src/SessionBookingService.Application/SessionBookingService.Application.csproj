@@ -9,9 +9,11 @@
 
     <ItemGroup>
         <InternalsVisibleTo Include="SessionBookingService.WebApi" />
+        <InternalsVisibleTo Include="SessionBookingService.Persistence" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
+      <ProjectReference Include="..\SessionBookingService.Domain\SessionBookingService.Domain.csproj" />
     </ItemGroup>
 </Project>

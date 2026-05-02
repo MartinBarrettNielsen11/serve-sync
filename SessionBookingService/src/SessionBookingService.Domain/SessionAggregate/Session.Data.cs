@@ -18,7 +18,7 @@ internal sealed partial class Session
     
     public IReadOnlyList<SessionCategory> Categories => _categories;
 
-    public Session(string name,
+    internal Session(string name,
         string description,
         int maxPlayerCapacity,
         Guid instructorId,
