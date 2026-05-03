@@ -17,5 +17,6 @@
     
     <ItemGroup>
       <PackageReference Include="MediatR" />
+      <PackageReference Include="Ardalis.SmartEnum" />
     </ItemGroup>
 </Project>
