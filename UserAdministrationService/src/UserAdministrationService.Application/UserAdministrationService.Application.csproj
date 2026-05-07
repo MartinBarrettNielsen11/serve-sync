@@ -15,5 +15,6 @@
 
     <ItemGroup>
         <InternalsVisibleTo Include="UserAdministrationService.WebApi" />
+        <InternalsVisibleTo Include="UserAdministrationService.Persistence" />
     </ItemGroup>
 </Project>

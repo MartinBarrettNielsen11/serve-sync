@@ -1,19 +1,22 @@
 using System.Runtime.CompilerServices;
 using SharedKernel.Results;
+using UserAdministrationService.Application.Interfaces;
+using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Application.Login;
 
-internal sealed class RegisterCommandHandler
+internal sealed class RegisterCommandHandler(IUsersRepository usersRepository)
 {
     [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-#pragma warning disable CA1822
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     internal async ValueTask<Result> Handle(RegisterCommand command, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning restore CA1822
+
     {
         // check of user exists
-        // create new instance of User entity
+        
+        User user = new(command.FirstName, command.LastName, command.Email, passwordHash: "update this");
+
+        await usersRepository.AddUserAsync(user);
+        
         // return some authentication dto including a token
         return null!;
     }
