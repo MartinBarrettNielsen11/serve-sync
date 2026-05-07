@@ -1,26 +1,28 @@
 using System.Runtime.CompilerServices;
 using SharedKernel.Results;
+using UserAdministrationService.Application.Interfaces;
 using UserAdministrationService.Application.Profiles.CreateTrainerProfile;
+using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Application.Profiles.CreateInstructorProfile;
 
-internal sealed class CreateInstructorProfileCommandHandler
+internal sealed class CreateInstructorProfileCommandHandler(IUsersRepository usersRepository)
 {
     [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-#pragma warning disable CA1822
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     internal async ValueTask<Result> Handle(CreateInstructorProfileCommand command, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning restore CA1822
     {
 
-        // retrieve user via repo an use Instructor extension method for the entity
-        /*
-        if (!club.HasInstructor(command.InstructorId))
+        User? user = await usersRepository.GetByIdAsync(command.UserId);
+
+        if (user is null)
         {
-            return Error.NotFound(description: "Instructor not found");
+            return Result.Failure(Error.NotFound(code: "UserNotFound", description: "User not found"));
         }
-        */
-        return null!;
+        
+        Result<Guid> createInstructorProfileResult = user.CreateInstructorProfile();
+
+        await usersRepository.UpdateAsync(user);
+
+        return createInstructorProfileResult;
     }
 }

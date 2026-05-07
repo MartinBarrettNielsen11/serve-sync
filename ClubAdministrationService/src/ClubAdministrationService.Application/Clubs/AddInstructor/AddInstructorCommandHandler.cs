@@ -1,26 +1,37 @@
 using System.Runtime.CompilerServices;
+using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
+using ClubAdministrationService.Domain.ClubAggregate;
+using ClubAdministrationService.Domain.SubscriptionAggregate;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.AddInstructor;
 
 // ReSharper disable once UnusedType.Global
-internal sealed class AddInstructorCommandHandler
+internal sealed class AddInstructorCommandHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
 {
     [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-#pragma warning disable CA1822
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-    internal async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning restore CA1822
+    internal async ValueTask<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
     {
+        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId);
 
-        /*
-        if (!club.HasInstructor(command.InstructorId))
+        if (subscription is null)
         {
-            return Error.NotFound(description: "Instructor not found");
+            return Result.Failure(Error.NotFound(code: "SubscriptionNotFound", description: "Subscription not found"));
         }
-        */
-        return null!;
+        
+        if (!subscription.HasGym(command.ClubId))
+        {
+            return Result.Failure(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
+        }
+
+        Club? club = await clubsRepository.GetByIdAsync(command.ClubId);
+        
+        if (club is null)
+        {
+            return Result.Failure(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
+        }
+
+        return Result.Success<bool>(value: true);
     }
 }

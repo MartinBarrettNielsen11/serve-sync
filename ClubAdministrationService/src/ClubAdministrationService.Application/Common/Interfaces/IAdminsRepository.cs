@@ -1,8 +1,10 @@
+using ClubAdministrationService.Domain.AdminAggregate;
+
 namespace ClubAdministrationService.Application.Common.Interfaces;
 
-#pragma warning disable CA1040
 internal interface IAdminsRepository
-#pragma warning restore CA1040
 {
-    
+    Task AddAdminAsync(Admin player);
+    Task<Admin?> GetByIdAsync(Guid adminId);
+    Task UpdateAsync(Admin admin);
 }

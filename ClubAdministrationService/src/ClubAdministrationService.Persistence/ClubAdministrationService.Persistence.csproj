@@ -11,6 +11,7 @@
         <PackageReference Include="Microsoft.Extensions.Configuration" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
       <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     </ItemGroup>
     <ItemGroup>

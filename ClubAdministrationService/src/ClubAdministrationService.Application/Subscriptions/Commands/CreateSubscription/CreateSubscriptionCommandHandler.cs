@@ -1,11 +1,12 @@
 using System.Runtime.CompilerServices;
+using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Subscriptions.Commands.CreateSubscription;
 
 // ReSharper disable once UnusedType.Global
-internal sealed class CreateSubscriptionCommandHandler
+internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsRepository)
 {
     [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result<Subscription>>))]
 #pragma warning disable S1186

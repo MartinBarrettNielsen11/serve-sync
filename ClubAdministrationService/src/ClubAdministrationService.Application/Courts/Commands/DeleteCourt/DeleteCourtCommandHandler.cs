@@ -1,26 +1,32 @@
 using System.Runtime.CompilerServices;
+using ClubAdministrationService.Application.Common.Interfaces;
+using ClubAdministrationService.Domain.ClubAggregate;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
 
 // ReSharper disable once UnusedType.Global
-internal sealed class DeleteCourtCommandHandler
+internal sealed class DeleteCourtCommandHandler(IClubsRepository clubsRepository)
 {
     [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning disable CA1822
     internal async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
-#pragma warning restore CA1822
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
     {
-        
+        Club? club = await clubsRepository.GetByIdAsync(command.ClubId);
 
-        /*
-        if (!club.HasCourt(command.Court))
+        if (club is null)
         {
-            return Error.NotFound(description: "Room not found");
+            return Result.Failure(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
         }
-        */
-        return null!;
+
+        if (!club.HasCourt(command.CourtId))
+        {
+            return Result.Failure(Error.NotFound(code: "CourtNotFound", description: "Court not found"));
+        }
+        
+        club.RemoveCourt(command.CourtId);
+        
+        await clubsRepository.UpdateAsync(club);
+
+        return Result.Success<bool>(value: true);
     }
 }

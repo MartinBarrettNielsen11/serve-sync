@@ -1,8 +1,11 @@
+using ClubAdministrationService.Domain.ClubAggregate;
+
 namespace ClubAdministrationService.Application.Common.Interfaces;
 
-#pragma warning disable CA1040
 internal interface IClubsRepository
-#pragma warning restore CA1040
 {
-    
+    Task AddClubAsync(Club club);
+    Task<Club?> GetByIdAsync(Guid id);
+    Task<bool> ExistsAsync(Guid id);
+    Task UpdateAsync(Club club);
 }

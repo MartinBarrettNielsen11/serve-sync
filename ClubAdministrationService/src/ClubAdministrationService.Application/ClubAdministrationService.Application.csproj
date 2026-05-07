@@ -11,5 +11,6 @@
 
     <ItemGroup>
         <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Persistence" />
     </ItemGroup>
 </Project>

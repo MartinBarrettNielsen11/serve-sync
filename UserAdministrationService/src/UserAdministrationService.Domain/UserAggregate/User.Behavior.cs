@@ -32,7 +32,7 @@ internal sealed partial class User : RootAggregate
         return Result.Success<Guid>(PlayerId.Value);
     }
 
-    internal Result<Guid> CreateTrainerProfile()
+    internal Result<Guid> CreateInstructorProfile()
     {
         if (InstructorId is not null)
         {
