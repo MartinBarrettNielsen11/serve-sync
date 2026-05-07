@@ -16,12 +16,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Application\" />
-      <Folder Include="Domain\SubscriptionAggregate\" />
+      <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
+      <Folder Include="Application\" />
     </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@ internal sealed partial class Subscription : RootAggregate
             return Result.Failure<bool>(Error.Failure(code: "", description: "Gym already exists"));
         }
 
-        if (_maxCourtsAllowed < _clubIds.Count)
+        if (_maxCourtsAllowed <= _clubIds.Count)
         {
             return Result.Failure<bool>(SubscriptionErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
         }
@@ -26,7 +26,7 @@ internal sealed partial class Subscription : RootAggregate
         return Result.Success<bool>(value: true);
     }
 
-    internal int GetMaxClubs() => SubscriptionType.Name switch
+    internal int GetMaxClubsAllowed() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 1,
         nameof(SubscriptionType.Starter) => 1,
