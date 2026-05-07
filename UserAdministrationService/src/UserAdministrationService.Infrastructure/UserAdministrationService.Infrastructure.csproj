@@ -3,11 +3,22 @@
         <RootNamespace>UserAdministrationService.Infrastructure</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+    <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
       <PackageReference Include="Microsoft.Extensions.Configuration" />
     </ItemGroup>
 
     <ItemGroup>
         <InternalsVisibleTo Include="UserAdministrationService.WebApi" />
+        <InternalsVisibleTo Include="UserAdministrationService.Domain" />
+        <InternalsVisibleTo Include="UserAdministrationService.Persistence" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
+      <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
+      <ProjectReference Include="..\UserAdministrationService.Persistence\UserAdministrationService.Persistence.csproj" />
     </ItemGroup>
 </Project>

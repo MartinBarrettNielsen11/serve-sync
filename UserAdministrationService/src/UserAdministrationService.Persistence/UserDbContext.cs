@@ -6,16 +6,9 @@ using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Persistence;
 
-internal sealed class UserDbContext : DbContext
+internal sealed class UserDbContext(DbContextOptions options, IHttpContextAccessor httpContextAccessor) 
+    : DbContext(options)
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
-
-    public UserDbContext(DbContextOptions options, IHttpContextAccessor httpContextAccessor)
-        : base(options)
-    {
-        _httpContextAccessor = httpContextAccessor;
-    }
-    
     public DbSet<User> Users { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,9 +17,9 @@ internal sealed class UserDbContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-    public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        if (_httpContextAccessor.HttpContext is null)
+        if (httpContextAccessor.HttpContext is null)
         {
             return await base.SaveChangesAsync(cancellationToken);
         }
@@ -37,6 +30,22 @@ internal sealed class UserDbContext : DbContext
             .ToList();
         
         var result = await base.SaveChangesAsync(cancellationToken);
+        
+        Queue<IDomainEvent> domainEventsQueue;
+        IDictionary<object, object?> items = httpContextAccessor.HttpContext!.Items;
+
+        if (items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
+            value is Queue<IDomainEvent> existingDomainEvents)
+        {
+            domainEventsQueue = existingDomainEvents;
+        }
+        else
+        {
+            domainEventsQueue = new Queue<IDomainEvent>();
+        }
+
+        domainEvents.ForEach(domainEventsQueue.Enqueue);
+        httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
 
         return result;
     }

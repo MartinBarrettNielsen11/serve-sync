@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using SessionBookingService.Domain.SessionAggregate;
 using SharedKernel;
 
 namespace SessionBookingService.UnitTests.Domain.Constants;
@@ -12,4 +14,5 @@ internal static class SessionConstants
         TimeOnly.MinValue.AddHours(8),
         TimeOnly.MinValue.AddHours(9));
     public const int MaxPlayerCapacity = 5;
+    public static readonly List<SessionCategory> Categories = [];
 }
