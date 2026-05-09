@@ -9,7 +9,7 @@ internal sealed partial class Admin : RootAggregate
 
     internal Admin(
         Guid userId,
-        Guid? subscriptionId,
+        Guid? subscriptionId = null,
         Guid? id = null)
         : base(id ?? Guid.CreateVersion7())
     {

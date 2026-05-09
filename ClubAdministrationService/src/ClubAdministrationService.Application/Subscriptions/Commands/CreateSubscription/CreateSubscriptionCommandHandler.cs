@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using ClubAdministrationService.Application.Common.Interfaces;
+using ClubAdministrationService.Domain.AdminAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
 using SharedKernel.Results;
 
@@ -8,15 +9,26 @@ namespace ClubAdministrationService.Application.Subscriptions.Commands.CreateSub
 // ReSharper disable once UnusedType.Global
 internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsRepository)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result<Subscription>>))]
-#pragma warning disable S1186
-#pragma warning disable CA1822
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     internal async Task<Result<Subscription>> Handle(CreateSubscriptionCommand command, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning restore CA1822
-#pragma warning restore S1186
     {
-        return null!;
+        Admin? admin = await adminsRepository.GetByIdAsync(adminId: command.AdminId);
+
+        if (admin is null)
+        {
+            return Result.Failure<Subscription>(Error.NotFound(code: "AdminNotFound", description: "Admin not found"));
+        }
+
+        if (admin.SubscriptionId is not null)
+        {
+            return Result.Failure<Subscription>(Error.Conflict(code: "AdminAlreadyHasActiveSubscription",
+                                                               description: "Admin already has active subscription"));
+        }
+        
+        Subscription subscription = new(subscriptionType: command.SubscriptionType, id: command.AdminId);
+        admin.SetSubscription(subscription);
+        
+        await adminsRepository.UpdateAsync(admin);
+
+        return subscription;
     }
 }

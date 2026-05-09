@@ -27,4 +27,9 @@ internal sealed class UsersRepository(UserDbContext dbContext) : IUsersRepositor
         dbContext.Update(user);
         await dbContext.SaveChangesAsync();
     }
+
+    public async Task<bool> ExistsByEmailAsync(string email)
+    {
+        return await dbContext.Users.AnyAsync(user => user.Email == email);
+    }
 }

@@ -8,4 +8,5 @@ internal interface IUsersRepository
     Task<User?> GetByEmailAsync(string email);
     Task<User?> GetByIdAsync(Guid userId);
     Task UpdateAsync(User user);
+    Task<bool> ExistsByEmailAsync(string email);
 }

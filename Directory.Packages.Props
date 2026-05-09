@@ -5,6 +5,7 @@
   <ItemGroup>
     <!-- EF Core -->
     <PackageVersion Include="Ardalis.SmartEnum" Version="8.2.0" />
+    <PackageVersion Include="BCrypt.Net-Next" Version="4.1.0" />
     <PackageVersion Include="IncrementalSourceGenerator.BuilderPattern" Version="1.0.2" />
     <PackageVersion Include="MediatR" Version="14.1.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />

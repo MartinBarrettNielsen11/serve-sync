@@ -8,7 +8,6 @@ namespace ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
 // ReSharper disable once UnusedType.Global
 internal sealed class DeleteCourtCommandHandler(IClubsRepository clubsRepository)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
     internal async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
     {
         Club? club = await clubsRepository.GetByIdAsync(command.ClubId);

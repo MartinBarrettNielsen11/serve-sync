@@ -1,3 +1,3 @@
 namespace SharedKernel.IntegrationEvents.UserManagement;
 
-internal sealed record AdminProfileCreatedIntegrationEvent(Guid UserId, Guid AdminId) : IIntegrationEvent;
+public sealed record AdminProfileCreatedIntegrationEvent(Guid UserId, Guid AdminId) : IIntegrationEvent;

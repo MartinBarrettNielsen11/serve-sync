@@ -4,11 +4,6 @@
         <RootNamespace>SharedKernel</RootNamespace>
     </PropertyGroup>
     
-    <!-- add somethign here to link e.g. AdminProfileCreatedEvent together with its assocaited handler -->
-    <ItemGroup>
-        <InternalsVisibleTo addsomethingheremartin #todo
-    </ItemGroup>
-    
     <ItemGroup>
       <PackageReference Include="MediatR" />
     </ItemGroup>
