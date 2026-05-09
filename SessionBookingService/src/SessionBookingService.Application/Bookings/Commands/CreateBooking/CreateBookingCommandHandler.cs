@@ -1,20 +1,38 @@
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using SessionBookingService.Application.Common;
+using SessionBookingService.Domain.PlayerAggregate;
+using SessionBookingService.Domain.SessionAggregate;
 using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Bookings.Commands.CreateBooking;
 
-internal sealed class CreateBookingCommandHandler
+internal sealed class CreateBookingCommandHandler(ISessionsRepository sessionsRepository, IPlayersRepository playersRepository)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-#pragma warning disable CA1822
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
     public async ValueTask<Result> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning restore CA1822
     {
-        return null!;
+        Session? session = await sessionsRepository.GetByIdAsync(command.SessionId);
+
+        if (session is null)
+        {
+            return Result.Failure(Error.NotFound(code: "SessionNotFound", description: "Session not found"));
+        }
+        
+        if (session.HasBookingForPlayer(command.PlayerId))
+        {
+            return Result.Failure(Error.Conflict(code: "PlayerAlreadyHasBooking",
+                description: "Player already has booking"));
+        }
+
+        Player? player = await playersRepository.GetByIdAsync(command.PlayerId);
+
+        if (player is null)
+        {
+            return Result.Failure(Error.NotFound(code: "PlayerNotFound", description: "Player not found"));
+        }
+        
+        // .. missing some stuff here
     }
 
 }

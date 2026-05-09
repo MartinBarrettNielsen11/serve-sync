@@ -25,7 +25,7 @@ internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, P
             return hashPasswordResult.Errors;
         }
         
-        User user = new(command.FirstName, command.LastName, command.Email, passwordHash: "update this");
+        User user = new(command.FirstName, command.LastName, command.Email, passwordHash: hashPasswordResult);
 
         await usersRepository.AddUserAsync(user);
         

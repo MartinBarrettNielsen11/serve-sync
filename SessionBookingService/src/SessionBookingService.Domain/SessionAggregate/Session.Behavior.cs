@@ -69,4 +69,9 @@ internal sealed partial class Session : RootAggregate
 
         return exceedsLimit;
     }
+    
+    public bool HasBookingForPlayer(Guid playerId)
+    {
+        return _bookings.Exists(b => b.PlayerId == playerId);
+    }
 }

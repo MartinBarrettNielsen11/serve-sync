@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.PlayerAggregate;
 
@@ -5,6 +6,11 @@ namespace SessionBookingService.Persistence.Repositories;
 
 internal sealed class PlayersRepository(SessionBookingDbContext dbContext) : IPlayersRepository
 {
+    public async Task<Player?> GetByIdAsync(Guid id)
+    {
+        return await dbContext.Players.FirstOrDefaultAsync(p => p.Id == id);
+    }
+    
     public async Task AddPlayerAsync(Player player)
     {
         await dbContext.Players.AddAsync(player);
