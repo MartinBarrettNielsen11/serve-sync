@@ -10,7 +10,6 @@ namespace ClubAdministrationService.Application.Clubs.AddInstructor;
 // ReSharper disable once UnusedType.Global
 internal sealed class AddInstructorCommandHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
     internal async ValueTask<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
     {
         Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId);

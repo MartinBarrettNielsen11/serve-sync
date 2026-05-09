@@ -1,19 +1,44 @@
 using System.Runtime.CompilerServices;
+using ClubAdministrationService.Application.Common.Interfaces;
+using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.CourtAggregate;
+using ClubAdministrationService.Domain.SubscriptionAggregate;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.CreateCourt;
 
-internal sealed class CreateCourtCommandHandler
+internal sealed class CreateCourtCommandHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning disable CA1822
     internal async ValueTask<Result<Court>> Handle(CreateCourtCommand command, CancellationToken cancellationToken)
-#pragma warning restore CA1822
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
     {
-        // ..
-        return null!;
+        Club? club = await clubsRepository.GetByIdAsync(command.ClubId);
+
+        if (club is null)
+        {
+            return Result.Failure<Court>(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
+        }
+
+        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(club.SubscriptionId);
+
+        if (subscription is null)
+        {
+            return Result.Failure<Court>(Error.NotFound(code: "SubscriptionNotFound",
+                                                        description: "Subscription not found"));
+        }
+
+        Court court = new(name: command.CourtName, 
+                          clubId: club.Id,
+                          maxDailySessions: subscription.GetMaxDailySessionsAllowed());
+
+        Result<bool> addClubResult = club.AddCourt(court);
+
+        if (addClubResult.IsFailure)
+        {
+            return Result.Failure<Court>(addClubResult.Error);
+        }
+
+        await clubsRepository.UpdateAsync(club);
+
+        return court;
     }
 }
