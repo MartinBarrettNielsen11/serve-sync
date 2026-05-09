@@ -15,6 +15,7 @@
         <InternalsVisibleTo Include="UserAdministrationService.WebApi" />
         <InternalsVisibleTo Include="UserAdministrationService.Domain" />
         <InternalsVisibleTo Include="UserAdministrationService.Persistence" />
+        <InternalsVisibleTo Include="UserAdministrationService.Application" />
     </ItemGroup>
 
     <ItemGroup>

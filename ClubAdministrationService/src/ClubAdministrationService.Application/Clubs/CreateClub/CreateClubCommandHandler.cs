@@ -22,7 +22,7 @@ internal sealed class CreateClubCommandHandler(ISubscriptionsRepository subscrip
                         maxCourtCapacity: subscription.GetMaxCourtsAllowed(),
                         subscriptionId: subscription.Id);
 
-        Result<bool> addClubResult = subscription.AddClub(gym);
+        Result<bool> addClubResult = subscription.AddClub(club);
 
         if (addClubResult.IsFailure)
         {

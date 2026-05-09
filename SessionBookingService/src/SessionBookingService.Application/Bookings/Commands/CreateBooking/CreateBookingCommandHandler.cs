@@ -32,7 +32,22 @@ internal sealed class CreateBookingCommandHandler(ISessionsRepository sessionsRe
             return Result.Failure(Error.NotFound(code: "PlayerNotFound", description: "Player not found"));
         }
         
-        // .. missing some stuff here
+        if (player.HasBookingForSession(session.Id))
+        {
+            return Result.Failure(Error.Unexpected(code: "PlayerNotExpectedToHaveReservationToSession",
+                                                   description: "Player not expected to have reservation to session"));
+        }
+        
+        Result<bool> bookSpotResult = session.BookSpot(player);
+
+        if (bookSpotResult.IsFailure)
+        {
+            return Result.Failure(bookSpotResult.Error);
+        }
+
+        await sessionsRepository.UpdateAsync(session);
+
+        return Result.Success(session);
     }
 
 }

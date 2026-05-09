@@ -3,7 +3,7 @@ using SharedKernel.Results;
 
 namespace UserAdministrationService.Infrastructure.Authentication;
 
-internal partial class PasswordHasher
+internal static partial class PasswordHasher
 {
     private static readonly Regex PasswordRegex = StrongPasswordRegex();
     

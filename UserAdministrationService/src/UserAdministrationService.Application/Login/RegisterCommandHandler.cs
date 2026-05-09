@@ -1,11 +1,12 @@
 using System.Runtime.CompilerServices;
 using SharedKernel.Results;
 using UserAdministrationService.Application.Interfaces;
+using UserAdministrationService.Domain.Interfaces;
 using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Application.Login;
 
-internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, PasswordHasher passwordHasher)
+internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, IPasswordHasher passwordHasher)
 {
     [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
     internal async ValueTask<Result> Handle(RegisterCommand command, CancellationToken cancellationToken)
@@ -18,14 +19,17 @@ internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, P
             return Result.Failure(Error.Conflict(code: "UserAlreadyExists", description: "User already exists"));
         }
         
-        var hashPasswordResult = passwordHasher.HashPassword(command.Password);
+        Result<string> hashPasswordResult = passwordHasher.HashPassword(command.Password);
 
-        if (hashPasswordResult.IsError)
+        if (hashPasswordResult.IsFailure)
         {
-            return hashPasswordResult.Errors;
+            return Result.Failure(hashPasswordResult.Error);
         }
         
-        User user = new(command.FirstName, command.LastName, command.Email, passwordHash: hashPasswordResult);
+        User user = new(firstName: command.FirstName, 
+                        lastName: command.LastName, 
+                        email: command.Email, 
+                        passwordHash: hashPasswordResult.Value);
 
         await usersRepository.AddUserAsync(user);
         

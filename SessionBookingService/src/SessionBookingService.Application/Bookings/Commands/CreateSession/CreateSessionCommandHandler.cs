@@ -1,28 +1,44 @@
+using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.CourtsAggregate;
+using SessionBookingService.Domain.InstructorAggregate;
+using SessionBookingService.Domain.SessionAggregate;
+using SharedKernel;
 using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Bookings.Commands.CreateSession;
 
-internal sealed class CreateSessionCommandHandler(ICourtsRepository courtsRepository)
+internal sealed class CreateSessionCommandHandler(ICourtsRepository courtsRepository, IInstructorsRepository instructorsRepository)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-#pragma warning disable CA1822
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-    internal async ValueTask<Result> Handle(CreateSessionCommand command, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning restore CA1822
+    internal async ValueTask<Result<Session>> Handle(CreateSessionCommand command, CancellationToken cancellationToken)
     {
         Court? court = await courtsRepository.GetByIdAsync(command.CourtId);
 
         if (court is null)
         {
-            return Result.Failure(Error.NotFound(code: "wut", description: "Court not found"));
+            return Result.Failure<Session>(Error.NotFound(code: "CourtNotFound", description: "Court not found"));
         }
         
-        return null!;
+        Instructor? instructor = await instructorsRepository.GetByIdAsync(command.InstructorId);
+        
+        if (instructor is null)
+        {
+            return Result.Failure<Session>(Error.NotFound(code: "InstructorNotFound", description: "Instructor not found"));
+        }
+        
+        // insert some time slot entry here,
+        Session session = new(name: command.Name,
+                              description: command.Description,
+                              maxPlayerCapacity: command.MaxPlayerCapacity,
+                              courtId: command.CourtId,
+                              instructorId: command.InstructorId,
+                              date: DateOnly.FromDateTime(command.StartDateTime),
+                              time: new TimeSlot(new TimeOnly(1), new TimeOnly(2)),
+                              categories: command.Categories);
+
+        return session;
     }
 }

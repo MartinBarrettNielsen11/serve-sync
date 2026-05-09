@@ -8,10 +8,8 @@ namespace UserAdministrationService.Application.Profiles.CreateInstructorProfile
 
 internal sealed class CreateInstructorProfileCommandHandler(IUsersRepository usersRepository)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
     internal async ValueTask<Result> Handle(CreateInstructorProfileCommand command, CancellationToken cancellationToken)
     {
-
         User? user = await usersRepository.GetByIdAsync(command.UserId);
 
         if (user is null)
