@@ -33,6 +33,12 @@ internal class SessionBookingDbContext(DbContextOptions options,
             .SelectMany(x => x)
             .ToList();
 
+        if (IsUserWaitingOnline())
+        {
+            AddDomainEventsToOfflineProcessingQueue(domainEvents);
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+        
         await PublishDomainEvents(domainEvents);
         return await base.SaveChangesAsync(cancellationToken);
     }
@@ -43,5 +49,19 @@ internal class SessionBookingDbContext(DbContextOptions options,
         {
             await publisher.Publish(domainEvent);
         }
+    }
+    
+    private bool IsUserWaitingOnline() => httpContextAccessor.HttpContext is not null;
+    
+    // you have a circular dependency here. Handle it in the following way: https://chatgpt.com/share/6a060551-37d0-83eb-97c8-c380ca2843eb (also view second reply regarding avoiding the chagneTracker in future)
+    private void AddDomainEventsToOfflineProcessingQueue(List<IDomainEvent> domainEvents)
+    {
+        Queue<IDomainEvent> domainEventsQueue = httpContextAccessor.HttpContext!.Items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
+                                                value is Queue<IDomainEvent> existingDomainEvents
+            ? existingDomainEvents
+            : new Queue<IDomainEvent>();
+
+        domainEvents.ForEach(domainEventsQueue.Enqueue);
+        httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
     }
 }
