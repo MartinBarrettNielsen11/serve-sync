@@ -4,7 +4,7 @@ using SessionBookingService.Domain.SessionAggregate;
 
 namespace SessionBookingService.Persistence.Configurations;
 
-internal class SessionConfiguration : IEntityTypeConfiguration<Session>
+internal sealed class SessionConfiguration : IEntityTypeConfiguration<Session>
 {
     public void Configure(EntityTypeBuilder<Session> builder)
     {

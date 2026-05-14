@@ -5,7 +5,7 @@ using SharedKernel;
 
 namespace SessionBookingService.Persistence.Configurations;
 
-internal class InstructorConfiguration : IEntityTypeConfiguration<Instructor>
+internal sealed class InstructorConfiguration : IEntityTypeConfiguration<Instructor>
 {
     public void Configure(EntityTypeBuilder<Instructor> builder)
     {
