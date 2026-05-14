@@ -26,7 +26,7 @@ internal sealed partial class Club : RootAggregate
         return Result.Success<bool>(value: true);
     }
     
-    internal Result<bool> AddTrainer(Guid trainerId)
+    internal Result<bool> AddInstructor(Guid trainerId)
     {
         if (_instructorIds.Contains(trainerId))
         {

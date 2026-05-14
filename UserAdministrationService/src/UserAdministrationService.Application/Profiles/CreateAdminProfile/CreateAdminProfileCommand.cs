@@ -1,3 +1,3 @@
 namespace UserAdministrationService.Application.Profiles.CreateAdminProfile;
 
-internal sealed record CreateAdminProfileCommand(Guid userId);
+internal sealed record CreateAdminProfileCommand(Guid UserId);

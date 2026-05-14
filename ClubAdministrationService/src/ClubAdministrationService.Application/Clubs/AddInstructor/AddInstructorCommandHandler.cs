@@ -31,6 +31,15 @@ internal sealed class AddInstructorCommandHandler(IClubsRepository clubsReposito
             return Result.Failure(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
         }
 
+        Result<bool> addInstructorResult = club.AddInstructor(command.InstructorId);
+
+        if (addInstructorResult.IsFailure)
+        {
+            return Result.Failure(addInstructorResult.Error);
+        }
+        
+        await clubsRepository.UpdateAsync(club);
+
         return Result.Success<bool>(value: true);
     }
 }

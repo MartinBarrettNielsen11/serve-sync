@@ -1,24 +1,25 @@
 using System.Runtime.CompilerServices;
 using SharedKernel.Results;
+using UserAdministrationService.Application.Interfaces;
+using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Application.Profiles.CreateAdminProfile;
 
-internal sealed class CreateAdminProfileCommandHandler
+internal sealed class CreateAdminProfileCommandHandler(IUsersRepository usersRepository)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
-#pragma warning disable CA1822
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-    internal async ValueTask<Result> Handle(CreateAdminProfileCommand command, CancellationToken cancellationToken)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-#pragma warning restore CA1822
+    internal async ValueTask<Result<Guid>> Handle(CreateAdminProfileCommand command, CancellationToken cancellationToken)
     {
-        // retrieve user via repo an use Admin extension method for the entity
-        /*
-        if (!club.HasInstructor(command.InstructorId))
+        User? user = await usersRepository.GetByIdAsync(command.UserId);
+
+        if (user is null)
         {
-            return Error.NotFound(description: "Instructor not found");
+            return Result.Failure<Guid>(Error.NotFound(code: "UserNotFound", description: "User not found"));
         }
-        */
-        return null!;
+
+        Result<Guid> instructorId = user.CreateInstructorProfile();
+
+        await usersRepository.UpdateAsync(user);
+
+        return instructorId;
     }
 }

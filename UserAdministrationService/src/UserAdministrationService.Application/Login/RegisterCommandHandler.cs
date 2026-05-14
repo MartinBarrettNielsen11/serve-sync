@@ -8,10 +8,8 @@ namespace UserAdministrationService.Application.Login;
 
 internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, IPasswordHasher passwordHasher)
 {
-    [AsyncMethodBuilder(typeof(PoolingAsyncValueTaskMethodBuilder<Result>))]
     internal async ValueTask<Result> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
-        // check of user exists
         var userExists = await usersRepository.ExistsByEmailAsync(command.Email);
 
         if (!userExists)
