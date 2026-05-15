@@ -10,8 +10,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 
-internal class ClubsController(ISender sender)
+internal class ClubsController(ISender sender) : ApiController
 {
+    // to-do: look into removing the Async suffix error only in webApi projects
     [HttpPost]
     public async Task<IActionResult> CreateClub(CreateClubRequest request, Guid subscriptionId)
     {
