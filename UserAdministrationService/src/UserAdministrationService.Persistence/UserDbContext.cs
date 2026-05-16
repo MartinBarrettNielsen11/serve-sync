@@ -35,7 +35,17 @@ internal sealed class UserDbContext(DbContextOptions options, IHttpContextAccess
         IDictionary<object, object?> items = httpContextAccessor.HttpContext!.Items;
 
         // Circular dependency: Handle it lke this: https://chatgpt.com/share/6a060551-37d0-83eb-97c8-c380ca2843eb (also view second reply regarding avoiding the chagneTracker in future)
+        /*
         if (items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
+            value is Queue<IDomainEvent> existingDomainEvents)
+        {
+            domainEventsQueue = existingDomainEvents;
+        }
+        else
+        {
+            domainEventsQueue = new Queue<IDomainEvent>();
+        }*/
+        if (items.TryGetValue("DomainEventsKey", out var value) &&
             value is Queue<IDomainEvent> existingDomainEvents)
         {
             domainEventsQueue = existingDomainEvents;
@@ -46,7 +56,7 @@ internal sealed class UserDbContext(DbContextOptions options, IHttpContextAccess
         }
 
         domainEvents.ForEach(domainEventsQueue.Enqueue);
-        httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
+        httpContextAccessor.HttpContext.Items["DomainEventsKey"] = domainEventsQueue;
 
         return result;
     }

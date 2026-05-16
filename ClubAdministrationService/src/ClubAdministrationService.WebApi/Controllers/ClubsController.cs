@@ -12,7 +12,9 @@ using Microsoft.AspNetCore.Mvc;
 
 
 [SuppressMessage("Style", "VSTHRD200:Use \"Async\" suffix for async methods")]
-internal class ClubsController(ISender sender) : ApiController
+#pragma warning disable CA1812
+internal sealed class ClubsController(ISender sender) : ApiController
+#pragma warning restore CA1812
 {
     // to-do: look into removing the Async suffix error only in webApi project (in a better way - no shitty pragmas)
     [HttpPost]

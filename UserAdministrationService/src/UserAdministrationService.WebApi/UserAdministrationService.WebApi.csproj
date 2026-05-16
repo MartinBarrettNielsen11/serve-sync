@@ -9,4 +9,7 @@
       <ProjectReference Include="..\UserAdministrationService.Persistence\UserAdministrationService.Persistence.csproj" />
       <ProjectReference Include="..\UserManagementService.Contracts\UserManagementService.Contracts.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="MediatR" />
+    </ItemGroup>
 </Project>

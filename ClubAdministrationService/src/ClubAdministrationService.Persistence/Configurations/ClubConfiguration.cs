@@ -17,12 +17,10 @@ internal sealed class ClubConfiguration : IEntityTypeConfiguration<Club>
             .HasColumnName("MaxCourts");
 
         builder.Property<List<Guid>>("_courtIds")
-            .HasColumnName("CourtIds")
-            .HasListOfIdsConverter();
+            .HasColumnName("CourtIds");
 
         builder.Property<List<Guid>>("_instructorIds")
-            .HasColumnName("InstructorIds")
-            .HasListOfIdsConverter();
+            .HasColumnName("InstructorIds");
 
         builder.Property(g => g.Name);
 

@@ -56,12 +56,18 @@ internal class SessionBookingDbContext(DbContextOptions options,
     // you have a circular dependency here. Handle it in the following way: https://chatgpt.com/share/6a060551-37d0-83eb-97c8-c380ca2843eb (also view second reply regarding avoiding the chagneTracker in future)
     private void AddDomainEventsToOfflineProcessingQueue(List<IDomainEvent> domainEvents)
     {
+        /*
         Queue<IDomainEvent> domainEventsQueue = httpContextAccessor.HttpContext!.Items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
+                                                value is Queue<IDomainEvent> existingDomainEvents
+            ? existingDomainEvents
+            : new Queue<IDomainEvent>(); */
+        Queue<IDomainEvent> domainEventsQueue = httpContextAccessor.HttpContext!.Items.TryGetValue("DomainEventsKey", out var value) &&
                                                 value is Queue<IDomainEvent> existingDomainEvents
             ? existingDomainEvents
             : new Queue<IDomainEvent>();
 
         domainEvents.ForEach(domainEventsQueue.Enqueue);
-        httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
+        //httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
+        httpContextAccessor.HttpContext.Items["DomainEventsKey"] = domainEventsQueue;
     }
 }
