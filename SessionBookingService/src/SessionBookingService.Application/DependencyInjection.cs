@@ -7,6 +7,7 @@ internal static class DependencyInjection
 {
     internal static IServiceCollection AddServices(this IServiceCollection services)
     {
-        throw new NotSupportedException();
+        return services;
+        // throw new NotSupportedException();
     }
 }
