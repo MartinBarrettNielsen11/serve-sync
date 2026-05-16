@@ -2,4 +2,8 @@
     <PropertyGroup>
         <RootNamespace>ClubAdministrationService.Contracts</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
+    </ItemGroup>
 </Project>

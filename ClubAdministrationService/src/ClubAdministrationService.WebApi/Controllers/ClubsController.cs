@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using ClubAdministrationService.Contracts.Clubs;
 using SharedKernel.Results;
 
@@ -10,21 +11,23 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 
+[SuppressMessage("Style", "VSTHRD200:Use \"Async\" suffix for async methods")]
 internal class ClubsController(ISender sender) : ApiController
 {
-    // to-do: look into removing the Async suffix error only in webApi projects
+    // to-do: look into removing the Async suffix error only in webApi project (in a better way - no shitty pragmas)
     [HttpPost]
-    public async Task<IActionResult> CreateClub(CreateClubRequest request, Guid subscriptionId)
+    public async Task<IActionResult> CreateClub(CreateClubRequest request, Guid subscriptionId, CancellationToken cancellationToken)
     {
         CreateClubCommand command = new(request.Name, subscriptionId);
 
-        Result<Club> createClubResult = await sender.Send(command);
-        
-        return createClubResult.Match(
-            gym => CreatedAtAction(
-                nameof(GetClub),
-                new { subscriptionId, GymId = gym.Id },
-                new ClubResponse(gym.Id, gym.Name)),
-            Problem);
+        Result<Club> createClubResult = await sender.Send(command, cancellationToken);
+
+        IActionResult? response = createClubResult.Match(
+            onSuccess: club => CreatedAtAction(actionName: "yo_mama",
+                routeValues: new { subscriptionId, ClubId = club.Id },
+                value: new ClubResponse(club.Id, club.Name)),
+            onFailure: errors => Problem([errors]));
+
+        return response;
     }
 }
