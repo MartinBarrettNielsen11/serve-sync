@@ -6,6 +6,8 @@ internal static class DependencyInjection
 {
     internal static IServiceCollection AddServices(this IServiceCollection services)
     {
-        throw new NotSupportedException();
+        services.AddMediatR(options => options.RegisterServicesFromAssemblyContaining(typeof(DependencyInjection)));
+
+        return services;
     }
 }

@@ -1,7 +1,7 @@
 @api_host = http://localhost:5245
 
 ### Create Club
-POST {{api_host}}/subscriptions/11111111-1111-1111-1111-111111111111/gyms
+POST {{api_host}}/subscriptions/11111111-1111-1111-1111-111111111111/clubs
 Content-Type: application/json
 Accept: application/json
 

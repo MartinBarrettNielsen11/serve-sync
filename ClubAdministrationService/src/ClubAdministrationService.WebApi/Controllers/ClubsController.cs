@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [SuppressMessage("Style", "VSTHRD200:Use \"Async\" suffix for async methods")]
 #pragma warning disable CA1812
-[Route("subscriptions/{subscriptionId:guid}/gyms")]
+[Route("subscriptions/{subscriptionId:guid}/clubs")]
 internal sealed class ClubsController(ISender sender) : ApiController
 #pragma warning restore CA1812
 {

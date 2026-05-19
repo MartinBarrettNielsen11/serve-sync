@@ -1,12 +1,27 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using ClubAdministrationService.Application.Common.Interfaces;
+using ClubAdministrationService.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ClubAdministration.Persistence2;
+namespace ClubAdministrationService.Persistence;
 
 internal static class DependencyInjection
 {
-    internal static IServiceCollection AddPersistence(this IServiceCollection services,  IConfiguration config)
+    internal static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration config)
     {
-        throw new NotSupportedException();
+        var connectionString = config.GetSection("ConnectionStrings").Value!;
+        
+        services.AddDbContext<ClubDbContext>(options =>
+        {
+            options.UseNpgsql(connectionString);
+        });
+
+        services.AddScoped<IAdminsRepository, AdminsRepository>();
+        services.AddScoped<IClubsRepository, ClubsRepository>();
+        services.AddScoped<ISubscriptionsRepository, SubscriptionsRepository>();
+
+        return services;
+        
     }
 }

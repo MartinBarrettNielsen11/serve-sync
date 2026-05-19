@@ -13,8 +13,8 @@ internal sealed class ClubConfiguration : IEntityTypeConfiguration<Club>
         builder.Property(g => g.Id)
             .ValueGeneratedNever();
 
-        builder.Property("_maxCourts")
-            .HasColumnName("MaxCourts");
+        builder.Property("_maxCourtCapacity")
+            .HasColumnName("MaxCourtCapacity");
 
         builder.Property<List<Guid>>("_courtIds")
             .HasColumnName("CourtIds");
