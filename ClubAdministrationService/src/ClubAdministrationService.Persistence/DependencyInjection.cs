@@ -10,7 +10,7 @@ internal static class DependencyInjection
 {
     internal static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration config)
     {
-        var connectionString = config.GetSection("ConnectionStrings").Value!;
+        var connectionString = config.GetConnectionString("Database");
         
         services.AddDbContext<ClubDbContext>(options =>
         {
