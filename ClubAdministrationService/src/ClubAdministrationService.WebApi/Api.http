@@ -1,4 +1,4 @@
-@api_host = http://localhost:5245
+@api_host = http://localhost:5000
 
 ### Create Club
 POST {{api_host}}/subscriptions/11111111-1111-1111-1111-111111111111/clubs

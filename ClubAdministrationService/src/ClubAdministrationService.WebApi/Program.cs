@@ -1,7 +1,9 @@
 using ClubAdministrationService.Application;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Infrastructure;
+using ClubAdministrationService.Infrastructure.Middleware;
 using ClubAdministrationService.Persistence;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,9 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
 );
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services
@@ -21,42 +26,43 @@ builder.Services
     .AddPersistence(builder.Configuration);
     //.AddInfrastructure(builder.Configuration);
 
-try
+WebApplication app = builder.Build();
+
+app.UseMiddleware<EventualConsistencyMiddleware>();
+
+if (app.Environment.IsDevelopment())
 {
-    WebApplication app = builder.Build();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
-    using (var scope = app.Services.CreateScope())
+
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    ClubDbContext dbContext = scope.ServiceProvider.GetRequiredService<ClubDbContext>();
+    await dbContext.Database.MigrateAsync();
+    
+    if (!await dbContext.Clubs.AnyAsync())
     {
-        var dbContext = scope.ServiceProvider.GetRequiredService<ClubDbContext>();
-        await dbContext.Database.MigrateAsync();
-        
-        if (!await dbContext.Clubs.AnyAsync())
+        var clubs = new List<Club>
         {
-            var clubs = new List<Club>
-            {
-                new(
-                    name: "Vibenhuset tennis club",
-                    maxCourtCapacity: 5,
-                    subscriptionId: Guid.CreateVersion7()
-                ),
-                new(
-                    name: "Nørrebro tennis club",
-                    maxCourtCapacity: 4,
-                    subscriptionId: Guid.CreateVersion7()
-                )
-            };
+            new(
+                name: "Vibenhuset tennis club",
+                maxCourtCapacity: 5,
+                subscriptionId: Guid.CreateVersion7()
+            ),
+            new(
+                name: "Nørrebro tennis club",
+                maxCourtCapacity: 4,
+                subscriptionId: Guid.CreateVersion7()
+            )
+        };
 
-            dbContext.Clubs.AddRange(clubs);
-            await dbContext.SaveChangesAsync();
-        }
-        
+        dbContext.Clubs.AddRange(clubs);
+        await dbContext.SaveChangesAsync();
     }
     
-    app.MapControllers();
-    await app.RunAsync();
 }
-catch (Exception ex)
-{
-    Console.WriteLine(ex.ToString());
-    throw;
-}
+
+app.MapControllers();
+await app.RunAsync();

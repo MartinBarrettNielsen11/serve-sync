@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using SessionBookingService.Application;
 using SessionBookingService.Infrastructure;
+using SessionBookingService.Infrastructure.Middlewares;
 using SessionBookingService.Persistence;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -19,4 +20,8 @@ builder.Services
     .AddInfrastructure(builder.Configuration);
 
 WebApplication app = builder.Build();
+
+app.UseMiddleware<EventualConsistencyMiddleware>();
+
+
 await app.RunAsync();
