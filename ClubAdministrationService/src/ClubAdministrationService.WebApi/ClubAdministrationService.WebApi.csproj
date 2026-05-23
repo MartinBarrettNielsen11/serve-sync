@@ -2,6 +2,7 @@
     <PropertyGroup>
         <RootNamespace>ClubAdministrationService.WebApi</RootNamespace>
         <InvariantGlobalization>true</InvariantGlobalization>
+        <NoWarn>$(NoWarn);VSTHRD200</NoWarn>
     </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\ClubAdministrationService.Contracts\ClubAdministrationService.Contracts.csproj" />

@@ -1,3 +1,3 @@
 namespace ClubAdministrationService.Contracts.Clubs;
 
-internal sealed record CreateClubRequest(string Name);
+public sealed record CreateClubRequest(string Name);

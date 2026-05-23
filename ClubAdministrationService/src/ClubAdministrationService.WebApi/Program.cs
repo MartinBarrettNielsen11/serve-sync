@@ -27,17 +27,27 @@ builder.Services
     .AddPersistence(builder.Configuration);
     //.AddInfrastructure(builder.Configuration);
 
+    builder.Services.AddControllers();
+    builder.Services.AddOpenApi();
+
+    builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
+
+
 WebApplication app = builder.Build();
 
 app.UseMiddleware<EventualConsistencyMiddleware>();
 
-app.MapOpenApi().AllowAnonymous();
-
-app.MapScalarApiReference((opts) =>
+// Configure the HTTP request pipeline for DEVELOPMENT only
+if (app.Environment.IsDevelopment())
 {
-    opts.Title = "ClubAdministrationService.WebApi";
-    opts.Theme = ScalarTheme.Kepler;
-}).AllowAnonymous();
+    app.MapOpenApi();
+    app.MapScalarApiReference((opts) =>
+    {
+        opts.Title = "ClubAdministrationService.WebApi";
+        opts.Theme = ScalarTheme.DeepSpace;
+    });
+}
+
 
 
 using (IServiceScope scope = app.Services.CreateScope())

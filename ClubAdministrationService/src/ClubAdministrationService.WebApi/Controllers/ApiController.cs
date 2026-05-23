@@ -6,9 +6,15 @@ using SharedKernel.Results;
 namespace ClubAdministrationService.WebApi.Controllers;
 
 [ApiController]
-internal class ApiController : ControllerBase
+#pragma warning disable CA1515
+public class ApiController : ControllerBase
+#pragma warning restore CA1515
 {
+#pragma warning disable MA0016
+#pragma warning disable CA1002
     protected IActionResult Problem(List<Result> errors)
+#pragma warning restore CA1002
+#pragma warning restore MA0016
     {
         if (errors.Count is 0)
         {

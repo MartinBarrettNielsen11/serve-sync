@@ -6,7 +6,7 @@ internal sealed partial class Subscription
     private readonly List<Guid> _clubIds = new();
     private readonly int _maxCourtsAllowed;
 
-    private SubscriptionType SubscriptionType { get; } = null!;
+    internal SubscriptionType SubscriptionType { get; } = null!;
 
     internal Subscription(SubscriptionType subscriptionType,
                           Guid? id = null) : base(id ?? Guid.CreateVersion7())
