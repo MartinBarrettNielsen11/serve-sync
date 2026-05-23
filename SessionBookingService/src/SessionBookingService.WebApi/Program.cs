@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
+using Scalar.AspNetCore;
 using SessionBookingService.Application;
 using SessionBookingService.Infrastructure;
 using SessionBookingService.Infrastructure.Middlewares;
@@ -23,5 +24,12 @@ WebApplication app = builder.Build();
 
 app.UseMiddleware<EventualConsistencyMiddleware>();
 
+app.MapOpenApi().AllowAnonymous();
+
+app.MapScalarApiReference((opts) =>
+{
+    opts.Title = "ClubAdministrationService.WebApi";
+    opts.Theme = ScalarTheme.Kepler;
+}).AllowAnonymous();
 
 await app.RunAsync();

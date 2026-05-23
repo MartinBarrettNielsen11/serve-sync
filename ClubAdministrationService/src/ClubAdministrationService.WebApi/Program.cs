@@ -5,6 +5,7 @@ using ClubAdministrationService.Infrastructure.Middleware;
 using ClubAdministrationService.Persistence;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -30,11 +31,13 @@ WebApplication app = builder.Build();
 
 app.UseMiddleware<EventualConsistencyMiddleware>();
 
-if (app.Environment.IsDevelopment())
+app.MapOpenApi().AllowAnonymous();
+
+app.MapScalarApiReference((opts) =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    opts.Title = "ClubAdministrationService.WebApi";
+    opts.Theme = ScalarTheme.Kepler;
+}).AllowAnonymous();
 
 
 using (IServiceScope scope = app.Services.CreateScope())
@@ -65,4 +68,8 @@ using (IServiceScope scope = app.Services.CreateScope())
 }
 
 app.MapControllers();
-await app.RunAsync();
+#pragma warning disable MA0042
+#pragma warning disable CA1849
+app.Run();
+#pragma warning restore CA1849
+#pragma warning restore MA0042

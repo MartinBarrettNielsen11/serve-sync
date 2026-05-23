@@ -1,4 +1,5 @@
-﻿using UserAdministrationService.Application;
+﻿using Scalar.AspNetCore;
+using UserAdministrationService.Application;
 using UserAdministrationService.Infrastructure;
 using UserAdministrationService.Infrastructure.Middleware;
 using UserAdministrationService.Persistence;
@@ -19,5 +20,13 @@ builder.Services
 
 WebApplication app = builder.Build();
 app.UseMiddleware<EventualConsistencyMiddleware>();
+
+app.MapOpenApi().AllowAnonymous();
+
+app.MapScalarApiReference((opts) =>
+{
+    opts.Title = "ClubAdministrationService.WebApi";
+    opts.Theme = ScalarTheme.Kepler;
+}).AllowAnonymous();
 
 await app.RunAsync();
