@@ -78,8 +78,4 @@ using (IServiceScope scope = app.Services.CreateScope())
 }
 
 app.MapControllers();
-#pragma warning disable MA0042
-#pragma warning disable CA1849
-app.Run();
-#pragma warning restore CA1849
-#pragma warning restore MA0042
+await app.RunAsync();

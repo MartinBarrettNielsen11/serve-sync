@@ -8,4 +8,5 @@ internal interface ISubscriptionsRepository
     Task<bool> ExistsAsync(Guid id);
     Task<Subscription?> GetByIdAsync(Guid id);
     Task UpdateAsync(Subscription subscription);
+    Task<List<Subscription>> ListAsync();
 }
