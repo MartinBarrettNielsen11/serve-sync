@@ -1,6 +1,7 @@
 ﻿using SharedKernel;
 using SharedKernel.Results;
 using UserAdministrationService.Domain.Interfaces;
+using UserAdministrationService.Domain.UserAggregate.Events;
 
 namespace UserAdministrationService.Domain.UserAggregate;
 
@@ -14,7 +15,7 @@ internal sealed partial class User : RootAggregate
         }
 
         AdminId = Guid.CreateVersion7();
-        // Add AdminProfileCreatedEvent to domain events
+        DomainEvents.Add(new AdminProfileCreatedEvent(Id, AdminId.Value));
         
         return Result.Success<Guid>(AdminId.Value);
     }
@@ -27,7 +28,7 @@ internal sealed partial class User : RootAggregate
         }
 
         PlayerId = Guid.CreateVersion7();
-        // Add PlayerProfileCreatedEvent to domain events
+        DomainEvents.Add(new PlayerProfileCreatedEvent(Id, PlayerId.Value));
         
         return Result.Success<Guid>(PlayerId.Value);
     }
@@ -40,7 +41,7 @@ internal sealed partial class User : RootAggregate
         }
         
         InstructorId = Guid.CreateVersion7();
-        // Add InstructorCreatedEvent to domain events
+        DomainEvents.Add(new InstructorProfileCreatedEvent(Id, InstructorId.Value));
         
         return Result.Success(InstructorId.Value);
     }
