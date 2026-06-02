@@ -9,9 +9,19 @@ using SubscriptionType = ClubAdministrationService.Domain.SubscriptionAggregate.
 
 namespace ClubAdministrationService.WebApi.Controllers;
 
+/// <summary>
+/// This has to be replaced
+/// </summary>
+/// <param name="sender"></param>
 [Route("subscriptions")]
 public sealed class SubscriptionsController(ISender sender) : ApiController
 {
+    /// <summary>
+    /// This has to be replaced
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> CreateSubscription(CreateSubscriptionRequest request, CancellationToken cancellationToken)
     {
@@ -32,6 +42,11 @@ public sealed class SubscriptionsController(ISender sender) : ApiController
     }
     
     
+    /// <summary>
+    /// This has to be replaced
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpGet]
     public async Task<IActionResult> ListSubscriptions(CancellationToken cancellationToken)
     {

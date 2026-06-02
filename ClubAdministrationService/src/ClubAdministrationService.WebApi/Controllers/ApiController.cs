@@ -7,6 +7,7 @@ namespace ClubAdministrationService.WebApi.Controllers;
 
 [ApiController]
 #pragma warning disable CA1515
+#pragma warning disable CS1591
 public class ApiController : ControllerBase
 #pragma warning restore CA1515
 {
@@ -15,6 +16,7 @@ public class ApiController : ControllerBase
     protected IActionResult Problem(List<Result> errors)
 #pragma warning restore CA1002
 #pragma warning restore MA0016
+#pragma warning restore CS1591
     {
         if (errors.Count is 0)
         {
