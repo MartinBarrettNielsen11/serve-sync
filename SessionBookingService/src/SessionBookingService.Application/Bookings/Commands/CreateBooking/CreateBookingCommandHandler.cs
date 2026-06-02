@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
+using MediatR;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.PlayerAggregate;
 using SessionBookingService.Domain.SessionAggregate;
@@ -8,9 +6,11 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Bookings.Commands.CreateBooking;
 
-internal sealed class CreateBookingCommandHandler(ISessionsRepository sessionsRepository, IPlayersRepository playersRepository)
+internal sealed class CreateBookingCommandHandler(
+    ISessionsRepository sessionsRepository, 
+    IPlayersRepository playersRepository)  : IRequestHandler<CreateBookingCommand, Result>
 {
-    public async ValueTask<Result> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
+    public async Task<Result> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
     {
         Session? session = await sessionsRepository.GetByIdAsync(command.SessionId);
 

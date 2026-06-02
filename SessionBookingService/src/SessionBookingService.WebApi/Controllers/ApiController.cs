@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using SharedKernel.Results;
@@ -7,9 +5,17 @@ using SharedKernel.Results;
 namespace SessionBookingService.WebApi.Controllers;
 
 [ApiController]
-internal class ApiController : ControllerBase
+#pragma warning disable CA1515
+#pragma warning disable CS1591
+public class ApiController : ControllerBase
+#pragma warning restore CA1515
 {
+#pragma warning disable MA0016
+#pragma warning disable CA1002
     protected IActionResult Problem(List<Result> errors)
+#pragma warning restore CA1002
+#pragma warning restore MA0016
+#pragma warning restore CS1591
     {
         if (errors.Count is 0)
         {

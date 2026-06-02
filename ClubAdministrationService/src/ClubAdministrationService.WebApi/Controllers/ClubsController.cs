@@ -15,6 +15,10 @@ namespace ClubAdministrationService.WebApi.Controllers;
 public sealed class ClubsController(ISender sender) : ApiController
 {
     /// <summary> Creates a new club </summary>
+    /// <remarks>
+    /// Creates a club for the specified subscription.
+    /// The caller must have permission to create clubs within the subscription.
+    /// </remarks>
     /// <param name="request"> The club creation request containing the club name, description, and settings </param>
     /// <param name="subscriptionId"> The subscription identifier that owns the club </param>
     /// <param name="cancellationToken"></param>
