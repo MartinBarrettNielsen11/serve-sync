@@ -7,7 +7,7 @@ using SharedKernel.Results;
 #pragma warning disable S3261
 namespace SessionBookingService.WebApi.Controllers;
 #pragma warning restore S3261
-/*
+
 /// <summary>
 /// This has to be replaced
 /// </summary>
@@ -30,7 +30,7 @@ public class BookingsController(ISender sender) : ApiController
         CreateBookingCommand command = new(sessionId, request.ParticipantId);
 
         Result createBookingResult = await sender.Send(command, cancellationToken);
-
+        
         var result = createBookingResult.Match(
             onSuccess: _ => NoContent(),
             onFailure: errors => Problem([errors]));
@@ -38,4 +38,3 @@ public class BookingsController(ISender sender) : ApiController
         return result;
     }
 }
-*/

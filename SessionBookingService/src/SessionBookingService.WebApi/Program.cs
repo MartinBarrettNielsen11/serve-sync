@@ -17,19 +17,23 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
 
 builder.Services
     .AddServices()
-    .AddPersistence(builder.Configuration)
-    .AddInfrastructure(builder.Configuration);
+    .AddPersistence(builder.Configuration);
+    //.AddInfrastructure(builder.Configuration);
 
 WebApplication app = builder.Build();
 
 app.UseMiddleware<EventualConsistencyMiddleware>();
 
-app.MapOpenApi().AllowAnonymous();
-
-app.MapScalarApiReference((opts) =>
+// Configure the HTTP request pipeline for DEVELOPMENT only
+if (app.Environment.IsDevelopment())
 {
-    opts.Title = "ClubAdministrationService.WebApi";
-    opts.Theme = ScalarTheme.Kepler;
-}).AllowAnonymous();
+    app.MapOpenApi();
+    app.MapScalarApiReference((opts) =>
+    {
+        opts.Title = "SessionBookingService.WebApi";
+        opts.Theme = ScalarTheme.DeepSpace;
+    });
+}
+
 
 await app.RunAsync();

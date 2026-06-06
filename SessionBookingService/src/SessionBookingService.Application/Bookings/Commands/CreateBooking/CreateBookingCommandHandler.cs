@@ -47,7 +47,8 @@ internal sealed class CreateBookingCommandHandler(
 
         await sessionsRepository.UpdateAsync(session);
 
-        return Result.Success(session);
+        Result res = Result.Success();
+        return res;
     }
 
 }
