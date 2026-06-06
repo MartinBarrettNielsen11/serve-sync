@@ -1,6 +1,7 @@
 using ClubAdministrationService.Contracts.Clubs;
 using SharedKernel.Results;
 using ClubAdministrationService.Application.Clubs.CreateClub;
+using ClubAdministrationService.Application.Clubs.ListClubs;
 using ClubAdministrationService.Domain.ClubAggregate;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -37,5 +38,25 @@ public sealed class ClubsController(ISender sender) : ApiController
             onFailure: errors => Problem([errors]));
 
         return response;
+    }
+    
+    
+    
+    /// <summary>
+    /// returns all clubs for a particular subscription
+    /// </summary>
+    /// <param name="subscriptionId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    [HttpGet]
+    public async Task<IActionResult> ListClubs(Guid subscriptionId, CancellationToken cancellationToken)
+    {
+        ListClubsQuery command = new(subscriptionId);
+
+        Result<List<Club>> listGymsResult = await sender.Send(command, cancellationToken);
+
+        return listGymsResult.Match(
+            onSuccess: clubs => Ok(clubs.ConvertAll(c => new ClubResponse(c.Id, c.Name))),
+            onFailure: errors => Problem([errors]));
     }
 }

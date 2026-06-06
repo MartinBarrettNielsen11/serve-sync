@@ -8,4 +8,5 @@ internal interface IClubsRepository
     Task<Club?> GetByIdAsync(Guid id);
     Task<bool> ExistsAsync(Guid id);
     Task UpdateAsync(Club club);
+    Task<List<Club>> ListSubscriptionClubs(Guid subscriptionId);
 }

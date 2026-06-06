@@ -27,4 +27,11 @@ internal sealed class ClubsRepository(ClubDbContext dbContext) : IClubsRepositor
         dbContext.Update(club);
         await dbContext.SaveChangesAsync();
     }
+
+    public async Task<List<Club>> ListSubscriptionClubs(Guid subscriptionId)
+    {
+        return await dbContext.Clubs
+            .Where(c => c.SubscriptionId == subscriptionId)
+            .ToListAsync();
+    }
 }
