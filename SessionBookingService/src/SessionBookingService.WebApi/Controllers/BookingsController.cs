@@ -4,8 +4,10 @@ using SessionBookingService.Application.Bookings.Commands.CreateBooking;
 using SessionBookingService.Contracts.Bookings;
 using SharedKernel.Results;
 
+#pragma warning disable S3261
 namespace SessionBookingService.WebApi.Controllers;
-
+#pragma warning restore S3261
+/*
 /// <summary>
 /// This has to be replaced
 /// </summary>
@@ -32,7 +34,8 @@ public class BookingsController(ISender sender) : ApiController
         var result = createBookingResult.Match(
             onSuccess: _ => NoContent(),
             onFailure: errors => Problem([errors]));
-        
+
         return result;
     }
 }
+*/
