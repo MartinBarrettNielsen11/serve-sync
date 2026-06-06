@@ -31,8 +31,8 @@ public class BookingsController(ISender sender) : ApiController
 
         Result createBookingResult = await sender.Send(command, cancellationToken);
         
-        var result = createBookingResult.Match(
-            onSuccess: _ => NoContent(),
+        IActionResult result = createBookingResult.Match(
+            onSuccess: NoContent,
             onFailure: errors => Problem([errors]));
 
         return result;

@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Hosting;
-using Scalar.AspNetCore;
+﻿using Scalar.AspNetCore;
 using SessionBookingService.Application;
-using SessionBookingService.Infrastructure;
 using SessionBookingService.Infrastructure.Middlewares;
 using SessionBookingService.Persistence;
 
@@ -14,6 +11,13 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
         options.ValidateOnBuild = true;
     }
 );
+
+
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddProblemDetails();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services
     .AddServices()
