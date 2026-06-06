@@ -13,13 +13,16 @@ internal sealed class CourtConfiguration : IEntityTypeConfiguration<Court>
 
         builder.Property(r => r.Id).ValueGeneratedNever();
 
-        builder.Property("_maxSessions").HasColumnName("MaxSessions");
+        builder.Property("_maxDailySessions").HasColumnName("MaxDailySessions");
 
         builder.Property<List<Guid>>("_sessionIds").HasColumnName("SessionIds");
 
         builder.OwnsOne<Schedule>("_schedule", sb =>
         {
             sb.ToJson();
+            
+            sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
+                .HasColumnName("Calendar");
 
             sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar").HasColumnName("ScheduleCalendar");
 

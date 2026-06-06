@@ -1,4 +1,5 @@
-﻿using Scalar.AspNetCore;
+﻿using System.Reflection;
+using Scalar.AspNetCore;
 using SessionBookingService.Application;
 using SessionBookingService.Infrastructure.Middlewares;
 using SessionBookingService.Persistence;
@@ -34,7 +35,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.MapScalarApiReference((opts) =>
     {
-        opts.Title = "SessionBookingService.WebApi";
+        opts.Title = Assembly.GetExecutingAssembly().GetName().Name!;
         opts.Theme = ScalarTheme.DeepSpace;
     });
 }

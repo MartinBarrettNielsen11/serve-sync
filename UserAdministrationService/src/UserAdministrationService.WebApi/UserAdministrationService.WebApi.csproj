@@ -7,7 +7,7 @@
       <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
       <ProjectReference Include="..\UserAdministrationService.Infrastructure\UserAdministrationService.Infrastructure.csproj" />
       <ProjectReference Include="..\UserAdministrationService.Persistence\UserAdministrationService.Persistence.csproj" />
-      <ProjectReference Include="..\UserManagementService.Contracts\UserManagementService.Contracts.csproj" />
+      <ProjectReference Include="..\UserAdministrationService.Contracts\UserAdministrationService.Contracts.csproj" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="MediatR" />

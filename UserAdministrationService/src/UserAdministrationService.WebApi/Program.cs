@@ -1,4 +1,5 @@
-﻿using Scalar.AspNetCore;
+﻿using System.Reflection;
+using Scalar.AspNetCore;
 using UserAdministrationService.Application;
 using UserAdministrationService.Infrastructure;
 using UserAdministrationService.Infrastructure.Middleware;
@@ -13,19 +14,25 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
     }
 );
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddProblemDetails();
+builder.Services.AddHttpContextAccessor();
+
 builder.Services
     .AddServices()
     .AddPersistence(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
 WebApplication app = builder.Build();
+
 app.UseMiddleware<EventualConsistencyMiddleware>();
 
 app.MapOpenApi().AllowAnonymous();
 
 app.MapScalarApiReference((opts) =>
 {
-    opts.Title = "ClubAdministrationService.WebApi";
+    opts.Title = Assembly.GetExecutingAssembly().GetName().Name!;
     opts.Theme = ScalarTheme.Kepler;
 }).AllowAnonymous();
 

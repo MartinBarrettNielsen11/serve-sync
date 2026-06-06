@@ -7,7 +7,7 @@ public sealed class Schedule : Entity
 { 
     private readonly Dictionary<DateOnly, List<TimeSlot>> _calendar;
     
-    public Schedule(IDictionary<DateTime, List<TimeSlot>>? calendar = null,
+    public Schedule(IDictionary<DateOnly, List<TimeSlot>>? calendar = null,
                     Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         _calendar = (Dictionary<DateOnly, List<TimeSlot>>?)calendar ?? new Dictionary<DateOnly, List<TimeSlot>>();
@@ -47,6 +47,4 @@ public sealed class Schedule : Entity
         
         return Result.Success<bool>(value: true);
     }
-    
-
 }

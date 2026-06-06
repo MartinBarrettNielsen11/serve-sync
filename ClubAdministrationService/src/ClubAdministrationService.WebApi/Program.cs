@@ -1,3 +1,4 @@
+using System.Reflection;
 using ClubAdministrationService.Application;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
@@ -44,7 +45,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.MapScalarApiReference((opts) =>
     {
-        opts.Title = "ClubAdministrationService.WebApi";
+        opts.Title = Assembly.GetExecutingAssembly().GetName().Name!;
         opts.Theme = ScalarTheme.DeepSpace;
     });
 }
