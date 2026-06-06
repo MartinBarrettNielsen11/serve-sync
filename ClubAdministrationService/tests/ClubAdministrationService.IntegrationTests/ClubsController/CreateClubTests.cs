@@ -24,7 +24,6 @@ public class CreateClubTests : IClassFixture<WebApplicationFactory<IApiMarker>>
         Guid subscriptionId = Guid.NewGuid();
 
         //Subscription yo = SubscriptionFactory.Create(subscriptionType: SubscriptionType.Free);
-        
 
         CreateClubRequest request = new(Name: "Test Club");
 

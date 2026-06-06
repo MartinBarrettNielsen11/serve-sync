@@ -11,6 +11,7 @@
   <Folder Name="/ClubAdministrationService/tests/">
     <Project Path="ClubAdministrationService/tests/ClubAdministrationService.ArchitectureTests/ClubAdministrationService.ArchitectureTests.csproj" />
     <Project Path="ClubAdministrationService/tests/ClubAdministrationService.IntegrationTests/ClubAdministrationService.IntegrationTests.csproj" />
+    <Project Path="ClubAdministrationService/tests/ClubAdministrationService.Tests.Data/ClubAdministrationService.Tests.Data.csproj" />
     <Project Path="ClubAdministrationService/tests/ClubAdministrationService.UnitTests/ClubAdministrationService.UnitTests.csproj" />
   </Folder>
   <Folder Name="/SessionBookingService/" />

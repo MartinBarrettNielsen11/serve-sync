@@ -17,6 +17,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
+      <ProjectReference Include="..\ClubAdministrationService.Tests.Data\ClubAdministrationService.Tests.Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>

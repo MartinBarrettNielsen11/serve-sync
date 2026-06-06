@@ -19,5 +19,6 @@
         <InternalsVisibleTo Include="ClubAdministrationService.Persistence" />
         <InternalsVisibleTo Include="ClubAdministrationService.UnitTests" />
         <InternalsVisibleTo Include="ClubAdministrationService.IntegrationTests" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Data" />
     </ItemGroup>
 </Project>
