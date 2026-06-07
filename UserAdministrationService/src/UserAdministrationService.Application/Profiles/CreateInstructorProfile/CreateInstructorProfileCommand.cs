@@ -1,3 +1,3 @@
-namespace UserAdministrationService.Application.Profiles.CreateTrainerProfile;
+namespace UserAdministrationService.Application.Profiles.CreateInstructorProfile;
 
 public record CreateInstructorProfileCommand(Guid UserId);

@@ -17,8 +17,8 @@
         <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
         <InternalsVisibleTo Include="ClubAdministrationService.Application" />
         <InternalsVisibleTo Include="ClubAdministrationService.Persistence" />
-        <InternalsVisibleTo Include="ClubAdministrationService.UnitTests" />
-        <InternalsVisibleTo Include="ClubAdministrationService.IntegrationTests" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration" />
         <InternalsVisibleTo Include="ClubAdministrationService.Tests.Data" />
     </ItemGroup>
 </Project>

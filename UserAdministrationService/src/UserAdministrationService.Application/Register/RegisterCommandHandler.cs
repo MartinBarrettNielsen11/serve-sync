@@ -1,10 +1,9 @@
-using System.Runtime.CompilerServices;
 using SharedKernel.Results;
 using UserAdministrationService.Application.Interfaces;
 using UserAdministrationService.Domain.Interfaces;
 using UserAdministrationService.Domain.UserAggregate;
 
-namespace UserAdministrationService.Application.Login;
+namespace UserAdministrationService.Application.Register;
 
 internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, IPasswordHasher passwordHasher)
 {

@@ -1,9 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
+        <RootNamespace>ClubAdministrationService.Tests.Unit</RootNamespace>
     </PropertyGroup>
     
     <ItemGroup>
@@ -11,8 +9,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.UnitTests" />
-        <InternalsVisibleTo Include="ClubAdministrationService.IntegrationTests" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration" />
     </ItemGroup>
     
 </Project>

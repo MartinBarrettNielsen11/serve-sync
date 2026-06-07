@@ -1,6 +1,6 @@
 using ClubAdministrationService.Domain.SubscriptionAggregate;
 
-namespace ClubAdministrationService.UnitTests.Domain.TestConstants;
+namespace ClubAdministrationService.Tests.Unit.TestConstants;
 
 internal static class SubscriptionConstants
 {

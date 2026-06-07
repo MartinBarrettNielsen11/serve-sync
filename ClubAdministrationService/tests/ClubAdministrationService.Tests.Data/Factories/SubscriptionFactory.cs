@@ -1,7 +1,7 @@
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using ClubAdministrationService.UnitTests.Domain.TestConstants;
+using ClubAdministrationService.Tests.Unit.TestConstants;
 
-namespace ClubAdministrationService.UnitTests.TestUtils;
+namespace ClubAdministrationService.Tests.Unit.Factories;
 
 internal static class SubscriptionFactory
 {

@@ -9,10 +9,10 @@
     <Project Path="ClubAdministrationService\src\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj" />
   </Folder>
   <Folder Name="/ClubAdministrationService/tests/">
-    <Project Path="ClubAdministrationService/tests/ClubAdministrationService.ArchitectureTests/ClubAdministrationService.ArchitectureTests.csproj" />
-    <Project Path="ClubAdministrationService/tests/ClubAdministrationService.IntegrationTests/ClubAdministrationService.IntegrationTests.csproj" />
     <Project Path="ClubAdministrationService/tests/ClubAdministrationService.Tests.Data/ClubAdministrationService.Tests.Data.csproj" />
-    <Project Path="ClubAdministrationService/tests/ClubAdministrationService.UnitTests/ClubAdministrationService.UnitTests.csproj" />
+    <Project Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Architecture\ClubAdministrationService.Tests.Architecture.csproj" />
+    <Project Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Integration\ClubAdministrationService.Tests.Integration.csproj" />
+    <Project Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Unit\ClubAdministrationService.Tests.Unit.csproj" />
   </Folder>
   <Folder Name="/SessionBookingService/" />
   <Folder Name="/SessionBookingService/src/">
@@ -24,9 +24,10 @@
     <Project Path="SessionBookingService\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj" />
   </Folder>
   <Folder Name="/SessionBookingService/tests/">
-    <Project Path="SessionBookingService/tests/SessionBookingService.ArchitectureTests/SessionBookingService.ArchitectureTests.csproj" />
-    <Project Path="SessionBookingService/tests/SessionBookingService.IntegrationTests/SessionBookingService.IntegrationTests.csproj" />
-    <Project Path="SessionBookingService/tests/SessionBookingService.UnitTests/SessionBookingService.UnitTests.csproj" />
+    <Project Path="SessionBookingService/tests/SessionBookingService.Tests.Data/SessionBookingService.Tests.Data.csproj" />
+    <Project Path="SessionBookingService\tests\SessionBookingService.Tests.Architecture\SessionBookingService.Tests.Architecture.csproj" />
+    <Project Path="SessionBookingService\tests\SessionBookingService.Tests.Integration\SessionBookingService.Tests.Integration.csproj" />
+    <Project Path="SessionBookingService\tests\SessionBookingService.Tests.Unit\SessionBookingService.Tests.Unit.csproj" />
   </Folder>
   <Folder Name="/UserAdministrationService/" />
   <Folder Name="/UserAdministrationService/src/">
@@ -38,9 +39,10 @@
     <Project Path="UserAdministrationService\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj" />
   </Folder>
   <Folder Name="/UserAdministrationService/tests/">
-    <Project Path="userAdministrationService/tests/UserManagementService.ArchitectureTests/UserManagementService.ArchitectureTests.csproj" />
-    <Project Path="userAdministrationService/tests/UserManagementService.UnitTests/UserManagementService.UnitTests.csproj" />
-    <Project Path="userAdministrationService\tests\UserManagementService.IntegrationTests\UserManagementService.IntegrationTests.csproj" />
+    <Project Path="userAdministrationService\tests\UserAdministrationService.Tests.Architecture\UserAdministrationService.Tests.Architecture.csproj" />
+    <Project Path="UserAdministrationService\tests\UserAdministrationService.Tests.Data\UserAdministrationService.Tests.Data.csproj" />
+    <Project Path="userAdministrationService\tests\UserAdministrationService.Tests.Integration\UserAdministrationService.Tests.Integration.csproj" />
+    <Project Path="userAdministrationService\tests\UserAdministrationService.Tests.Unit\UserAdministrationService.Tests.Unit.csproj" />
   </Folder>
   <Folder Name="/_docs/">
     <File Path="docs/Invariants.md" />

@@ -1,4 +1,4 @@
-namespace ClubAdministrationService.UnitTests.TestUtils;
+namespace ClubAdministrationService.Tests.Unit.TestConstants;
 
 internal static class AdminConstants
 {

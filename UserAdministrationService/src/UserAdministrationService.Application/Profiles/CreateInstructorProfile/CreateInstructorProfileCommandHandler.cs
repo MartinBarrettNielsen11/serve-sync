@@ -1,7 +1,6 @@
 using System.Runtime.CompilerServices;
 using SharedKernel.Results;
 using UserAdministrationService.Application.Interfaces;
-using UserAdministrationService.Application.Profiles.CreateTrainerProfile;
 using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Application.Profiles.CreateInstructorProfile;
