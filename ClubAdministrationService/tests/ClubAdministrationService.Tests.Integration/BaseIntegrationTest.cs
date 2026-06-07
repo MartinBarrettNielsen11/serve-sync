@@ -1,3 +1,4 @@
+using ClubAdministrationService.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Testing;
 
@@ -21,12 +22,12 @@ public abstract class BaseIntegrationTest
         //ResetDatabase();
     }
     
-    /*
-    protected ClubAdministrationDbContext GetDbContext()
+    
+    protected ClubDbContext GetDbContext()
     {
         return _factory.CreateDbContext();
     }
-    */
+    
     
     protected FakeLogCollector GetFakeLogCollector()
     {
