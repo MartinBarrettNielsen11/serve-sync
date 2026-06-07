@@ -8,14 +8,9 @@ using Xunit;
 namespace ClubAdministrationService.Tests.Integration.ClubsController;
 
 // note: you need to add a some abstraction that includes setting up a database, a fake logger, and some InitialDbContext, whcih can be worked with in the arrange step.
-public class CreateClubTests : IClassFixture<WebApplicationFactory<IApiMarker>>
+internal sealed class CreateClubTests : BaseApiTest, IClassFixture<ApiTestFixture>
 {
-    private readonly HttpClient _httpClient;
-
-    public CreateClubTests(WebApplicationFactory<IApiMarker> appFactory)
-    {
-        _httpClient = appFactory.CreateClient();
-    }
+    public CreateClubTests(ApiTestFixture fixture) : base(fixture) { }
     
     [Fact]
     public async Task Create_Club()
