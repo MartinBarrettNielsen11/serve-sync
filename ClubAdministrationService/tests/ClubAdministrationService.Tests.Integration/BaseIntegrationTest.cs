@@ -1,16 +1,22 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging.Testing;
+
 namespace ClubAdministrationService.Tests.Integration;
 
-internal abstract class BaseIntegrationTest
+public abstract class BaseIntegrationTest
 {
     //protected readonly ClubAdministrationDbContext InitialDbContext;
 
-    private readonly ApiTestFixture _fixture;
+    protected readonly ApiTestFixture _fixture;
+    protected readonly IServiceScope _scope;
 
-    protected BaseIntegrationTest(ApiTestFixture fixture)
+    protected BaseIntegrationTest(ApiTestFixture fixture, IServiceScope scope)
     {
+        _scope = scope;
         _fixture = fixture;
+        ResetLoggingStorage();
 
-        //InitialDbContext = factory.CreateDbContext();
+        //InitialDbContext = fixture.CreateDbContext();
 
         //ResetDatabase();
     }
@@ -21,4 +27,14 @@ internal abstract class BaseIntegrationTest
         return _factory.CreateDbContext();
     }
     */
+    
+    protected FakeLogCollector GetFakeLogCollector()
+    {
+        return _scope.ServiceProvider.GetRequiredService<FakeLogCollector>();
+    }
+    
+    protected void ResetLoggingStorage()
+    {
+        _scope.ServiceProvider.GetFakeLogCollector().Clear();
+    }
 }

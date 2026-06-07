@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ClubAdministrationService.Tests.Integration;
 
-internal sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>
+public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

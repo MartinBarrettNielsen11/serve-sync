@@ -1,6 +1,6 @@
 namespace ClubAdministrationService.Tests.Integration;
 
-internal abstract class BaseApiTest : BaseIntegrationTest
+public abstract class BaseApiTest : BaseIntegrationTest
 {
     // ReSharper disable once NotAccessedField.Global
 #pragma warning disable CA1051
