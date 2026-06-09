@@ -25,7 +25,7 @@ public sealed class CreateClubTests : BaseApiTest, IClassFixture<ApiTestFixture>
 
         // Act
         HttpResponseMessage response = await Client.PostAsJsonAsync(
-            requestUri: $"api/subscriptions/{subscriptionId}/clubs", 
+            requestUri: $"subscriptions/{subscriptionId}/clubs", 
             value: request);
 
         // Assert

@@ -8,13 +8,14 @@ public abstract class BaseIntegrationTest
 {
     //protected readonly ClubAdministrationDbContext InitialDbContext;
 
-    protected readonly ApiTestFixture _fixture;
-    protected readonly IServiceScope _scope;
+    protected ApiTestFixture Fixture { get; }
+    private readonly IServiceScope _scope;
 
-    protected BaseIntegrationTest(ApiTestFixture fixture, IServiceScope scope)
+    protected BaseIntegrationTest(ApiTestFixture fixture)
     {
-        _scope = scope;
-        _fixture = fixture;
+        Fixture = fixture;
+        _scope = fixture.Services.CreateScope();
+
         ResetLoggingStorage();
 
         //InitialDbContext = fixture.CreateDbContext();
@@ -22,12 +23,10 @@ public abstract class BaseIntegrationTest
         //ResetDatabase();
     }
     
-    
-    protected ClubDbContext GetDbContext()
+    internal ClubDbContext GetDbContext()
     {
-        return _factory.CreateDbContext();
+        return _scope.ServiceProvider.GetRequiredService<ClubDbContext>();
     }
-    
     
     protected FakeLogCollector GetFakeLogCollector()
     {

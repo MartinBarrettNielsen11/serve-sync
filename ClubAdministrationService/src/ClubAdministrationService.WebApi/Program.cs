@@ -37,7 +37,7 @@ builder.Services
 
 WebApplication app = builder.Build();
 
-app.UseMiddleware<EventualConsistencyMiddleware>();
+// app.UseMiddleware<EventualConsistencyMiddleware>(); I'll need this back at some point.
 
 // Configure the HTTP request pipeline for DEVELOPMENT only
 if (app.Environment.IsDevelopment())
@@ -52,8 +52,9 @@ if (app.Environment.IsDevelopment())
 
 
 
-using (IServiceScope scope = app.Services.CreateScope())
+if (!app.Environment.IsEnvironment("Testing"))
 {
+    using IServiceScope scope = app.Services.CreateScope();
     ClubDbContext dbContext = scope.ServiceProvider.GetRequiredService<ClubDbContext>();
     await dbContext.Database.MigrateAsync();
     
