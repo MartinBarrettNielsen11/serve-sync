@@ -34,13 +34,12 @@ public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixtur
         Assert.Equal(response.StatusCode, response.StatusCode);
 
         IReadOnlyList<FakeLogRecord> logs = GetFakeLogCollector().GetSnapshot();
-        IEnumerable<IReadOnlyList<KeyValuePair<string, string?>>?> relevantLogs = logs.Where(l => l.Level == LogLevel.Information).Select(l => l.StructuredState);
 
-        IReadOnlyList<KeyValuePair<string, string?>>? record = logs.Where(log =>
-                log.StructuredState is not null &&
-                log.StructuredState.Any(kvp => string.Equals(kvp.Key, "Name", StringComparison.OrdinalIgnoreCase) &&
-                                               string.Equals(kvp.Value, "Test Club",
-                                                   StringComparison.OrdinalIgnoreCase)))
+        IReadOnlyList<KeyValuePair<string, string?>>? record = logs
+            .Where(l => l.Level == LogLevel.Information)
+            .Where(l => l.StructuredState is not null && 
+                        l.StructuredState.Any(kvp => string.Equals(kvp.Key, "Name", StringComparison.OrdinalIgnoreCase) &&
+                                                     string.Equals(kvp.Value, "Test Club", StringComparison.OrdinalIgnoreCase)))
             .Select(l => l.StructuredState)
             .FirstOrDefault();
         
@@ -51,7 +50,5 @@ public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixtur
 string.Equals(kvp.Value, "Club was not created yet :) but here is some text: {Name}", StringComparison.OrdinalIgnoreCase));
         
         Assert.NotNull(record);
-        
-        Assert.NotEqual(relevantLogs, []);
     }
 }
