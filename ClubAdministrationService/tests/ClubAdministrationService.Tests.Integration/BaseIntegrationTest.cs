@@ -1,4 +1,5 @@
 using ClubAdministrationService.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Testing;
 
@@ -10,17 +11,21 @@ public abstract class BaseIntegrationTest
 
     protected ApiTestFixture Fixture { get; }
     private readonly IServiceScope _scope;
+    internal readonly ClubDbContext InitialDbContext;
 
     protected BaseIntegrationTest(ApiTestFixture fixture)
     {
         Fixture = fixture;
         _scope = fixture.Services.CreateScope();
+        InitialDbContext = _scope.ServiceProvider.GetRequiredService<ClubDbContext>();
+
+        // remove this - and apply in composition root at some later day
+        if (InitialDbContext.Database.GetPendingMigrations().Any())
+        {
+            InitialDbContext.Database.Migrate();
+        }
 
         ResetLoggingStorage();
-
-        //InitialDbContext = fixture.CreateDbContext();
-
-        //ResetDatabase();
     }
     
     internal ClubDbContext GetDbContext()

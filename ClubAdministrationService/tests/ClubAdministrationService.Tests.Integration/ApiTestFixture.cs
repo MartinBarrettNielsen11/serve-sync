@@ -5,6 +5,7 @@ using DotNet.Testcontainers.Configurations;
 using DotNet.Testcontainers.Containers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -21,11 +22,10 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 
 
     private readonly PostgreSqlContainer _dbContainer = new PostgreSqlBuilder(image: "postgres:17")
-            .WithEnvironment(name: "POSTGRES_USER", value: "course")
-            .WithEnvironment(name: "POSTGRES_PASSWORD", value: "changeme")
-            .WithEnvironment(name: "POSTGRES_DB", value: "mydb")
-            .WithPortBinding(hostPort: 5555, containerPort: 5432)
-        
+            .WithEnvironment(name: "POSTGRES_USER", value: "postgres")
+            .WithEnvironment(name: "POSTGRES_PASSWORD", value: "postgres")
+            .WithEnvironment(name: "POSTGRES_DB", value: "postgres")
+            .WithPortBinding(port: 5432, assignRandomHostPort: true)
             //.WithWaitStrategy(Wait.ForUnixContainer())
             .Build();
         
@@ -43,14 +43,11 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
             b.AddFakeLogging();
         });
         
-        builder.ConfigureServices(services =>
+        builder.ConfigureTestServices(services =>
         {
             services.RemoveAll<IHostedService>();
             
             // replace db registration
-            ServiceDescriptor serviceDescriptor = services.Single(d => d.ServiceType == typeof(DbContextOptions));
-            services.Remove(serviceDescriptor);
-            
             services.RemoveAll<DbContextOptions<ClubDbContext>>();
             services.RemoveAll<ClubDbContext>();
 
