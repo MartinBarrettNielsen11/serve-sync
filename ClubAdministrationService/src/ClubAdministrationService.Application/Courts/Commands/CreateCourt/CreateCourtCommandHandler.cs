@@ -3,13 +3,15 @@ using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.CourtAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
+using MediatR;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.CreateCourt;
 
 internal sealed class CreateCourtCommandHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
+    : IRequestHandler<CreateCourtCommand, Result<Court>>
 {
-    internal async ValueTask<Result<Court>> Handle(CreateCourtCommand command, CancellationToken cancellationToken)
+    public async Task<Result<Court>> Handle(CreateCourtCommand command, CancellationToken cancellationToken)
     {
         Club? club = await clubsRepository.GetByIdAsync(command.ClubId);
 

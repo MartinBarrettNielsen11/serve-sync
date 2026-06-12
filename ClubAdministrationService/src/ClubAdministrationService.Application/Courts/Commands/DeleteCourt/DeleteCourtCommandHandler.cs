@@ -1,14 +1,16 @@
 using System.Runtime.CompilerServices;
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
+using MediatR;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
 
 // ReSharper disable once UnusedType.Global
 internal sealed class DeleteCourtCommandHandler(IClubsRepository clubsRepository)
+    : IRequestHandler<DeleteCourtCommand, Result>
 {
-    internal async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
+    public async Task<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
     {
         Club? club = await clubsRepository.GetByIdAsync(command.ClubId);
 
