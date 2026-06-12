@@ -45,7 +45,6 @@ public class ListClubsTests : IClassFixture<WebApplicationFactory<IApiMarker>>
         Guid subscriptionId = Guid.Parse("11111111-1111-1111-1111-111111111111");
         
         // Act
-        
         Uri requestUri = new(
             uriString: $"/subscriptions/{subscriptionId}/clubs",
             uriKind: UriKind.Relative);

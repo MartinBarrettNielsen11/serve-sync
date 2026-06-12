@@ -5,6 +5,7 @@ using ClubAdministrationService.Domain.SubscriptionAggregate;
 using ClubAdministrationService.Infrastructure;
 using ClubAdministrationService.Infrastructure.Middleware;
 using ClubAdministrationService.Persistence;
+using ClubAdministrationService.WebApi.Extensions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
@@ -36,10 +37,9 @@ builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
 
 builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
 
-
 WebApplication app = builder.Build();
 
-app.MapE
+app.MapEndpoints();
 
 // app.UseMiddleware<EventualConsistencyMiddleware>(); I'll need this back at some point.
 
