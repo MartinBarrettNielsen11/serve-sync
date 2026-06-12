@@ -15,6 +15,7 @@ namespace ClubAdministrationService.WebApi.Controllers;
 [Route("subscriptions/{subscriptionId:guid}/clubs")]
 public sealed class ClubsController(ISender sender) : ApiController
 {
+    /*
     /// <summary> Creates a new club </summary>
     /// <remarks>
     /// Creates a club for the specified subscription.
@@ -39,6 +40,7 @@ public sealed class ClubsController(ISender sender) : ApiController
 
         return response;
     }
+    */
     
     
     

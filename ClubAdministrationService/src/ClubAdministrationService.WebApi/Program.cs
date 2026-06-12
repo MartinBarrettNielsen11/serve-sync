@@ -29,13 +29,17 @@ builder.Services
     .AddPersistence(builder.Configuration);
     //.AddInfrastructure(builder.Configuration);
 
-    builder.Services.AddControllers();
-    builder.Services.AddOpenApi();
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
 
-    builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
+builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
+
+builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
 
 
 WebApplication app = builder.Build();
+
+app.MapE
 
 // app.UseMiddleware<EventualConsistencyMiddleware>(); I'll need this back at some point.
 

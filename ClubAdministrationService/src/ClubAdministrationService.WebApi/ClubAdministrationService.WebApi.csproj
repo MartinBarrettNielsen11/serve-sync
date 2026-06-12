@@ -19,4 +19,7 @@
       <PackageReference Include="Scalar.AspNetCore" />
       <PackageReference Include="Swashbuckle.AspNetCore" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Extensions\" />
+    </ItemGroup>
 </Project>

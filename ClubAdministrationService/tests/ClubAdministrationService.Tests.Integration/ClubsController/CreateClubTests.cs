@@ -1,10 +1,7 @@
-using System.Net;
 using System.Net.Http.Json;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
 using ClubAdministrationService.Tests.Unit.Factories;
-using ClubAdministrationService.WebApi;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Testing;
 using Xunit;
