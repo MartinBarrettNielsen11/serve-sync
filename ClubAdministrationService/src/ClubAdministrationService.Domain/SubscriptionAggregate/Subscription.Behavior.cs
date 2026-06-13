@@ -12,7 +12,7 @@ internal sealed partial class Subscription : RootAggregate
     {
         if (_clubIds.Contains(club.Id))
         {
-            return Result.Failure<bool>(Error.Failure(code: "", description: "Gym already exists"));
+            return Result.Failure<bool>(Error.Failure(code: "", description: "Club already exists"));
         }
 
         if (_maxCourtsAllowed <= _clubIds.Count)
@@ -50,5 +50,5 @@ internal sealed partial class Subscription : RootAggregate
         _ => throw new InvalidOperationException()
     };
     
-    public bool HasGym(Guid gymId) => _clubIds.Contains(gymId);
+    public bool HasClub(Guid clubId) => _clubIds.Contains(clubId);
 }

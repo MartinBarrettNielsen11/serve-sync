@@ -15,10 +15,10 @@ public sealed class Create : IEndpoint
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost(pattern: "subscriptions/{subscriptionId:guid}/clubs",
-                handler: async (CreateClubRequest request,
-                    Guid subscriptionId,
-                    ISender sender,
-                    CancellationToken cancellationToken) =>
+                    handler: async (CreateClubRequest request,
+                        Guid subscriptionId,
+                        ISender sender,
+                        CancellationToken cancellationToken) =>
                 {
                     CreateClubCommand command = new(request.Name, subscriptionId);
 

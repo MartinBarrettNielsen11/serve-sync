@@ -1,16 +1,16 @@
-using System.Runtime.CompilerServices;
 using ClubAdministrationService.Application.Common.Interfaces;
-using ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
+using MediatR;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.AddInstructor;
 
 // ReSharper disable once UnusedType.Global
 internal sealed class AddInstructorCommandHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
+    : IRequestHandler<AddInstructorCommand, Result>
 {
-    internal async ValueTask<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
+    public async Task<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
     {
         Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId);
 
@@ -19,7 +19,7 @@ internal sealed class AddInstructorCommandHandler(IClubsRepository clubsReposito
             return Result.Failure(Error.NotFound(code: "SubscriptionNotFound", description: "Subscription not found"));
         }
         
-        if (!subscription.HasGym(command.ClubId))
+        if (!subscription.HasClub(command.ClubId))
         {
             return Result.Failure(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
         }

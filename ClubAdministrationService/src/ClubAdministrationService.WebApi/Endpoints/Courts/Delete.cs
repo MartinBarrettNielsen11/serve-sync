@@ -15,7 +15,7 @@ public sealed class Delete : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapDelete(pattern: "courts/{clubId:guid}",
+        app.MapDelete(pattern: "clubs/{clubId:guid}courts/{courtId:guid}",
                 handler: async (Guid clubId,
                     Guid courtId,
                     ISender sender,
@@ -25,9 +25,8 @@ public sealed class Delete : IEndpoint
                     
                     Result deleteCourtResult = await sender.Send(command, cancellationToken);
 
-                    // TODO: Handle this result conflict thingy
                     IResult result = deleteCourtResult.Match(
-                        onSuccess: _ => Results.NoContent(),
+                        onSuccess: Results.NoContent,
                         onFailure: err => ProblemDetailsMapper.Problem(errors: [err.Error]));
                     
                     return result;
