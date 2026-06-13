@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using SharedKernel.Results;
 
 namespace SessionBookingService.Domain.EventualConsistency;

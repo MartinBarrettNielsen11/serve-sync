@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.CourtAggregate;

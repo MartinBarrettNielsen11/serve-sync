@@ -1,8 +1,5 @@
-using ClubAdministrationService.Application.Clubs.CreateClub;
 using ClubAdministrationService.Application.Courts.Commands.CreateCourt;
-using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Contracts.Courts;
-using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.CourtAggregate;
 using ClubAdministrationService.WebApi.Infrastructure;
 using MediatR;

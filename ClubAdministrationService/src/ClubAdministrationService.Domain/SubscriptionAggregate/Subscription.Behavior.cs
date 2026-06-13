@@ -1,5 +1,4 @@
 using ClubAdministrationService.Domain.ClubAggregate;
-using ClubAdministrationService.Domain.ClubAggregate.Events;
 using ClubAdministrationService.Domain.SubscriptionAggregate.Events;
 using SharedKernel;
 using SharedKernel.Results;

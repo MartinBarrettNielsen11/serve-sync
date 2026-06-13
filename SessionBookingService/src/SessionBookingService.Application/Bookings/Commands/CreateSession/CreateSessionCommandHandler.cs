@@ -1,7 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.CourtsAggregate;
 using SessionBookingService.Domain.InstructorAggregate;

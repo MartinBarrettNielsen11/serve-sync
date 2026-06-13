@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using SessionBookingService.Domain.CourtsAggregate;
 
 namespace SessionBookingService.Application.Common;

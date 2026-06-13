@@ -1,4 +1,3 @@
-using System;
 using SharedKernel.Common;
 
 namespace SessionBookingService.Domain.SessionAggregate;

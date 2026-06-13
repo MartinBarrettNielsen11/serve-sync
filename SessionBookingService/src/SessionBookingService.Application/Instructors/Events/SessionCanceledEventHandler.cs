@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using MediatR;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.CourtsAggregate.Events;

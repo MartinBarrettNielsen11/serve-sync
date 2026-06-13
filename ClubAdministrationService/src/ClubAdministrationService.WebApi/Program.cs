@@ -2,11 +2,8 @@ using System.Reflection;
 using ClubAdministrationService.Application;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using ClubAdministrationService.Infrastructure;
-using ClubAdministrationService.Infrastructure.Middleware;
 using ClubAdministrationService.Persistence;
 using ClubAdministrationService.WebApi.Extensions;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 

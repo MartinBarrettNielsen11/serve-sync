@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using SessionBookingService.Domain.PlayerAggregate;
 using SharedKernel;
 using SharedKernel.Results;

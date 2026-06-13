@@ -1,8 +1,5 @@
 using ClubAdministrationService.Persistence;
 using ClubAdministrationService.WebApi;
-using DotNet.Testcontainers.Builders;
-using DotNet.Testcontainers.Configurations;
-using DotNet.Testcontainers.Containers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
