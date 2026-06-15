@@ -17,5 +17,11 @@
       <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
       <ProjectReference Include="..\ClubAdministrationService.Tests.Data\ClubAdministrationService.Tests.Data.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Courtss\" />
+      <Folder Include="Courts\" />
+      <Folder Include="Subscriptionss\" />
+      <Folder Include="Subscriptions\" />
+    </ItemGroup>
 </Project>
  
