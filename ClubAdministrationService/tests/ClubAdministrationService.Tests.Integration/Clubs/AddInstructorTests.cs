@@ -15,9 +15,8 @@ public sealed class AddInstructorTests(ApiTestFixture fixture) : BaseApiTest(fix
     public async Task Add_Instructor()
     {
         // Arrange
-        Subscription sub = SubscriptionFactory.Create();
         Club club = ClubFactory.Create();
-        InitialDbContext.Subscriptions.Add(sub);
+        Subscription sub = SubscriptionFactory.CreateWithClub(club);
         InitialDbContext.Clubs.Add(club);
         await InitialDbContext.SaveChangesAsync();
 

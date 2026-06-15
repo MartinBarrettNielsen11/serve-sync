@@ -1,6 +1,8 @@
 namespace SharedKernel.Entity;
 
+#pragma warning disable MA0049
 public abstract class Entity
+#pragma warning restore MA0049
 {
     public Guid Id { get; init; }
 
