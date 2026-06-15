@@ -1,4 +1,4 @@
-namespace SharedKernel.Common;
+namespace SharedKernel.Entity;
 
 public abstract class Entity
 {

@@ -1,8 +1,6 @@
-using SharedKernel.Common;
-
 namespace SharedKernel;
 
-public abstract class RootAggregate : Entity
+public abstract class RootAggregate : Entity.Entity
 {
     protected RootAggregate(Guid id) : base(id) { }
 
