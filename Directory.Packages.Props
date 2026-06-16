@@ -32,6 +32,6 @@
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.4" />
     <!--Extras-->
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.0.0.68202" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.27.0.140913" />
   </ItemGroup>
 </Project>
