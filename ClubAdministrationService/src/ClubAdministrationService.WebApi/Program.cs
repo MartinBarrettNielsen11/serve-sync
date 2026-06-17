@@ -1,7 +1,5 @@
 using System.Reflection;
 using ClubAdministrationService.Application;
-using ClubAdministrationService.Domain.ClubAggregate;
-using ClubAdministrationService.Domain.SubscriptionAggregate;
 using ClubAdministrationService.Persistence;
 using ClubAdministrationService.WebApi.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -52,44 +50,11 @@ if (app.Environment.IsDevelopment())
 }
 
 
-
 if (!app.Environment.IsEnvironment("Testing"))
 {
     using IServiceScope scope = app.Services.CreateScope();
     ClubDbContext dbContext = scope.ServiceProvider.GetRequiredService<ClubDbContext>();
     await dbContext.Database.MigrateAsync();
-    
-    //if (!await dbContext.Clubs.AnyAsync())
-    //{
-        Guid subscriptionId1 = Guid.CreateVersion7();
-        Guid subscriptionId2 = Guid.CreateVersion7();
-        
-        var clubs = new List<Club>
-        {
-            new(
-                name: "Vibenhuset tennis club",
-                maxCourtCapacity: 5,
-                subscriptionId: subscriptionId1
-            ),
-            new(
-                name: "Nørrebro tennis club",
-                maxCourtCapacity: 4,
-                subscriptionId: subscriptionId2
-            )
-        };
-
-        var subscriptions = new List<Subscription>
-        {
-            new(subscriptionType: SubscriptionType.Free, subscriptionId1),
-            new(subscriptionType: SubscriptionType.Starter, subscriptionId2),
-            new(subscriptionType: SubscriptionType.Pro, Guid.CreateVersion7()),
-        };
-
-        dbContext.Clubs.AddRange(clubs);
-        dbContext.Subscriptions.AddRange(subscriptions);
-        await dbContext.SaveChangesAsync();
-    //}
-    
 }
 
 app.MapControllers();

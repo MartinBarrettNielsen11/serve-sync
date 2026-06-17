@@ -17,10 +17,10 @@ internal class EventualConsistencyMiddleware(RequestDelegate next)
         {
             try
             {
-                if (context.Items.TryGetValue(DomainEventsKey, out var value))
+                /*if (context.Items.TryGetValue(DomainEventsKey, out var value))
                 {
                     // as long as one can extract elements from queue/stack like data structure then publish said events
-                }
+                }*/
 
                 await transaction.CommitAsync(context.RequestAborted);
             }

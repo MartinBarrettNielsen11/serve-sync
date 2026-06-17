@@ -12,7 +12,7 @@ internal sealed partial class Subscription
                           Guid? id = null) : base(id ?? Guid.CreateVersion7())
     {
         SubscriptionType = subscriptionType;
-        _maxCourtsAllowed = GetMaxClubsAllowed();
+        _maxCourtsAllowed = GetMaxCourtsAllowed();
     }
 
     private Subscription() { } // For EF / serialization

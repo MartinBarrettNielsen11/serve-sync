@@ -20,12 +20,6 @@ internal sealed class CreateClubCommandHandler(ISubscriptionsRepository subscrip
             return Result.Failure<Club>(Error.NotFound(code: "SubscriptionNotFound", description: "Subscription not found"));
         }
         
-        #pragma warning disable CA1848
-        logger.LogInformation("Club was not created yet :) but here is some text: {Name}", command.Name);
-        #pragma warning restore CA1848
-
-        return Result.Failure<Club>(Error.NotFound(code: "yo", description: "yo"));
-        /*
         Club club = new(name: command.Name,
                         maxCourtCapacity: subscription.GetMaxCourtsAllowed(),
                         subscriptionId: subscription.Id);
@@ -42,6 +36,6 @@ internal sealed class CreateClubCommandHandler(ISubscriptionsRepository subscrip
 
         await subscriptionsRepository.UpdateAsync(subscription);
 
-        return Result.Success<Club>(club);*/
+        return Result.Success<Club>(club);
     }
 }

@@ -25,14 +25,6 @@ internal sealed partial class Subscription : RootAggregate
         return Result.Success<bool>(value: true);
     }
 
-    internal int GetMaxClubsAllowed() => SubscriptionType.Name switch
-    {
-        nameof(SubscriptionType.Free) => 1,
-        nameof(SubscriptionType.Starter) => 1,
-        nameof(SubscriptionType.Pro) => 3,
-        _ => throw new InvalidOperationException()
-    };
-
     internal int GetMaxCourtsAllowed() => SubscriptionType.Name switch
     {
         nameof(SubscriptionType.Free) => 1,

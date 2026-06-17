@@ -1,7 +1,10 @@
+using System.Net;
 using System.Net.Http.Json;
 using ClubAdministrationService.Contracts.Clubs;
+using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
 using ClubAdministrationService.Tests.Unit.Factories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Testing;
 using Xunit;
@@ -14,7 +17,7 @@ public sealed class CreateTests(ApiTestFixture fixture) : BaseApiTest(fixture), 
     public async Task Create_Club()
     {
         // Arrange
-        Subscription sub = SubscriptionFactory.Create();
+        Subscription sub = SubscriptionFactory.Create(subscriptionType: SubscriptionType.Pro);
         InitialDbContext.Subscriptions.Add(sub);
         await InitialDbContext.SaveChangesAsync();
         
@@ -27,7 +30,18 @@ public sealed class CreateTests(ApiTestFixture fixture) : BaseApiTest(fixture), 
 
         // Assert
         //Assert.Equal(HttpStatusCode.Created, response.StatusCode);
-        Assert.Equal(response.StatusCode, response.StatusCode);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        
+        await using var assertionContext = GetDbContext();
+        Club? yo = await assertionContext.Clubs.FirstOrDefaultAsync(c => c.SubscriptionId == sub.Id);
+        
+        Assert.NotNull(yo);
+        Assert.Equal("Test Club", yo.Name);
+
+        Club? club = await InitialDbContext.Clubs.FirstOrDefaultAsync(c => c.SubscriptionId == sub.Id);
+        
+        Assert.NotNull(club);
+        Assert.Equal("Test Club", club.Name);
 
         IReadOnlyList<FakeLogRecord> logs = GetFakeLogCollector().GetSnapshot();
 
