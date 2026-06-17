@@ -1,4 +1,4 @@
-namespace SharedKernel.Entity;
+namespace SharedKernel.Common;
 
 #pragma warning disable MA0049
 public abstract class Entity

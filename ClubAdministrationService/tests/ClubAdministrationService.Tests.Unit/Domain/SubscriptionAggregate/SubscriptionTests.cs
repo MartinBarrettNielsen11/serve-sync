@@ -14,7 +14,7 @@ public class SubscriptionTests
         // Arrange
         Subscription subscription = SubscriptionFactory.Create(subscriptionType: SubscriptionType.Pro);
 
-        List<Club> gyms = Enumerable.Range(0, subscription.GetMaxClubsAllowed() + 1)
+        List<Club> gyms = Enumerable.Range(0, subscription.GetMaxCourtsAllowed() + 1)
             .Select(_ => ClubFactory.Create(id: Guid.NewGuid()))
             .ToList();
 
