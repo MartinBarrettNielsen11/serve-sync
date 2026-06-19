@@ -6,11 +6,11 @@ using Xunit;
 namespace ClubAdministrationService.Tests.Integration.Clubs;
 
 // note: you need to add a some abstraction that includes setting up a database, a fake logger, and some InitialDbContext, whcih can be worked with in the arrange step.
-public class ListTests : IClassFixture<WebApplicationFactory<IApiMarker>>
+public class ListClubsTests : IClassFixture<WebApplicationFactory<IApiMarker>>
 {
     private readonly HttpClient _httpClient;
 
-    public ListTests(WebApplicationFactory<IApiMarker> appFactory)
+    public ListClubsTests(WebApplicationFactory<IApiMarker> appFactory)
     {
         _httpClient = appFactory.CreateClient();
     }

@@ -7,7 +7,7 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.WebApi.Endpoints.Clubs;
 
-public sealed class List : IEndpoint
+public sealed class ListClubs : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {

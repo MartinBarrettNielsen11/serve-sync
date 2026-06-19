@@ -3,7 +3,7 @@ namespace ClubAdministrationService.Domain.SubscriptionAggregate;
 
 internal sealed partial class Subscription
 {
-    private readonly List<Guid> _clubIds = new();
+    private readonly List<Guid> _clubIds = [];
     internal IReadOnlyCollection<Guid> ClubIds => _clubIds.AsReadOnly();
     private readonly int _maxCourtsAllowed;
 

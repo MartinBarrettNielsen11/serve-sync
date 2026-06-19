@@ -5,7 +5,7 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.WebApi.Endpoints.Courts;
 
-public sealed class Delete : IEndpoint
+public sealed class DeleteCourt : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
