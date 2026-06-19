@@ -22,7 +22,9 @@ public sealed class Create : IEndpoint
                     Result<Court> createCourtResult = await sender.Send(command, cancellationToken);
 
                     IResult result = createCourtResult.Match(
-                        onSuccess: r => TypedResults.CreatedAtRoute(routeName: $"rooms/{r.Id}", value: ""),
+                        onSuccess: r => TypedResults.CreatedAtRoute(routeName: "GetCourt", 
+                                                                    routeValues: new { clubId, courtId = r.Id },
+                                                                    value: new CourtResponse(r.Id, r.Name)),
                         onFailure: err => ProblemDetailsMapper.Problem(errors: [err.Error]));
 
                     return result;

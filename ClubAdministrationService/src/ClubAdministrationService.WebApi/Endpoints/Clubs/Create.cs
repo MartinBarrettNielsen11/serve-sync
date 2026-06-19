@@ -26,7 +26,8 @@ public sealed class Create : IEndpoint
 
                     IResult result = createClubResult.Match(
                         onSuccess: c => TypedResults.CreatedAtRoute(
-                            routeName: $"/subscriptions/{subscriptionId}/clubs/{c.Id}",
+                            routeName: "GetClub",
+                            routeValues: new { subscriptionId, clubId = c.Id },
                             value: new ClubResponse(c.Id, c.Name)),
                         onFailure: e => ProblemDetailsMapper.Problem([e.Error]));
 

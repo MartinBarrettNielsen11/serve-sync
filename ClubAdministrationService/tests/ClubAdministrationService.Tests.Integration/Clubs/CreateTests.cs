@@ -29,8 +29,7 @@ public sealed class CreateTests(ApiTestFixture fixture) : BaseApiTest(fixture), 
             value: request);
 
         // Assert
-        //Assert.Equal(HttpStatusCode.Created, response.StatusCode);
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
         
         await using var assertionContext = GetDbContext();
         Club? yo = await assertionContext.Clubs.FirstOrDefaultAsync(c => c.SubscriptionId == sub.Id);
