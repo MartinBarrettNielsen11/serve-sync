@@ -1,6 +1,8 @@
 using ClubAdministrationService.Persistence;
 using ClubAdministrationService.WebApi;
+using MediatR;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
@@ -68,6 +70,18 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
     {
     } */
 
+    internal ClubDbContext CreateDbContext()
+    {
+        var options = new DbContextOptionsBuilder<ClubDbContext>()
+            .UseNpgsql(ConnectionString)
+            .Options;
+
+        return new ClubDbContext(
+            options,
+            new HttpContextAccessor(),
+            null!);
+    }
+    
     public async Task InitializeAsync()
     {
         await _dbContainer.StartAsync();

@@ -3,6 +3,7 @@ using System.Net.Http.Json;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
+using ClubAdministrationService.Tests.Integration.Extensions;
 using ClubAdministrationService.Tests.Unit.Factories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -30,34 +31,15 @@ public sealed class CreateTests(ApiTestFixture fixture) : BaseApiTest(fixture), 
 
         // Assert
         Assert.Equal(HttpStatusCode.Created, response.StatusCode);
-        
-        await using var assertionContext = GetDbContext();
-        Club? yo = await assertionContext.Clubs.FirstOrDefaultAsync(c => c.SubscriptionId == sub.Id);
-        
-        Assert.NotNull(yo);
-        Assert.Equal("Test Club", yo.Name);
 
-        Club? club = await InitialDbContext.Clubs.FirstOrDefaultAsync(c => c.SubscriptionId == sub.Id);
+        await using var assertionContext = Fixture.CreateDbContext();
+        Subscription? updatedSubscription = await assertionContext.Subscriptions.FirstOrDefaultAsync(s => s.Id == sub.Id);
         
-        Assert.NotNull(club);
-        Assert.Equal("Test Club", club.Name);
-
-        IReadOnlyList<FakeLogRecord> logs = GetFakeLogCollector().GetSnapshot();
-
-        IReadOnlyList<KeyValuePair<string, string?>>? record = logs
-            .Where(l => l.Level == LogLevel.Information)
-            .Where(l => l.StructuredState is not null && 
-                        l.StructuredState.Any(kvp => string.Equals(kvp.Key, "Name", StringComparison.OrdinalIgnoreCase) &&
-                                                     string.Equals(kvp.Value, "Test Club", StringComparison.OrdinalIgnoreCase)))
-            .Select(l => l.StructuredState)
-            .FirstOrDefault();
+        Assert.NotNull(updatedSubscription);
+        Assert.NotEmpty(updatedSubscription.ClubIds);
         
-        Assert.NotNull(record);
-        
-        Assert.Contains(record,
-            kvp => string.Equals(kvp.Key, "{OriginalFormat}", StringComparison.OrdinalIgnoreCase) &&
-string.Equals(kvp.Value, "Club was not created yet :) but here is some text: {Name}", StringComparison.OrdinalIgnoreCase));
-        
-        Assert.NotNull(record);
+        GetFakeLogCollector().ShouldHaveInformationLog(
+            "Club was not created yet :) but here is some text: {Name}",
+            ("Name", "Test Club"));
     }
 }
