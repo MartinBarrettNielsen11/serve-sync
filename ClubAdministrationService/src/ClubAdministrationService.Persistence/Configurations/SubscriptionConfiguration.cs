@@ -1,4 +1,5 @@
 using ClubAdministrationService.Domain.SubscriptionAggregate;
+using ClubAdministrationService.Persistence.Converters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -8,17 +9,20 @@ internal sealed class SubscriptionConfiguration : IEntityTypeConfiguration<Subsc
 {
     public void Configure(EntityTypeBuilder<Subscription> builder)
     {
-        builder.HasKey(s => s.Id);
+        builder.HasKey(keyExpression: s => s.Id);
 
-        builder.Property(s => s.Id)
+        builder.Property(propertyExpression: s => s.Id)
             .ValueGeneratedNever();
 
-        builder.Property("_maxCourtsAllowed")
+        builder.Property(propertyName: "_maxCourtsAllowed")
             .HasColumnName("MaxCourtsAllowed");
 
-        builder.Property(s => s.SubscriptionType)
-            .HasConversion(
-                subscriptionType => subscriptionType.Value,
-                value => SubscriptionType.FromValue(value)); 
+        builder.Property(propertyExpression: s => s.SubscriptionType)
+            .HasConversion(convertToProviderExpression: subscriptionType => subscriptionType.Value,
+                           convertFromProviderExpression: value => SubscriptionType.FromValue(value));
+
+        builder.Property<List<Guid>>(propertyName: "_clubIds")
+            .HasColumnName(name: "ClubIds")
+            .HasListOfIdsConverter();
     }
 }

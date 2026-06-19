@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ClubAdministrationService.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClubAdministrationService.Persistence.Migrations
 {
     [DbContext(typeof(ClubDbContext))]
-    partial class ClubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260619184340_AddClubIdsToSubscriptionDataModel")]
+    partial class AddClubIdsToSubscriptionDataModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,10 +79,9 @@ namespace ClubAdministrationService.Persistence.Migrations
                     b.Property<int>("SubscriptionType")
                         .HasColumnType("integer");
 
-                    b.Property<string>("_clubIds")
-                        .IsRequired()
+                    b.Property<string>("_clubsIds")
                         .HasColumnType("text")
-                        .HasColumnName("ClubIds");
+                        .HasColumnName("ClubsIds");
 
                     b.Property<int>("_maxCourtsAllowed")
                         .HasColumnType("integer")
