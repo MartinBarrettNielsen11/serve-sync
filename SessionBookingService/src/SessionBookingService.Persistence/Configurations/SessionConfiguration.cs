@@ -27,6 +27,21 @@ internal sealed class SessionConfiguration : IEntityTypeConfiguration<Session>
 
             b.Property(r => r.PlayerId);
         });
+        
+        
+        builder.OwnsMany(s => s.Categories, cb =>
+            {
+                cb.ToTable("SessionCategories");
+
+                cb.WithOwner().HasForeignKey("SessionId");
+                cb.HasKey("Id");
+
+                cb.Property(c => c.Name);
+                cb.Property(c => c.Value);
+            })
+            .Metadata
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
+        
 
         builder.Property(s => s.MaxPlayerCapacity);
 
