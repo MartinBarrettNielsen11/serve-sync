@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SessionBookingService.Domain.PlayerAggregate;
+using SessionBookingService.Persistence.Converters;
 using SharedKernel;
 
 namespace SessionBookingService.Persistence.Configurations;
@@ -16,12 +17,16 @@ internal sealed class PlayerConfiguration : IEntityTypeConfiguration<Player>
 
         builder.OwnsOne<Schedule>("_schedule", sb =>
         {
-            sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar");
+            sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
+                .HasColumnName("ScheduleCalender")
+                .HasValueJsonConverter();
 
-            sb.Property(s => s.Id);
+            sb.Property(s => s.Id).HasColumnName("ScheduleId");
         });
 
-        builder.Property<List<Guid>>("_sessionIds");
+        builder.Property<List<Guid>>("_sessionIds")
+            .HasColumnName("SessionIds")
+            .HasListOfIdsConverter();
 
         builder.Property(g => g.UserId);
     }
