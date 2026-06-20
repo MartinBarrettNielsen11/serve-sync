@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SessionBookingService.Domain.CourtsAggregate;
+using SessionBookingService.Persistence.Converters;
 using SharedKernel;
 
 namespace SessionBookingService.Persistence.Configurations;
@@ -15,17 +16,16 @@ internal sealed class CourtConfiguration : IEntityTypeConfiguration<Court>
 
         builder.Property("_maxDailySessions").HasColumnName("MaxDailySessions");
 
-        builder.Property<List<Guid>>("_sessionIds").HasColumnName("SessionIds");
+        builder.Property<List<Guid>>("_sessionIds").HasColumnName("SessionIds").HasListOfIdsConverter();
 
         builder.OwnsOne<Schedule>("_schedule", sb =>
         {
             sb.ToJson();
-            
+
             sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
-                .HasColumnName("Calendar");
-
-            sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar").HasColumnName("ScheduleCalendar");
-
+                .HasColumnName("ScheduleCalendar")
+                .HasValueJsonConverter();
+            
             sb.Property(s => s.Id).HasColumnName("ScheduleId");
         });
 
