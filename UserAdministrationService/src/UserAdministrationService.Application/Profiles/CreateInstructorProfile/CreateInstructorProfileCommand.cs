@@ -1,3 +1,6 @@
+using MediatR;
+using SharedKernel.Results;
+
 namespace UserAdministrationService.Application.Profiles.CreateInstructorProfile;
 
-public record CreateInstructorProfileCommand(Guid UserId);
+public record CreateInstructorProfileCommand(Guid UserId) : IRequest<Result<Guid>>;
