@@ -11,6 +11,7 @@
     <ItemGroup>
         <InternalsVisibleTo Include="UserAdministrationService.Application" />
         <InternalsVisibleTo Include="UserAdministrationService.Persistence" />
+        <InternalsVisibleTo Include="UserAdministrationService.Infrastructure" />
     </ItemGroup>
 
     <ItemGroup>
