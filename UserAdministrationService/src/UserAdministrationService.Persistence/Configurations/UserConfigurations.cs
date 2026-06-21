@@ -15,6 +15,6 @@ internal class UserConfigurations : IEntityTypeConfiguration<User>
         builder.Property(u => u.AdminId);
         builder.Property(u => u.PlayerId);
         builder.Property(u => u.InstructorId);
-        builder.Property("_passwordHash");
+        builder.Property("_passwordHash").HasColumnName("PasswordHash");
     }
 }

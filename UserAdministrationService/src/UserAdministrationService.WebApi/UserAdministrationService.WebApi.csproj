@@ -13,5 +13,6 @@
       <PackageReference Include="MediatR" />
       <PackageReference Include="Scalar.AspNetCore" />
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
     </ItemGroup>
 </Project>
