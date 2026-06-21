@@ -20,8 +20,6 @@ internal sealed class CourtConfiguration : IEntityTypeConfiguration<Court>
 
         builder.OwnsOne<Schedule>("_schedule", sb =>
         {
-            sb.ToJson();
-
             sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
                 .HasColumnName("ScheduleCalendar")
                 .HasValueJsonConverter();
