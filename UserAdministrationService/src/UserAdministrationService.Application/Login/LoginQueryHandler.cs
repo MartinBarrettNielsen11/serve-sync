@@ -13,7 +13,7 @@ internal sealed class LoginQueryHandler(IPasswordHasher passwordHasher,
 {
     public async Task<Result<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
-        User? user = await usersRepository.GetByEmailAsync(query.Email);
+        User? user = await usersRepository.GetByEmailAsync(query.Email, cancellationToken);
 
         return user is null || !user.IsCorrectPasswordHash(query.Password, passwordHasher)
             ? Result.Failure<AuthenticationResult>(AuthenticationErrors.InvalidCredentials)

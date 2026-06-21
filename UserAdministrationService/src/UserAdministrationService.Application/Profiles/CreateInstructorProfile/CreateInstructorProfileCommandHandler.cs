@@ -9,7 +9,7 @@ internal sealed class CreateInstructorProfileCommandHandler(IUsersRepository use
 {
     public async Task<Result<Guid>> Handle(CreateInstructorProfileCommand command, CancellationToken cancellationToken)
     {
-        User? user = await usersRepository.GetByIdAsync(command.UserId);
+        User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 
         if (user is null)
         {
@@ -18,7 +18,7 @@ internal sealed class CreateInstructorProfileCommandHandler(IUsersRepository use
         
         Result<Guid> createInstructorProfileResult = user.CreateInstructorProfile();
 
-        await usersRepository.UpdateAsync(user);
+        await usersRepository.UpdateAsync(user, cancellationToken);
 
         return createInstructorProfileResult;
     }

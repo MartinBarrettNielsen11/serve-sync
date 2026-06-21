@@ -9,7 +9,7 @@ internal sealed class CreatePlayerProfileCommandHandler(IUsersRepository usersRe
 {
     public async Task<Result<Guid>> Handle(CreatePlayerProfileCommand command, CancellationToken cancellationToken)
     {
-        User? user = await usersRepository.GetByIdAsync(command.UserId);
+        User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 
         if (user is null)
         {
@@ -18,7 +18,7 @@ internal sealed class CreatePlayerProfileCommandHandler(IUsersRepository usersRe
         
         Result<Guid> createParticipantProfileResult = user.CreatePlayerProfile();
 
-        await usersRepository.UpdateAsync(user);
+        await usersRepository.UpdateAsync(user, cancellationToken);
 
         return createParticipantProfileResult;
     }

@@ -9,7 +9,7 @@ internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, I
 {
     internal async ValueTask<Result> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
-        var userExists = await usersRepository.ExistsByEmailAsync(command.Email);
+        var userExists = await usersRepository.ExistsByEmailAsync(command.Email, cancellationToken);
 
         if (!userExists)
         {
@@ -28,7 +28,7 @@ internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, I
                         email: command.Email, 
                         passwordHash: hashPasswordResult.Value);
 
-        await usersRepository.AddUserAsync(user);
+        await usersRepository.AddUserAsync(user, cancellationToken);
         
         // return some authentication dto including a token
         return null!;
