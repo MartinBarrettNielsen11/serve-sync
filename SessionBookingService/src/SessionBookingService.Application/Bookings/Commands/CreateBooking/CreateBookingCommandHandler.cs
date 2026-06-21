@@ -16,12 +16,12 @@ internal sealed class CreateBookingCommandHandler(
 
         if (session is null)
         {
-            return Result.Failure(Error.NotFound(code: "SessionNotFound", description: "Session not found"));
+            return Result.Failure<Guid>(Error.NotFound(code: "SessionNotFound", description: "Session not found"));
         }
         
         if (session.HasBookingForPlayer(command.PlayerId))
         {
-            return Result.Failure(Error.Conflict(code: "PlayerAlreadyHasBooking",
+            return Result.Failure<Guid>(Error.Conflict(code: "PlayerAlreadyHasBooking",
                 description: "Player already has booking"));
         }
 
@@ -29,24 +29,24 @@ internal sealed class CreateBookingCommandHandler(
 
         if (player is null)
         {
-            return Result.Failure(Error.NotFound(code: "PlayerNotFound", description: "Player not found"));
+            return Result.Failure<Guid>(Error.NotFound(code: "PlayerNotFound", description: "Player not found"));
         }
         
         if (player.HasBookingForSession(session.Id))
         {
-            return Result.Failure(Error.Unexpected(code: "PlayerNotExpectedToHaveReservationToSession",
-                                                   description: "Player not expected to have reservation to session"));
+            return Result.Failure<Guid>(Error.Unexpected(code: "PlayerNotExpectedToHaveReservationToSession",
+                                                         description: "Player not expected to have reservation to session"));
         }
         
         Result<bool> bookSpotResult = session.BookSpot(player);
 
         if (bookSpotResult.IsFailure)
         {
-            return Result.Failure(bookSpotResult.Error);
+            return Result.Failure<Guid>(bookSpotResult.Error);
         }
 
         await sessionsRepository.UpdateAsync(session);
-
+        
         Result res = Result.Success();
         return res;
     }
