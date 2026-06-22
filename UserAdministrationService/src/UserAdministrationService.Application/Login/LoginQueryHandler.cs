@@ -8,15 +8,19 @@ using UserAdministrationService.Domain.UserAggregate;
 namespace UserAdministrationService.Application.Login;
 
 internal sealed class LoginQueryHandler(IPasswordHasher passwordHasher, 
-                                        IUsersRepository usersRepository)
+                                        IUsersRepository usersRepository,
+                                        IJwtTokenGenerator jwtTokenGenerator)
     : IRequestHandler<LoginQuery, Result<AuthenticationResult>>
 {
     public async Task<Result<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
         User? user = await usersRepository.GetByEmailAsync(query.Email, cancellationToken);
 
-        return user is null || !user.IsCorrectPasswordHash(query.Password, passwordHasher)
-            ? Result.Failure<AuthenticationResult>(AuthenticationErrors.InvalidCredentials)
-            : new AuthenticationResult(user, user.Email.ToString()); // You need to fix this
+        if (user is null || !user.IsCorrectPasswordHash(query.Password, passwordHasher))
+        {
+            return Result.Failure<AuthenticationResult>(AuthenticationErrors.InvalidCredentials);
+        }
+        
+        return new AuthenticationResult(user, jwtTokenGenerator.GenerateToken(user));
     }
 }
