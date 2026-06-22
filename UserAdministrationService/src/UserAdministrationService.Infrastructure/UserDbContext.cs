@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SharedKernel;
 using UserAdministrationService.Domain.UserAggregate;
 
-namespace UserAdministrationService.Persistence;
+namespace UserAdministrationService.Infrastructure;
 
 internal sealed class UserDbContext(DbContextOptions options, IHttpContextAccessor httpContextAccessor) 
     : DbContext(options)

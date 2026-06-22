@@ -6,7 +6,6 @@
     <ItemGroup>
       <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
       <ProjectReference Include="..\UserAdministrationService.Infrastructure\UserAdministrationService.Infrastructure.csproj" />
-      <ProjectReference Include="..\UserAdministrationService.Persistence\UserAdministrationService.Persistence.csproj" />
       <ProjectReference Include="..\UserAdministrationService.Contracts\UserAdministrationService.Contracts.csproj" />
     </ItemGroup>
     <ItemGroup>

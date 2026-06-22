@@ -32,7 +32,6 @@
   <Folder Name="/UserAdministrationService/" />
   <Folder Name="/UserAdministrationService/src/">
     <Project Path="userAdministrationService/src/UserAdministrationService.Infrastructure/UserAdministrationService.Infrastructure.csproj" />
-    <Project Path="UserAdministrationService/src/UserAdministrationService.Persistence/UserAdministrationService.Persistence.csproj" />
     <Project Path="UserAdministrationService\src\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
     <Project Path="userAdministrationService\src\UserAdministrationService.Contracts\UserAdministrationService.Contracts.csproj" />
     <Project Path="UserAdministrationService\src\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />

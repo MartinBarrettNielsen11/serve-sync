@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using UserAdministrationService.Persistence;
+using UserAdministrationService.Infrastructure;
 
 #nullable disable
 
-namespace UserAdministrationService.Persistence.Migrations
+namespace UserAdministrationService.Infrastructure.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20260621233446_AddInitialDataModel")]
+    [Migration("20260622144751_AddInitialDataModel")]
     partial class AddInitialDataModel
     {
         /// <inheritdoc />

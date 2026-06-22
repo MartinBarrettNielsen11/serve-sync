@@ -9,6 +9,8 @@
       <PackageReference Include="BCrypt.Net-Next" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+      <PackageReference Include="MediatR" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
     </ItemGroup>
 
     <ItemGroup>
@@ -20,7 +22,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
+      <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
       <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
-      <ProjectReference Include="..\UserAdministrationService.Persistence\UserAdministrationService.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Migrations\" />
     </ItemGroup>
 </Project>

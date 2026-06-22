@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using UserAdministrationService.Application.Interfaces;
 using UserAdministrationService.Domain.UserAggregate;
 
-namespace UserAdministrationService.Persistence.Repositories;
+namespace UserAdministrationService.Infrastructure.Repositories;
 
 internal sealed class UsersRepository(UserDbContext dbContext) : IUsersRepository
 {

@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using UserAdministrationService.Domain.UserAggregate;
 
-namespace UserAdministrationService.Persistence.Configurations;
+namespace UserAdministrationService.Infrastructure.Configurations;
 
 internal class UserConfigurations : IEntityTypeConfiguration<User>
 {

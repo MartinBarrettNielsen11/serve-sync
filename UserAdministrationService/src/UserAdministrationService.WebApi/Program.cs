@@ -3,7 +3,6 @@ using Scalar.AspNetCore;
 using UserAdministrationService.Application;
 using UserAdministrationService.Infrastructure;
 using UserAdministrationService.Infrastructure.Middleware;
-using UserAdministrationService.Persistence;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

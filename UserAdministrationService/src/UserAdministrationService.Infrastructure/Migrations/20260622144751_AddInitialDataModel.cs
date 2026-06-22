@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace UserAdministrationService.Persistence.Migrations
+namespace UserAdministrationService.Infrastructure.Migrations
 {
     /// <inheritdoc />
-#pragma warning disable MA0048
     public partial class AddInitialDataModel : Migration
-#pragma warning restore MA0048
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

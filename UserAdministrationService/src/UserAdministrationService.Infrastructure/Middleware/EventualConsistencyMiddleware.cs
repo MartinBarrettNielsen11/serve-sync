@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
 using SharedKernel;
 using UserAdministrationService.Domain.EventualConsistency;
-using UserAdministrationService.Persistence;
 
 namespace UserAdministrationService.Infrastructure.Middleware;
 
