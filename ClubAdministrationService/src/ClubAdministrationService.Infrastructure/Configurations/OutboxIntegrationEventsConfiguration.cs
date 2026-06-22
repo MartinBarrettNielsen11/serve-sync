@@ -1,8 +1,8 @@
-using ClubAdministrationService.Persistence.IntegrationEvents;
+using ClubAdministrationService.Infrastructure.IntegrationEvents;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ClubAdministrationService.Persistence.Configurations;
+namespace ClubAdministrationService.Infrastructure.Configurations;
 
 public class OutboxIntegrationEventsConfiguration : IEntityTypeConfiguration<OutboxIntegrationEvent>
 {

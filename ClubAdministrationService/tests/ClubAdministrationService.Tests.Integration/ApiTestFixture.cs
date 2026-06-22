@@ -1,6 +1,5 @@
-using ClubAdministrationService.Persistence;
+using ClubAdministrationService.Infrastructure;
 using ClubAdministrationService.WebApi;
-using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -72,7 +71,7 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 
     internal ClubDbContext CreateDbContext()
     {
-        var options = new DbContextOptionsBuilder<ClubDbContext>()
+        DbContextOptions<ClubDbContext> options = new DbContextOptionsBuilder<ClubDbContext>()
             .UseNpgsql(ConnectionString)
             .Options;
 

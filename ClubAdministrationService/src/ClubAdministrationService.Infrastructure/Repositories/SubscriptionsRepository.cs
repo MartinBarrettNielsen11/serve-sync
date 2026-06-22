@@ -2,7 +2,7 @@ using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClubAdministrationService.Persistence.Repositories;
+namespace ClubAdministrationService.Infrastructure.Repositories;
 
 internal class SubscriptionsRepository(ClubDbContext clubDbContext) : ISubscriptionsRepository
 {

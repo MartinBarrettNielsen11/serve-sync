@@ -2,7 +2,7 @@ using ClubAdministrationService.Domain.ClubAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ClubAdministrationService.Persistence.Configurations;
+namespace ClubAdministrationService.Infrastructure.Configurations;
 
 internal sealed class ClubConfiguration : IEntityTypeConfiguration<Club>
 {

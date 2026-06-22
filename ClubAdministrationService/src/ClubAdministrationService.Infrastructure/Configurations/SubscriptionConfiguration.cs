@@ -1,9 +1,9 @@
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using ClubAdministrationService.Persistence.Converters;
+using ClubAdministrationService.Infrastructure.Converters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ClubAdministrationService.Persistence.Configurations;
+namespace ClubAdministrationService.Infrastructure.Configurations;
 
 internal sealed class SubscriptionConfiguration : IEntityTypeConfiguration<Subscription>
 {

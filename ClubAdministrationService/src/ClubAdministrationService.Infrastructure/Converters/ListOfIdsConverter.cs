@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ClubAdministrationService.Persistence.Converters;
+namespace ClubAdministrationService.Infrastructure.Converters;
 
 public sealed class ListOfIdsConverter : ValueConverter<List<Guid>, string>
 {

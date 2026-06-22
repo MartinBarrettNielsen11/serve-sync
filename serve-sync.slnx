@@ -5,7 +5,6 @@
     <Project Path="ClubAdministrationService\src\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
     <Project Path="ClubAdministrationService\src\ClubAdministrationService.Contracts\ClubAdministrationService.Contracts.csproj" />
     <Project Path="ClubAdministrationService\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
-    <Project Path="ClubAdministrationService\src\ClubAdministrationService.Persistence\ClubAdministrationService.Persistence.csproj" />
     <Project Path="ClubAdministrationService\src\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj" />
   </Folder>
   <Folder Name="/ClubAdministrationService/tests/">

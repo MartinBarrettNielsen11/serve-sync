@@ -1,4 +1,4 @@
-using ClubAdministrationService.Persistence;
+using ClubAdministrationService.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Testing;

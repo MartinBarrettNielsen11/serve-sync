@@ -10,13 +10,16 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
       <PackageReference Include="Microsoft.VisualStudio.Threading" />
       <PackageReference Include="RabbitMQ.Client" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />  
     </ItemGroup>
 
     <ItemGroup>
         <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration" />
     </ItemGroup>
-
+    
     <ItemGroup>
-      <ProjectReference Include="..\ClubAdministrationService.Persistence\ClubAdministrationService.Persistence.csproj" />
+        <ProjectReference Include="..\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
+        <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     </ItemGroup>
 </Project>

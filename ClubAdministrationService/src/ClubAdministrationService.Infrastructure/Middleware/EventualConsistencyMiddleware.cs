@@ -1,7 +1,6 @@
 using ClubAdministrationService.Domain.EventualConsistency;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using ClubAdministrationService.Persistence;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ClubAdministrationService.Infrastructure.Middleware;

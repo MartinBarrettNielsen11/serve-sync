@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace ClubAdministrationService.Persistence.Converters;
+namespace ClubAdministrationService.Infrastructure.Converters;
 
 public static class FluentApiExtensions
 {

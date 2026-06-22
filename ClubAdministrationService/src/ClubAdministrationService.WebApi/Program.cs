@@ -1,6 +1,6 @@
 using System.Reflection;
 using ClubAdministrationService.Application;
-using ClubAdministrationService.Persistence;
+using ClubAdministrationService.Infrastructure;
 using ClubAdministrationService.WebApi.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;

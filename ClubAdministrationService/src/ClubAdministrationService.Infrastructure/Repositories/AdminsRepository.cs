@@ -2,7 +2,7 @@ using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.AdminAggregate;
 using Microsoft.EntityFrameworkCore;
 
-namespace ClubAdministrationService.Persistence.Repositories;
+namespace ClubAdministrationService.Infrastructure.Repositories;
 
 internal sealed class AdminsRepository(ClubDbContext clubDbContext) : IAdminsRepository
 {

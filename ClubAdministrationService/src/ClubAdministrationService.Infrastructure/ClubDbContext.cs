@@ -1,13 +1,13 @@
 using System.Reflection;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using ClubAdministrationService.Domain.AdminAggregate;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using SharedKernel;
 
-namespace ClubAdministrationService.Persistence;
+namespace ClubAdministrationService.Infrastructure;
 
 internal sealed class ClubDbContext(
     DbContextOptions options,
@@ -37,7 +37,9 @@ internal sealed class ClubDbContext(
         return await base.SaveChangesAsync(cancellationToken);
     }
     
+#pragma warning disable VSTHRD200
     private async Task PublishDomainEvents(List<IDomainEvent> domainEvents)
+#pragma warning restore VSTHRD200
     {
         foreach (IDomainEvent domainEvent in domainEvents)
         {

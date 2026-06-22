@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ClubAdministrationService.Persistence.Migrations
+namespace ClubAdministrationService.Infrastructure.Migrations
 {
     /// <inheritdoc />
-#pragma warning disable MA0048
-    public partial class InitialCreate : Migration
-#pragma warning restore MA0048
+    public partial class AddInitialDataModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,10 +42,27 @@ namespace ClubAdministrationService.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OutboxIntegrationEvent",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    EventName = table.Column<string>(type: "text", nullable: false),
+                    EventContent = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OutboxIntegrationEvent", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Subscriptions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    SubscriptionType = table.Column<int>(type: "integer", nullable: false),
+                    ClubIds = table.Column<string>(type: "text", nullable: false),
+                    MaxCourtsAllowed = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,6 +78,9 @@ namespace ClubAdministrationService.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clubs");
+
+            migrationBuilder.DropTable(
+                name: "OutboxIntegrationEvent");
 
             migrationBuilder.DropTable(
                 name: "Subscriptions");

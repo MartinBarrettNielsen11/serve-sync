@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace ClubAdministrationService.Persistence.Converters;
+namespace ClubAdministrationService.Infrastructure.Converters;
 
 public sealed class ListOfIdsComparer : ValueComparer<List<Guid>>
 {
