@@ -4,8 +4,8 @@ namespace SessionBookingService.Application.Common;
 
 internal interface ICourtsRepository
 {
-    Task AddCourtAsync(Court court);
-    Task<Court?> GetByIdAsync(Guid id);
-    Task UpdateAsync(Court court);
-    Task DeleteAsync(Court court);
+    Task AddCourtAsync(Court court, CancellationToken cancellationToken);
+    Task<Court?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task UpdateAsync(Court court, CancellationToken cancellationToken);
+    Task DeleteAsync(Court court, CancellationToken cancellationToken);
 }

@@ -6,20 +6,20 @@ namespace SessionBookingService.Persistence.Repositories;
 
 internal sealed class InstructorsRepository(SessionBookingDbContext dbContext) : IInstructorsRepository
 {
-    public async Task AddInstructorAsync(Instructor instructor)
+    public async Task AddInstructorAsync(Instructor instructor, CancellationToken cancellationToken)
     {
-        await dbContext.Instructors.AddAsync(instructor);
-        await dbContext.SaveChangesAsync();
+        await dbContext.Instructors.AddAsync(instructor, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<Instructor?> GetByIdAsync(Guid instructorId)
+    public async Task<Instructor?> GetByIdAsync(Guid instructorId, CancellationToken cancellationToken)
     {
-        return await dbContext.Instructors.FirstOrDefaultAsync(instructor => instructor.Id == instructorId);
+        return await dbContext.Instructors.FirstOrDefaultAsync(instructor => instructor.Id == instructorId, cancellationToken);
     }
 
-    public async Task UpdateAsync(Instructor instructor)
+    public async Task UpdateAsync(Instructor instructor, CancellationToken cancellationToken)
     {
         dbContext.Instructors.Update(instructor);
-        await dbContext.SaveChangesAsync();
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 }

@@ -10,14 +10,14 @@ internal sealed class ListClubsQueryHandler(IClubsRepository clubsRepository, IS
 {
     public async Task<Result<List<Club>>> Handle(ListClubsQuery query, CancellationToken cancellationToken)
     {
-        var subscriptionExists = await subscriptionsRepository.ExistsAsync(query.SubscriptionId);
+        var subscriptionExists = await subscriptionsRepository.ExistsAsync(query.SubscriptionId, cancellationToken);
         
         if (!subscriptionExists)
         {
             return Result.Failure<List<Club>>(Error.NotFound(code: "", description: "Subscription not found"));
         }
         
-        List<Club> clubs = await clubsRepository.ListSubscriptionClubs(query.SubscriptionId);
+        List<Club> clubs = await clubsRepository.ListSubscriptionClubs(query.SubscriptionId, cancellationToken);
 
         return clubs;
     }

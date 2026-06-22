@@ -12,7 +12,7 @@ internal sealed class CreateBookingCommandHandler(
 {
     public async Task<Result> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
     {
-        Session? session = await sessionsRepository.GetByIdAsync(command.SessionId);
+        Session? session = await sessionsRepository.GetByIdAsync(command.SessionId, cancellationToken);
 
         if (session is null)
         {
@@ -25,7 +25,7 @@ internal sealed class CreateBookingCommandHandler(
                 description: "Player already has booking"));
         }
 
-        Player? player = await playersRepository.GetByIdAsync(command.PlayerId);
+        Player? player = await playersRepository.GetByIdAsync(command.PlayerId, cancellationToken);
 
         if (player is null)
         {
@@ -45,7 +45,7 @@ internal sealed class CreateBookingCommandHandler(
             return Result.Failure<Guid>(bookSpotResult.Error);
         }
 
-        await sessionsRepository.UpdateAsync(session);
+        await sessionsRepository.UpdateAsync(session, cancellationToken);
         
         Result res = Result.Success();
         return res;

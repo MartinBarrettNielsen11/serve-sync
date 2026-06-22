@@ -10,6 +10,6 @@ internal class ListSubscriptionsQueryHandler(ISubscriptionsRepository subscripti
 {
     public async Task<Result<List<Subscription>>> Handle(ListSubscriptionsQuery request, CancellationToken cancellationToken)
     {
-        return await subscriptionsRepository.ListAsync();
+        return await subscriptionsRepository.ListAsync(cancellationToken);
     }
 }

@@ -12,7 +12,7 @@ internal sealed class AddInstructorCommandHandler(IClubsRepository clubsReposito
 {
     public async Task<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
     {
-        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId);
+        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId, cancellationToken);
 
         if (subscription is null)
         {
@@ -24,7 +24,7 @@ internal sealed class AddInstructorCommandHandler(IClubsRepository clubsReposito
             return Result.Failure(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
         }
 
-        Club? club = await clubsRepository.GetByIdAsync(command.ClubId);
+        Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
         
         if (club is null)
         {
@@ -38,7 +38,7 @@ internal sealed class AddInstructorCommandHandler(IClubsRepository clubsReposito
             return Result.Failure(addInstructorResult.Error);
         }
         
-        await clubsRepository.UpdateAsync(club);
+        await clubsRepository.UpdateAsync(club, cancellationToken);
 
         return Result.Success<bool>(value: true);
     }

@@ -12,14 +12,14 @@ internal sealed class CreateCourtCommandHandler(IClubsRepository clubsRepository
 {
     public async Task<Result<Court>> Handle(CreateCourtCommand command, CancellationToken cancellationToken)
     {
-        Club? club = await clubsRepository.GetByIdAsync(command.ClubId);
+        Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
 
         if (club is null)
         {
             return Result.Failure<Court>(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
         }
 
-        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(club.SubscriptionId);
+        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(club.SubscriptionId, cancellationToken);
 
         if (subscription is null)
         {
@@ -38,7 +38,7 @@ internal sealed class CreateCourtCommandHandler(IClubsRepository clubsRepository
             return Result.Failure<Court>(addClubResult.Error);
         }
 
-        await clubsRepository.UpdateAsync(club);
+        await clubsRepository.UpdateAsync(club, cancellationToken);
 
         return court;
     }

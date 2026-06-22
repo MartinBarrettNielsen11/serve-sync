@@ -11,6 +11,6 @@ internal sealed class AdminProfileCreatedEventHandler(IAdminsRepository adminsRe
     {
         Admin admin = new(userId: notification.UserId, id: notification.AdminId);
 
-        await adminsRepository.AddAdminAsync(admin);
+        await adminsRepository.AddAdminAsync(admin, cancellationToken);
     }
 }

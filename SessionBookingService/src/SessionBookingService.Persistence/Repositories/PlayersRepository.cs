@@ -6,26 +6,26 @@ namespace SessionBookingService.Persistence.Repositories;
 
 internal sealed class PlayersRepository(SessionBookingDbContext dbContext) : IPlayersRepository
 {
-    public async Task<Player?> GetByIdAsync(Guid id)
+    public async Task<Player?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await dbContext.Players.FirstOrDefaultAsync(p => p.Id == id);
+        return await dbContext.Players.FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
     }
     
-    public async Task AddPlayerAsync(Player player)
+    public async Task AddPlayerAsync(Player player, CancellationToken cancellationToken)
     {
-        await dbContext.Players.AddAsync(player);
-        await dbContext.SaveChangesAsync();
+        await dbContext.Players.AddAsync(player, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task UpdateAsync(Player player)
+    public async Task UpdateAsync(Player player, CancellationToken cancellationToken)
     {
         dbContext.Update(player);
-        await dbContext.SaveChangesAsync();
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task UpdateRangeAsync(ICollection<Player> players)
+    public async Task UpdateRangeAsync(ICollection<Player> players, CancellationToken cancellationToken)
     {
         dbContext.UpdateRange(players);
-        await dbContext.SaveChangesAsync();
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 }

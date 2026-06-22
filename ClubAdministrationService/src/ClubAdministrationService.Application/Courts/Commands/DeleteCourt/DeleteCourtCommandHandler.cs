@@ -11,7 +11,7 @@ internal sealed class DeleteCourtCommandHandler(IClubsRepository clubsRepository
 {
     public async Task<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
     {
-        Club? club = await clubsRepository.GetByIdAsync(command.ClubId);
+        Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
 
         if (club is null)
         {
@@ -25,7 +25,7 @@ internal sealed class DeleteCourtCommandHandler(IClubsRepository clubsRepository
         
         club.RemoveCourt(command.CourtId);
         
-        await clubsRepository.UpdateAsync(club);
+        await clubsRepository.UpdateAsync(club, cancellationToken);
 
         return Result.Success<bool>(value: true);
     }

@@ -6,30 +6,30 @@ namespace UserAdministrationService.Persistence.Repositories;
 
 internal sealed class UsersRepository(UserDbContext dbContext) : IUsersRepository
 {
-    public async Task AddUserAsync(User user, CancellationToken ct)
+    public async Task AddUserAsync(User user, CancellationToken cancellationToken)
     {
-        await dbContext.AddAsync(user, ct);
-        await dbContext.SaveChangesAsync(ct);
+        await dbContext.AddAsync(user, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
     
-    public async Task<User?> GetByEmailAsync(string email, CancellationToken ct)
+    public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
     {
-        return await dbContext.Users.FirstOrDefaultAsync(user => user.Email == email, ct);
+        return await dbContext.Users.FirstOrDefaultAsync(user => user.Email == email, cancellationToken);
     }
 
-    public async Task<User?> GetByIdAsync(Guid userId, CancellationToken ct)
+    public async Task<User?> GetByIdAsync(Guid userId, CancellationToken cancellationToken)
     {
-        return await dbContext.Users.FirstOrDefaultAsync(user => user.Id == userId, ct);
+        return await dbContext.Users.FirstOrDefaultAsync(user => user.Id == userId, cancellationToken);
     }
 
-    public async Task UpdateAsync(User user, CancellationToken ct)
+    public async Task UpdateAsync(User user, CancellationToken cancellationToken)
     {
         dbContext.Update(user);
-        await dbContext.SaveChangesAsync(ct);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<bool> ExistsByEmailAsync(string email, CancellationToken ct)
+    public async Task<bool> ExistsByEmailAsync(string email, CancellationToken cancellationToken)
     {
-        return await dbContext.Users.AnyAsync(user => user.Email == email, ct);
+        return await dbContext.Users.AnyAsync(user => user.Email == email, cancellationToken);
     }
 }

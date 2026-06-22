@@ -11,7 +11,7 @@ internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsR
 {
     public async Task<Result<Subscription>> Handle(CreateSubscriptionCommand command, CancellationToken cancellationToken)
     {
-        Admin? admin = await adminsRepository.GetByIdAsync(adminId: command.AdminId);
+        Admin? admin = await adminsRepository.GetByIdAsync(adminId: command.AdminId, cancellationToken);
 
         if (admin is null)
         {
@@ -27,7 +27,7 @@ internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsR
         Subscription subscription = new(subscriptionType: command.SubscriptionType, id: command.AdminId);
         admin.SetSubscription(subscription);
         
-        await adminsRepository.UpdateAsync(admin);
+        await adminsRepository.UpdateAsync(admin, cancellationToken);
 
         return subscription;
     }

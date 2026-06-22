@@ -6,32 +6,32 @@ namespace ClubAdministrationService.Persistence.Repositories;
 
 internal sealed class ClubsRepository(ClubDbContext dbContext) : IClubsRepository
 {
-    public async Task AddClubAsync(Club club)
+    public async Task AddClubAsync(Club club, CancellationToken cancellationToken)
     {
-        await dbContext.Clubs.AddAsync(club);
-        await dbContext.SaveChangesAsync();
+        await dbContext.Clubs.AddAsync(club, cancellationToken);
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<bool> ExistsAsync(Guid id)
+    public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await dbContext.Clubs.AsNoTracking().AnyAsync(c => c.Id == id);
+        return await dbContext.Clubs.AsNoTracking().AnyAsync(c => c.Id == id, cancellationToken);
     }
 
-    public async Task<Club?> GetByIdAsync(Guid id)
+    public async Task<Club?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await dbContext.Clubs.FirstOrDefaultAsync(c => c.Id == id);
+        return await dbContext.Clubs.FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
     }
 
-    public async Task UpdateAsync(Club club)
+    public async Task UpdateAsync(Club club, CancellationToken cancellationToken)
     {
         dbContext.Update(club);
-        await dbContext.SaveChangesAsync();
+        await dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<List<Club>> ListSubscriptionClubs(Guid subscriptionId)
+    public async Task<List<Club>> ListSubscriptionClubs(Guid subscriptionId, CancellationToken cancellationToken)
     {
         return await dbContext.Clubs
             .Where(c => c.SubscriptionId == subscriptionId)
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 }

@@ -13,7 +13,7 @@ internal sealed class CreateClubCommandHandler(ISubscriptionsRepository subscrip
 {
     public async Task<Result<Club>> Handle(CreateClubCommand command, CancellationToken cancellationToken)
     {
-        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId);
+        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId, cancellationToken);
 
         if (subscription is null)
         {
@@ -34,7 +34,7 @@ internal sealed class CreateClubCommandHandler(ISubscriptionsRepository subscrip
         logger.LogInformation("Club created: {Name}", club.Name);
 #pragma warning restore CA1848
 
-        await subscriptionsRepository.UpdateAsync(subscription);
+        await subscriptionsRepository.UpdateAsync(subscription, cancellationToken);
 
         return Result.Success<Club>(club);
     }

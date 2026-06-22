@@ -13,8 +13,6 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
     }
 );
 
-
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddProblemDetails();
@@ -39,6 +37,5 @@ if (app.Environment.IsDevelopment())
         opts.Theme = ScalarTheme.DeepSpace;
     });
 }
-
 
 await app.RunAsync();

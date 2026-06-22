@@ -11,14 +11,14 @@ internal sealed class CreateSessionCommandHandler(ICourtsRepository courtsReposi
 {
     internal async ValueTask<Result<Session>> Handle(CreateSessionCommand command, CancellationToken cancellationToken)
     {
-        Court? court = await courtsRepository.GetByIdAsync(command.CourtId);
+        Court? court = await courtsRepository.GetByIdAsync(command.CourtId, cancellationToken);
 
         if (court is null)
         {
             return Result.Failure<Session>(Error.NotFound(code: "CourtNotFound", description: "Court not found"));
         }
         
-        Instructor? instructor = await instructorsRepository.GetByIdAsync(command.InstructorId);
+        Instructor? instructor = await instructorsRepository.GetByIdAsync(command.InstructorId, cancellationToken);
         
         if (instructor is null)
         {
