@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace SessionBookingService.Persistence.Converters;
+namespace SessionBookingService.Infrastructure.Converters;
 
 public class ValueJsonConverter<T> : ValueConverter<T, string>
 {

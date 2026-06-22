@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using Scalar.AspNetCore;
 using SessionBookingService.Application;
+using SessionBookingService.Infrastructure;
 using SessionBookingService.Infrastructure.Middlewares;
-using SessionBookingService.Persistence;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +20,7 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services
     .AddServices()
-    .AddPersistence(builder.Configuration);
-    //.AddInfrastructure(builder.Configuration);
+    .AddInfrastructure(builder.Configuration);
 
 WebApplication app = builder.Build();
 

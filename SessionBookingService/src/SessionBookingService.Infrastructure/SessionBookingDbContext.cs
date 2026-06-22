@@ -8,7 +8,7 @@ using SessionBookingService.Domain.PlayerAggregate;
 using SessionBookingService.Domain.SessionAggregate;
 using SharedKernel;
 
-namespace SessionBookingService.Persistence;
+namespace SessionBookingService.Infrastructure;
 
 internal class SessionBookingDbContext(DbContextOptions options,
                                        IHttpContextAccessor httpContextAccessor,

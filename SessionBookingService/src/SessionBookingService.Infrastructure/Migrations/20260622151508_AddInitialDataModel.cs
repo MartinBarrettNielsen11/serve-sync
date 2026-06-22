@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace SessionBookingService.Persistence.Migrations
+namespace SessionBookingService.Infrastructure.Migrations
 {
     /// <inheritdoc />
 #pragma warning disable MA0048

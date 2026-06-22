@@ -2,7 +2,6 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
 using SessionBookingService.Domain.EventualConsistency;
-using SessionBookingService.Persistence;
 using SharedKernel;
 
 namespace SessionBookingService.Infrastructure.Middlewares;

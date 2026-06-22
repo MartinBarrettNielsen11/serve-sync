@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SessionBookingService.Domain.InstructorAggregate;
-using SessionBookingService.Persistence.Converters;
+using SessionBookingService.Infrastructure.Converters;
 using SharedKernel;
 
-namespace SessionBookingService.Persistence.Configurations;
+namespace SessionBookingService.Infrastructure.Configurations;
 
 internal sealed class InstructorConfiguration : IEntityTypeConfiguration<Instructor>
 {

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace SessionBookingService.Persistence.Converters;
+namespace SessionBookingService.Infrastructure.Converters;
 
 public static class FluentApiExtensions
 {

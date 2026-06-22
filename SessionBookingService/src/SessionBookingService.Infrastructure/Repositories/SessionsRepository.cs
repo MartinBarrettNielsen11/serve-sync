@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.SessionAggregate;
 
-namespace SessionBookingService.Persistence.Repositories;
+namespace SessionBookingService.Infrastructure.Repositories;
 
 internal sealed class SessionsRepository(SessionBookingDbContext dbContext) : ISessionsRepository
 {

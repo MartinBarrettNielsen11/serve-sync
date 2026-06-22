@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace SessionBookingService.Persistence.Converters;
+namespace SessionBookingService.Infrastructure.Converters;
 
 public class ListOfIdsComparer : ValueComparer<List<Guid>>
 {

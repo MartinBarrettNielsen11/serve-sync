@@ -11,8 +11,7 @@
     <ItemGroup>
         <InternalsVisibleTo Include="SessionBookingService.Tests.Unit" />
         <InternalsVisibleTo Include="SessionBookingService.Application" />
-        <InternalsVisibleTo Include="SessionBookingService.Persistence" />
-        <InternalsVisibleTo Include="SessionBookingService.Domain" />
+        <InternalsVisibleTo Include="SessionBookingService.Infrastructure" />
     </ItemGroup>
     
     <ItemGroup>

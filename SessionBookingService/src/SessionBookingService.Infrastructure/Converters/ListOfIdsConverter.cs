@@ -1,7 +1,6 @@
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace SessionBookingService.Persistence.Converters;
+namespace SessionBookingService.Infrastructure.Converters;
 
 public class ListOfIdsConverter : ValueConverter<List<Guid>, string>
 {

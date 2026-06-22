@@ -18,7 +18,6 @@
   <Folder Name="/SessionBookingService/src/">
     <Project Path="SessionBookingService/src/SessionBookingService.Contracts/SessionBookingService.Contracts.csproj" />
     <Project Path="SessionBookingService/src/SessionBookingService.Infrastructure/SessionBookingService.Infrastructure.csproj" />
-    <Project Path="SessionBookingService/src/SessionBookingService.Persistence/SessionBookingService.Persistence.csproj" />
     <Project Path="SessionBookingService\src\SessionBookingService.Application\SessionBookingService.Application.csproj" />
     <Project Path="SessionBookingService\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj" />
     <Project Path="SessionBookingService\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj" />

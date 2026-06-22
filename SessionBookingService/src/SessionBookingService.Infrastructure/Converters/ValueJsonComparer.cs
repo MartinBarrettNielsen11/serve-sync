@@ -1,7 +1,7 @@
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace SessionBookingService.Persistence.Converters;
+namespace SessionBookingService.Infrastructure.Converters;
 
 internal class ValueJsonComparer<T> : ValueComparer<T>
 {

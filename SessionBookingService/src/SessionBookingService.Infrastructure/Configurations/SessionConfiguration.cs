@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SessionBookingService.Domain.SessionAggregate;
 
-namespace SessionBookingService.Persistence.Configurations;
+namespace SessionBookingService.Infrastructure.Configurations;
 
 internal sealed class SessionConfiguration : IEntityTypeConfiguration<Session>
 {

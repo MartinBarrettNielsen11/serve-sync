@@ -2,21 +2,18 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using SessionBookingService.Persistence;
+using SessionBookingService.Infrastructure;
 
 #nullable disable
 
-namespace SessionBookingService.Persistence.Migrations
+namespace SessionBookingService.Infrastructure.Migrations
 {
     [DbContext(typeof(SessionBookingDbContext))]
-    [Migration("20260621142537_AddInitialDataModel")]
-    partial class AddInitialDataModel
+    partial class SessionBookingDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
