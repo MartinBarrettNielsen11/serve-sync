@@ -2,7 +2,7 @@ using ClubAdministrationService.Application.Common.Interfaces;
 using SharedKernel.Results;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using MediatR;
+using Mediator;
 using Microsoft.Extensions.Logging;
 
 namespace ClubAdministrationService.Application.Clubs.CreateClub;
@@ -11,7 +11,7 @@ internal sealed class CreateClubCommandHandler(ISubscriptionsRepository subscrip
                                                ILogger<CreateClubCommandHandler> logger) 
     : IRequestHandler<CreateClubCommand, Result<Club>>
 {
-    public async Task<Result<Club>> Handle(CreateClubCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result<Club>> Handle(CreateClubCommand command, CancellationToken cancellationToken)
     {
         Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId, cancellationToken);
 

@@ -1,6 +1,6 @@
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.GetClub;
@@ -16,7 +16,7 @@ internal sealed class GetClubQueryHandler : IRequestHandler<GetClubQuery, Result
         _subscriptionsRepository = subscriptionsRepository;
     }
 
-    public async Task<Result<Club>> Handle(GetClubQuery request, CancellationToken cancellationToken)
+    public async ValueTask<Result<Club>> Handle(GetClubQuery request, CancellationToken cancellationToken)
     {
         if (await _subscriptionsRepository.ExistsAsync(request.SubscriptionId, cancellationToken))
         {

@@ -1,4 +1,4 @@
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 using UserAdministrationService.Application.Interfaces;
 using UserAdministrationService.Domain.UserAggregate;
@@ -7,7 +7,7 @@ namespace UserAdministrationService.Application.Profiles.CreatePlayerProfile;
 
 internal sealed class CreatePlayerProfileCommandHandler(IUsersRepository usersRepository) : IRequestHandler<CreatePlayerProfileCommand, Result<Guid>>
 {
-    public async Task<Result<Guid>> Handle(CreatePlayerProfileCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result<Guid>> Handle(CreatePlayerProfileCommand command, CancellationToken cancellationToken)
     {
         User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 

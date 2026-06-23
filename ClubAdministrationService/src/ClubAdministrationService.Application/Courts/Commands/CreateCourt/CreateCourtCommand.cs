@@ -1,5 +1,5 @@
 using ClubAdministrationService.Domain.CourtAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.CreateCourt;

@@ -1,6 +1,6 @@
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
@@ -9,7 +9,7 @@ namespace ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
 internal sealed class DeleteCourtCommandHandler(IClubsRepository clubsRepository)
     : IRequestHandler<DeleteCourtCommand, Result>
 {
-    public async Task<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result> Handle(DeleteCourtCommand command, CancellationToken cancellationToken)
     {
         Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
 

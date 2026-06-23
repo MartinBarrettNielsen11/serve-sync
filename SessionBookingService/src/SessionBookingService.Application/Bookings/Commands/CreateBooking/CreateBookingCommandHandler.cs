@@ -1,4 +1,4 @@
-using MediatR;
+using Mediator;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.PlayerAggregate;
 using SessionBookingService.Domain.SessionAggregate;
@@ -10,7 +10,7 @@ internal sealed class CreateBookingCommandHandler(
     ISessionsRepository sessionsRepository, 
     IPlayersRepository playersRepository)  : IRequestHandler<CreateBookingCommand, Result>
 {
-    public async Task<Result> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
     {
         Session? session = await sessionsRepository.GetByIdAsync(command.SessionId, cancellationToken);
 

@@ -1,7 +1,7 @@
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.AdminAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Subscriptions.Commands.CreateSubscription;
@@ -9,7 +9,7 @@ namespace ClubAdministrationService.Application.Subscriptions.Commands.CreateSub
 // ReSharper disable once UnusedType.Global
 internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsRepository) : IRequestHandler<CreateSubscriptionCommand, Result<Subscription>>
 {
-    public async Task<Result<Subscription>> Handle(CreateSubscriptionCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result<Subscription>> Handle(CreateSubscriptionCommand command, CancellationToken cancellationToken)
     {
         Admin? admin = await adminsRepository.GetByIdAsync(adminId: command.AdminId, cancellationToken);
 

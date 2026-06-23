@@ -1,6 +1,6 @@
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Subscriptions.Queries.ListSubscriptions;

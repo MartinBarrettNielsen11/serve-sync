@@ -1,13 +1,13 @@
+using Mediator;
 using SharedKernel.Results;
 using UserAdministrationService.Application.Interfaces;
 using UserAdministrationService.Domain.UserAggregate;
-using MediatR;
 
 namespace UserAdministrationService.Application.Profiles.CreateAdminProfile;
 
 internal sealed class CreateAdminProfileCommandHandler(IUsersRepository usersRepository) : IRequestHandler<CreateAdminProfileCommand, Result<Guid>>
 {
-    public async Task<Result<Guid>> Handle(CreateAdminProfileCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result<Guid>> Handle(CreateAdminProfileCommand command, CancellationToken cancellationToken)
     {
         User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 

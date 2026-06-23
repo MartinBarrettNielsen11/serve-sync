@@ -1,4 +1,4 @@
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 using UserAdministrationService.Application.Common;
 using UserAdministrationService.Application.Interfaces;
@@ -12,7 +12,7 @@ internal sealed class LoginQueryHandler(IPasswordHasher passwordHasher,
                                         IJwtTokenGenerator jwtTokenGenerator)
     : IRequestHandler<LoginQuery, Result<AuthenticationResult>>
 {
-    public async Task<Result<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
+    public async ValueTask<Result<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
         User? user = await usersRepository.GetByEmailAsync(query.Email, cancellationToken);
 

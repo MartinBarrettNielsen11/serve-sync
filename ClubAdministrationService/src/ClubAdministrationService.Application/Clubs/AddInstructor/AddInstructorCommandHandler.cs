@@ -1,7 +1,7 @@
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.AddInstructor;
@@ -10,7 +10,7 @@ namespace ClubAdministrationService.Application.Clubs.AddInstructor;
 internal sealed class AddInstructorCommandHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
     : IRequestHandler<AddInstructorCommand, Result>
 {
-    public async Task<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
     {
         Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId, cancellationToken);
 

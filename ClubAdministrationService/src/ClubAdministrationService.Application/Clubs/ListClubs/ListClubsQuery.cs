@@ -1,5 +1,5 @@
 using ClubAdministrationService.Domain.ClubAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.ListClubs;

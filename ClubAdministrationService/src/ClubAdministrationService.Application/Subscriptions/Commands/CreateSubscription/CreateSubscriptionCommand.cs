@@ -1,5 +1,5 @@
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Subscriptions.Commands.CreateSubscription;

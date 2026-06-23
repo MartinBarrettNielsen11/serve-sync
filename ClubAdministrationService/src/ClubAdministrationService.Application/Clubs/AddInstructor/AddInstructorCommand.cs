@@ -1,4 +1,4 @@
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.AddInstructor;

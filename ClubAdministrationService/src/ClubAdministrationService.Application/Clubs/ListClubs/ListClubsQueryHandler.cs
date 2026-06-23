@@ -1,6 +1,6 @@
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
-using MediatR;
+using Mediator;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.ListClubs;
@@ -8,7 +8,7 @@ namespace ClubAdministrationService.Application.Clubs.ListClubs;
 internal sealed class ListClubsQueryHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
     : IRequestHandler<ListClubsQuery, Result<List<Club>>>
 {
-    public async Task<Result<List<Club>>> Handle(ListClubsQuery query, CancellationToken cancellationToken)
+    public async ValueTask<Result<List<Club>>> Handle(ListClubsQuery query, CancellationToken cancellationToken)
     {
         var subscriptionExists = await subscriptionsRepository.ExistsAsync(query.SubscriptionId, cancellationToken);
         

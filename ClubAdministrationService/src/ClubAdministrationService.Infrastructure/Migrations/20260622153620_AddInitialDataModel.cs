@@ -8,7 +8,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClubAdministrationService.Infrastructure.Migrations
 {
     /// <inheritdoc />
+#pragma warning disable MA0048
     public partial class AddInitialDataModel : Migration
+#pragma warning restore MA0048
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using MediatR;
+using Mediator;
 using SharedKernel.IntegrationEvents.UserManagement;
 
 namespace SharedKernel.IntegrationEvents;
