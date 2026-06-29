@@ -26,14 +26,14 @@ internal sealed partial class Club : RootAggregate
         return Result.Success<bool>(value: true);
     }
     
-    internal Result<bool> AddInstructor(Guid trainerId)
+    internal Result<bool> AddInstructor(Guid instructorId)
     {
-        if (_instructorIds.Contains(trainerId))
+        if (_instructorIds.Contains(instructorId))
         {
-            return Result.Failure<bool>(Error.Conflict(code: "", description: "Trainer already added to gym"));
+            return Result.Failure<bool>(Error.Conflict(code: "", description: "Instructor already added to club"));
         }
 
-        _instructorIds.Add(trainerId);
+        _instructorIds.Add(instructorId);
         
         return Result.Success<bool>(value: true);
     }

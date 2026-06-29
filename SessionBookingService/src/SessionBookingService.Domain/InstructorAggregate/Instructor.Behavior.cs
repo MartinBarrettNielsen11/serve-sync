@@ -30,7 +30,7 @@ internal sealed partial class Instructor
     {
         if (!_sessionIds.Contains(session.Id))
         {
-            return Result.Failure<bool>(Error.NotFound(code: "", description: "Session not found in trainer's schedule"));
+            return Result.Failure<bool>(Error.NotFound(code: "", description: "Session not found in instructors's schedule"));
         }
 
         Result<bool> removeBookingResult = _schedule.RemoveBooking(session.Date,

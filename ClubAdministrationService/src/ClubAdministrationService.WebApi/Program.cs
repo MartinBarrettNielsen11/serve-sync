@@ -16,11 +16,11 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services
+    .AddMemoryCache()
     .AddServices()
     .AddPersistence(builder.Configuration);
     //.AddInfrastructure(builder.Configuration);
