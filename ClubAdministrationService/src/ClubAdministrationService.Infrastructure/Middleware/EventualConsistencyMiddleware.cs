@@ -1,5 +1,5 @@
 using ClubAdministrationService.Domain.EventualConsistency;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
 

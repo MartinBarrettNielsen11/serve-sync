@@ -6,10 +6,14 @@
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="MediatR" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" />
-      <PackageReference Include="RabbitMQ.Client" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />  
+        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Mediator.SourceGenerator">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="RabbitMQ.Client" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />  
     </ItemGroup>
     <ItemGroup>
         <InternalsVisibleTo Include="SessionBookingService.WebApi" />

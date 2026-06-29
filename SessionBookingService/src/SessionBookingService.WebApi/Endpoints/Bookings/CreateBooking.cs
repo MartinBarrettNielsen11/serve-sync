@@ -1,4 +1,4 @@
-using MediatR;
+using Mediator;
 using SessionBookingService.Application.Bookings.Commands.CreateBooking;
 using SessionBookingService.Contracts.Bookings;
 using SessionBookingService.WebApi.Infrastructure;
