@@ -2,7 +2,6 @@ using ClubAdministrationService.Application.Subscriptions.Queries.ListSubscripti
 using ClubAdministrationService.Contracts.Subscriptions;
 using ClubAdministrationService.WebApi.Infrastructure;
 using Mediator;
-using MediatR;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.WebApi.Endpoints.Subscription;

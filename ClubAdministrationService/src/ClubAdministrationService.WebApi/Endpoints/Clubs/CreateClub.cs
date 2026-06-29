@@ -3,7 +3,6 @@ using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.WebApi.Infrastructure;
 using Mediator;
-using MediatR;
 using SharedKernel.Results;
 #pragma warning disable CS1572 // XML comment has a param tag, but there is no parameter by that name
 #pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)

@@ -3,7 +3,6 @@ using ClubAdministrationService.Contracts.Courts;
 using ClubAdministrationService.Domain.CourtAggregate;
 using ClubAdministrationService.WebApi.Infrastructure;
 using Mediator;
-using MediatR;
 using SharedKernel.Results;
 
 namespace ClubAdministrationService.WebApi.Endpoints.Courts;
