@@ -20,7 +20,7 @@ builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services
-    .AddMemoryCache()
+    .AddMediatorServices()
     .AddServices()
     .AddPersistence(builder.Configuration);
     //.AddInfrastructure(builder.Configuration);

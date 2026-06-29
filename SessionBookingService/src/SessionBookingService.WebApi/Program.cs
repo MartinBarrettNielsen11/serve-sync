@@ -3,6 +3,7 @@ using Scalar.AspNetCore;
 using SessionBookingService.Application;
 using SessionBookingService.Infrastructure;
 using SessionBookingService.Infrastructure.Middlewares;
+using SessionBookingService.WebApi.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services
+    .AddMediatorServices()
     .AddServices()
     .AddInfrastructure(builder.Configuration);
 

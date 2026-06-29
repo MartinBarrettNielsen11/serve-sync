@@ -1,6 +1,6 @@
 using Mediator;
 
-namespace ClubAdministrationService.WebApi.Extensions;
+namespace UserAdministrationService.WebApi.Extensions;
 
 internal static class MediatorExtensions
 {

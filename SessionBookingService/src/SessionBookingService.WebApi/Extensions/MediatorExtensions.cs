@@ -1,6 +1,6 @@
 using Mediator;
 
-namespace ClubAdministrationService.WebApi.Extensions;
+namespace SessionBookingService.WebApi.Extensions;
 
 internal static class MediatorExtensions
 {

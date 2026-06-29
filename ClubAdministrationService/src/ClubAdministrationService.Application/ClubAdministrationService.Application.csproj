@@ -17,7 +17,6 @@
 
     <ItemGroup>
       <Folder Include="Clubs\Commands\" />
-      <Folder Include="Clubs\Events\" />
       <Folder Include="Clubs\Queries\" />
     </ItemGroup>
 </Project>

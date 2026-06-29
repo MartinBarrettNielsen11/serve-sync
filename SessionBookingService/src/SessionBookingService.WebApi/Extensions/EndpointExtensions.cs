@@ -1,7 +1,8 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using SessionBookingService.WebApi.Endpoints;
 
-namespace SessionBookingService.WebApi.Endpoints.Extensions;
+namespace SessionBookingService.WebApi.Extensions;
 
 internal static class EndpointExtensions
 {

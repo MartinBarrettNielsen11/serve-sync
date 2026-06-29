@@ -3,6 +3,7 @@ using Scalar.AspNetCore;
 using UserAdministrationService.Application;
 using UserAdministrationService.Infrastructure;
 using UserAdministrationService.Infrastructure.Middleware;
+using UserAdministrationService.WebApi.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,7 @@ builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services
+    .AddMediatorServices()
     .AddServices()
     .AddPersistence(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
