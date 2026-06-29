@@ -1,3 +1,4 @@
+using Mediator;
 using MediatR;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.CourtsAggregate.Events;
@@ -9,7 +10,7 @@ namespace SessionBookingService.Application.Instructors.Events;
 
 internal sealed class SessionCanceledEventHandler(IInstructorsRepository instructorsRepository) : INotificationHandler<SessionCanceledForCourtEvent>
 {
-    public async Task Handle(SessionCanceledForCourtEvent notification, CancellationToken cancellationToken)
+    public async ValueTask Handle(SessionCanceledForCourtEvent notification, CancellationToken cancellationToken)
     {
         Instructor trainer = await instructorsRepository.GetByIdAsync(notification.Session.InstructorId, cancellationToken)
                              ?? throw new EventualConsistencyException(SessionCanceledForCourtEvent.InstructorNotFound);

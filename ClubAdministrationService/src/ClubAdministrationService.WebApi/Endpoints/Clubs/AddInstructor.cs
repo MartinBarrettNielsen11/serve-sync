@@ -1,6 +1,7 @@
 using ClubAdministrationService.Application.Clubs.AddInstructor;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.WebApi.Infrastructure;
+using Mediator;
 using MediatR;
 using SharedKernel.Results;
 

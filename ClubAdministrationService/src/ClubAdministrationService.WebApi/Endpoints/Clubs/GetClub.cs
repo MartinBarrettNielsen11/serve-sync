@@ -2,6 +2,7 @@ using ClubAdministrationService.Application.Clubs.GetClub;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.WebApi.Infrastructure;
+using Mediator;
 using MediatR;
 using SharedKernel.Results;
 

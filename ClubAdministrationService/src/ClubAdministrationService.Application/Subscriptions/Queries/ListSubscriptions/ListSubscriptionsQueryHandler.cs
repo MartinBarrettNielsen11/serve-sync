@@ -8,7 +8,8 @@ namespace ClubAdministrationService.Application.Subscriptions.Queries.ListSubscr
 internal class ListSubscriptionsQueryHandler(ISubscriptionsRepository subscriptionsRepository)
     : IRequestHandler<ListSubscriptionsQuery, Result<List<Subscription>>>
 {
-    public async Task<Result<List<Subscription>>> Handle(ListSubscriptionsQuery request, CancellationToken cancellationToken)
+    public async ValueTask<Result<List<Subscription>>> Handle(ListSubscriptionsQuery request, 
+                                                              CancellationToken cancellationToken)
     {
         return await subscriptionsRepository.ListAsync(cancellationToken);
     }

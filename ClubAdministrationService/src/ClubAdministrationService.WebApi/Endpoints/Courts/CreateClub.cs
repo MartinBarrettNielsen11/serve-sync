@@ -2,6 +2,7 @@ using ClubAdministrationService.Application.Courts.Commands.CreateCourt;
 using ClubAdministrationService.Contracts.Courts;
 using ClubAdministrationService.Domain.CourtAggregate;
 using ClubAdministrationService.WebApi.Infrastructure;
+using Mediator;
 using MediatR;
 using SharedKernel.Results;
 

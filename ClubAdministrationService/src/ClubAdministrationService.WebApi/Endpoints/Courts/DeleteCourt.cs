@@ -1,5 +1,6 @@
 using ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
 using ClubAdministrationService.WebApi.Infrastructure;
+using Mediator;
 using MediatR;
 using SharedKernel.Results;
 

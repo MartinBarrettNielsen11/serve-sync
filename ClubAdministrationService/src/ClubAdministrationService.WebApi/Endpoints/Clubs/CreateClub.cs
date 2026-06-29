@@ -2,6 +2,7 @@ using ClubAdministrationService.Application.Clubs.CreateClub;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.WebApi.Infrastructure;
+using Mediator;
 using MediatR;
 using SharedKernel.Results;
 #pragma warning disable CS1572 // XML comment has a param tag, but there is no parameter by that name

@@ -1,6 +1,7 @@
 using ClubAdministrationService.Application.Subscriptions.Queries.ListSubscriptions;
 using ClubAdministrationService.Contracts.Subscriptions;
 using ClubAdministrationService.WebApi.Infrastructure;
+using Mediator;
 using MediatR;
 using SharedKernel.Results;
 
@@ -14,7 +15,7 @@ public sealed class ListSubscriptions : IEndpoint
                    handler: async (ISender sender, CancellationToken cancellationToken) =>
                 {
                     // get user/admin id from token, for now, return all
-                    ListSubscriptionsQuery query = new();
+                    ListSubscriptionsQuery query = new(); // Try to reuse the object instance using caching: https://www.youtube.com/watch?v=aaFLtcf8cO4
                     
                     Result<List<Domain.SubscriptionAggregate.Subscription>> listSubscriptionResult = await sender.Send(query, cancellationToken);
 

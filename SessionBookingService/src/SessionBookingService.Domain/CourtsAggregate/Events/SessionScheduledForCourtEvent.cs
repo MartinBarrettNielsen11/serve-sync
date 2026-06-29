@@ -3,4 +3,4 @@ using SharedKernel;
 
 namespace SessionBookingService.Domain.CourtsAggregate.Events;
 
-internal sealed record SessionScheduledForCourtEvent(Court court, Session session) : IDomainEvent;
+internal sealed record SessionScheduledForCourtEvent(Court Court, Session Session) : IDomainEvent;
