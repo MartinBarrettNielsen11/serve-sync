@@ -2,7 +2,7 @@ using System.Reflection;
 using ClubAdministrationService.Domain.AdminAggregate;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SharedKernel;

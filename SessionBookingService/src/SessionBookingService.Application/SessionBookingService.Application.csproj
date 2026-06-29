@@ -17,4 +17,10 @@
       <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
       <ProjectReference Include="..\SessionBookingService.Domain\SessionBookingService.Domain.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Instructors\Events\" />
+      <Folder Include="Sessions\Commands\" />
+      <Folder Include="Sessions\Queries\" />
+    </ItemGroup>
 </Project>

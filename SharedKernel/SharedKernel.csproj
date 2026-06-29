@@ -7,9 +7,5 @@
       <PackageReference Include="Mediator.Abstractions" />
       <PackageReference Include="Mediator.SourceGenerator" />
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="IntegrationEvents\ClubManagement\" />
-    </ItemGroup>
 
 </Project>

@@ -1,21 +1,21 @@
 using Mediator;
-using MediatR;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.CourtsAggregate.Events;
 using SessionBookingService.Domain.EventualConsistency;
 using SessionBookingService.Domain.InstructorAggregate;
 using SharedKernel.Results;
 
-namespace SessionBookingService.Application.Instructors.Events;
+namespace SessionBookingService.Application.Sessions.IntegrationEvents;
 
-internal sealed class SessionCanceledEventHandler(IInstructorsRepository instructorsRepository) : INotificationHandler<SessionCanceledForCourtEvent>
+internal sealed class SessionCanceledEventHandler(IInstructorsRepository instructorsRepository) 
+    : INotificationHandler<SessionCanceledForCourtEvent>
 {
     public async ValueTask Handle(SessionCanceledForCourtEvent notification, CancellationToken cancellationToken)
     {
         Instructor trainer = await instructorsRepository.GetByIdAsync(notification.Session.InstructorId, cancellationToken)
                              ?? throw new EventualConsistencyException(SessionCanceledForCourtEvent.InstructorNotFound);
 
-        var removeFromScheduleResult = trainer.RemoveFromSchedule(notification.Session);
+        Result<bool> removeFromScheduleResult = trainer.RemoveFromSchedule(notification.Session);
 
         if (removeFromScheduleResult.IsFailure)
         {

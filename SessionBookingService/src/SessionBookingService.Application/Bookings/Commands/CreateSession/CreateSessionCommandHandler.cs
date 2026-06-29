@@ -1,3 +1,4 @@
+using Mediator;
 using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.CourtsAggregate;
 using SessionBookingService.Domain.InstructorAggregate;
@@ -8,8 +9,9 @@ using SharedKernel.Results;
 namespace SessionBookingService.Application.Bookings.Commands.CreateSession;
 
 internal sealed class CreateSessionCommandHandler(ICourtsRepository courtsRepository, IInstructorsRepository instructorsRepository)
+    : IRequestHandler<CreateSessionCommand, Result<Session>>
 {
-    internal async ValueTask<Result<Session>> Handle(CreateSessionCommand command, CancellationToken cancellationToken)
+    public async ValueTask<Result<Session>> Handle(CreateSessionCommand command, CancellationToken cancellationToken)
     {
         Court? court = await courtsRepository.GetByIdAsync(command.CourtId, cancellationToken);
 
