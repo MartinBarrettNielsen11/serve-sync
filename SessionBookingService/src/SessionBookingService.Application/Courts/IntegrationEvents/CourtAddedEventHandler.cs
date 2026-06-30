@@ -13,7 +13,7 @@ internal sealed class CourtAddedEventHandler(ICourtsRepository courtsRepository)
         Court court = new(name: notification.Name,
             maxDailySessions: notification.MaxDailySessions,
             clubId: notification.ClubId,
-            id: notification.ClubId);
+            id: notification.CourtId);
 
         await courtsRepository.AddCourtAsync(court, cancellationToken);
     }
