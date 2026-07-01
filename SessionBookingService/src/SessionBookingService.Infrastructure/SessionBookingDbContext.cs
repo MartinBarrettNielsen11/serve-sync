@@ -1,6 +1,5 @@
 using System.Reflection;
 using Mediator;
-using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SessionBookingService.Domain.CourtsAggregate;

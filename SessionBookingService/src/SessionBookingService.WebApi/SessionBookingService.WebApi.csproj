@@ -4,7 +4,6 @@
         <InvariantGlobalization>true</InvariantGlobalization>
     </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\..\..\UserAdministrationService\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj" />
       <ProjectReference Include="..\SessionBookingService.Application\SessionBookingService.Application.csproj" />
       <ProjectReference Include="..\SessionBookingService.Contracts\SessionBookingService.Contracts.csproj" />
       <ProjectReference Include="..\SessionBookingService.Infrastructure\SessionBookingService.Infrastructure.csproj" />
@@ -13,10 +12,11 @@
         <PackageReference Include="Mediator.Abstractions" />
         <PackageReference Include="Mediator.SourceGenerator">
             <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers;</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Scalar.AspNetCore" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Microsoft.OpenApi" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
     </ItemGroup>
 </Project>
