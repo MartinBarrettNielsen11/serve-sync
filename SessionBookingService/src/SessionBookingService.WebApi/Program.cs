@@ -24,9 +24,19 @@ builder.Services
     .AddServices()
     .AddInfrastructure(builder.Configuration);
 
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+
+builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
+
+builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+
 WebApplication app = builder.Build();
 
-app.UseMiddleware<EventualConsistencyMiddleware>();
+app.MapEndpoints();
+
+
+// app.UseMiddleware<EventualConsistencyMiddleware>(); // I'll need this back some day
 
 // Configure the HTTP request pipeline for DEVELOPMENT only
 if (app.Environment.IsDevelopment())
@@ -39,4 +49,5 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.MapControllers();
 await app.RunAsync();

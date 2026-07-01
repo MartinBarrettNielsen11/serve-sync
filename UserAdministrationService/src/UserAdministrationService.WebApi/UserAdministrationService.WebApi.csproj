@@ -2,7 +2,8 @@
     <PropertyGroup>
         <RootNamespace>UserAdministrationService.WebApi</RootNamespace>
         <InvariantGlobalization>true</InvariantGlobalization>
-    </PropertyGroup>
+      <UserSecretsId>d132ee0c-1e18-4e26-9c2e-8119eb319c11</UserSecretsId>
+  </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
       <ProjectReference Include="..\UserAdministrationService.Infrastructure\UserAdministrationService.Infrastructure.csproj" />

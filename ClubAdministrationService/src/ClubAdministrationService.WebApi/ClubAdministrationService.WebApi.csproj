@@ -4,7 +4,8 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <InvariantGlobalization>true</InvariantGlobalization>
         <NoWarn>$(NoWarn);VSTHRD200</NoWarn>
-    </PropertyGroup>
+      <UserSecretsId>0ec985ed-1a43-4d46-a89f-eb7ed2a0ad26</UserSecretsId>
+  </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\ClubAdministrationService.Contracts\ClubAdministrationService.Contracts.csproj" />
       <ProjectReference Include="..\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
