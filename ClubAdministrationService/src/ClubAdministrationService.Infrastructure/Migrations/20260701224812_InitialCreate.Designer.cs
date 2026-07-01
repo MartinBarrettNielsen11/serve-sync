@@ -13,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClubAdministrationService.Infrastructure.Migrations
 {
     [DbContext(typeof(ClubDbContext))]
-    [Migration("20260622153620_AddInitialDataModel")]
-    partial class AddInitialDataModel
+    [Migration("20260701224812_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

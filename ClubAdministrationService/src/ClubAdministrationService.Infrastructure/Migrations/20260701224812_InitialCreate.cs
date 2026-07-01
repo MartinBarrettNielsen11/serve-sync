@@ -9,7 +9,7 @@ namespace ClubAdministrationService.Infrastructure.Migrations
 {
     /// <inheritdoc />
 #pragma warning disable MA0048
-    public partial class AddInitialDataModel : Migration
+    public partial class InitialCreate : Migration
 #pragma warning restore MA0048
     {
         /// <inheritdoc />

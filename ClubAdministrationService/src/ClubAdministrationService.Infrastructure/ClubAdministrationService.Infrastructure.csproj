@@ -22,4 +22,8 @@
         <ProjectReference Include="..\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
         <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
 </Project>
