@@ -1,5 +1,7 @@
 using ClubAdministrationService.Application.Admins.IntegrationEvents;
+using ClubAdministrationService.Application.Clubs.IntegrationEvents;
 using Mediator;
+using SharedKernel.IntegrationEvents.ClubManagement;
 using SharedKernel.IntegrationEvents.UserManagement;
 
 namespace ClubAdministrationService.WebApi.Extensions;
@@ -16,11 +18,12 @@ internal static class MediatorExtensions
             options.CachingMode = CachingMode.Eager;
             options.Assemblies =
             [
-                typeof(AdminProfileCreatedEventHandler).Assembly
+                typeof(AdminProfileCreatedEventHandler).Assembly,
             ];
             options.Types =
             [
-                typeof(AdminProfileCreatedIntegrationEvent)
+                typeof(AdminProfileCreatedIntegrationEvent),
+                typeof(SessionScheduledIntegrationEvent)
             ];
         });
 

@@ -1,9 +1,10 @@
+using ClubAdministrationService.Application.Clubs.ListClubs;
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
 using Mediator;
 using SharedKernel.Results;
 
-namespace ClubAdministrationService.Application.Clubs.ListClubs;
+namespace ClubAdministrationService.Application.Clubs.Queries.ListClubs;
 
 internal sealed class ListClubsQueryHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
     : IRequestHandler<ListClubsQuery, Result<List<Club>>>
