@@ -25,9 +25,18 @@ builder.Services
     .AddPersistence(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+
+builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
+
+builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+
 WebApplication app = builder.Build();
 
-app.UseMiddleware<EventualConsistencyMiddleware>();
+app.MapEndpoints();
+
+//app.UseMiddleware<EventualConsistencyMiddleware>(); //I'll need this back some day
 
 app.MapOpenApi().AllowAnonymous();
 
@@ -37,4 +46,5 @@ app.MapScalarApiReference((opts) =>
     opts.Theme = ScalarTheme.Kepler;
 }).AllowAnonymous();
 
+app.MapControllers();
 await app.RunAsync();
