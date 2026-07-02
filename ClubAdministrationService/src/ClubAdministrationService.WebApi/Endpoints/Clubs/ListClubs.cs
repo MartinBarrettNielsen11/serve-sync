@@ -29,6 +29,7 @@ public sealed class ListClubs : IEndpoint
                 })
             .WithTags(Tags.Clubs)
             .WithSummary("List clubs")
-            .WithDescription("List clubs for a subscription");
+            .WithDescription("List clubs for a subscription")
+            .Produces<ClubResponse>();
     }
 }

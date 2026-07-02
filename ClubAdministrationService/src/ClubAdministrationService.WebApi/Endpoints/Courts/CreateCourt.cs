@@ -31,7 +31,8 @@ public sealed class CreateCourt : IEndpoint
                 })
             .WithTags(Tags.Courts)
             .WithSummary("Create court")
-            .WithDescription("Create court for a club");
+            .WithDescription("Create court for a club")
+            .Produces<CourtResponse>(StatusCodes.Status201Created);
         //.RequireAuthorization();
     }
 }

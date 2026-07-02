@@ -1,5 +1,6 @@
 using ClubAdministrationService.Application.Clubs.CreateClub;
 using ClubAdministrationService.Contracts.Clubs;
+using ClubAdministrationService.Contracts.Courts;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.WebApi.Infrastructure;
 using Mediator;
@@ -15,10 +16,10 @@ public sealed class CreateCourt : IEndpoint
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost(pattern: "subscriptions/{subscriptionId:guid}/clubs",
-                    handler: async (CreateClubRequest request,
-                        Guid subscriptionId,
-                        ISender sender,
-                        CancellationToken cancellationToken) =>
+                handler: async (CreateClubRequest request,
+                    Guid subscriptionId,
+                    ISender sender,
+                    CancellationToken cancellationToken) =>
                 {
                     CreateClubCommand command = new(request.Name, subscriptionId);
 
@@ -35,7 +36,8 @@ public sealed class CreateCourt : IEndpoint
                 })
             .WithTags(Tags.Clubs)
             .WithSummary("Create club")
-            .WithDescription("Create club for a subscription");
+            .WithDescription("Create club for a subscription")
+            .Produces<CourtResponse>(StatusCodes.Status201Created);
         //.RequireAuthorization();
     }
 }

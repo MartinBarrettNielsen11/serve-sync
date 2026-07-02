@@ -30,6 +30,7 @@ public sealed class GetClub : IEndpoint
             .WithTags(Tags.Clubs)
             .WithName("GetClub")
             .WithSummary("Get club")
-            .WithDescription("Get club for specific clubId and subscriptionId");
+            .WithDescription("Get club for specific clubId and subscriptionId")
+            .Produces<ClubResponse>();
     }
 }

@@ -31,6 +31,7 @@ public sealed class ListProfiles : IEndpoint
                 })
             .WithTags(Tags.Profile)
             .WithSummary("Get profiles for user")
-            .WithDescription("Get profiles for user");
+            .WithDescription("Get profiles for user")
+            .Produces<ListProfilesResponse>();
     }
 }
