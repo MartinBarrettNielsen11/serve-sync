@@ -1,6 +1,7 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SessionBookingService.WebApi.Endpoints;
+using SessionBookingService.WebApi.Endpoints.Bookings;
 
 namespace SessionBookingService.WebApi.Extensions;
 
@@ -20,19 +21,12 @@ internal static class EndpointExtensions
         return services;
     }
 
-    public static IApplicationBuilder MapEndpoints(
-        this WebApplication app,
-        RouteGroupBuilder? routeGroupBuilder = null)
+    public static IApplicationBuilder MapEndpoints(this WebApplication app)
     {
-        var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
-
-        IEndpointRouteBuilder builder = routeGroupBuilder is null ? app : routeGroupBuilder;
-
-        foreach (IEndpoint endpoint in endpoints)
-        {
-            endpoint.MapEndpoint(builder);
-        }
-
+        RouteGroupBuilder bookings = app.MapBookingGroup();
+        
+        new CreateBooking().MapEndpoint(bookings);
+        
         return app;
     }
 

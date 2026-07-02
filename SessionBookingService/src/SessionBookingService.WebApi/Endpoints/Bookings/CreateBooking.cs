@@ -1,3 +1,5 @@
+using Asp.Versioning;
+using Asp.Versioning.Builder;
 using Mediator;
 using SessionBookingService.Application.Bookings.Commands.CreateBooking;
 using SessionBookingService.Contracts.Bookings;
@@ -10,7 +12,7 @@ public sealed class CreateBooking : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapPost(pattern: "sessions/{sessionId:guid}/bookings",
+        app.MapPost(pattern: "/sessions/{sessionId:guid}/bookings",
                 handler: async (CreateBookingRequest request,
                     Guid sessionId,
                     ISender sender,

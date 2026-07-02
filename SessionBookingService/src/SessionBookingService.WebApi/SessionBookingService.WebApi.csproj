@@ -11,6 +11,9 @@
       <ProjectReference Include="..\SessionBookingService.Infrastructure\SessionBookingService.Infrastructure.csproj" />
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Asp.Versioning.Http" />
+        <PackageReference Include="Asp.Versioning.Mvc" />
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
         <PackageReference Include="Mediator.Abstractions" />
         <PackageReference Include="Mediator.SourceGenerator">
             <PrivateAssets>all</PrivateAssets>
