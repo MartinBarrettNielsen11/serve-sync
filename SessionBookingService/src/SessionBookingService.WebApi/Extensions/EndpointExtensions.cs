@@ -1,13 +1,16 @@
 using System.Reflection;
+using Asp.Versioning;
+using Asp.Versioning.Builder;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SessionBookingService.WebApi.Endpoints;
 using SessionBookingService.WebApi.Endpoints.Bookings;
+using SessionBookingService.WebApi.Endpoints.Players;
 
 namespace SessionBookingService.WebApi.Extensions;
 
 internal static class EndpointExtensions
 {
-    public static IServiceCollection AddEndpoints(this IServiceCollection services, Assembly assembly)
+    public static void AddEndpoints(this IServiceCollection services, Assembly assembly)
     {
         ServiceDescriptor[] serviceDescriptors = assembly
             .DefinedTypes
@@ -17,17 +20,22 @@ internal static class EndpointExtensions
             .ToArray();
 
         services.TryAddEnumerable(serviceDescriptors);
-
-        return services;
     }
 
-    public static IApplicationBuilder MapEndpoints(this WebApplication app)
+    public static void MapEndpoints(this WebApplication app)
     {
-        RouteGroupBuilder bookings = app.MapBookingGroup();
+        ApiVersionSet versionSet = app
+            .NewApiVersionSet()
+            .HasApiVersion(new ApiVersion(1))
+            .HasApiVersion(new ApiVersion(2))
+            .ReportApiVersions()
+            .Build();
         
-        new CreateBooking().MapEndpoint(bookings);
+        RouteGroupBuilder bookingGroup = app.MapBookingGroup(versionSet);
+        RouteGroupBuilder playerGroup = app.MapPlayerGroup(versionSet);
         
-        return app;
+        new CreateBooking().MapEndpoint(bookingGroup);
+        new CancelBooking().MapEndpoint(playerGroup);
     }
 
     public static RouteHandlerBuilder HasPermission(this RouteHandlerBuilder app, string permission) =>
