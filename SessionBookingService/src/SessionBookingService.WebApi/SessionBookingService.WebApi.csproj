@@ -2,7 +2,8 @@
     <PropertyGroup>
         <RootNamespace>SessionBookingService.WebApi</RootNamespace>
         <InvariantGlobalization>true</InvariantGlobalization>
-      <UserSecretsId>b00892e2-63cd-48ba-a934-652211904867</UserSecretsId>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <UserSecretsId>b00892e2-63cd-48ba-a934-652211904867</UserSecretsId>
   </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\SessionBookingService.Application\SessionBookingService.Application.csproj" />

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using UserAdministrationService.Application;
 using UserAdministrationService.Infrastructure;
@@ -7,6 +8,7 @@ using UserAdministrationService.WebApi.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
 builder.Host.UseDefaultServiceProvider((_, options) =>
     {
         options.ValidateScopes = true;
@@ -15,6 +17,8 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
 );
 
 builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
@@ -25,11 +29,6 @@ builder.Services
     .AddPersistence(builder.Configuration)
     .AddInfrastructure(builder.Configuration);
 
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
-
-builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
-
 builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
 
 WebApplication app = builder.Build();
@@ -38,13 +37,23 @@ app.MapEndpoints();
 
 //app.UseMiddleware<EventualConsistencyMiddleware>(); //I'll need this back some day
 
-app.MapOpenApi().AllowAnonymous();
-
-app.MapScalarApiReference((opts) =>
+if (app.Environment.IsDevelopment())
 {
-    opts.Title = Assembly.GetExecutingAssembly().GetName().Name!;
-    opts.Theme = ScalarTheme.Kepler;
-}).AllowAnonymous();
+    app.MapOpenApi().AllowAnonymous();
+    app.MapScalarApiReference((opts) =>
+    {
+        opts.Title = Assembly.GetExecutingAssembly().GetName().Name!;
+        opts.Theme = ScalarTheme.Kepler;
+    }).AllowAnonymous();
+}
+
+/*
+if (!app.Environment.IsEnvironment("Testing"))
+{
+    using IServiceScope scope = app.Services.CreateScope();
+    UserDbContext dbContext = scope.ServiceProvider.GetRequiredService<UserDbContext>();
+    await dbContext.Database.MigrateAsync();
+}*/
 
 app.MapControllers();
 await app.RunAsync();

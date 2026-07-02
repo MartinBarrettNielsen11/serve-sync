@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
     <PropertyGroup>
         <RootNamespace>UserAdministrationService.WebApi</RootNamespace>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <InvariantGlobalization>true</InvariantGlobalization>
       <UserSecretsId>d132ee0c-1e18-4e26-9c2e-8119eb319c11</UserSecretsId>
   </PropertyGroup>

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using SessionBookingService.Application;
 using SessionBookingService.Infrastructure;
@@ -7,6 +8,7 @@ using SessionBookingService.WebApi.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
 builder.Host.UseDefaultServiceProvider((_, options) =>
     {
         options.ValidateScopes = true;
@@ -15,6 +17,8 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
 );
 
 builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
@@ -23,11 +27,6 @@ builder.Services
     .AddMediatorServices()
     .AddServices()
     .AddInfrastructure(builder.Configuration);
-
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
-
-builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
 
 builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
 
@@ -48,6 +47,13 @@ if (app.Environment.IsDevelopment())
         opts.Theme = ScalarTheme.DeepSpace;
     });
 }
+/*
+if (!app.Environment.IsEnvironment("Testing"))
+{
+    using IServiceScope scope = app.Services.CreateScope();
+    SessionBookingDbContext dbContext = scope.ServiceProvider.GetRequiredService<SessionBookingDbContext>();
+    await dbContext.Database.MigrateAsync();
+}*/
 
 app.MapControllers();
 await app.RunAsync();

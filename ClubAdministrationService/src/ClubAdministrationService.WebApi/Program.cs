@@ -7,6 +7,7 @@ using Scalar.AspNetCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
 builder.Host.UseDefaultServiceProvider((_, options) =>
     {
         options.ValidateScopes = true;
@@ -15,6 +16,8 @@ builder.Host.UseDefaultServiceProvider((_, options) =>
 );
 
 builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
@@ -24,11 +27,6 @@ builder.Services
     .AddServices()
     .AddPersistence(builder.Configuration);
     //.AddInfrastructure(builder.Configuration);
-
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
-
-builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
 
 builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
 
@@ -48,7 +46,6 @@ if (app.Environment.IsDevelopment())
         opts.Theme = ScalarTheme.DeepSpace;
     });
 }
-
 
 if (!app.Environment.IsEnvironment("Testing"))
 {
