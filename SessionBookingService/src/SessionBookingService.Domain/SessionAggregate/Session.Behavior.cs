@@ -6,70 +6,59 @@ namespace SessionBookingService.Domain.SessionAggregate;
 
 internal sealed partial class Session : RootAggregate
 {
-    public Result<bool> BookSpot(Player player)
-    {
-        if (_bookings.Count >= MaxPlayerCapacity)
-        {
-            return Result.Failure<bool>(SessionErrors.CannotHaveMoreBookingsThanPlayers);
-        }
-        
-        Booking booking = new(playerId: player.Id);
+	public Result<bool> BookSpot(Player player)
+	{
+		if (_bookings.Count >= MaxPlayerCapacity)
+			return Result.Failure<bool>(SessionErrors.CannotHaveMoreBookingsThanPlayers);
 
-        if (_bookings.Exists(r => r.PlayerId == booking.PlayerId))
-        {
-            return Result.Failure<bool>(SessionErrors.PlayerCannotReserveTwice);
-        }
+		Booking booking = new(player.Id);
 
-        _bookings.Add(booking);
-        // add some events and such here
+		if (_bookings.Exists(r => r.PlayerId == booking.PlayerId))
+			return Result.Failure<bool>(SessionErrors.PlayerCannotReserveTwice);
 
-        return Result.Success<bool>(value: true);
-    }
-    
-    internal Result<bool> CancelBooking(Guid playerId, IDateTimeProvider provider)
-    {
-        if (!_bookings.Exists(reservation => reservation.PlayerId == playerId))
-        {
-            return Result.Failure<bool>(SessionErrors.BookingNotFound);
-        }
+		_bookings.Add(booking);
+		// add some events and such here
 
-        if (IsTooCloseToSession(provider.UtcNow))
-        {
-            return Result.Failure<bool>(SessionErrors.CannotCancelBookingTooCloseToSession);
-        }
-        
-        if (IsPastSession(provider.UtcNow))
-        {
-            return Result.Failure<bool>(SessionErrors.CannotCancelPastSession);
-        }
+		return Result.Success(true);
+	}
 
-        Booking booking = _bookings.First(b => b.PlayerId == playerId);
-        
-        _bookings.Remove(booking);
-        
-        // trigger event
-        
-        return Result.Success<bool>(value: true);
-    }
-    
-    private bool IsPastSession(DateTime utcNow)
-    {
-        return (Date.ToDateTime(Time.End) - utcNow).TotalHours < 0;
-    }
-    
-    private bool IsTooCloseToSession(DateTime utcNow)
-    {
-        const int MinHours = 24;
+	internal Result<bool> CancelBooking(Guid playerId, IDateTimeProvider provider)
+	{
+		if (!_bookings.Exists(reservation => reservation.PlayerId == playerId))
+			return Result.Failure<bool>(SessionErrors.BookingNotFound);
 
-        var timeDifference = (Date.ToDateTime(Time.Start) - utcNow).TotalHours;
+		if (IsTooCloseToSession(provider.UtcNow))
+			return Result.Failure<bool>(SessionErrors.CannotCancelBookingTooCloseToSession);
 
-        var exceedsLimit = timeDifference < MinHours;
+		if (IsPastSession(provider.UtcNow)) return Result.Failure<bool>(SessionErrors.CannotCancelPastSession);
 
-        return exceedsLimit;
-    }
-    
-    public bool HasBookingForPlayer(Guid playerId)
-    {
-        return _bookings.Exists(b => b.PlayerId == playerId);
-    }
+		Booking booking = _bookings.First(b => b.PlayerId == playerId);
+
+		_bookings.Remove(booking);
+
+		// trigger event
+
+		return Result.Success(true);
+	}
+
+	private bool IsPastSession(DateTime utcNow)
+	{
+		return (Date.ToDateTime(Time.End) - utcNow).TotalHours < 0;
+	}
+
+	private bool IsTooCloseToSession(DateTime utcNow)
+	{
+		const int MinHours = 24;
+
+		var timeDifference = (Date.ToDateTime(Time.Start) - utcNow).TotalHours;
+
+		var exceedsLimit = timeDifference < MinHours;
+
+		return exceedsLimit;
+	}
+
+	public bool HasBookingForPlayer(Guid playerId)
+	{
+		return _bookings.Exists(b => b.PlayerId == playerId);
+	}
 }

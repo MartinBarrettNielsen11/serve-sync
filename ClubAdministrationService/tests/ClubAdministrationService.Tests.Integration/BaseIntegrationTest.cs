@@ -7,39 +7,36 @@ namespace ClubAdministrationService.Tests.Integration;
 
 public abstract class BaseIntegrationTest
 {
-    //protected readonly ClubAdministrationDbContext InitialDbContext;
+	private readonly IServiceScope _scope;
+	internal readonly ClubDbContext InitialDbContext;
 
-    protected ApiTestFixture Fixture { get; }
-    private readonly IServiceScope _scope;
-    internal readonly ClubDbContext InitialDbContext;
+	protected BaseIntegrationTest(ApiTestFixture fixture)
+	{
+		Fixture = fixture;
+		_scope = fixture.Services.CreateScope();
+		InitialDbContext = _scope.ServiceProvider.GetRequiredService<ClubDbContext>();
 
-    protected BaseIntegrationTest(ApiTestFixture fixture)
-    {
-        Fixture = fixture;
-        _scope = fixture.Services.CreateScope();
-        InitialDbContext = _scope.ServiceProvider.GetRequiredService<ClubDbContext>();
+		// remove this - and apply in composition root at some later day
+		if (InitialDbContext.Database.GetPendingMigrations().Any()) InitialDbContext.Database.Migrate();
 
-        // remove this - and apply in composition root at some later day
-        if (InitialDbContext.Database.GetPendingMigrations().Any())
-        {
-            InitialDbContext.Database.Migrate();
-        }
+		ResetLoggingStorage();
+	}
+	//protected readonly ClubAdministrationDbContext InitialDbContext;
 
-        ResetLoggingStorage();
-    }
-    
-    internal ClubDbContext GetDbContext()
-    {
-        return _scope.ServiceProvider.GetRequiredService<ClubDbContext>();
-    }
-    
-    protected FakeLogCollector GetFakeLogCollector()
-    {
-        return _scope.ServiceProvider.GetRequiredService<FakeLogCollector>();
-    }
-    
-    protected void ResetLoggingStorage()
-    {
-        _scope.ServiceProvider.GetFakeLogCollector().Clear();
-    }
+	protected ApiTestFixture Fixture { get; }
+
+	internal ClubDbContext GetDbContext()
+	{
+		return _scope.ServiceProvider.GetRequiredService<ClubDbContext>();
+	}
+
+	protected FakeLogCollector GetFakeLogCollector()
+	{
+		return _scope.ServiceProvider.GetRequiredService<FakeLogCollector>();
+	}
+
+	protected void ResetLoggingStorage()
+	{
+		_scope.ServiceProvider.GetFakeLogCollector().Clear();
+	}
 }

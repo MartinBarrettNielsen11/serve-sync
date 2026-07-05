@@ -7,21 +7,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" />
-        <PackageReference Include="xunit" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <PackageReference Include="xunit"/>
         <PackageReference Include="xunit.runner.visualstudio">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Application\" />
-      <Folder Include="Domain\TestsConstants\" />
+        <Folder Include="Application\"/>
+        <Folder Include="Domain\TestsConstants\"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj" />
+        <ProjectReference Include="..\..\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
     </ItemGroup>
 
 </Project>

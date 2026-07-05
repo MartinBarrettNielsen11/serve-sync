@@ -5,20 +5,20 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
+        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Ardalis.SmartEnum" />
-        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Ardalis.SmartEnum"/>
+        <PackageReference Include="Mediator.Abstractions"/>
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Application" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Data" />
+        <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Application"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Data"/>
     </ItemGroup>
 </Project>

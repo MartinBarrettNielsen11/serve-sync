@@ -8,30 +8,27 @@ namespace SessionBookingService.Infrastructure;
 
 internal static class DependencyInjection
 {
-    internal static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
-    {
-        services
-            .AddPersistence(config);
+	internal static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
+	{
+		services
+			.AddPersistence(config);
 
-        return services;
-    }
-    
-    
-    internal static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration config)
-    {
-        var connectionString = config.GetConnectionString("Database");
-        
-        services.AddDbContext<SessionBookingDbContext>(options =>
-        {
-            options.UseNpgsql(connectionString);
-        });
-
-        services.AddScoped<IInstructorsRepository, InstructorsRepository>();
-        services.AddScoped<ICourtsRepository, CourtsRepository>();
-        services.AddScoped<ISessionsRepository, SessionsRepository>();
-        services.AddScoped<IPlayersRepository, PlayersRepository>();
+		return services;
+	}
 
 
-        return services;
-    }
+	internal static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration config)
+	{
+		var connectionString = config.GetConnectionString("Database");
+
+		services.AddDbContext<SessionBookingDbContext>(options => { options.UseNpgsql(connectionString); });
+
+		services.AddScoped<IInstructorsRepository, InstructorsRepository>();
+		services.AddScoped<ICourtsRepository, CourtsRepository>();
+		services.AddScoped<ISessionsRepository, SessionsRepository>();
+		services.AddScoped<IPlayersRepository, PlayersRepository>();
+
+
+		return services;
+	}
 }

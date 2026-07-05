@@ -3,25 +3,25 @@
         <RootNamespace>UserAdministrationService.WebApi</RootNamespace>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <InvariantGlobalization>true</InvariantGlobalization>
-      <UserSecretsId>d132ee0c-1e18-4e26-9c2e-8119eb319c11</UserSecretsId>
-  </PropertyGroup>
+        <UserSecretsId>d132ee0c-1e18-4e26-9c2e-8119eb319c11</UserSecretsId>
+    </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
-      <ProjectReference Include="..\UserAdministrationService.Infrastructure\UserAdministrationService.Infrastructure.csproj" />
-      <ProjectReference Include="..\UserAdministrationService.Contracts\UserAdministrationService.Contracts.csproj" />
+        <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj"/>
+        <ProjectReference Include="..\UserAdministrationService.Infrastructure\UserAdministrationService.Infrastructure.csproj"/>
+        <ProjectReference Include="..\UserAdministrationService.Contracts\UserAdministrationService.Contracts.csproj"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Mediator.Abstractions"/>
         <PackageReference Include="Mediator.SourceGenerator">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers;</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Scalar.AspNetCore" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
-        <PackageReference Include="Microsoft.OpenApi" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
+        <PackageReference Include="Scalar.AspNetCore"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
+        <PackageReference Include="Microsoft.OpenApi"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design"/>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Endpoints\Authentication\" />
+        <Folder Include="Endpoints\Authentication\"/>
     </ItemGroup>
 </Project>

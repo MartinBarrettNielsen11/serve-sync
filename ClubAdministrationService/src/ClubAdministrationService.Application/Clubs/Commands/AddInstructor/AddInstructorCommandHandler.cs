@@ -7,39 +7,32 @@ using SharedKernel.Results;
 namespace ClubAdministrationService.Application.Clubs.AddInstructor;
 
 // ReSharper disable once UnusedType.Global
-internal sealed class AddInstructorCommandHandler(IClubsRepository clubsRepository, ISubscriptionsRepository subscriptionsRepository)
-    : IRequestHandler<AddInstructorCommand, Result>
+internal sealed class AddInstructorCommandHandler(
+	IClubsRepository clubsRepository,
+	ISubscriptionsRepository subscriptionsRepository)
+	: IRequestHandler<AddInstructorCommand, Result>
 {
-    public async ValueTask<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
-    {
-        Subscription? subscription = await subscriptionsRepository.GetByIdAsync(command.SubscriptionId, cancellationToken);
+	public async ValueTask<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)
+	{
+		Subscription? subscription =
+			await subscriptionsRepository.GetByIdAsync(command.SubscriptionId, cancellationToken);
 
-        if (subscription is null)
-        {
-            return Result.Failure(Error.NotFound(code: "SubscriptionNotFound", description: "Subscription not found"));
-        }
-        
-        if (!subscription.HasClub(command.ClubId))
-        {
-            return Result.Failure(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
-        }
+		if (subscription is null)
+			return Result.Failure(Error.NotFound("SubscriptionNotFound", "Subscription not found"));
 
-        Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
-        
-        if (club is null)
-        {
-            return Result.Failure(Error.NotFound(code: "ClubNotFound", description: "Club not found"));
-        }
+		if (!subscription.HasClub(command.ClubId))
+			return Result.Failure(Error.NotFound("ClubNotFound", "Club not found"));
 
-        Result<bool> addInstructorResult = club.AddInstructor(command.InstructorId);
+		Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
 
-        if (addInstructorResult.IsFailure)
-        {
-            return Result.Failure(addInstructorResult.Error);
-        }
-        
-        await clubsRepository.UpdateAsync(club, cancellationToken);
+		if (club is null) return Result.Failure(Error.NotFound("ClubNotFound", "Club not found"));
 
-        return Result.Success<bool>(value: true);
-    }
+		Result<bool> addInstructorResult = club.AddInstructor(command.InstructorId);
+
+		if (addInstructorResult.IsFailure) return Result.Failure(addInstructorResult.Error);
+
+		await clubsRepository.UpdateAsync(club, cancellationToken);
+
+		return Result.Success(true);
+	}
 }

@@ -3,20 +3,20 @@
         <RootNamespace>ClubAdministrationService.Application</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
+        <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Mediator.Abstractions" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure" />
+        <PackageReference Include="Mediator.Abstractions"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Clubs\Commands\" />
-      <Folder Include="Clubs\Queries\" />
+        <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Clubs\Commands\"/>
+        <Folder Include="Clubs\Queries\"/>
     </ItemGroup>
 </Project>

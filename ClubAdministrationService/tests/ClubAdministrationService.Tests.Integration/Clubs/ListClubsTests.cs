@@ -8,54 +8,54 @@ namespace ClubAdministrationService.Tests.Integration.Clubs;
 // note: you need to add a some abstraction that includes setting up a database, a fake logger, and some InitialDbContext, whcih can be worked with in the arrange step.
 public class ListClubsTests : IClassFixture<WebApplicationFactory<IApiMarker>>
 {
-    private readonly HttpClient _httpClient;
+	private readonly HttpClient _httpClient;
 
-    public ListClubsTests(WebApplicationFactory<IApiMarker> appFactory)
-    {
-        _httpClient = appFactory.CreateClient();
-    }
-    
-    [Fact]
-    public async Task ListClubs_happy_path()
-    {
-        // Arrange
-        Guid subscriptionId = Guid.Parse("019e9d1e-b2fa-7ada-baad-97bb06ac3889");
-        
-        // Act
-        
-        Uri requestUri = new(
-            uriString: $"/subscriptions/{subscriptionId}/clubs",
-            uriKind: UriKind.Relative);
-        
-        HttpResponseMessage response = await _httpClient.GetAsync(requestUri: requestUri);
+	public ListClubsTests(WebApplicationFactory<IApiMarker> appFactory)
+	{
+		_httpClient = appFactory.CreateClient();
+	}
 
-        // Assert
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+	[Fact]
+	public async Task ListClubs_happy_path()
+	{
+		// Arrange
+		Guid subscriptionId = Guid.Parse("019e9d1e-b2fa-7ada-baad-97bb06ac3889");
 
-        var result = await response.Content.ReadAsStringAsync();
-        
-        Assert.NotEqual("", result);
-    }
+		// Act
+
+		Uri requestUri = new(
+			$"/subscriptions/{subscriptionId}/clubs",
+			UriKind.Relative);
+
+		HttpResponseMessage response = await _httpClient.GetAsync(requestUri);
+
+		// Assert
+		Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+		var result = await response.Content.ReadAsStringAsync();
+
+		Assert.NotEqual("", result);
+	}
 
 
-    [Fact]
-    public async Task ListClubs_unhappy_path()
-    {
-        // Arrange
-        Guid subscriptionId = Guid.Parse("11111111-1111-1111-1111-111111111111");
-        
-        // Act
-        Uri requestUri = new(
-            uriString: $"/subscriptions/{subscriptionId}/clubs",
-            uriKind: UriKind.Relative);
-        
-        HttpResponseMessage response = await _httpClient.GetAsync(requestUri: requestUri);
+	[Fact]
+	public async Task ListClubs_unhappy_path()
+	{
+		// Arrange
+		Guid subscriptionId = Guid.Parse("11111111-1111-1111-1111-111111111111");
 
-        // Assert
-        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+		// Act
+		Uri requestUri = new(
+			$"/subscriptions/{subscriptionId}/clubs",
+			UriKind.Relative);
 
-        var result = await response.Content.ReadAsStringAsync();
-        
-        Assert.NotEqual("", result);
-    }
+		HttpResponseMessage response = await _httpClient.GetAsync(requestUri);
+
+		// Assert
+		Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+
+		var result = await response.Content.ReadAsStringAsync();
+
+		Assert.NotEqual("", result);
+	}
 }

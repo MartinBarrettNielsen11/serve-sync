@@ -7,30 +7,24 @@ namespace UserAdministrationService.Application.Register;
 
 internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, IPasswordHasher passwordHasher)
 {
-    internal async ValueTask<Result> Handle(RegisterCommand command, CancellationToken cancellationToken)
-    {
-        var userExists = await usersRepository.ExistsByEmailAsync(command.Email, cancellationToken);
+	internal async ValueTask<Result> Handle(RegisterCommand command, CancellationToken cancellationToken)
+	{
+		var userExists = await usersRepository.ExistsByEmailAsync(command.Email, cancellationToken);
 
-        if (!userExists)
-        {
-            return Result.Failure(Error.Conflict(code: "UserAlreadyExists", description: "User already exists"));
-        }
-        
-        Result<string> hashPasswordResult = passwordHasher.HashPassword(command.Password);
+		if (!userExists) return Result.Failure(Error.Conflict("UserAlreadyExists", "User already exists"));
 
-        if (hashPasswordResult.IsFailure)
-        {
-            return Result.Failure(hashPasswordResult.Error);
-        }
-        
-        User user = new(firstName: command.FirstName, 
-                        lastName: command.LastName, 
-                        email: command.Email, 
-                        passwordHash: hashPasswordResult.Value);
+		Result<string> hashPasswordResult = passwordHasher.HashPassword(command.Password);
 
-        await usersRepository.AddUserAsync(user, cancellationToken);
-        
-        // return some authentication dto including a token
-        return null!;
-    }
+		if (hashPasswordResult.IsFailure) return Result.Failure(hashPasswordResult.Error);
+
+		User user = new(command.FirstName,
+			command.LastName,
+			command.Email,
+			hashPasswordResult.Value);
+
+		await usersRepository.AddUserAsync(user, cancellationToken);
+
+		// return some authentication dto including a token
+		return null!;
+	}
 }

@@ -7,22 +7,22 @@ namespace ClubAdministrationService.Infrastructure.Configurations;
 
 internal sealed class SubscriptionConfiguration : IEntityTypeConfiguration<Subscription>
 {
-    public void Configure(EntityTypeBuilder<Subscription> builder)
-    {
-        builder.HasKey(keyExpression: s => s.Id);
+	public void Configure(EntityTypeBuilder<Subscription> builder)
+	{
+		builder.HasKey(s => s.Id);
 
-        builder.Property(propertyExpression: s => s.Id)
-            .ValueGeneratedNever();
+		builder.Property(s => s.Id)
+			.ValueGeneratedNever();
 
-        builder.Property(propertyName: "_maxCourtsAllowed")
-            .HasColumnName("MaxCourtsAllowed");
+		builder.Property("_maxCourtsAllowed")
+			.HasColumnName("MaxCourtsAllowed");
 
-        builder.Property(propertyExpression: s => s.SubscriptionType)
-            .HasConversion(convertToProviderExpression: subscriptionType => subscriptionType.Value,
-                           convertFromProviderExpression: value => SubscriptionType.FromValue(value));
+		builder.Property(s => s.SubscriptionType)
+			.HasConversion(subscriptionType => subscriptionType.Value,
+				value => SubscriptionType.FromValue(value));
 
-        builder.Property<List<Guid>>(propertyName: "_clubIds")
-            .HasColumnName(name: "ClubIds")
-            .HasListOfIdsConverter();
-    }
+		builder.Property<List<Guid>>("_clubIds")
+			.HasColumnName("ClubIds")
+			.HasListOfIdsConverter();
+	}
 }

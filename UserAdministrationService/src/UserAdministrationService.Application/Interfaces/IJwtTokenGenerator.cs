@@ -4,5 +4,5 @@ namespace UserAdministrationService.Application.Interfaces;
 
 internal interface IJwtTokenGenerator
 {
-    string GenerateToken(User user);
+	string GenerateToken(User user);
 }

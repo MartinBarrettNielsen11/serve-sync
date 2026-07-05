@@ -3,14 +3,14 @@
     <PropertyGroup>
         <RootNamespace>ClubAdministrationService.Tests.Unit</RootNamespace>
     </PropertyGroup>
-    
+
     <ItemGroup>
-        <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
+        <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration" />
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
     </ItemGroup>
-    
+
 </Project>

@@ -2,19 +2,21 @@ namespace SharedKernel.ValueObjects;
 
 public abstract class ValueObject
 {
-    public abstract IEnumerable<object?> GetEqualityComponents();
+	public abstract IEnumerable<object?> GetEqualityComponents();
 
-    public override bool Equals(object? obj)
-    {
-        if (obj is null || obj.GetType() != GetType()) return false;
+	public override bool Equals(object? obj)
+	{
+		if (obj is null || obj.GetType() != GetType()) return false;
 
-        return ((ValueObject)obj)
-            .GetEqualityComponents()
-            .SequenceEqual(GetEqualityComponents());
-    }
+		return ((ValueObject)obj)
+			.GetEqualityComponents()
+			.SequenceEqual(GetEqualityComponents());
+	}
 
-    public override int GetHashCode() =>
-        GetEqualityComponents()
-            .Select(x => x?.GetHashCode() ?? 0)
-            .Aggregate((x, y) => x ^ y);
+	public override int GetHashCode()
+	{
+		return GetEqualityComponents()
+			.Select(x => x?.GetHashCode() ?? 0)
+			.Aggregate((x, y) => x ^ y);
+	}
 }

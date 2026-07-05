@@ -3,30 +3,30 @@
         <RootNamespace>UserAdministrationService.Infrastructure</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="BCrypt.Net-Next" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" />
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
-        <PackageReference Include="Mediator.Abstractions" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <InternalsVisibleTo Include="UserAdministrationService.WebApi" />
-        <InternalsVisibleTo Include="UserAdministrationService.Domain" />
-        <InternalsVisibleTo Include="UserAdministrationService.Persistence" />
-        <InternalsVisibleTo Include="UserAdministrationService.Application" />
+        <PackageReference Include="BCrypt.Net-Next"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt"/>
+        <PackageReference Include="Mediator.Abstractions"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
-      <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
-      <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
+        <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Domain"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Application"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Migrations\" />
+        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
+        <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj"/>
+        <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Migrations\"/>
     </ItemGroup>
 </Project>

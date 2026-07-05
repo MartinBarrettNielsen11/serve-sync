@@ -5,17 +5,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
+        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-        <InternalsVisibleTo Include="SessionBookingService.Tests.Unit" />
-        <InternalsVisibleTo Include="SessionBookingService.Application" />
-        <InternalsVisibleTo Include="SessionBookingService.Infrastructure" />
+        <InternalsVisibleTo Include="SessionBookingService.Tests.Unit"/>
+        <InternalsVisibleTo Include="SessionBookingService.Application"/>
+        <InternalsVisibleTo Include="SessionBookingService.Infrastructure"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-        <PackageReference Include="Ardalis.SmartEnum" />
-        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Ardalis.SmartEnum"/>
+        <PackageReference Include="Mediator.Abstractions"/>
     </ItemGroup>
 </Project>

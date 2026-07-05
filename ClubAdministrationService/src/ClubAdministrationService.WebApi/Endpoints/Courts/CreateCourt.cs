@@ -9,30 +9,30 @@ namespace ClubAdministrationService.WebApi.Endpoints.Courts;
 
 public sealed class CreateCourt : IEndpoint
 {
-    public void MapEndpoint(IEndpointRouteBuilder app)
-    {
-        app.MapPost(pattern: "clubs/{clubId:guid}/courts",
-                handler: async (CreateCourtRequest request,
-                    Guid clubId,
-                    ISender sender,
-                    CancellationToken cancellationToken) =>
-                {
-                    CreateCourtCommand command = new(clubId, request.Name);
-                    
-                    Result<Court> createCourtResult = await sender.Send(command, cancellationToken);
+	public void MapEndpoint(IEndpointRouteBuilder app)
+	{
+		app.MapPost("clubs/{clubId:guid}/courts",
+				async (CreateCourtRequest request,
+					Guid clubId,
+					ISender sender,
+					CancellationToken cancellationToken) =>
+				{
+					CreateCourtCommand command = new(clubId, request.Name);
 
-                    IResult result = createCourtResult.Match(
-                        onSuccess: r => TypedResults.CreatedAtRoute(routeName: "GetCourt", 
-                                                                    routeValues: new { clubId, courtId = r.Id },
-                                                                    value: new CourtResponse(r.Id, r.Name)),
-                        onFailure: err => ProblemDetailsMapper.Problem(errors: [err.Error]));
+					Result<Court> createCourtResult = await sender.Send(command, cancellationToken);
 
-                    return result;
-                })
-            .WithTags(Tags.Courts)
-            .WithSummary("Create court")
-            .WithDescription("Create court for a club")
-            .Produces<CourtResponse>(StatusCodes.Status201Created);
-        //.RequireAuthorization();
-    }
+					IResult result = createCourtResult.Match(
+						r => TypedResults.CreatedAtRoute(routeName: "GetCourt",
+							routeValues: new { clubId, courtId = r.Id },
+							value: new CourtResponse(r.Id, r.Name)),
+						err => ProblemDetailsMapper.Problem([err.Error]));
+
+					return result;
+				})
+			.WithTags(Tags.Courts)
+			.WithSummary("Create court")
+			.WithDescription("Create court for a club")
+			.Produces<CourtResponse>(StatusCodes.Status201Created);
+		//.RequireAuthorization();
+	}
 }

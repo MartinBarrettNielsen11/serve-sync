@@ -11,28 +11,28 @@ namespace UserAdministrationService.Infrastructure.Authentication;
 
 internal class JwtTokenGenerator(IOptions<JwtOptions> jwtOptions) : IJwtTokenGenerator
 {
-    private readonly JwtOptions _jwtOptions = jwtOptions.Value;
+	private readonly JwtOptions _jwtOptions = jwtOptions.Value;
 
-    public string GenerateToken(User user)
-    {
-        SymmetricSecurityKey key = new(Encoding.UTF8.GetBytes(_jwtOptions.Secret));
-        SigningCredentials credentials = new(key, SecurityAlgorithms.HmacSha256);
+	public string GenerateToken(User user)
+	{
+		SymmetricSecurityKey key = new(Encoding.UTF8.GetBytes(_jwtOptions.Secret));
+		SigningCredentials credentials = new(key, SecurityAlgorithms.HmacSha256);
 
-        var claims = new[]
-        {
-            new Claim(JwtRegisteredClaimNames.Name, user.FirstName),
-            new Claim(JwtRegisteredClaimNames.Email, user.Email),
-            new Claim("id", user.Id.ToString()),
-        };
+		var claims = new[]
+		{
+			new Claim(JwtRegisteredClaimNames.Name, user.FirstName),
+			new Claim(JwtRegisteredClaimNames.Email, user.Email),
+			new Claim("id", user.Id.ToString())
+		};
 
-        JwtSecurityToken token = new(
-            issuer: _jwtOptions.Issuer,
-            audience: _jwtOptions.Audience,
-            claims: claims,
-            expires: DateTime.UtcNow.AddMinutes(_jwtOptions.TokenExpirationInMinutes),
-            signingCredentials: credentials
-        );
+		JwtSecurityToken token = new(
+			_jwtOptions.Issuer,
+			_jwtOptions.Audience,
+			claims,
+			expires: DateTime.UtcNow.AddMinutes(_jwtOptions.TokenExpirationInMinutes),
+			signingCredentials: credentials
+		);
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
-    }
+		return new JwtSecurityTokenHandler().WriteToken(token);
+	}
 }

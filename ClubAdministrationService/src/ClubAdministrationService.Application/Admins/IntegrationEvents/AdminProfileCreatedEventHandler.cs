@@ -5,13 +5,13 @@ using SharedKernel.IntegrationEvents.UserManagement;
 
 namespace ClubAdministrationService.Application.Admins.IntegrationEvents;
 
-internal sealed class AdminProfileCreatedEventHandler(IAdminsRepository adminsRepository) 
-    : INotificationHandler<AdminProfileCreatedIntegrationEvent>
+internal sealed class AdminProfileCreatedEventHandler(IAdminsRepository adminsRepository)
+	: INotificationHandler<AdminProfileCreatedIntegrationEvent>
 {
-    public async ValueTask Handle(AdminProfileCreatedIntegrationEvent notification, CancellationToken cancellationToken)
-    {
-        Admin admin = new(userId: notification.UserId, id: notification.AdminId);
+	public async ValueTask Handle(AdminProfileCreatedIntegrationEvent notification, CancellationToken cancellationToken)
+	{
+		Admin admin = new(notification.UserId, id: notification.AdminId);
 
-        await adminsRepository.AddAdminAsync(admin, cancellationToken);
-    }
+		await adminsRepository.AddAdminAsync(admin, cancellationToken);
+	}
 }

@@ -5,10 +5,10 @@ using Mediator;
 namespace ClubAdministrationService.Application.Clubs.Events;
 
 internal sealed class ClubAddedToSubscriptionEventHandler(IClubsRepository clubsRepository)
-    : INotificationHandler<ClubAddedToSubscriptionEvent>
+	: INotificationHandler<ClubAddedToSubscriptionEvent>
 {
-    public async ValueTask Handle(ClubAddedToSubscriptionEvent notification, CancellationToken cancellationToken)
-    {
-        await clubsRepository.AddClubAsync(club: notification.Club, cancellationToken);
-    }
+	public async ValueTask Handle(ClubAddedToSubscriptionEvent notification, CancellationToken cancellationToken)
+	{
+		await clubsRepository.AddClubAsync(notification.Club, cancellationToken);
+	}
 }

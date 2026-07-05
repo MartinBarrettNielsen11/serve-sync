@@ -6,15 +6,15 @@ namespace ClubAdministrationService.Infrastructure.Configurations;
 
 public class OutboxIntegrationEventsConfiguration : IEntityTypeConfiguration<OutboxIntegrationEvent>
 {
-    public void Configure(EntityTypeBuilder<OutboxIntegrationEvent> builder)
-    {
-        builder.Property<int>("Id")
-            .ValueGeneratedOnAdd();
+	public void Configure(EntityTypeBuilder<OutboxIntegrationEvent> builder)
+	{
+		builder.Property<int>("Id")
+			.ValueGeneratedOnAdd();
 
-        builder.HasKey("Id");
+		builder.HasKey("Id");
 
-        builder.Property(o => o.EventName);
+		builder.Property(o => o.EventName);
 
-        builder.Property(o => o.EventContent);
-    }
+		builder.Property(o => o.EventContent);
+	}
 }

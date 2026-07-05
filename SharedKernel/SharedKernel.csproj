@@ -2,9 +2,9 @@
     <PropertyGroup>
         <RootNamespace>SharedKernel</RootNamespace>
     </PropertyGroup>
-    
+
     <ItemGroup>
-        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Mediator.Abstractions"/>
     </ItemGroup>
 
 </Project>

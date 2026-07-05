@@ -1,5 +1,3 @@
-using Asp.Versioning;
-using Asp.Versioning.Builder;
 using Mediator;
 using SessionBookingService.Application.Bookings.Commands.CreateBooking;
 using SessionBookingService.Contracts.Bookings;
@@ -10,26 +8,26 @@ namespace SessionBookingService.WebApi.Endpoints.Bookings;
 
 public sealed class CreateBooking : IEndpoint
 {
-    public void MapEndpoint(IEndpointRouteBuilder app)
-    {
-        app.MapPost(pattern: "/sessions/{sessionId:guid}/bookings",
-                handler: async (CreateBookingRequest request,
-                    Guid sessionId,
-                    ISender sender,
-                    CancellationToken cancellationToken) =>
-                {
-                    CreateBookingCommand command = new(sessionId, request.PlayerId);
+	public void MapEndpoint(IEndpointRouteBuilder app)
+	{
+		app.MapPost("/sessions/{sessionId:guid}/bookings",
+				async (CreateBookingRequest request,
+					Guid sessionId,
+					ISender sender,
+					CancellationToken cancellationToken) =>
+				{
+					CreateBookingCommand command = new(sessionId, request.PlayerId);
 
-                    Result createBookingResult = await sender.Send(command, cancellationToken);
+					Result createBookingResult = await sender.Send(command, cancellationToken);
 
-                    IResult response = createBookingResult.Match(
-                        onSuccess: Results.NoContent,
-                        onFailure: err => ProblemDetailsMapper.Problem(errors: [err.Error]));
+					IResult response = createBookingResult.Match(
+						Results.NoContent,
+						err => ProblemDetailsMapper.Problem([err.Error]));
 
-                    return response;
-                })
-            .WithSummary("Create booking")
-            .WithDescription("Create booking for a session");
-        //.RequireAuthorization();
-    }
+					return response;
+				})
+			.WithSummary("Create booking")
+			.WithDescription("Create booking for a session");
+		//.RequireAuthorization();
+	}
 }

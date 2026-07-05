@@ -7,21 +7,22 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Sessions.IntegrationEvents;
 
-internal sealed class SessionCanceledEventHandler(IInstructorsRepository instructorsRepository) 
-    : INotificationHandler<SessionCanceledForCourtEvent>
+internal sealed class SessionCanceledEventHandler(IInstructorsRepository instructorsRepository)
+	: INotificationHandler<SessionCanceledForCourtEvent>
 {
-    public async ValueTask Handle(SessionCanceledForCourtEvent notification, CancellationToken cancellationToken)
-    {
-        Instructor trainer = await instructorsRepository.GetByIdAsync(notification.Session.InstructorId, cancellationToken)
-                             ?? throw new EventualConsistencyException(SessionCanceledForCourtEvent.InstructorNotFound);
+	public async ValueTask Handle(SessionCanceledForCourtEvent notification, CancellationToken cancellationToken)
+	{
+		Instructor trainer =
+			await instructorsRepository.GetByIdAsync(notification.Session.InstructorId, cancellationToken)
+			?? throw new EventualConsistencyException(SessionCanceledForCourtEvent.InstructorNotFound);
 
-        Result<bool> removeFromScheduleResult = trainer.RemoveFromSchedule(notification.Session);
+		Result<bool> removeFromScheduleResult = trainer.RemoveFromSchedule(notification.Session);
 
-        if (removeFromScheduleResult.IsFailure)
-        {
-            // throw something in here
-        }
+		if (removeFromScheduleResult.IsFailure)
+		{
+			// throw something in here
+		}
 
-        await instructorsRepository.UpdateAsync(trainer, cancellationToken);
-    }
+		await instructorsRepository.UpdateAsync(trainer, cancellationToken);
+	}
 }

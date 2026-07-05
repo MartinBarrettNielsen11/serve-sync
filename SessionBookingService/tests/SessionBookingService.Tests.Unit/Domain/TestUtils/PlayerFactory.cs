@@ -5,12 +5,12 @@ namespace SessionBookingService.Tests.Unit.Domain.TestUtils;
 
 internal static class PlayerFactory
 {
-    internal static Player Create(
-        Guid? userId = null,
-        Guid? id = null)
-    {
-        return new Player(
-            userId: userId ?? UserConstants.Id,
-            id: id ?? PlayerConstants.Id);
-    }
+	internal static Player Create(
+		Guid? userId = null,
+		Guid? id = null)
+	{
+		return new Player(
+			userId ?? UserConstants.Id,
+			id: id ?? PlayerConstants.Id);
+	}
 }

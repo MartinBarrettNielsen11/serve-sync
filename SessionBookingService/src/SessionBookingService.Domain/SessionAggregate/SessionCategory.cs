@@ -4,10 +4,10 @@ namespace SessionBookingService.Domain.SessionAggregate;
 
 public class SessionCategory : SmartEnum<SessionCategory>
 {
-    public static readonly SessionCategory Training = new(nameof(Training), 0);
-    public static readonly SessionCategory Contest = new(nameof(Contest), 1);
+	public static readonly SessionCategory Training = new(nameof(Training), 0);
+	public static readonly SessionCategory Contest = new(nameof(Contest), 1);
 
-    public SessionCategory(string name, int value) : base(name, value)
-    {
-    }
+	public SessionCategory(string name, int value) : base(name, value)
+	{
+	}
 }

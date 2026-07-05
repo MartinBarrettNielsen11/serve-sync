@@ -6,34 +6,33 @@ namespace ClubAdministrationService.Tests.Integration.Extensions;
 
 internal static class AssertLoggingExtensions
 {
-    public static void ShouldHaveInformationLog(
-        this FakeLogCollector collector,
-        string messageTemplate,
-        params (string Key, string Value)[] properties)
-    {
-        IReadOnlyList<FakeLogRecord> logs = collector.GetSnapshot();
+	public static void ShouldHaveInformationLog(
+		this FakeLogCollector collector,
+		string messageTemplate,
+		params (string Key, string Value)[] properties)
+	{
+		IReadOnlyList<FakeLogRecord> logs = collector.GetSnapshot();
 
-        (string Key, string Value)[] expectedProperties =
-        [
-            ("{OriginalFormat}", messageTemplate),
-            ..properties
-        ];
+		(string Key, string Value)[] expectedProperties =
+		[
+			("{OriginalFormat}", messageTemplate),
+			..properties
+		];
 
-        FakeLogRecord? matchingLog = logs
-            .Where(log => log.Level == LogLevel.Information)
-            .FirstOrDefault(log =>
-                log.StructuredState is not null &&
-                expectedProperties.All(property =>
-                    HasProperty(log, property.Key, property.Value)));
+		FakeLogRecord? matchingLog = logs
+			.Where(log => log.Level == LogLevel.Information)
+			.FirstOrDefault(log =>
+				log.StructuredState is not null &&
+				expectedProperties.All(property =>
+					HasProperty(log, property.Key, property.Value)));
 
-        Assert.NotNull(matchingLog);
-    }
+		Assert.NotNull(matchingLog);
+	}
 
-    private static bool HasProperty(FakeLogRecord log, string key, string expectedValue)
-    {
-        return log.StructuredState?.Any(kvp =>
-            string.Equals(kvp.Key, key, StringComparison.OrdinalIgnoreCase) &&
-            string.Equals(kvp.Value, expectedValue, StringComparison.OrdinalIgnoreCase)) == true;
-    }
+	private static bool HasProperty(FakeLogRecord log, string key, string expectedValue)
+	{
+		return log.StructuredState?.Any(kvp =>
+			string.Equals(kvp.Key, key, StringComparison.OrdinalIgnoreCase) &&
+			string.Equals(kvp.Value, expectedValue, StringComparison.OrdinalIgnoreCase)) == true;
+	}
 }
-

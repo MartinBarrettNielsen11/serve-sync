@@ -3,27 +3,27 @@
         <RootNamespace>ClubAdministrationService.Infrastructure</RootNamespace>
     </PropertyGroup>
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" />
-        <PackageReference Include="Microsoft.VisualStudio.Threading" />
-        <PackageReference Include="RabbitMQ.Client" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
-        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+        <PackageReference Include="Microsoft.VisualStudio.Threading"/>
+        <PackageReference Include="RabbitMQ.Client"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"/>
+        <PackageReference Include="Mediator.Abstractions"/>
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration" />
+        <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-        <ProjectReference Include="..\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
-        <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
+        <ProjectReference Include="..\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj"/>
+        <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-      <Folder Include="Migrations\" />
+        <Folder Include="Migrations\"/>
     </ItemGroup>
 </Project>

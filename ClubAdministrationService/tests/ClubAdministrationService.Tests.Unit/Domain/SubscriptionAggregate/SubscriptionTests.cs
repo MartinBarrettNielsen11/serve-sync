@@ -8,25 +8,25 @@ namespace ClubAdministrationService.Tests.Unit.Domain.SubscriptionAggregate;
 
 public class SubscriptionTests
 {
-    [Fact]
-    public void AddClub_WhenMoreThanSubscriptionAllows_ShouldFail()
-    {
-        // Arrange
-        Subscription subscription = SubscriptionFactory.Create(subscriptionType: SubscriptionType.Pro);
+	[Fact]
+	public void AddClub_WhenMoreThanSubscriptionAllows_ShouldFail()
+	{
+		// Arrange
+		Subscription subscription = SubscriptionFactory.Create(SubscriptionType.Pro);
 
-        List<Club> gyms = Enumerable.Range(0, subscription.GetMaxCourtsAllowed() + 1)
-            .Select(_ => ClubFactory.Create(id: Guid.NewGuid()))
-            .ToList();
+		List<Club> gyms = Enumerable.Range(0, subscription.GetMaxCourtsAllowed() + 1)
+			.Select(_ => ClubFactory.Create(id: Guid.NewGuid()))
+			.ToList();
 
-        // Act
-        List<Result<bool>> addGymResults = gyms.ConvertAll(subscription.AddClub);
+		// Act
+		List<Result<bool>> addGymResults = gyms.ConvertAll(subscription.AddClub);
 
-        // Assert
-        IEnumerable<Result<bool>> allButLastAddGymResults = addGymResults.Take(..^1).ToList();
-        Assert.True(allButLastAddGymResults.All(r => r.IsSuccess));
-        
-        Result<bool> lastAddGymResult = addGymResults[^1];
-        Assert.True(lastAddGymResult.IsFailure);
-        Assert.Equal(SubscriptionErrors.NumberOfCourtsCannotExceedSubscriptionLimit, lastAddGymResult.Error);
-    }
+		// Assert
+		IEnumerable<Result<bool>> allButLastAddGymResults = addGymResults.Take(..^1).ToList();
+		Assert.True(allButLastAddGymResults.All(r => r.IsSuccess));
+
+		Result<bool> lastAddGymResult = addGymResults[^1];
+		Assert.True(lastAddGymResult.IsFailure);
+		Assert.Equal(SubscriptionErrors.NumberOfCourtsCannotExceedSubscriptionLimit, lastAddGymResult.Error);
+	}
 }

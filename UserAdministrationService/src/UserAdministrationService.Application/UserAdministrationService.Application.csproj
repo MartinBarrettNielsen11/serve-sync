@@ -5,17 +5,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
+        <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" />
-        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+        <PackageReference Include="Mediator.Abstractions"/>
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="UserAdministrationService.WebApi" />
-        <InternalsVisibleTo Include="UserAdministrationService.Persistence" />
-        <InternalsVisibleTo Include="UserAdministrationService.Infrastructure" />
+        <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Infrastructure"/>
     </ItemGroup>
 </Project>

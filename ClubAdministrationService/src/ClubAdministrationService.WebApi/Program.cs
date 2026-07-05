@@ -9,10 +9,10 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
 builder.Host.UseDefaultServiceProvider((_, options) =>
-    {
-        options.ValidateScopes = true;
-        options.ValidateOnBuild = true;
-    }
+	{
+		options.ValidateScopes = true;
+		options.ValidateOnBuild = true;
+	}
 );
 
 builder.Services.AddControllers();
@@ -23,10 +23,10 @@ builder.Services.AddProblemDetails();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services
-    .AddMediatorServices()
-    .AddServices()
-    .AddPersistence(builder.Configuration);
-    //.AddInfrastructure(builder.Configuration);
+	.AddMediatorServices()
+	.AddServices()
+	.AddPersistence(builder.Configuration);
+//.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
 
@@ -39,19 +39,19 @@ app.MapEndpoints();
 // Configure the HTTP request pipeline for DEVELOPMENT only
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
-    app.MapScalarApiReference((opts) =>
-    {
-        opts.Title = Assembly.GetExecutingAssembly().GetName().Name!;
-        opts.Theme = ScalarTheme.DeepSpace;
-    });
+	app.MapOpenApi();
+	app.MapScalarApiReference(opts =>
+	{
+		opts.Title = Assembly.GetExecutingAssembly().GetName().Name!;
+		opts.Theme = ScalarTheme.DeepSpace;
+	});
 }
 
 if (!app.Environment.IsEnvironment("Testing"))
 {
-    using IServiceScope scope = app.Services.CreateScope();
-    ClubDbContext dbContext = scope.ServiceProvider.GetRequiredService<ClubDbContext>();
-    await dbContext.Database.MigrateAsync();
+	using IServiceScope scope = app.Services.CreateScope();
+	ClubDbContext dbContext = scope.ServiceProvider.GetRequiredService<ClubDbContext>();
+	await dbContext.Database.MigrateAsync();
 }
 
 app.MapControllers();

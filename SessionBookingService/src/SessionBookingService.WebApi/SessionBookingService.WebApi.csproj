@@ -4,24 +4,24 @@
         <InvariantGlobalization>true</InvariantGlobalization>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <UserSecretsId>b00892e2-63cd-48ba-a934-652211904867</UserSecretsId>
-  </PropertyGroup>
+    </PropertyGroup>
     <ItemGroup>
-      <ProjectReference Include="..\SessionBookingService.Application\SessionBookingService.Application.csproj" />
-      <ProjectReference Include="..\SessionBookingService.Contracts\SessionBookingService.Contracts.csproj" />
-      <ProjectReference Include="..\SessionBookingService.Infrastructure\SessionBookingService.Infrastructure.csproj" />
+        <ProjectReference Include="..\SessionBookingService.Application\SessionBookingService.Application.csproj"/>
+        <ProjectReference Include="..\SessionBookingService.Contracts\SessionBookingService.Contracts.csproj"/>
+        <ProjectReference Include="..\SessionBookingService.Infrastructure\SessionBookingService.Infrastructure.csproj"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Asp.Versioning.Http" />
-        <PackageReference Include="Asp.Versioning.Mvc" />
-        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
-        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Asp.Versioning.Http"/>
+        <PackageReference Include="Asp.Versioning.Mvc"/>
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer"/>
+        <PackageReference Include="Mediator.Abstractions"/>
         <PackageReference Include="Mediator.SourceGenerator">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers;</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Scalar.AspNetCore" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
-        <PackageReference Include="Microsoft.OpenApi" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
+        <PackageReference Include="Scalar.AspNetCore"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi"/>
+        <PackageReference Include="Microsoft.OpenApi"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design"/>
     </ItemGroup>
 </Project>

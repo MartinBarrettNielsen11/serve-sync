@@ -5,15 +5,13 @@ using SharedKernel.IntegrationEvents.ClubManagement;
 
 namespace SessionBookingService.Application.Courts.IntegrationEvents;
 
-internal sealed class CourtRemovedEventHandler(ICourtsRepository courtsRepository) : INotificationHandler<CourtRemovedIntegrationEvent>
+internal sealed class CourtRemovedEventHandler(ICourtsRepository courtsRepository)
+	: INotificationHandler<CourtRemovedIntegrationEvent>
 {
-    public async ValueTask Handle(CourtRemovedIntegrationEvent notification, CancellationToken cancellationToken)
-    {
-        Court? court = await courtsRepository.GetByIdAsync(notification.CourtId, cancellationToken);
+	public async ValueTask Handle(CourtRemovedIntegrationEvent notification, CancellationToken cancellationToken)
+	{
+		Court? court = await courtsRepository.GetByIdAsync(notification.CourtId, cancellationToken);
 
-        if (court is not null)
-        {
-            await courtsRepository.DeleteAsync(court, cancellationToken);
-        }
-    }
+		if (court is not null) await courtsRepository.DeleteAsync(court, cancellationToken);
+	}
 }

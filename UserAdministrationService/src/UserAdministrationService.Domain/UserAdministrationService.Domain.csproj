@@ -3,22 +3,22 @@
     <PropertyGroup>
         <RootNamespace>UserAdministrationService.Domain</RootNamespace>
     </PropertyGroup>
-    
+
     <ItemGroup>
-      <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj" />
+        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="UserAdministrationService.Application" />
-        <InternalsVisibleTo Include="UserAdministrationService.Persistence" />
-        <InternalsVisibleTo Include="UserAdministrationService.Infrastructure" />
+        <InternalsVisibleTo Include="UserAdministrationService.Application"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Infrastructure"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Mediator.Abstractions" />
+        <PackageReference Include="Mediator.Abstractions"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Interfaces\" />
+        <Folder Include="Interfaces\"/>
     </ItemGroup>
 </Project>

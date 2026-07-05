@@ -9,7 +9,7 @@ namespace SessionBookingService.Domain.CourtsAggregate.Events;
 internal sealed record SessionCanceledForCourtEvent(Session Session) : IDomainEvent
 #pragma warning restore MSG0005
 {
-    public static readonly Result InstructorNotFound = EventualConsistencyError.From(
-        code: "SessionCanceledEvent.InstructorNotFound",
-        description: "Instructor not found");
+	public static readonly Result InstructorNotFound = EventualConsistencyError.From(
+		"SessionCanceledEvent.InstructorNotFound",
+		"Instructor not found");
 }

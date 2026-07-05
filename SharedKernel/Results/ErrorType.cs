@@ -2,10 +2,10 @@
 
 public enum ErrorType
 {
-    Failure,
-    Validation,
-    Problem,
-    NotFound,
-    Conflict,
-    Unexpected,
+	Failure,
+	Validation,
+	Problem,
+	NotFound,
+	Conflict,
+	Unexpected
 }

@@ -4,7 +4,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.WebApi" />
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration" />
+        <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
     </ItemGroup>
 </Project>

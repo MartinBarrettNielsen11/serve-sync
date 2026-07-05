@@ -8,27 +8,26 @@ namespace SessionBookingService.Infrastructure.Configurations;
 
 internal sealed class CourtConfiguration : IEntityTypeConfiguration<Court>
 {
-    public void Configure(EntityTypeBuilder<Court> builder)
-    {
-        builder.HasKey(r => r.Id);
+	public void Configure(EntityTypeBuilder<Court> builder)
+	{
+		builder.HasKey(r => r.Id);
 
-        builder.Property(r => r.Id).ValueGeneratedNever();
+		builder.Property(r => r.Id).ValueGeneratedNever();
 
-        builder.Property("_maxDailySessions").HasColumnName("MaxDailySessions");
+		builder.Property("_maxDailySessions").HasColumnName("MaxDailySessions");
 
-        builder.Property<List<Guid>>("_sessionIds").HasColumnName("SessionIds").HasListOfIdsConverter();
+		builder.Property<List<Guid>>("_sessionIds").HasColumnName("SessionIds").HasListOfIdsConverter();
 
-        builder.OwnsOne<Schedule>("_schedule", sb =>
-        {
-            sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
-                .HasColumnName("ScheduleCalendar")
-                .HasValueJsonConverter();
-            
-            sb.Property(s => s.Id).HasColumnName("ScheduleId");
-        });
+		builder.OwnsOne<Schedule>("_schedule", sb =>
+		{
+			sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
+				.HasColumnName("ScheduleCalendar")
+				.HasValueJsonConverter();
 
-        builder.Property(r => r.Name);
-        builder.Property(r => r.ClubId);
-    }
+			sb.Property(s => s.Id).HasColumnName("ScheduleId");
+		});
+
+		builder.Property(r => r.Name);
+		builder.Property(r => r.ClubId);
+	}
 }
-

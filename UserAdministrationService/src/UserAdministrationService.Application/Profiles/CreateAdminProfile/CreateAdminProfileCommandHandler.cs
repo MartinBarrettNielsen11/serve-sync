@@ -5,21 +5,19 @@ using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Application.Profiles.CreateAdminProfile;
 
-internal sealed class CreateAdminProfileCommandHandler(IUsersRepository usersRepository) : IRequestHandler<CreateAdminProfileCommand, Result<Guid>>
+internal sealed class CreateAdminProfileCommandHandler(IUsersRepository usersRepository)
+	: IRequestHandler<CreateAdminProfileCommand, Result<Guid>>
 {
-    public async ValueTask<Result<Guid>> Handle(CreateAdminProfileCommand command, CancellationToken cancellationToken)
-    {
-        User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
+	public async ValueTask<Result<Guid>> Handle(CreateAdminProfileCommand command, CancellationToken cancellationToken)
+	{
+		User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 
-        if (user is null)
-        {
-            return Result.Failure<Guid>(Error.NotFound(code: "UserNotFound", description: "User not found"));
-        }
+		if (user is null) return Result.Failure<Guid>(Error.NotFound("UserNotFound", "User not found"));
 
-        Result<Guid> instructorId = user.CreateInstructorProfile();
+		Result<Guid> instructorId = user.CreateInstructorProfile();
 
-        await usersRepository.UpdateAsync(user, cancellationToken);
+		await usersRepository.UpdateAsync(user, cancellationToken);
 
-        return instructorId;
-    }
+		return instructorId;
+	}
 }
