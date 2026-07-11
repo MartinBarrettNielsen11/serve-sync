@@ -1,4 +1,5 @@
 using SharedKernel;
+// ReSharper disable SuggestVarOrType_BuiltInTypes
 
 namespace ClubAdministrationService.Domain.AdminAggregate;
 
