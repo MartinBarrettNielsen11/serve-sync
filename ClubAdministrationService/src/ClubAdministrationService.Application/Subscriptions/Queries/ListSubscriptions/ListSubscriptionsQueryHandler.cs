@@ -9,7 +9,7 @@ internal class ListSubscriptionsQueryHandler(ISubscriptionsRepository subscripti
 	: IRequestHandler<ListSubscriptionsQuery, Result<List<Subscription>>>
 {
 	public async ValueTask<Result<List<Subscription>>> Handle(ListSubscriptionsQuery request,
-		CancellationToken cancellationToken)
+															  CancellationToken cancellationToken)
 	{
 		return await subscriptionsRepository.ListAsync(cancellationToken);
 	}

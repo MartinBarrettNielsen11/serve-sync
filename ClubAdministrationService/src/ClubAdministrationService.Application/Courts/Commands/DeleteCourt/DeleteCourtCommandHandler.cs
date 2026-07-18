@@ -5,7 +5,6 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.DeleteCourt;
 
-// ReSharper disable once UnusedType.Global
 internal sealed class DeleteCourtCommandHandler(IClubsRepository clubsRepository)
 	: IRequestHandler<DeleteCourtCommand, Result>
 {
@@ -13,9 +12,15 @@ internal sealed class DeleteCourtCommandHandler(IClubsRepository clubsRepository
 	{
 		Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
 
-		if (club is null) return Result.Failure(Error.NotFound("ClubNotFound", "Club not found"));
+		if (club is null)
+		{
+			return Result.Failure(Error.NotFound("ClubNotFound", "Club not found"));
+		}
 
-		if (!club.HasCourt(command.CourtId)) return Result.Failure(Error.NotFound("CourtNotFound", "Court not found"));
+		if (!club.HasCourt(command.CourtId))
+		{
+			return Result.Failure(Error.NotFound("CourtNotFound", "Court not found"));
+		}
 
 		club.RemoveCourt(command.CourtId);
 

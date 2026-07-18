@@ -18,8 +18,10 @@ internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsR
 		if (admin is null) return Result.Failure<Subscription>(Error.NotFound("AdminNotFound", "Admin not found"));
 
 		if (admin.SubscriptionId is not null)
+		{
 			return Result.Failure<Subscription>(Error.Conflict("AdminAlreadyHasActiveSubscription",
 				"Admin already has active subscription"));
+		}
 
 		Subscription subscription = new(command.SubscriptionType, command.AdminId);
 		admin.SetSubscription(subscription);

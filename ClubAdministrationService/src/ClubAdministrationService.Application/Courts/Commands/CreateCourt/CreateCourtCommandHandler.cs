@@ -7,30 +7,37 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.CreateCourt;
 
-internal sealed class CreateCourtCommandHandler(
-	IClubsRepository clubsRepository,
-	ISubscriptionsRepository subscriptionsRepository)
-	: IRequestHandler<CreateCourtCommand, Result<Court>>
+internal sealed class CreateCourtCommandHandler(IClubsRepository clubsRepository,
+												ISubscriptionsRepository subscriptionsRepository)
+												: IRequestHandler<CreateCourtCommand, Result<Court>>
 {
 	public async ValueTask<Result<Court>> Handle(CreateCourtCommand command, CancellationToken cancellationToken)
 	{
 		Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
 
-		if (club is null) return Result.Failure<Court>(Error.NotFound("ClubNotFound", "Club not found"));
+		if (club is null)
+		{
+			return Result.Failure<Court>(Error.NotFound("ClubNotFound", "Club not found"));
+		}
 
 		Subscription? subscription = await subscriptionsRepository.GetByIdAsync(club.SubscriptionId, cancellationToken);
 
 		if (subscription is null)
+		{
 			return Result.Failure<Court>(Error.NotFound("SubscriptionNotFound",
 				"Subscription not found"));
+		}
 
-		Court court = new(command.CourtName,
-			club.Id,
-			subscription.GetMaxDailySessionsAllowed());
+		Court court = new(name: command.CourtName,
+						  clubId: club.Id,
+						  maxDailySessions: subscription.GetMaxDailySessionsAllowed());
 
 		Result<bool> addClubResult = club.AddCourt(court);
 
-		if (addClubResult.IsFailure) return Result.Failure<Court>(addClubResult.Error);
+		if (addClubResult.IsFailure)
+		{
+			return Result.Failure<Court>(addClubResult.Error);
+		}
 
 		await clubsRepository.UpdateAsync(club, cancellationToken);
 
