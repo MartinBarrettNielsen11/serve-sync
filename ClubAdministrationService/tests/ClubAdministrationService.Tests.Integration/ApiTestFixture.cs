@@ -24,17 +24,11 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 		//.WithWaitStrategy(Wait.ForUnixContainer())
 		.Build();
 
-	public string ConnectionString => _dbContainer.GetConnectionString();
+	private string ConnectionString => _dbContainer.GetConnectionString();
 
-	public async Task InitializeAsync()
-	{
-		await _dbContainer.StartAsync();
-	}
+	public async Task InitializeAsync() => await _dbContainer.StartAsync();
 
-	public new async Task DisposeAsync()
-	{
-		await _dbContainer.DisposeAsync();
-	}
+	public new async Task DisposeAsync() => await _dbContainer.DisposeAsync();
 
 	protected override void ConfigureWebHost(IWebHostBuilder builder)
 	{
@@ -61,20 +55,12 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 		});
 	}
 
-	/*
-	internal ClubDbContext CreateDbContext()
-	{
-	} */
-
 	internal ClubDbContext CreateDbContext()
 	{
 		DbContextOptions<ClubDbContext> options = new DbContextOptionsBuilder<ClubDbContext>()
 			.UseNpgsql(ConnectionString)
 			.Options;
 
-		return new ClubDbContext(
-			options,
-			new HttpContextAccessor(),
-			null!);
+		return new ClubDbContext(options: options, httpContextAccessor: new HttpContextAccessor(), publisher: null!);
 	}
 }

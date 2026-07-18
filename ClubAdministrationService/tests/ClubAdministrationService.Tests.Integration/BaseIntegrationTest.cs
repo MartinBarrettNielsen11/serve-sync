@@ -21,7 +21,6 @@ public abstract class BaseIntegrationTest
 
 		ResetLoggingStorage();
 	}
-	//protected readonly ClubAdministrationDbContext InitialDbContext;
 
 	protected ApiTestFixture Fixture { get; }
 
@@ -35,7 +34,7 @@ public abstract class BaseIntegrationTest
 		return _scope.ServiceProvider.GetRequiredService<FakeLogCollector>();
 	}
 
-	protected void ResetLoggingStorage()
+	private void ResetLoggingStorage()
 	{
 		_scope.ServiceProvider.GetFakeLogCollector().Clear();
 	}
