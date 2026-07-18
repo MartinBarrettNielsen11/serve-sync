@@ -5,7 +5,7 @@ using Mediator;
 using Microsoft.Extensions.Logging;
 using SharedKernel.Results;
 
-namespace ClubAdministrationService.Application.Clubs.CreateClub;
+namespace ClubAdministrationService.Application.Clubs.Commands.CreateClub;
 
 internal sealed class CreateClubCommandHandler(
 	ISubscriptionsRepository subscriptionsRepository,
@@ -18,7 +18,9 @@ internal sealed class CreateClubCommandHandler(
 			await subscriptionsRepository.GetByIdAsync(command.SubscriptionId, cancellationToken);
 
 		if (subscription is null)
+		{
 			return Result.Failure<Club>(Error.NotFound("SubscriptionNotFound", "Subscription not found"));
+		}
 
 		Club club = new(command.Name,
 			subscription.GetMaxCourtsAllowed(),
@@ -26,7 +28,11 @@ internal sealed class CreateClubCommandHandler(
 
 		Result<bool> addClubResult = subscription.AddClub(club);
 
-		if (addClubResult.IsFailure) return Result.Failure<Club>(addClubResult.Error);
+		if (addClubResult.IsFailure)
+		{
+			return Result.Failure<Club>(addClubResult.Error);
+		}
+
 #pragma warning disable CA1848
 		logger.LogInformation("Club created: {Name}", club.Name);
 #pragma warning restore CA1848

@@ -1,4 +1,4 @@
-using ClubAdministrationService.Application.Clubs.AddInstructor;
+using ClubAdministrationService.Application.Clubs.Commands.AddInstructor;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.WebApi.Infrastructure;
 using Mediator;

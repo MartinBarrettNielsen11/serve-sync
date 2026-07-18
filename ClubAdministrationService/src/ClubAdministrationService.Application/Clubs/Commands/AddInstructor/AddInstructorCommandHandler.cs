@@ -4,7 +4,7 @@ using ClubAdministrationService.Domain.SubscriptionAggregate;
 using Mediator;
 using SharedKernel.Results;
 
-namespace ClubAdministrationService.Application.Clubs.AddInstructor;
+namespace ClubAdministrationService.Application.Clubs.Commands.AddInstructor;
 
 // ReSharper disable once UnusedType.Global
 internal sealed class AddInstructorCommandHandler(

@@ -34,7 +34,7 @@ internal static class EndpointExtensions
 		RouteGroupBuilder bookingGroup = app.MapBookingGroup(versionSet);
 		RouteGroupBuilder playerGroup = app.MapPlayerGroup(versionSet);
 
-		new CreateBooking().MapEndpoint(bookingGroup);
+		new Endpoints.Bookings.CreateBooking().MapEndpoint(bookingGroup);
 		new CancelBooking().MapEndpoint(playerGroup);
 	}
 

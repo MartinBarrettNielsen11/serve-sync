@@ -1,4 +1,4 @@
-using ClubAdministrationService.Application.Clubs.GetClub;
+using ClubAdministrationService.Application.Clubs.Queries.GetClub;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.WebApi.Infrastructure;

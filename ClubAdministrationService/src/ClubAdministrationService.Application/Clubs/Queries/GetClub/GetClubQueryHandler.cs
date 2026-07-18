@@ -1,4 +1,3 @@
-using ClubAdministrationService.Application.Clubs.GetClub;
 using ClubAdministrationService.Application.Common.Interfaces;
 using ClubAdministrationService.Domain.ClubAggregate;
 using Mediator;

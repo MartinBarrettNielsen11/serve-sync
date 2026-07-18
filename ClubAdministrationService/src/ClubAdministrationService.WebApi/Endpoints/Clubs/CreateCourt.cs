@@ -1,4 +1,4 @@
-using ClubAdministrationService.Application.Clubs.CreateClub;
+using ClubAdministrationService.Application.Clubs.Commands.CreateClub;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Contracts.Courts;
 using ClubAdministrationService.Domain.ClubAggregate;
