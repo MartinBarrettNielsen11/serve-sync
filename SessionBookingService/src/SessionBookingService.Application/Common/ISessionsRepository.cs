@@ -12,4 +12,6 @@ internal interface ISessionsRepository
 								DateTime? startDateTime = null,
 								DateTime? endDateTime = null,
 								List<SessionCategory>? categories = null);
+	Task<List<Session>> ListByCourtId(Guid courtId);
+	Task RemoveRangeAsync(List<Session> sessions);
 }

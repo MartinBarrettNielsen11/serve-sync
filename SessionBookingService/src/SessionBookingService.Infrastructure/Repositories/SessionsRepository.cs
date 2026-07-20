@@ -41,6 +41,19 @@ internal sealed class SessionsRepository(SessionBookingDbContext dbContext) : IS
 			.WhereBetweenDateAndTimes(startDateTime, endDateTime)
 			.ToListAsync();
 	}
+
+	public async Task<List<Session>> ListByCourtId(Guid courtId)
+	{
+		return await dbContext.Sessions
+			.Where(session => session.CourtId == courtId)
+			.ToListAsync();
+	}
+
+	public async Task RemoveRangeAsync(List<Session> sessions)
+	{
+		dbContext.RemoveRange(sessions);
+		await dbContext.SaveChangesAsync();
+	}
 }
 
 

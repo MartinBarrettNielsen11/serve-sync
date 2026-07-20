@@ -2,4 +2,4 @@ using SharedKernel;
 
 namespace SessionBookingService.Domain.SessionAggregate.Events;
 
-public sealed record SessionCanceledEvent(Session Session) : IDomainEvent;
+internal sealed record SessionCanceledEvent(Session Session) : IDomainEvent;

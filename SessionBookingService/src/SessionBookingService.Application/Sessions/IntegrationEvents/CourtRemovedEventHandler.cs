@@ -1,17 +1,19 @@
 using Mediator;
 using SessionBookingService.Application.Common;
+using SessionBookingService.Domain.SessionAggregate;
 using SharedKernel.IntegrationEvents.ClubManagement;
 
 namespace SessionBookingService.Application.Sessions.IntegrationEvents;
 
-internal sealed class CourtRemovedEventHandler(ISessionsRepository sessionsRepository) : INotificationHandler<CourtRemovedIntegrationEvent>
+internal sealed class CourtRemovedEventHandler(ISessionsRepository sessionsRepository)
+	: INotificationHandler<CourtRemovedIntegrationEvent>
 {
 	public async ValueTask Handle(CourtRemovedIntegrationEvent notification, CancellationToken cancellationToken)
 	{
-		var sessions = []; //don't keep ths - we must fetch by courtId
+		List<Session> sessions = await sessionsRepository.ListByCourtId(notification.CourtId);
 
 		sessions.ForEach(s => s.Cancel());
 
-		// use repo for batched deletion - preferrably
+		await sessionsRepository.RemoveRangeAsync(sessions);
 	}
 }

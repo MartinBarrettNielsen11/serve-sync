@@ -20,6 +20,5 @@
     <ItemGroup>
         <Folder Include="Instructors\Events\"/>
         <Folder Include="Sessions\Commands\"/>
-        <Folder Include="Sessions\Queries\"/>
     </ItemGroup>
 </Project>
