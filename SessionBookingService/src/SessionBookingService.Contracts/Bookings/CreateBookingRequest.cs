@@ -1,3 +1,3 @@
 namespace SessionBookingService.Contracts.Bookings;
 
-public record CreateBookingRequest(Guid PlayerId);
+public sealed record CreateBookingRequest(Guid PlayerId);

@@ -42,4 +42,5 @@ internal sealed partial class Session
 	internal Guid CourtId { get; }
 
 	public IReadOnlyList<SessionCategory> Categories => _categories;
+	public int NumPlayers => _bookings.Count;
 }

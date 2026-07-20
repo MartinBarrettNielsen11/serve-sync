@@ -12,6 +12,7 @@
         <InternalsVisibleTo Include="SessionBookingService.Tests.Unit"/>
         <InternalsVisibleTo Include="SessionBookingService.Application"/>
         <InternalsVisibleTo Include="SessionBookingService.Infrastructure"/>
+        <InternalsVisibleTo Include="SessionBookingService.WebApi"/>
     </ItemGroup>
 
     <ItemGroup>

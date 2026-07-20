@@ -8,4 +8,8 @@ internal interface ISessionsRepository
 	Task<Session?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 	Task UpdateAsync(Session session, CancellationToken cancellationToken);
 	Task Remove(Session session, CancellationToken cancellationToken);
+	Task<List<Session>> ListByIds(IReadOnlyList<Guid> sessionIds,
+								DateTime? startDateTime = null,
+								DateTime? endDateTime = null,
+								List<SessionCategory>? categories = null);
 }

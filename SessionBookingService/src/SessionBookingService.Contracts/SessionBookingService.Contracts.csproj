@@ -2,4 +2,8 @@
     <PropertyGroup>
         <RootNamespace>SessionBookingService.Contracts</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="SessionBookingService.WebApi"/>
+    </ItemGroup>
 </Project>

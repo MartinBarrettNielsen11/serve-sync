@@ -12,24 +12,24 @@ public sealed class ListClubs : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapGet("subscriptions/{subscriptionId:guid}/clubs",
-				async (
-					Guid subscriptionId,
-					ISender sender,
-					CancellationToken cancellationToken) =>
-				{
-					ListClubsQuery command = new(subscriptionId);
+			async (
+				Guid subscriptionId,
+				ISender sender,
+				CancellationToken cancellationToken) =>
+			{
+				ListClubsQuery query = new(subscriptionId);
 
-					Result<List<Club>> listClubsResult = await sender.Send(command, cancellationToken);
+				Result<List<Club>> listClubsResult = await sender.Send(query, cancellationToken);
 
-					IResult l = listClubsResult.Match(
-						clubs => Results.Ok(clubs.ConvertAll(c => new ClubResponse(c.Id, c.Name))),
-						errors => ProblemDetailsMapper.Problem([errors.Error]));
+				IResult response = listClubsResult.Match(
+					clubs => Results.Ok(clubs.ConvertAll(c => new ClubResponse(c.Id, c.Name))),
+					errors => ProblemDetailsMapper.Problem([errors.Error]));
 
-					return l;
-				})
-			.WithTags(Tags.Clubs)
-			.WithSummary("List clubs")
-			.WithDescription("List clubs for a subscription")
-			.Produces<ClubResponse>();
+				return response;
+			})
+		.WithTags(Tags.Clubs)
+		.WithSummary("List clubs")
+		.WithDescription("List clubs for a subscription")
+		.Produces<ClubResponse>();
 	}
 }
