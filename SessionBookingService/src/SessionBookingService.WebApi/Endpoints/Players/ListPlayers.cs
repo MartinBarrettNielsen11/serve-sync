@@ -24,16 +24,16 @@ public sealed class ListPlayers : IEndpoint
 					Result<List<Session>> listPlayerSessionsResult = await sender.Send(query, cancellationToken);
 
 					IResult result = listPlayerSessionsResult.Match(
-						sessions => Results.Ok(sessions.ConvertAll(session => new SessionResponse(
-							session.Id,
-							session.Name,
-							session.Description,
-							session.NumPlayers,
-							session.MaxPlayerCapacity,
-							session.Date.ToDateTime(session.Time.Start),
-							session.Date.ToDateTime(session.Time.End),
-							session.Categories.Select(category => category.Name).ToList()))),
-						errors => ProblemDetailsMapper.Problem([errors.Error]));
+						onSuccess: sessions => Results.Ok(sessions.ConvertAll(s => new SessionResponse(
+							s.Id,
+							s.Name,
+							s.Description,
+							s.NumPlayers,
+							s.MaxPlayerCapacity,
+							s.Date.ToDateTime(s.Time.Start),
+							s.Date.ToDateTime(s.Time.End),
+							s.Categories.Select(category => category.Name).ToList()))),
+						onFailure: errors => ProblemDetailsMapper.Problem([errors.Error]));
 
 					return result;
 				})

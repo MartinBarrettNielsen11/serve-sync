@@ -22,8 +22,8 @@ public sealed class ListClubs : IEndpoint
 				Result<List<Club>> listClubsResult = await sender.Send(query, cancellationToken);
 
 				IResult response = listClubsResult.Match(
-					clubs => Results.Ok(clubs.ConvertAll(c => new ClubResponse(c.Id, c.Name))),
-					errors => ProblemDetailsMapper.Problem([errors.Error]));
+					onSuccess: clubs => Results.Ok(clubs.ConvertAll(c => new ClubResponse(c.Id, c.Name))),
+					onFailure: errors => ProblemDetailsMapper.Problem([errors.Error]));
 
 				return response;
 			})
