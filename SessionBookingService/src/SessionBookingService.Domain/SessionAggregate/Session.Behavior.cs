@@ -72,4 +72,9 @@ internal sealed partial class Session : RootAggregate
 	{
 		return _bookings.Exists(b => b.PlayerId == playerId);
 	}
+
+	public void Cancel()
+	{
+		DomainEvents.Add(new SessionCanceledEvent(this));
+	}
 }
