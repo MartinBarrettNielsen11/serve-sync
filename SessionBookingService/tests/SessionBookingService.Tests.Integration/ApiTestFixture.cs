@@ -1,5 +1,3 @@
-using ClubAdministrationService.Infrastructure;
-using ClubAdministrationService.WebApi;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -9,10 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SessionBookingService.Infrastructure;
+using SessionBookingService.WebApi;
 using Testcontainers.PostgreSql;
 using Xunit;
 
-namespace ClubAdministrationService.Tests.Integration;
+namespace SessionBookingService.Tests.Integration;
 
 public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLifetime
 {
@@ -43,10 +43,10 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 			services.RemoveAll<IHostedService>();
 
 			// replace db registration
-			services.RemoveAll<DbContextOptions<ClubDbContext>>();
-			services.RemoveAll<ClubDbContext>();
+			services.RemoveAll<DbContextOptions<SessionBookingDbContext>>();
+			services.RemoveAll<SessionBookingDbContext>();
 
-			services.AddDbContext<ClubDbContext>(options => { options.UseNpgsql(ConnectionString); });
+			services.AddDbContext<SessionBookingDbContext>(options => { options.UseNpgsql(ConnectionString); });
 
 
 			// replace clock
@@ -55,12 +55,12 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 		});
 	}
 
-	internal ClubDbContext CreateDbContext()
+	internal SessionBookingDbContext CreateDbContext()
 	{
-		DbContextOptions<ClubDbContext> options = new DbContextOptionsBuilder<ClubDbContext>()
+		DbContextOptions<SessionBookingDbContext> options = new DbContextOptionsBuilder<SessionBookingDbContext>()
 			.UseNpgsql(ConnectionString)
 			.Options;
 
-		return new ClubDbContext(options: options, httpContextAccessor: new HttpContextAccessor(), publisher: null!);
+		return new SessionBookingDbContext(options: options, httpContextAccessor: new HttpContextAccessor(), publisher: null!);
 	}
 }
