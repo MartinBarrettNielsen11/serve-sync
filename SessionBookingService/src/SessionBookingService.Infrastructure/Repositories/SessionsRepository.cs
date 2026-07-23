@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SessionBookingService.Application.Common;
+using SessionBookingService.Domain.CourtsAggregate;
 using SessionBookingService.Domain.SessionAggregate;
 
 namespace SessionBookingService.Infrastructure.Repositories;
@@ -40,6 +41,21 @@ internal sealed class SessionsRepository(SessionBookingDbContext dbContext) : IS
 			.Where(session => sessionIds.Contains(session.Id))
 			.WhereBetweenDateAndTimes(startDateTime, endDateTime)
 			.ToListAsync();
+	}
+
+	public async Task<List<Session>> ListByClubIdAsync(Guid clubId,
+		DateTime? startDateTime = null,
+		DateTime? endDateTime = null,
+		List<SessionCategory>? categories = null)
+	{
+		List<Court> courts = await dbContext.Courts
+			.AsNoTracking()
+			.Where(room => room.ClubId == clubId)
+			.ToListAsync();
+
+		List<Guid> sessionIds = courts.SelectMany(room => room.SessionIds).ToList();
+
+		return await ListByIds(sessionIds, startDateTime, endDateTime, categories);
 	}
 
 	public async Task<List<Session>> ListByCourtId(Guid courtId)
