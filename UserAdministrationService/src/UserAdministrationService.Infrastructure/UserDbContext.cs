@@ -3,13 +3,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SharedKernel;
 using UserAdministrationService.Domain.UserAggregate;
+using UserAdministrationService.Infrastructure.IntegrationEvents;
 
 namespace UserAdministrationService.Infrastructure;
 
-internal sealed class UserDbContext(DbContextOptions options, IHttpContextAccessor httpContextAccessor)
+internal sealed class UserDbContext(DbContextOptions<UserDbContext> options, IHttpContextAccessor httpContextAccessor)
 	: DbContext(options)
 {
 	public DbSet<User> Users { get; set; } = null!;
+	public DbSet<OutboxIntegrationEvent> OutboxIntegrationEvents { get; set; } = null!;
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{

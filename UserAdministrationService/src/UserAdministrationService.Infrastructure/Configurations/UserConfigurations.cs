@@ -4,7 +4,7 @@ using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Infrastructure.Configurations;
 
-internal class UserConfigurations : IEntityTypeConfiguration<User>
+internal sealed class UserConfigurations : IEntityTypeConfiguration<User>
 {
 	public void Configure(EntityTypeBuilder<User> builder)
 	{

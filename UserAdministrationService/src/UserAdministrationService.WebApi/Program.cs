@@ -24,7 +24,6 @@ builder.Services.AddHttpContextAccessor();
 builder.Services
 	.AddMediatorServices()
 	.AddServices()
-	.AddPersistence(builder.Configuration)
 	.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
