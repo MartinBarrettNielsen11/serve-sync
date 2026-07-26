@@ -17,12 +17,17 @@ internal sealed class CreateSessionCommandHandler(
 	{
 		Court? court = await courtsRepository.GetByIdAsync(command.CourtId, cancellationToken);
 
-		if (court is null) return Result.Failure<Session>(Error.NotFound("CourtNotFound", "Court not found"));
+		if (court is null)
+		{
+			return Result.Failure<Session>(Error.NotFound("CourtNotFound", "Court not found"));
+		}
 
 		Instructor? instructor = await instructorsRepository.GetByIdAsync(command.InstructorId, cancellationToken);
 
 		if (instructor is null)
+		{
 			return Result.Failure<Session>(Error.NotFound("InstructorNotFound", "Instructor not found"));
+		}
 
 		// insert some time slot entry here,
 		Session session = new(command.Name,
@@ -34,6 +39,6 @@ internal sealed class CreateSessionCommandHandler(
 			time: new TimeSlot(new TimeOnly(1), new TimeOnly(2)),
 			categories: command.Categories);
 
-		return session;
+		return Result.Success<Session>(session);
 	}
 }
