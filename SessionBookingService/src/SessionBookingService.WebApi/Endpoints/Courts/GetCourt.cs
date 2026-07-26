@@ -11,7 +11,7 @@ public sealed class GetCourt : IEndpoint
 {
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
-		app.MapGet("{courtId:Guid}",
+		app.MapGet("clubs/{clubId:Guid}/courts/{courtId:Guid}",
 				async (Guid clubId,
 					Guid courtId,
 					ISender sender,

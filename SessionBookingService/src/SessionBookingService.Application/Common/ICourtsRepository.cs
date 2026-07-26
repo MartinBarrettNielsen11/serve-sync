@@ -8,4 +8,5 @@ internal interface ICourtsRepository
 	Task<Court?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 	Task UpdateAsync(Court court, CancellationToken cancellationToken);
 	Task DeleteAsync(Court court, CancellationToken cancellationToken);
+	Task<List<Court>> ListByClubIdAsync(Guid clubId);
 }

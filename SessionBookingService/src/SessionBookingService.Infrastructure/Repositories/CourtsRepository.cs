@@ -28,4 +28,12 @@ internal class CourtsRepository(SessionBookingDbContext dbContext) : ICourtsRepo
 		dbContext.Courts.Remove(court);
 		await dbContext.SaveChangesAsync(cancellationToken);
 	}
+
+	public async Task<List<Court>> ListByClubIdAsync(Guid clubId)
+	{
+		return await dbContext.Courts
+			.AsNoTracking()
+			.Where(c => c.ClubId == clubId)
+			.ToListAsync();
+	}
 }
