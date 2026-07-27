@@ -1,18 +1,17 @@
 using System.Security.Claims;
 using Mediator;
 using SharedKernel.Results;
-using UserAdministrationService.Application.Profiles.CreateAdminProfile;
-using UserAdministrationService.Application.Profiles.CreateInstructorProfile;
+using UserAdministrationService.Application.Profiles.CreatePlayerProfile;
 using UserAdministrationService.Contracts.Profiles;
 using UserAdministrationService.WebApi.Infrastructure;
 
 namespace UserAdministrationService.WebApi.Endpoints.Profiles;
 
-public sealed class CreateInstructorProfile : IEndpoint
+public sealed class CreatePlayerProfile : IEndpoint
 {
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
-		app.MapPost("users/{userId:guid}/profiles/instructor",
+		app.MapPost("users/{userId:guid}/profiles/player",
 				async (Guid userId,
 					   ClaimsPrincipal user,
 					   ISender sender,
@@ -24,7 +23,7 @@ public sealed class CreateInstructorProfile : IEndpoint
 					{
 						// You should somehow parse "StatusCodes.Status401Unauthorized here"
 						return ProblemDetailsMapper.Problem([
-							new Error(code: "UnauthorizedToCreateInstructorProfileForThisUser",
+							new Error(code: "UnauthorizedToCreatePlayerProfileForThisUser",
 								description: "You are not authorized to create an admin profile for this user",
 								type: ErrorType.Problem)]);
 					}
@@ -33,16 +32,16 @@ public sealed class CreateInstructorProfile : IEndpoint
 					{
 						// You should somehow parse "StatusCodes.Status403Unauthorized here"
 						return ProblemDetailsMapper.Problem([
-							new Error(code: "UnauthorizedToCreateInstructorProfileForThisUser",
-								description: "You are not authorized to create an instructor profile for this user",
+							new Error(code: "UnauthorizedToCreatePlayerProfileForThisUser",
+								description: "You are not authorized to create an player profile for this user",
 								type: ErrorType.Problem)]);
 					}
 
-					CreateInstructorProfileCommand command = new(userId);
+					CreatePlayerProfileCommand command = new(userId);
 
-					Result<Guid> createInstructorProfileResult = await sender.Send(command, cancellationToken);
+					Result<Guid> createPlayerProfileResult = await sender.Send(command, cancellationToken);
 
-					IResult response = createInstructorProfileResult.Match(
+					IResult response = createPlayerProfileResult.Match(
 						onSuccess: id => TypedResults.CreatedAtRoute(routeName: nameof(ListProfiles),
 																	 routeValues: new { userId },
 																	 value: new ProfileResponse(id)),
@@ -51,8 +50,8 @@ public sealed class CreateInstructorProfile : IEndpoint
 					return response;
 				})
 			.WithTags(Tags.Profile)
-			.WithSummary("Create instructor profile")
-			.WithDescription("Create instructor profile")
+			.WithSummary("Create player profile")
+			.WithDescription("Create player profile")
 			.Produces<ProfileResponse>(StatusCodes.Status201Created);
 	}
 }

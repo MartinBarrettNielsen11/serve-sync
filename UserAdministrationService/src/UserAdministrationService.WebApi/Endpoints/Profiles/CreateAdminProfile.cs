@@ -40,9 +40,9 @@ public sealed class CreateAdminProfile : IEndpoint
 
 					CreateAdminProfileCommand command = new(userId);
 
-					Result<Guid> createProfileResult = await sender.Send(command, cancellationToken);
+					Result<Guid> createAdminProfileResult = await sender.Send(command, cancellationToken);
 
-					IResult result = createProfileResult.Match(
+					IResult result = createAdminProfileResult.Match(
 						onSuccess: id => TypedResults.CreatedAtRoute(
 											routeName: nameof(ListProfiles),
 											routeValues: new { userId },
