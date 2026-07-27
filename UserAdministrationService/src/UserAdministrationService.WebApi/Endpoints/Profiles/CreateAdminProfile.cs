@@ -1,4 +1,6 @@
+using System.Security.Claims;
 using Mediator;
+using Microsoft.AspNetCore.Mvc;
 using SharedKernel.Results;
 using UserAdministrationService.Application.Profiles.CreateAdminProfile;
 using UserAdministrationService.Contracts.Profiles;
@@ -12,9 +14,30 @@ public sealed class CreateAdminProfile : IEndpoint
 	{
 		app.MapPost("users/{userId:guid}/profiles/admin",
 				async (Guid userId,
+					ClaimsPrincipal user,
 					ISender sender,
 					CancellationToken cancellationToken) =>
 				{
+					var requestUserIdClaim = user.FindFirstValue("id");
+
+					if (!Guid.TryParse(requestUserIdClaim, out Guid requestUserId))
+					{
+						// You should somehow parse "StatusCodes.Status401Unauthorized here"
+						return ProblemDetailsMapper.Problem([
+							new Error(code: "UnauthorizedToCreateAdminProfileForThisUser",
+									  description: "You are not authorized to create an admin profile for this user",
+									  type: ErrorType.Problem)]);
+					}
+
+					if (requestUserId != userId)
+					{
+						// You should somehow parse "StatusCodes.Status403Unauthorized here"
+						return ProblemDetailsMapper.Problem([
+							new Error(code: "UnauthorizedToCreateAdminProfileForThisUser",
+								description: "You are not authorized to create an admin profile for this user",
+								type: ErrorType.Problem)]);
+					}
+
 					CreateAdminProfileCommand command = new(userId);
 
 					Result<Guid> createProfileResult = await sender.Send(command, cancellationToken);
