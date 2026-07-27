@@ -2,4 +2,8 @@
     <PropertyGroup>
         <RootNamespace>UserAdministrationService.Contracts</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
+    </ItemGroup>
 </Project>

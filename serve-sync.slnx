@@ -1,80 +1,56 @@
 <Solution>
-    <Folder Name="/ClubAdministrationService/"/>
+    <Folder Name="/ClubAdministrationService/" />
     <Folder Name="/ClubAdministrationService/src/">
-        <Project
-                Path="ClubAdministrationService/src/ClubAdministrationService.Infrastructure/ClubAdministrationService.Infrastructure.csproj"/>
-        <Project
-                Path="ClubAdministrationService\src\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj"/>
-        <Project
-                Path="ClubAdministrationService\src\ClubAdministrationService.Contracts\ClubAdministrationService.Contracts.csproj"/>
-        <Project
-                Path="ClubAdministrationService\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
-        <Project
-                Path="ClubAdministrationService\src\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj"/>
+        <Project Path="ClubAdministrationService/src/ClubAdministrationService.Infrastructure/ClubAdministrationService.Infrastructure.csproj" />
+        <Project Path="ClubAdministrationService\src\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj" />
+        <Project Path="ClubAdministrationService\src\ClubAdministrationService.Contracts\ClubAdministrationService.Contracts.csproj" />
+        <Project Path="ClubAdministrationService\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj" />
+        <Project Path="ClubAdministrationService\src\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj" />
     </Folder>
     <Folder Name="/ClubAdministrationService/tests/">
-        <Project
-                Path="ClubAdministrationService/tests/ClubAdministrationService.Tests.Data/ClubAdministrationService.Tests.Data.csproj"/>
-        <Project
-                Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Architecture\ClubAdministrationService.Tests.Architecture.csproj"/>
-        <Project
-                Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Integration\ClubAdministrationService.Tests.Integration.csproj"/>
-        <Project
-                Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Unit\ClubAdministrationService.Tests.Unit.csproj"/>
+        <Project Path="ClubAdministrationService/tests/ClubAdministrationService.Tests.Data/ClubAdministrationService.Tests.Data.csproj" />
+        <Project Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Architecture\ClubAdministrationService.Tests.Architecture.csproj" />
+        <Project Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Integration\ClubAdministrationService.Tests.Integration.csproj" />
+        <Project Path="ClubAdministrationService\tests\ClubAdministrationService.Tests.Unit\ClubAdministrationService.Tests.Unit.csproj" />
     </Folder>
-    <Folder Name="/SessionBookingService/"/>
+    <Folder Name="/SessionBookingService/" />
     <Folder Name="/SessionBookingService/src/">
-        <Project
-                Path="SessionBookingService/src/SessionBookingService.Contracts/SessionBookingService.Contracts.csproj"/>
-        <Project
-                Path="SessionBookingService/src/SessionBookingService.Infrastructure/SessionBookingService.Infrastructure.csproj"/>
-        <Project
-                Path="SessionBookingService\src\SessionBookingService.Application\SessionBookingService.Application.csproj"/>
-        <Project Path="SessionBookingService\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
-        <Project Path="SessionBookingService\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj"/>
+        <Project Path="SessionBookingService/src/SessionBookingService.Contracts/SessionBookingService.Contracts.csproj" />
+        <Project Path="SessionBookingService/src/SessionBookingService.Infrastructure/SessionBookingService.Infrastructure.csproj" />
+        <Project Path="SessionBookingService\src\SessionBookingService.Application\SessionBookingService.Application.csproj" />
+        <Project Path="SessionBookingService\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj" />
+        <Project Path="SessionBookingService\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj" />
     </Folder>
     <Folder Name="/SessionBookingService/tests/">
-        <Project
-                Path="SessionBookingService/tests/SessionBookingService.Tests.Data/SessionBookingService.Tests.Data.csproj"/>
-        <Project
-                Path="SessionBookingService\tests\SessionBookingService.Tests.Architecture\SessionBookingService.Tests.Architecture.csproj"/>
-        <Project
-                Path="SessionBookingService\tests\SessionBookingService.Tests.Integration\SessionBookingService.Tests.Integration.csproj"/>
-        <Project
-                Path="SessionBookingService\tests\SessionBookingService.Tests.Unit\SessionBookingService.Tests.Unit.csproj"/>
+        <Project Path="SessionBookingService/tests/SessionBookingService.Tests.Data/SessionBookingService.Tests.Data.csproj" />
+        <Project Path="SessionBookingService\tests\SessionBookingService.Tests.Architecture\SessionBookingService.Tests.Architecture.csproj" />
+        <Project Path="SessionBookingService\tests\SessionBookingService.Tests.Integration\SessionBookingService.Tests.Integration.csproj" />
+        <Project Path="SessionBookingService\tests\SessionBookingService.Tests.Unit\SessionBookingService.Tests.Unit.csproj" />
     </Folder>
-    <Folder Name="/UserAdministrationService/"/>
+    <Folder Name="/UserAdministrationService/" />
     <Folder Name="/UserAdministrationService/src/">
-        <Project
-                Path="userAdministrationService/src/UserAdministrationService.Infrastructure/UserAdministrationService.Infrastructure.csproj"/>
-        <Project
-                Path="UserAdministrationService\src\UserAdministrationService.Application\UserAdministrationService.Application.csproj"/>
-        <Project
-                Path="userAdministrationService\src\UserAdministrationService.Contracts\UserAdministrationService.Contracts.csproj"/>
-        <Project
-                Path="UserAdministrationService\src\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
-        <Project
-                Path="UserAdministrationService\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj"/>
+        <Project Path="userAdministrationService/src/UserAdministrationService.Infrastructure/UserAdministrationService.Infrastructure.csproj" />
+        <Project Path="UserAdministrationService\src\UserAdministrationService.Application\UserAdministrationService.Application.csproj" />
+        <Project Path="userAdministrationService\src\UserAdministrationService.Contracts\UserAdministrationService.Contracts.csproj" />
+        <Project Path="UserAdministrationService\src\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj" />
+        <Project Path="UserAdministrationService\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj" />
     </Folder>
     <Folder Name="/UserAdministrationService/tests/">
-        <Project
-                Path="userAdministrationService\tests\UserAdministrationService.Tests.Architecture\UserAdministrationService.Tests.Architecture.csproj"/>
-        <Project
-                Path="UserAdministrationService\tests\UserAdministrationService.Tests.Data\UserAdministrationService.Tests.Data.csproj"/>
-        <Project
-                Path="userAdministrationService\tests\UserAdministrationService.Tests.Integration\UserAdministrationService.Tests.Integration.csproj"/>
-        <Project
-                Path="userAdministrationService\tests\UserAdministrationService.Tests.Unit\UserAdministrationService.Tests.Unit.csproj"/>
+        <Project Path="userAdministrationService\tests\UserAdministrationService.Tests.Architecture\UserAdministrationService.Tests.Architecture.csproj" />
+        <Project Path="UserAdministrationService\tests\UserAdministrationService.Tests.Data\UserAdministrationService.Tests.Data.csproj" />
+        <Project Path="userAdministrationService\tests\UserAdministrationService.Tests.Integration\UserAdministrationService.Tests.Integration.csproj" />
+        <Project Path="userAdministrationService\tests\UserAdministrationService.Tests.Unit\UserAdministrationService.Tests.Unit.csproj" />
     </Folder>
     <Folder Name="/_docs/">
-        <File Path="docs/Invariants.md"/>
-        <File Path="docs/Readme.md"/>
+        <File Path="docs/Invariants.md" />
+        <File Path="docs/Readme.md" />
     </Folder>
     <Folder Name="/_solution-items/">
-        <File Path="Directory.Build.Props"/>
-        <File Path="Directory.Packages.Props"/>
-        <File Path="solution-items/.editorconfig"/>
-        <File Path="solution-items/ServeSync.Domain.csproj.DotSettings"/>
+        <File Path=".editorconfig" />
+        <File Path="Directory.Build.Props" />
+        <File Path="Directory.Packages.Props" />
+        <File Path="solution-items/.editorconfig" />
+        <File Path="solution-items/ServeSync.Domain.csproj.DotSettings" />
     </Folder>
-    <Project Path="SharedKernel/SharedKernel.csproj"/>
+    <Project Path="SharedKernel/SharedKernel.csproj" />
 </Solution>
