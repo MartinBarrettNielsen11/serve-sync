@@ -18,7 +18,7 @@ internal class JwtTokenGenerator(IOptions<JwtOptions> jwtOptions) : IJwtTokenGen
 		SymmetricSecurityKey key = new(Encoding.UTF8.GetBytes(_jwtOptions.Secret));
 		SigningCredentials credentials = new(key, SecurityAlgorithms.HmacSha256);
 
-		var claims = new[]
+		Claim[] claims = new[]
 		{
 			new Claim(JwtRegisteredClaimNames.Name, user.FirstName),
 			new Claim(JwtRegisteredClaimNames.Email, user.Email),

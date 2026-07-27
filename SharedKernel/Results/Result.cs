@@ -8,12 +8,14 @@ public class Result
 {
 	protected Result(bool isSuccess, Error error)
 	{
-		var hasInvalidErrorState = (isSuccess && error != Error.None) ||
-									(!isSuccess && error == Error.None);
+		var hasInvalidErrorState = isSuccess && error != Error.None || !isSuccess && error == Error.None;
 
-		if (hasInvalidErrorState) throw new ArgumentException("Invalid error", nameof(error));
+		if (hasInvalidErrorState)
+        {
+            throw new ArgumentException("Invalid error", nameof(error));
+        }
 
-		IsSuccess = isSuccess;
+        IsSuccess = isSuccess;
 		Error = error;
 	}
 
@@ -55,9 +57,12 @@ public sealed class Result<TValue>(TValue? value, bool isSuccess, Error error) :
 
 	public static implicit operator Result<TValue>(TValue? value)
 	{
-		if (value is null) return Failure<TValue>(Error.NullValue);
+		if (value is null)
+        {
+            return Failure<TValue>(Error.NullValue);
+        }
 
-		Result<TValue> success = Success(value);
+        Result<TValue> success = Success(value);
 
 		return success;
 	}

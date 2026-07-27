@@ -22,4 +22,6 @@ internal partial class PasswordHasher : IPasswordHasher
 
 	[GeneratedRegex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", RegexOptions.Compiled)]
 	private static partial Regex StrongPasswordRegex();
+
+
 }

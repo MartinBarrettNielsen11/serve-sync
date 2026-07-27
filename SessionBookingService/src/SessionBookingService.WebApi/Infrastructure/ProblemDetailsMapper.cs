@@ -7,11 +7,17 @@ internal static class ProblemDetailsMapper
 	// Assumes correct usage - do not supply it with something that is not an error
 	public static IResult Problem(List<Error> errors)
 	{
-		if (errors.Count is 0) return Results.Problem();
+		if (errors.Count is 0)
+        {
+            return Results.Problem();
+        }
 
-		if (errors.TrueForAll(e => e.Type == ErrorType.Validation)) return ValidationProblem(errors);
+        if (errors.TrueForAll(e => e.Type == ErrorType.Validation))
+        {
+            return ValidationProblem(errors);
+        }
 
-		return Problem(errors[0]);
+        return Problem(errors[0]);
 	}
 
 	private static IResult ValidationProblem(List<Error> errors)
@@ -19,9 +25,12 @@ internal static class ProblemDetailsMapper
 		Dictionary<string, string[]> validationErrors = errors
 			.SelectMany(e =>
 			{
-				if (e is ValidationError validationError) return validationError.Errors;
+				if (e is ValidationError validationError)
+                {
+                    return validationError.Errors;
+                }
 
-				return [e];
+                return [e];
 			})
 			.GroupBy(e => e.Code, StringComparer.Ordinal)
 			.ToDictionary(

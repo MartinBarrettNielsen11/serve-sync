@@ -9,9 +9,12 @@ internal sealed partial class User : RootAggregate
 {
 	internal Result<Guid> CreateAdminProfile()
 	{
-		if (AdminId is not null) return Result.Failure<Guid>(Error.Conflict("", "User already has an admin profile"));
+		if (AdminId is not null)
+        {
+            return Result.Failure<Guid>(Error.Conflict("", "User already has an admin profile"));
+        }
 
-		AdminId = Guid.CreateVersion7();
+        AdminId = Guid.CreateVersion7();
 		DomainEvents.Add(new AdminProfileCreatedEvent(Id, AdminId.Value));
 
 		return Result.Success(AdminId.Value);
@@ -20,9 +23,11 @@ internal sealed partial class User : RootAggregate
 	internal Result<Guid> CreatePlayerProfile()
 	{
 		if (PlayerId is not null)
-			return Result.Failure<Guid>(Error.Conflict("", "User already has a participant profile"));
+        {
+            return Result.Failure<Guid>(Error.Conflict("", "User already has a participant profile"));
+        }
 
-		PlayerId = Guid.CreateVersion7();
+        PlayerId = Guid.CreateVersion7();
 		DomainEvents.Add(new PlayerProfileCreatedEvent(Id, PlayerId.Value));
 
 		return Result.Success(PlayerId.Value);
@@ -31,9 +36,11 @@ internal sealed partial class User : RootAggregate
 	internal Result<Guid> CreateInstructorProfile()
 	{
 		if (InstructorId is not null)
-			return Result.Failure<Guid>(Error.Conflict("", "User already has an instructor profile"));
+        {
+            return Result.Failure<Guid>(Error.Conflict("", "User already has an instructor profile"));
+        }
 
-		InstructorId = Guid.CreateVersion7();
+        InstructorId = Guid.CreateVersion7();
 		DomainEvents.Add(new InstructorProfileCreatedEvent(Id, InstructorId.Value));
 
 		return Result.Success(InstructorId.Value);

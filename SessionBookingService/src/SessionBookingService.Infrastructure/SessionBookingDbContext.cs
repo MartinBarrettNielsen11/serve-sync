@@ -46,8 +46,11 @@ internal class SessionBookingDbContext(
 
 	private async Task PublishDomainEvents(List<IDomainEvent> domainEvents)
 	{
-		foreach (IDomainEvent domainEvent in domainEvents) await publisher.Publish(domainEvent);
-	}
+		foreach (IDomainEvent domainEvent in domainEvents)
+        {
+            await publisher.Publish(domainEvent);
+        }
+    }
 
 	private bool IsUserWaitingOnline()
 	{

@@ -17,9 +17,12 @@ public abstract class Entity
 
 	public override bool Equals(object? obj)
 	{
-		if (obj is null || obj.GetType() != GetType()) return false;
+		if (obj is null || obj.GetType() != GetType())
+        {
+            return false;
+        }
 
-		var representsSameEntity = Id == ((Entity)obj).Id;
+        var representsSameEntity = Id == ((Entity)obj).Id;
 
 		return representsSameEntity;
 	}

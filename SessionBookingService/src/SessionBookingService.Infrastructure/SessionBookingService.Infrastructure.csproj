@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <RootNamespace>SessionBookingService.Infrastructure</RootNamespace>
-        <NoWarn>$(NoWarn);MA0048</NoWarn>
+        <NoWarn>$(NoWarn);MA0048;IDE0161</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>

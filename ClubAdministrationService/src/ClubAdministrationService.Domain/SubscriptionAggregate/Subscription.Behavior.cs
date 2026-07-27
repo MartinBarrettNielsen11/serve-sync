@@ -9,12 +9,17 @@ internal sealed partial class Subscription : RootAggregate
 {
 	internal Result<bool> AddClub(Club club)
 	{
-		if (_clubIds.Contains(club.Id)) return Result.Failure<bool>(Error.Failure("", "Club already exists"));
+		if (_clubIds.Contains(club.Id))
+        {
+            return Result.Failure<bool>(Error.Failure("", "Club already exists"));
+        }
 
-		if (_maxCourtsAllowed <= _clubIds.Count)
-			return Result.Failure<bool>(SubscriptionErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
+        if (_maxCourtsAllowed <= _clubIds.Count)
+        {
+            return Result.Failure<bool>(SubscriptionErrors.NumberOfCourtsCannotExceedSubscriptionLimit);
+        }
 
-		_clubIds.Add(club.Id);
+        _clubIds.Add(club.Id);
 
 		DomainEvents.Add(
 			new ClubAddedToSubscriptionEvent(this,
