@@ -41,7 +41,7 @@ public sealed class CreateSession : IEndpoint
 
 					IResult response = createSessionResult.Match(
 						onSuccess: s => TypedResults.CreatedAtRoute(
-										routeName: "GetSession",
+										routeName: nameof(GetSession),
 										routeValues: new {courtId, sessionId = createSessionResult.Value.Id},
 										value: new SessionResponse(
 												s.Id,

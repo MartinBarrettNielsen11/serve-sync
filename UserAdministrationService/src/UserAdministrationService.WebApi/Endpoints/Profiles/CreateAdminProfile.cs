@@ -20,11 +20,11 @@ public sealed class CreateAdminProfile : IEndpoint
 					Result<Guid> createProfileResult = await sender.Send(command, cancellationToken);
 
 					IResult result = createProfileResult.Match(
-						id => TypedResults.CreatedAtRoute(
-							routeName: "ListProfiles",
-							routeValues: new { userId },
-							value: new ProfileResponse(id)),
-						e => ProblemDetailsMapper.Problem([e.Error]));
+						onSuccess: id => TypedResults.CreatedAtRoute(
+											routeName: nameof(ListProfiles),
+											routeValues: new { userId },
+											value: new ProfileResponse(id)),
+						onFailure: e => ProblemDetailsMapper.Problem([e.Error]));
 
 					return result;
 				})
