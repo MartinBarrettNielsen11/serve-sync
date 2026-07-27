@@ -11,13 +11,19 @@ internal sealed class RegisterCommandHandler(IUsersRepository usersRepository, I
 	{
 		var userExists = await usersRepository.ExistsByEmailAsync(command.Email, cancellationToken);
 
-		if (!userExists) return Result.Failure(Error.Conflict("UserAlreadyExists", "User already exists"));
+		if (!userExists)
+        {
+            return Result.Failure(Error.Conflict("UserAlreadyExists", "User already exists"));
+        }
 
-		Result<string> hashPasswordResult = passwordHasher.HashPassword(command.Password);
+        Result<string> hashPasswordResult = passwordHasher.HashPassword(command.Password);
 
-		if (hashPasswordResult.IsFailure) return Result.Failure(hashPasswordResult.Error);
+		if (hashPasswordResult.IsFailure)
+        {
+            return Result.Failure(hashPasswordResult.Error);
+        }
 
-		User user = new(command.FirstName,
+        User user = new(command.FirstName,
 			command.LastName,
 			command.Email,
 			hashPasswordResult.Value);

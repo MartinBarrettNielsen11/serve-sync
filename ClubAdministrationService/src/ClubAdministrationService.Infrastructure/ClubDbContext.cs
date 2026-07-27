@@ -42,6 +42,8 @@ internal sealed class ClubDbContext(
 #pragma warning restore VSTHRD200
 	{
 		foreach (IDomainEvent domainEvent in domainEvents)
-			await publisher.Publish(domainEvent, httpContextAccessor.HttpContext!.RequestAborted);
-	}
+        {
+            await publisher.Publish(domainEvent, httpContextAccessor.HttpContext!.RequestAborted);
+        }
+    }
 }

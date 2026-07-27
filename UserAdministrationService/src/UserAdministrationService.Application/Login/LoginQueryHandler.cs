@@ -18,8 +18,10 @@ internal sealed class LoginQueryHandler(
 		User? user = await usersRepository.GetByEmailAsync(query.Email, cancellationToken);
 
 		if (user is null || !user.IsCorrectPasswordHash(query.Password, passwordHasher))
-			return Result.Failure<AuthenticationResult>(AuthenticationErrors.InvalidCredentials);
+        {
+            return Result.Failure<AuthenticationResult>(AuthenticationErrors.InvalidCredentials);
+        }
 
-		return new AuthenticationResult(user, jwtTokenGenerator.GenerateToken(user));
+        return new AuthenticationResult(user, jwtTokenGenerator.GenerateToken(user));
 	}
 }

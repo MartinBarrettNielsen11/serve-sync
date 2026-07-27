@@ -13,9 +13,12 @@ internal sealed class CreateInstructorProfileCommandHandler(IUsersRepository use
 	{
 		User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 
-		if (user is null) return Result.Failure<Guid>(Error.NotFound("UserNotFound", "User not found"));
+		if (user is null)
+        {
+            return Result.Failure<Guid>(Error.NotFound("UserNotFound", "User not found"));
+        }
 
-		Result<Guid> createInstructorProfileResult = user.CreateInstructorProfile();
+        Result<Guid> createInstructorProfileResult = user.CreateInstructorProfile();
 
 		await usersRepository.UpdateAsync(user, cancellationToken);
 

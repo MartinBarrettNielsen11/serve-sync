@@ -24,13 +24,16 @@ internal static class EndpointExtensions
 		this WebApplication app,
 		RouteGroupBuilder? routeGroupBuilder = null)
 	{
-		var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
+		IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
 
 		IEndpointRouteBuilder builder = routeGroupBuilder is null ? app : routeGroupBuilder;
 
-		foreach (IEndpoint endpoint in endpoints) endpoint.MapEndpoint(builder);
+		foreach (IEndpoint endpoint in endpoints)
+        {
+            endpoint.MapEndpoint(builder);
+        }
 
-		return app;
+        return app;
 	}
 
 	public static RouteHandlerBuilder HasPermission(this RouteHandlerBuilder app, string permission)

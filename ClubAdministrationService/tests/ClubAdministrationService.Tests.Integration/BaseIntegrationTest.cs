@@ -17,9 +17,12 @@ public abstract class BaseIntegrationTest
 		InitialDbContext = _scope.ServiceProvider.GetRequiredService<ClubDbContext>();
 
 		// remove this - and apply in composition root at some later day
-		if (InitialDbContext.Database.GetPendingMigrations().Any()) InitialDbContext.Database.Migrate();
+		if (InitialDbContext.Database.GetPendingMigrations().Any())
+        {
+            InitialDbContext.Database.Migrate();
+        }
 
-		ResetLoggingStorage();
+        ResetLoggingStorage();
 	}
 
 	protected ApiTestFixture Fixture { get; }

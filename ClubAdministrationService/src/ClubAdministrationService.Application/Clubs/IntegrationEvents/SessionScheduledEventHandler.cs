@@ -12,8 +12,11 @@ internal sealed class SessionScheduledEventHandler(IClubsRepository clubsReposit
 	{
 		Club? club = await clubsRepository.GetByIdAsync(notification.RoomId, cancellationToken);
 
-		if (club is null) throw new InvalidOperationException($"No club found with id {notification.RoomId}");
+		if (club is null)
+        {
+            throw new InvalidOperationException($"No club found with id {notification.RoomId}");
+        }
 
-		club.AddInstructor(notification.InstructorId);
+        club.AddInstructor(notification.InstructorId);
 	}
 }
