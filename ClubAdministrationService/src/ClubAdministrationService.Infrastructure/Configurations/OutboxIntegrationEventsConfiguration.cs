@@ -8,13 +8,11 @@ public class OutboxIntegrationEventsConfiguration : IEntityTypeConfiguration<Out
 {
 	public void Configure(EntityTypeBuilder<OutboxIntegrationEvent> builder)
 	{
-		builder.Property<int>("Id")
-			.ValueGeneratedOnAdd();
+		builder.Property<int>("Id").ValueGeneratedOnAdd();
 
 		builder.HasKey("Id");
 
 		builder.Property(o => o.EventName);
-
 		builder.Property(o => o.EventContent);
 	}
 }

@@ -10,19 +10,14 @@ internal sealed class SubscriptionConfiguration : IEntityTypeConfiguration<Subsc
 	public void Configure(EntityTypeBuilder<Subscription> builder)
 	{
 		builder.HasKey(s => s.Id);
+		builder.Property(s => s.Id).ValueGeneratedNever();
 
-		builder.Property(s => s.Id)
-			.ValueGeneratedNever();
-
-		builder.Property("_maxCourtsAllowed")
-			.HasColumnName("MaxCourtsAllowed");
+		builder.Property("_maxCourtsAllowed").HasColumnName("MaxCourtsAllowed");
 
 		builder.Property(s => s.SubscriptionType)
 			.HasConversion(subscriptionType => subscriptionType.Value,
 				value => SubscriptionType.FromValue(value));
 
-		builder.Property<List<Guid>>("_clubIds")
-			.HasColumnName("ClubIds")
-			.HasListOfIdsConverter();
+		builder.Property<List<Guid>>("_clubIds").HasColumnName("ClubIds").HasListOfIdsConverter();
 	}
 }

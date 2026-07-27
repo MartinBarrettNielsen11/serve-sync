@@ -1,4 +1,5 @@
 using ClubAdministrationService.Domain.ClubAggregate;
+using ClubAdministrationService.Infrastructure.Converters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,20 +11,20 @@ internal sealed class ClubConfiguration : IEntityTypeConfiguration<Club>
 	{
 		builder.HasKey(g => g.Id);
 
-		builder.Property(g => g.Id)
-			.ValueGeneratedNever();
+		builder.Property(g => g.Id).ValueGeneratedNever();
 
 		builder.Property("_maxCourtCapacity")
 			.HasColumnName("MaxCourtCapacity");
 
 		builder.Property<List<Guid>>("_courtIds")
-			.HasColumnName("CourtIds");
+			.HasColumnName("CourtIds")
+			.HasListOfIdsConverter();
 
 		builder.Property<List<Guid>>("_instructorIds")
-			.HasColumnName("InstructorIds");
+			.HasColumnName("InstructorIds")
+			.HasListOfIdsConverter();
 
 		builder.Property(g => g.Name);
-
 		builder.Property(g => g.SubscriptionId);
 	}
 }
