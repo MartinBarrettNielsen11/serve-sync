@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SessionBookingService.Domain.CourtsAggregate;
 using SessionBookingService.Infrastructure.Converters;
-using SharedKernel;
+using SessionBookingService.Domain.Common;
 
 namespace SessionBookingService.Infrastructure.Configurations;
 

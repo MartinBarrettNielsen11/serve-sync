@@ -1,6 +1,6 @@
+using SessionBookingService.Domain.Common;
 using SessionBookingService.Domain.SessionAggregate;
 using SessionBookingService.Tests.Unit.Domain.Constants;
-using SharedKernel;
 
 namespace SessionBookingService.Tests.Unit.Domain.TestUtils;
 
@@ -10,7 +10,7 @@ internal static class SessionFactory
 		string name = SessionConstants.Name,
 		string description = SessionConstants.Description,
 		DateOnly? date = null,
-		TimeSlot? timeRange = null,
+		TimeSlot? timeSlot = null,
 		int maxPlayerCapacity = SessionConstants.MaxPlayerCapacity,
 		Guid? instructorId = null,
 		Guid? courtId = null,
@@ -23,7 +23,7 @@ internal static class SessionFactory
 			instructorId: instructorId ?? Guid.CreateVersion7(),
 			courtId: courtId ?? Guid.CreateVersion7(),
 			date: date ?? SessionConstants.Date,
-			time: timeRange ?? SessionConstants.Time,
+			time: timeSlot ?? SessionConstants.Time,
 			maxPlayerCapacity: maxPlayerCapacity,
 			categories: categories ?? SessionConstants.Categories,
 			id: id ?? Guid.NewGuid());

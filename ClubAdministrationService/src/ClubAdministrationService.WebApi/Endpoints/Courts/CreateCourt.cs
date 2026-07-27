@@ -23,8 +23,8 @@ public sealed class CreateCourt : IEndpoint
 
 					IResult result = createCourtResult.Match(
 						r => TypedResults.CreatedAtRoute(routeName: "GetCourt",
-							routeValues: new { clubId, courtId = r.Id },
-							value: new CourtResponse(r.Id, r.Name)),
+														 routeValues: new { clubId, courtId = r.Id },
+														 value: new CourtResponse(r.Id, r.Name)),
 						err => ProblemDetailsMapper.Problem([err.Error]));
 
 					return result;

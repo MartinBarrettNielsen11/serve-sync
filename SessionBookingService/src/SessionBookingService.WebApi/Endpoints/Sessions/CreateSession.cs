@@ -34,66 +34,32 @@ public sealed class CreateSession : IEndpoint
 													   request.MaxPlayerCapacity,
 													   request.StartDateTime,
 													   request.EndDateTime,
-													   request.TrainerId,
+													   request.InstructorId,
 													   categoriesToDomainResult.Value);
 
-					Result createSessionResult = await sender.Send(command, cancellationToken);
+					Result<Session> createSessionResult = await sender.Send(command, cancellationToken);
 
 					IResult response = createSessionResult.Match(
-						onSuccess: session => CreatedAtAction(
-							nameof(GetSession),
-							new { roomId, SessionId = session.Id },
-							new SessionResponse(
-								session.Id,
-								session.Name,
-								session.Description,
-								session.NumParticipants,
-								session.MaxParticipants,
-								session.Date.ToDateTime(session.Time.Start),
-								session.Date.ToDateTime(session.Time.End),
-								session.Categories.Select(category => category.Name).ToList())),
+						onSuccess: s => TypedResults.CreatedAtRoute(
+										routeName: "GetSession",
+										routeValues: new {courtId, sessionId = createSessionResult.Value.Id},
+										value: new SessionResponse(
+												s.Id,
+												s.Name,
+												s.Description,
+												s.NumPlayers,
+												s.MaxPlayerCapacity,
+												s.Date.ToDateTime(s.Time.Start),
+												s.Date.ToDateTime(s.Time.End),
+												s.Categories.Select(c => c.Name).ToList())),
 						onFailure: err => ProblemDetailsMapper.Problem([err.Error]));
 
 					return response;
 				})
 			.WithTags(Tags.Sessions)
 			.WithSummary("Create session")
-			.WithDescription("Create session for a court");
+			.WithDescription("Create session for a court")
+			.Produces<SessionResponse>(StatusCodes.Status201Created);
 		//.RequireAuthorization();
 	}
 }
-
-/*
-
-[HttpPost]
-public async Task<IActionResult> CreateSession(
-	CreateSessionRequest request,
-	Guid roomId)
-{
-	var command = new CreateSessionCommand(		roomId,
-		request.Name,
-		request.Description,
-		request.MaxParticipants,
-		request.StartDateTime,
-		request.EndDateTime,
-		request.TrainerId,
-		categoriesToDomainResult.Value);
-
-	var createSessionResult = await _sender.Send(command);
-
-	return createSessionResult.Match(
-		session => CreatedAtAction(
-			nameof(GetSession),
-			new { roomId, SessionId = session.Id },
-			new SessionResponse(
-				session.Id,
-				session.Name,
-				session.Description,
-				session.NumParticipants,
-				session.MaxParticipants,
-				session.Date.ToDateTime(session.Time.Start),
-				session.Date.ToDateTime(session.Time.End),
-				session.Categories.Select(category => category.Name).ToList())),
-		Problem);
-}
-*/

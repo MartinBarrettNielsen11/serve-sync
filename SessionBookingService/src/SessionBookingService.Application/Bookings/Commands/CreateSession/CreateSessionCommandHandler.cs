@@ -3,7 +3,7 @@ using SessionBookingService.Application.Common;
 using SessionBookingService.Domain.CourtsAggregate;
 using SessionBookingService.Domain.InstructorAggregate;
 using SessionBookingService.Domain.SessionAggregate;
-using SharedKernel;
+using SessionBookingService.Domain.Common;
 using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Bookings.Commands.CreateSession;
@@ -27,6 +27,21 @@ internal sealed class CreateSessionCommandHandler(
 		if (instructor is null)
 		{
 			return Result.Failure<Session>(Error.NotFound("InstructorNotFound", "Instructor not found"));
+		}
+
+		Result<TimeSlot> createTimeSlotResult = TimeSlot.FromDateTimes(start: command.StartDateTime,
+																	   end: command.EndDateTime);
+
+		// change returned error type to Error.Validation
+		if (createTimeSlotResult is { IsFailure: true, Error.Type: ErrorType.Failure })
+		{
+			return Result.Failure<Session>(Error.NotFound("InvalidDateAndTime", "Invalid date and time"));
+		}
+
+		if (!instructor.IsTimeSlotFree(DateOnly.FromDateTime(command.StartDateTime), createTimeSlotResult.Value))
+		{
+			return Result.Failure<Session>(Error.Conflict(code: "InstructorsCalenderIsNotFreeForTheEntireDuration",
+				description: "Instructor's calendar is not free for the entire session duration"));
 		}
 
 		// insert some time slot entry here,

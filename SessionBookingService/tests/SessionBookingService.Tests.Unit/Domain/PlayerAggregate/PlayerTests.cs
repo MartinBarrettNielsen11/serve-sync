@@ -25,12 +25,12 @@ public class PlayerTests
 
 		Session session1 = SessionFactory.CreateSession(
 			date: SessionConstants.Date,
-			timeRange: TimeSlotFactory.Create(startHourSession1, endHourSession1),
+			timeSlot: TimeSlotFactory.Create(startHourSession1, endHourSession1),
 			id: Guid.NewGuid());
 
 		Session session2 = SessionFactory.CreateSession(
 			date: SessionConstants.Date,
-			timeRange: TimeSlotFactory.Create(startHourSession2, endHourSession2),
+			timeSlot: TimeSlotFactory.Create(startHourSession2, endHourSession2),
 			id: Guid.CreateVersion7());
 
 		// Act

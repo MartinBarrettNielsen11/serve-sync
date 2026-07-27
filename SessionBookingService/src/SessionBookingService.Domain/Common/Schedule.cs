@@ -1,6 +1,7 @@
+using SharedKernel;
 using SharedKernel.Results;
 
-namespace SharedKernel;
+namespace SessionBookingService.Domain.Common;
 
 public sealed class Schedule : Entity
 {
@@ -24,6 +25,16 @@ public sealed class Schedule : Entity
 	public static Schedule Empty()
 	{
 		return new Schedule(null, Guid.CreateVersion7());
+	}
+
+	internal bool CanBookTimeSlot(DateOnly date, TimeSlot time)
+	{
+		if (!_calendar.TryGetValue(date, out List<TimeSlot>? timeSlots))
+		{
+			return true;
+		}
+
+		return !timeSlots.Exists(ts => ts.IsOverlappingWith(time));
 	}
 
 	public Result<bool> BookTimeSlot(DateOnly date, TimeSlot time)

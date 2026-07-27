@@ -6,5 +6,5 @@ internal sealed record CreateSessionRequest(
 	int MaxPlayerCapacity,
 	DateTime StartDateTime,
 	DateTime EndDateTime,
-	Guid TrainerId,
+	Guid InstructorId,
 	List<string> Categories);
