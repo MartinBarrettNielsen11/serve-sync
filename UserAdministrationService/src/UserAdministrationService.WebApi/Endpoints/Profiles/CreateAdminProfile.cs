@@ -13,10 +13,7 @@ public sealed class CreateAdminProfile : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapPost("users/{userId:guid}/profiles/admin",
-				async (Guid userId,
-					ClaimsPrincipal user,
-					ISender sender,
-					CancellationToken cancellationToken) =>
+				async (Guid userId, ClaimsPrincipal user, ISender sender, CancellationToken cancellationToken) =>
 				{
 					var requestUserIdClaim = user.FindFirstValue("id");
 

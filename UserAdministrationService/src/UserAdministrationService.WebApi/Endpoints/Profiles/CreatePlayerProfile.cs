@@ -12,10 +12,7 @@ public sealed class CreatePlayerProfile : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapPost("users/{userId:guid}/profiles/player",
-				async (Guid userId,
-					   ClaimsPrincipal user,
-					   ISender sender,
-					   CancellationToken cancellationToken) =>
+				async (Guid userId, ClaimsPrincipal user, ISender sender, CancellationToken cancellationToken) =>
 				{
 					var requestUserIdClaim = user.FindFirstValue("id");
 

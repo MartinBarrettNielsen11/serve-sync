@@ -5,5 +5,5 @@ namespace UserAdministrationService.Domain.Interfaces;
 internal interface IPasswordHasher
 {
     Result<string> HashPassword(string password);
-	bool IsCorrectPassword(string password, string hash);
+	bool IsValidPassword(string password, string hash);
 }

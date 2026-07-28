@@ -16,8 +16,13 @@ internal sealed class LoginQueryHandler(
 	public async ValueTask<Result<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
 	{
 		User? user = await usersRepository.GetByEmailAsync(query.Email, cancellationToken);
+        if (user is null)
+        {
+            return Result.Failure<AuthenticationResult>(AuthenticationErrors.InvalidCredentials);
+        }
 
-		if (user is null || !user.IsCorrectPasswordHash(query.Password, passwordHasher))
+        var hasValidPassword = user.IsValidPasswordHash(query.Password, passwordHasher);
+		if (hasValidPassword)
         {
             return Result.Failure<AuthenticationResult>(AuthenticationErrors.InvalidCredentials);
         }

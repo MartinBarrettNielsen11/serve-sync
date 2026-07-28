@@ -11,9 +11,7 @@ public sealed class ListProfiles : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapGet("users/{userId:guid}/profiles",
-				async (Guid userId,
-					ISender sender,
-					CancellationToken cancellationToken) =>
+				async (Guid userId, ISender sender, CancellationToken cancellationToken) =>
 				{
 					ListProfilesQuery listProfilesQuery = new(userId);
 

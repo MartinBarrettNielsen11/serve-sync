@@ -46,8 +46,8 @@ internal sealed partial class User : RootAggregate
 		return Result.Success(InstructorId.Value);
 	}
 
-	internal bool IsCorrectPasswordHash(string password, IPasswordHasher passwordHasher)
+	internal bool IsValidPasswordHash(string password, IPasswordHasher passwordHasher)
 	{
-		return passwordHasher.IsCorrectPassword(password, _passwordHash);
+		return passwordHasher.IsValidPassword(password, _passwordHash);
 	}
 }
