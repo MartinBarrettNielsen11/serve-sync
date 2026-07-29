@@ -28,7 +28,6 @@ public sealed class GetCourt : IEndpoint
 					return response;
 				})
 			.WithTags(Tags.Courts)
-            .MapToApiVersion(1)
 			.WithName("GetCourt")
 			.WithSummary("Get court")
 			.WithDescription("Get court for specific clubId")

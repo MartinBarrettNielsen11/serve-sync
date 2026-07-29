@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using Asp.Versioning;
+using Asp.Versioning.Builder;
 using Scalar.AspNetCore;
 using UserAdministrationService.Application;
 using UserAdministrationService.Infrastructure;
@@ -26,11 +28,36 @@ builder.Services
 	.AddServices()
 	.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+builder.Services.AddApiVersioning(options =>
+    {
+        options.DefaultApiVersion = new ApiVersion(1);
+        options.ReportApiVersions = true;
+        options.AssumeDefaultVersionWhenUnspecified = true;
+        options.ApiVersionReader = ApiVersionReader.Combine(
+            new UrlSegmentApiVersionReader(),
+            new HeaderApiVersionReader("X-Api-Version"));
+    })
+    .AddApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'V";
+        options.SubstituteApiVersionInUrl = true;
+    });
+
+builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 WebApplication app = builder.Build();
 
-app.MapEndpoints();
+ApiVersionSet apiVersionSet = app.NewApiVersionSet()
+    .HasApiVersion(new ApiVersion(1))
+    .HasApiVersion(new ApiVersion(2))
+    .ReportApiVersions()
+    .Build();
+
+RouteGroupBuilder versionedGroup = app
+    .MapGroup("api/v{version:apiVersion}")
+    .WithApiVersionSet(apiVersionSet);
+
+app.MapEndpoints(versionedGroup);
 
 //app.UseMiddleware<EventualConsistencyMiddleware>(); //I'll need this back some day
 

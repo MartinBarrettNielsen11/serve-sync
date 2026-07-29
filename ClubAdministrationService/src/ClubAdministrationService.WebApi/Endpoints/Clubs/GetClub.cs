@@ -28,7 +28,6 @@ public sealed class GetClub : IEndpoint
 					return res;
 				})
 			.WithTags(Tags.Clubs)
-            .MapToApiVersion(1)
 			.WithName("GetClub")
 			.WithSummary("Get club")
 			.WithDescription("Get club for specific clubId and subscriptionId")

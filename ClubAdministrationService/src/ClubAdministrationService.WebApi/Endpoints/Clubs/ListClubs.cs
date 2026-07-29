@@ -28,7 +28,6 @@ public sealed class ListClubs : IEndpoint
 				return response;
 			})
 		.WithTags(Tags.Clubs)
-        .MapToApiVersion(1)
 		.WithSummary("List clubs")
 		.WithDescription("List clubs for a subscription")
 		.Produces<ClubResponse>();

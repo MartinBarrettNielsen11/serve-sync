@@ -36,7 +36,6 @@ public sealed class CreateCourt : IEndpoint
 					return result;
 				})
 			.WithTags(Tags.Clubs)
-            .MapToApiVersion(1)
 			.WithSummary("Create club")
 			.WithDescription("Create club for a subscription")
 			.Produces<CourtResponse>(StatusCodes.Status201Created);

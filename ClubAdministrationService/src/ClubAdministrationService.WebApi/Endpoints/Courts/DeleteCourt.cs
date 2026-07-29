@@ -26,7 +26,6 @@ public sealed class DeleteCourt : IEndpoint
 					return result;
 				})
 			.WithTags(Tags.Courts)
-            .MapToApiVersion(1)
 			.WithSummary("Delete court")
 			.WithDescription("Delete court for a club");
 		//.RequireAuthorization();

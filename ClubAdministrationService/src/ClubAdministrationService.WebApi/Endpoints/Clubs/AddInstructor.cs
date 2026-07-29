@@ -28,7 +28,6 @@ public sealed class AddInstructor : IEndpoint
 					return result;
 				})
 			.WithTags(Tags.Clubs)
-            .MapToApiVersion(1)
 			.WithSummary("Add instructor")
 			.WithDescription("Add instructor for a subscription (and a club)");
 		//.RequireAuthorization();

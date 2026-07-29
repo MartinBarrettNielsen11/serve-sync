@@ -11,6 +11,7 @@
         <ProjectReference Include="..\UserAdministrationService.Contracts\UserAdministrationService.Contracts.csproj"/>
     </ItemGroup>
     <ItemGroup>
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
         <PackageReference Include="Mediator.Abstractions"/>
         <PackageReference Include="Mediator.SourceGenerator">
             <PrivateAssets>all</PrivateAssets>

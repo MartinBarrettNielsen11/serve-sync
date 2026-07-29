@@ -57,7 +57,6 @@ public sealed class CreateSession : IEndpoint
 					return response;
 				})
 			.WithTags(Tags.Sessions)
-            .MapToApiVersion(1)
 			.WithSummary("Create session")
 			.WithDescription("Create session for a court")
 			.Produces<SessionResponse>(StatusCodes.Status201Created);

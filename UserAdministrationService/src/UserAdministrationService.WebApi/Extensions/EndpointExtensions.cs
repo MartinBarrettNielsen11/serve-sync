@@ -20,7 +20,7 @@ internal static class EndpointExtensions
 		return services;
 	}
 
-	public static IApplicationBuilder MapEndpoints(
+	public static void MapEndpoints(
 		this WebApplication app,
 		RouteGroupBuilder? routeGroupBuilder = null)
 	{
@@ -32,8 +32,6 @@ internal static class EndpointExtensions
         {
             endpoint.MapEndpoint(builder);
         }
-
-        return app;
 	}
 
 	public static RouteHandlerBuilder HasPermission(this RouteHandlerBuilder app, string permission)
