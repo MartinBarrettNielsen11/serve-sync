@@ -51,6 +51,7 @@ public sealed class ListSessions : IEndpoint
 				return res;
 			})
 		.WithTags(Tags.Clubs)
+        .MapToApiVersion(1)
 		.WithSummary("List sessions for a club")
 		.WithDescription("List sessions for a club")
 		.Produces<SessionResponse>();

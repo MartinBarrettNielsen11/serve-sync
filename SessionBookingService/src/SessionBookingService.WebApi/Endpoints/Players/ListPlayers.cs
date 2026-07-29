@@ -38,6 +38,7 @@ public sealed class ListPlayers : IEndpoint
 					return result;
 				})
 			.WithTags(Tags.Players)
+            .MapToApiVersion(1)
 			.WithSummary("List players for a session")
 			.WithDescription("List players for a session")
 			.Produces<SessionResponse>();

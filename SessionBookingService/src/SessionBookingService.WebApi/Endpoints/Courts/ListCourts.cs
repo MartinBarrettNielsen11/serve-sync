@@ -25,6 +25,7 @@ public sealed class ListCourts : IEndpoint
 				return response;
 			})
 			.WithTags(Tags.Courts)
+            .MapToApiVersion(1)
 			.WithName("List Courts")
 			.WithSummary("Lists court for a given club")
 			.WithDescription("List court for a specified club id")

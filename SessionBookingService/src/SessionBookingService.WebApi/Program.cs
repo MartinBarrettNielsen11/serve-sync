@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Asp.Versioning;
+using Asp.Versioning.Builder;
 using Scalar.AspNetCore;
 using SessionBookingService.Application;
 using SessionBookingService.Infrastructure;
@@ -42,11 +43,21 @@ builder.Services.AddApiVersioning(options =>
 		options.SubstituteApiVersionInUrl = true;
 	});
 
-builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 WebApplication app = builder.Build();
 
-app.MapEndpoints();
+ApiVersionSet apiVersionSet = app.NewApiVersionSet()
+    .HasApiVersion(new ApiVersion(1))
+    .HasApiVersion(new ApiVersion(2))
+    .ReportApiVersions()
+    .Build();
+
+RouteGroupBuilder versionedGroup = app
+    .MapGroup("api/v{version:apiVersion}")
+    .WithApiVersionSet(apiVersionSet);
+
+app.MapEndpoints(routeGroupBuilder: versionedGroup);
 
 
 // app.UseMiddleware<EventualConsistencyMiddleware>(); // I'll need this back some day

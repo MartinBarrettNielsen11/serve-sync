@@ -33,6 +33,7 @@ public sealed class GetSession : IEndpoint
 				return response;
 			})
 		.WithTags(Tags.Sessions)
+        .MapToApiVersion(1)
 		.WithName("GetSession")
 		.WithSummary("Get session for court")
 		.WithDescription("Get session for courtId")
