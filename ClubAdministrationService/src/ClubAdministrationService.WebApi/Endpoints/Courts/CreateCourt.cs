@@ -30,6 +30,7 @@ public sealed class CreateCourt : IEndpoint
 					return result;
 				})
 			.WithTags(Tags.Courts)
+            .MapToApiVersion(1)
 			.WithSummary("Create court")
 			.WithDescription("Create court for a club")
 			.Produces<CourtResponse>(StatusCodes.Status201Created);

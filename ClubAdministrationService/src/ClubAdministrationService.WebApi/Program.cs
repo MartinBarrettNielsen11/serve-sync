@@ -1,4 +1,6 @@
 using System.Reflection;
+using Asp.Versioning;
+using Asp.Versioning.Builder;
 using ClubAdministrationService.Application;
 using ClubAdministrationService.Infrastructure;
 using ClubAdministrationService.WebApi.Extensions;
@@ -28,11 +30,36 @@ builder.Services
 	.AddPersistence(builder.Configuration);
 //.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddEndpoints(Assembly.GetExecutingAssembly());
+builder.Services.AddApiVersioning(options =>
+    {
+        options.DefaultApiVersion = new ApiVersion(1);
+        options.ReportApiVersions = true;
+        options.AssumeDefaultVersionWhenUnspecified = true;
+        options.ApiVersionReader = ApiVersionReader.Combine(
+            new UrlSegmentApiVersionReader(),
+            new HeaderApiVersionReader("X-Api-Version"));
+    })
+    .AddApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'V";
+        options.SubstituteApiVersionInUrl = true;
+    });
+
+builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 WebApplication app = builder.Build();
 
-app.MapEndpoints();
+ApiVersionSet apiVersionSet = app.NewApiVersionSet()
+    .HasApiVersion(new ApiVersion(1))
+    .HasApiVersion(new ApiVersion(2))
+    .ReportApiVersions()
+    .Build();
+
+RouteGroupBuilder versionedGroup = app
+    .MapGroup("api/v{version:apiVersion}")
+    .WithApiVersionSet(apiVersionSet);
+
+app.MapEndpoints(versionedGroup);
 
 // app.UseMiddleware<EventualConsistencyMiddleware>(); I'll need this back at some point.
 
@@ -54,5 +81,5 @@ if (!app.Environment.IsEnvironment("Testing"))
 	await dbContext.Database.MigrateAsync();
 }
 
-app.MapControllers();
+//app.MapControllers();
 await app.RunAsync();

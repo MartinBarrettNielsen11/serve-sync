@@ -27,6 +27,7 @@ public sealed class ListSubscriptions : IEndpoint
 					return result;
 				})
 			.WithTags(Tags.Subscription)
+            .MapToApiVersion(1)
 			.WithSummary("List subscriptions")
 			.WithDescription("List subscriptions");
 	}

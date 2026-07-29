@@ -35,6 +35,7 @@ public sealed class CreateCourt : IEndpoint
 					return response;
 				})
 			.WithTags(Tags.Subscription)
+            .MapToApiVersion(1)
 			.WithSummary("Create subscription")
 			.WithDescription("Create subscription");
 		//.RequireAuthorization();
