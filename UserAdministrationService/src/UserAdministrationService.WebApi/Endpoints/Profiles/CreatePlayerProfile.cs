@@ -14,7 +14,7 @@ public sealed class CreatePlayerProfile : IEndpoint
 		app.MapPost("users/{userId:guid}/profiles/player",
 				async (Guid userId, ClaimsPrincipal user, ISender sender, CancellationToken cancellationToken) =>
 				{
-					var requestUserIdClaim = user.FindFirstValue("id");
+					var requestUserIdClaim = user.FindFirstValue(claimType: "id");
 
 					if (!Guid.TryParse(requestUserIdClaim, out Guid requestUserId))
 					{

@@ -6,6 +6,7 @@ using SessionBookingService.Domain.CourtsAggregate;
 using SessionBookingService.Domain.InstructorAggregate;
 using SessionBookingService.Domain.PlayerAggregate;
 using SessionBookingService.Domain.SessionAggregate;
+using SessionBookingService.Infrastructure.Middlewares;
 using SharedKernel;
 
 namespace SessionBookingService.Infrastructure;
@@ -57,22 +58,22 @@ internal class SessionBookingDbContext(
 		return httpContextAccessor.HttpContext is not null;
 	}
 
-	// you have a circular dependency here. Handle it in the following way: https://chatgpt.com/share/6a060551-37d0-83eb-97c8-c380ca2843eb (also view second reply regarding avoiding the chagneTracker in future)
 	private void AddDomainEventsToOfflineProcessingQueue(List<IDomainEvent> domainEvents)
 	{
-		/*
-		Queue<IDomainEvent> domainEventsQueue = httpContextAccessor.HttpContext!.Items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
-												value is Queue<IDomainEvent> existingDomainEvents
-			? existingDomainEvents
-			: new Queue<IDomainEvent>(); */
-		Queue<IDomainEvent> domainEventsQueue =
-			httpContextAccessor.HttpContext!.Items.TryGetValue("DomainEventsKey", out var value) &&
-			value is Queue<IDomainEvent> existingDomainEvents
-				? existingDomainEvents
-				: new Queue<IDomainEvent>();
+        Queue<IDomainEvent> domainEventsQueue;
+        IDictionary<object, object?> items = httpContextAccessor.HttpContext!.Items;
+
+        if (items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
+            value is Queue<IDomainEvent> existingDomainEvents)
+        {
+            domainEventsQueue = existingDomainEvents;
+        }
+        else
+        {
+            domainEventsQueue = new Queue<IDomainEvent>();
+        }
 
 		domainEvents.ForEach(domainEventsQueue.Enqueue);
-		//httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
-		httpContextAccessor.HttpContext.Items["DomainEventsKey"] = domainEventsQueue;
+		httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
 	}
 }

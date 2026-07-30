@@ -80,5 +80,6 @@ if (!app.Environment.IsEnvironment("Testing"))
 	await dbContext.Database.MigrateAsync();
 }*/
 
+app.AddInfrastructureMiddleware();
 app.MapControllers();
 await app.RunAsync();
