@@ -12,7 +12,7 @@ using SharedKernel;
 namespace SessionBookingService.Infrastructure;
 
 internal class SessionBookingDbContext(
-	DbContextOptions options,
+	DbContextOptions<SessionBookingDbContext> options,
 	IHttpContextAccessor httpContextAccessor,
 	IPublisher publisher) : DbContext(options)
 {

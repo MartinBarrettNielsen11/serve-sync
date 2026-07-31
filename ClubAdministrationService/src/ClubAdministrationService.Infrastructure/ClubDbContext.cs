@@ -2,6 +2,7 @@ using System.Reflection;
 using ClubAdministrationService.Domain.AdminAggregate;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
+using ClubAdministrationService.Infrastructure.IntegrationEvents;
 using ClubAdministrationService.Infrastructure.Middleware;
 using Mediator;
 using Microsoft.AspNetCore.Http;
@@ -11,7 +12,7 @@ using SharedKernel;
 namespace ClubAdministrationService.Infrastructure;
 
 internal sealed class ClubDbContext(
-	DbContextOptions options,
+    DbContextOptions<ClubDbContext> options,
 	IHttpContextAccessor httpContextAccessor,
 	IPublisher publisher)
 	: DbContext(options)
@@ -19,6 +20,7 @@ internal sealed class ClubDbContext(
 	public DbSet<Admin> Admins { get; set; } = null!;
 	public DbSet<Subscription> Subscriptions { get; set; } = null!;
 	public DbSet<Club> Clubs { get; set; } = null!;
+    public DbSet<OutboxIntegrationEvent> OutboxIntegrationEvents { get; set; } = null!;
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
