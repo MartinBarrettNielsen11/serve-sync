@@ -6,7 +6,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace UserAdministrationService.Infrastructure.Migrations
 {
     /// <inheritdoc />
+#pragma warning disable RULE0001
     public partial class AddOutboxIntegrationEvents : Migration
+#pragma warning restore RULE0001
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

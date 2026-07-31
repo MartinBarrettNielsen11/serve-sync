@@ -22,6 +22,10 @@
     <ItemGroup>
         <ProjectReference Include="..\ClubAdministrationService.Application\ClubAdministrationService.Application.csproj"/>
         <ProjectReference Include="..\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
     </ItemGroup>
 
     <ItemGroup>

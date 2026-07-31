@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace SessionBookingService.Infrastructure.Converters;
 
-public class ListOfIdsConverter : ValueConverter<List<Guid>, string>
+public sealed class ListOfIdsConverter : ValueConverter<List<Guid>, string>
 {
 	public ListOfIdsConverter(ConverterMappingHints? mappingHints = null)
 		: base(

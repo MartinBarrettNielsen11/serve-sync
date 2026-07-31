@@ -15,6 +15,10 @@
     <ItemGroup>
         <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
         <ProjectReference Include="..\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
     </ItemGroup>
 
     <ItemGroup>

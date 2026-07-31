@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace SessionBookingService.Infrastructure.Converters;
 
-internal class ValueJsonComparer<T> : ValueComparer<T>
+internal sealed class ValueJsonComparer<T> : ValueComparer<T>
 {
 	public ValueJsonComparer() : base(
 		(l, r) => JsonSerializer.Serialize(l, JsonSerializerOptions.Default) ==

@@ -4,7 +4,7 @@ using UserAdministrationService.Domain.Interfaces;
 
 namespace UserAdministrationService.Infrastructure.Authentication;
 
-internal partial class PasswordHasher : IPasswordHasher
+internal sealed partial class PasswordHasher : IPasswordHasher
 {
 	private static readonly Regex PasswordRegex = StrongPasswordRegex();
 

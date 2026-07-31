@@ -1,4 +1,8 @@
 <Solution>
+    <Folder Name="/Analyzers/">
+        <Project Path="Analyzers.Tests/Analyzers.Tests.csproj" />
+        <Project Path="Analyzers/Analyzers.csproj" />
+    </Folder>
     <Folder Name="/ClubAdministrationService/" />
     <Folder Name="/ClubAdministrationService/src/">
         <Project Path="ClubAdministrationService/src/ClubAdministrationService.Infrastructure/ClubAdministrationService.Infrastructure.csproj" />

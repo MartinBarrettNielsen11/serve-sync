@@ -9,7 +9,7 @@ using JwtRegisteredClaimNames = System.IdentityModel.Tokens.Jwt.JwtRegisteredCla
 
 namespace UserAdministrationService.Infrastructure.Authentication;
 
-internal class JwtTokenGenerator(IOptions<JwtOptions> jwtOptions) : IJwtTokenGenerator
+internal sealed class JwtTokenGenerator(IOptions<JwtOptions> jwtOptions) : IJwtTokenGenerator
 {
 	private readonly JwtOptions _jwtOptions = jwtOptions.Value;
 

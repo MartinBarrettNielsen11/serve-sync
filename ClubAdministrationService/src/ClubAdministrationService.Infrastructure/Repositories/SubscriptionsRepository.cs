@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClubAdministrationService.Infrastructure.Repositories;
 
-internal class SubscriptionsRepository(ClubDbContext clubDbContext) : ISubscriptionsRepository
+internal sealed class SubscriptionsRepository(ClubDbContext clubDbContext) : ISubscriptionsRepository
 {
 	public async Task AddSubscriptionAsync(Subscription subscription, CancellationToken cancellationToken)
 	{

@@ -7,7 +7,7 @@ using UserAdministrationService.Domain.UserAggregate.Events;
 namespace UserAdministrationService.Infrastructure.IntegrationEvents.OutboxWriter;
 
 #pragma warning disable CA1711
-internal class OutboxWriterEventHandler(UserDbContext userDbContext)
+internal sealed class OutboxWriterEventHandler(UserDbContext userDbContext)
 #pragma warning restore CA1711
 	: INotificationHandler<AdminProfileCreatedEvent>,
 		INotificationHandler<PlayerProfileCreatedEvent>,

@@ -4,6 +4,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="../../../Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup>
         <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
         <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
     </ItemGroup>

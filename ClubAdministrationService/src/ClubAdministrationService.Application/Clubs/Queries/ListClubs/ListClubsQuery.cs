@@ -4,4 +4,4 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.Queries.ListClubs;
 
-public record ListClubsQuery(Guid SubscriptionId) : IRequest<Result<List<Club>>>;
+public sealed record ListClubsQuery(Guid SubscriptionId) : IRequest<Result<List<Club>>>;

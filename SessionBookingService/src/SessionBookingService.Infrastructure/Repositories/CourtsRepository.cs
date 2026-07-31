@@ -4,7 +4,7 @@ using SessionBookingService.Domain.CourtsAggregate;
 
 namespace SessionBookingService.Infrastructure.Repositories;
 
-internal class CourtsRepository(SessionBookingDbContext dbContext) : ICourtsRepository
+internal sealed class CourtsRepository(SessionBookingDbContext dbContext) : ICourtsRepository
 {
 	public async Task AddCourtAsync(Court court, CancellationToken cancellationToken)
 	{

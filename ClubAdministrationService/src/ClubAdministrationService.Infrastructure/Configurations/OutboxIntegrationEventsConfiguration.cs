@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ClubAdministrationService.Infrastructure.Configurations;
 
-public class OutboxIntegrationEventsConfiguration : IEntityTypeConfiguration<OutboxIntegrationEvent>
+public sealed class OutboxIntegrationEventsConfiguration : IEntityTypeConfiguration<OutboxIntegrationEvent>
 {
 	public void Configure(EntityTypeBuilder<OutboxIntegrationEvent> builder)
 	{

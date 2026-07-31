@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace SessionBookingService.Infrastructure.Converters;
 
-public class ValueJsonConverter<T> : ValueConverter<T, string>
+public sealed class ValueJsonConverter<T> : ValueConverter<T, string>
 {
 	public ValueJsonConverter(ConverterMappingHints? mappingHints = null)
 		: base(

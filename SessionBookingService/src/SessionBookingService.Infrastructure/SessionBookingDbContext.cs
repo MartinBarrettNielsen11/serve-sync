@@ -11,7 +11,7 @@ using SharedKernel;
 
 namespace SessionBookingService.Infrastructure;
 
-internal class SessionBookingDbContext(
+internal sealed class SessionBookingDbContext(
 	DbContextOptions<SessionBookingDbContext> options,
 	IHttpContextAccessor httpContextAccessor,
 	IPublisher publisher) : DbContext(options)

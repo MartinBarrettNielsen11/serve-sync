@@ -3,7 +3,7 @@ using SharedKernel.ValueObjects;
 
 namespace SessionBookingService.Domain.Common;
 
-public class TimeSlot(TimeOnly start, TimeOnly end) : ValueObject
+public sealed class TimeSlot(TimeOnly start, TimeOnly end) : ValueObject
 {
 	public TimeOnly Start { get; init; } = start;
 	public TimeOnly End { get; init; } = end;

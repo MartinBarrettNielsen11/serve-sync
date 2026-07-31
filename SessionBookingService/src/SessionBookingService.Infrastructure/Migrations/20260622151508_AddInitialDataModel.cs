@@ -7,7 +7,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace SessionBookingService.Infrastructure.Migrations
 {
     /// <inheritdoc />
+#pragma warning disable RULE0001
     public partial class AddInitialDataModel : Migration
+#pragma warning restore RULE0001
     {
         /// <inheritdoc />
 #pragma warning disable MA0051

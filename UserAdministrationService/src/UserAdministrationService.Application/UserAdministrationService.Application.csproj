@@ -6,6 +6,10 @@
 
     <ItemGroup>
         <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
     </ItemGroup>
 
     <ItemGroup>

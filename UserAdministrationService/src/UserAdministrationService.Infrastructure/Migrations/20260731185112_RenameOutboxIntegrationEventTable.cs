@@ -5,7 +5,9 @@
 namespace UserAdministrationService.Infrastructure.Migrations
 {
     /// <inheritdoc />
+#pragma warning disable RULE0001
     public partial class RenameOutboxIntegrationEventTable : Migration
+#pragma warning restore RULE0001
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
