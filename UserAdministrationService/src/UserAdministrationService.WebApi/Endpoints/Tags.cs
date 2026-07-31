@@ -2,6 +2,6 @@ namespace UserAdministrationService.WebApi.Endpoints;
 
 internal static class Tags
 {
-	internal const string Authentication = "authentication";
-	internal const string Profile = "profiles";
+	internal const string Authentication = "Authentication";
+	internal const string Profile = "Profiles";
 }
