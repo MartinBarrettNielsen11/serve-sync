@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Asp.Versioning;
 using Asp.Versioning.Builder;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using SessionBookingService.Application;
 using SessionBookingService.Infrastructure;
@@ -59,9 +60,6 @@ RouteGroupBuilder versionedGroup = app
 
 app.MapEndpoints(routeGroupBuilder: versionedGroup);
 
-
-// app.UseMiddleware<EventualConsistencyMiddleware>(); // I'll need this back some day
-
 // Configure the HTTP request pipeline for DEVELOPMENT only
 if (app.Environment.IsDevelopment())
 {
@@ -72,14 +70,14 @@ if (app.Environment.IsDevelopment())
 		opts.Theme = ScalarTheme.DeepSpace;
 	});
 }
-/*
+
 if (!app.Environment.IsEnvironment("Testing"))
 {
 	using IServiceScope scope = app.Services.CreateScope();
 	SessionBookingDbContext dbContext = scope.ServiceProvider.GetRequiredService<SessionBookingDbContext>();
 	await dbContext.Database.MigrateAsync();
-}*/
+}
 
+app.UseExceptionHandler();
 app.AddInfrastructureMiddleware();
-app.MapControllers();
 await app.RunAsync();

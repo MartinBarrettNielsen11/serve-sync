@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Asp.Versioning;
 using Asp.Versioning.Builder;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using UserAdministrationService.Application;
 using UserAdministrationService.Infrastructure;
@@ -71,14 +72,14 @@ if (app.Environment.IsDevelopment())
 	}).AllowAnonymous();
 }
 
-/*
+
 if (!app.Environment.IsEnvironment("Testing"))
 {
 	using IServiceScope scope = app.Services.CreateScope();
 	UserDbContext dbContext = scope.ServiceProvider.GetRequiredService<UserDbContext>();
 	await dbContext.Database.MigrateAsync();
-}*/
-
+}
+app.UseExceptionHandler();
 app.AddInfrastructureMiddleware();
 app.MapControllers();
 await app.RunAsync();

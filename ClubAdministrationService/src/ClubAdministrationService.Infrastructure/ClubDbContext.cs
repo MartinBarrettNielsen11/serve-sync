@@ -2,6 +2,7 @@ using System.Reflection;
 using ClubAdministrationService.Domain.AdminAggregate;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
+using ClubAdministrationService.Infrastructure.Middleware;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -33,17 +34,42 @@ internal sealed class ClubDbContext(
 			.SelectMany(x => x)
 			.ToList();
 
-		await PublishDomainEvents(domainEvents);
+        if (IsUserWaitingOnline())
+        {
+            AddDomainEventsToOfflineProcessingQueue(domainEvents);
+            return await base.SaveChangesAsync(cancellationToken);
+        }
+
+		await PublishDomainEventsAsync(domainEvents);
 		return await base.SaveChangesAsync(cancellationToken);
 	}
 
-#pragma warning disable VSTHRD200
-	private async Task PublishDomainEvents(List<IDomainEvent> domainEvents)
-#pragma warning restore VSTHRD200
-	{
-		foreach (IDomainEvent domainEvent in domainEvents)
+    private bool IsUserWaitingOnline() => httpContextAccessor.HttpContext is not null;
+
+    private async Task PublishDomainEventsAsync(List<IDomainEvent> domainEvents)
+    {
+        foreach (IDomainEvent domainEvent in domainEvents)
         {
-            await publisher.Publish(domainEvent, httpContextAccessor.HttpContext!.RequestAborted);
+            await publisher.Publish(domainEvent);
         }
+    }
+
+    private void AddDomainEventsToOfflineProcessingQueue(List<IDomainEvent> domainEvents)
+    {
+        Queue<IDomainEvent> domainEventsQueue;
+        IDictionary<object, object?> items = httpContextAccessor.HttpContext!.Items;
+
+        if (items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
+            value is Queue<IDomainEvent> existingDomainEvents)
+        {
+            domainEventsQueue = existingDomainEvents;
+        }
+        else
+        {
+            domainEventsQueue = new Queue<IDomainEvent>();
+        }
+
+        domainEvents.ForEach(domainEventsQueue.Enqueue);
+        httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
     }
 }

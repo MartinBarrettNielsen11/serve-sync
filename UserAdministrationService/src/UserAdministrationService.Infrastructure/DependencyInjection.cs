@@ -40,6 +40,7 @@ internal static class DependencyInjection
 
 		services.AddDbContext<UserDbContext>(options => { options.UseNpgsql(connectionString); });
 
+
 		services.AddScoped<IUsersRepository, UsersRepository>();
 		services.AddHttpContextAccessor();
 

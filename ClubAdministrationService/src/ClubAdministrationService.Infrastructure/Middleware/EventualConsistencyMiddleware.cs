@@ -2,37 +2,42 @@ using ClubAdministrationService.Domain.EventualConsistency;
 using Mediator;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
+using SharedKernel;
 
 namespace ClubAdministrationService.Infrastructure.Middleware;
 
-internal class EventualConsistencyMiddleware(RequestDelegate next)
+internal sealed class EventualConsistencyMiddleware(RequestDelegate next)
 {
-	public const string DomainEventsKey = "DomainEventsKey";
+    internal const string DomainEventsKey = "DomainEventsKey";
 
-	public async Task InvokeAsync(HttpContext context, IPublisher publisher, ClubDbContext dbContext)
-	{
-		IDbContextTransaction transaction = await dbContext.Database.BeginTransactionAsync(context.RequestAborted);
-		context.Response.OnCompleted(async () =>
-		{
-			try
-			{
-				/*if (context.Items.TryGetValue(DomainEventsKey, out var value))
-				{
-					// as long as one can extract elements from queue/stack like data structure then publish said events
-				}*/
+    public async Task InvokeAsync(HttpContext context, IPublisher publisher, ClubDbContext dbContext)
+    {
+        IDbContextTransaction transaction = await dbContext.Database.BeginTransactionAsync(context.RequestAborted);
+        context.Response.OnCompleted(async () =>
+        {
+            try
+            {
+                if (context.Items.TryGetValue(DomainEventsKey, out var value) &&
+                    value is Queue<IDomainEvent> domainEvents)
+                {
+                    while (domainEvents.TryDequeue(out IDomainEvent? nextEvent))
+                    {
+                        await publisher.Publish(nextEvent, context.RequestAborted);
+                    }
+                }
 
-				await transaction.CommitAsync(context.RequestAborted);
-			}
-			catch (EventualConsistencyException)
-			{
-				// handle eventual consistency exception
-			}
-			finally
-			{
-				await transaction.DisposeAsync();
-			}
-		});
+                await transaction.CommitAsync(context.RequestAborted);
+            }
+            catch (EventualConsistencyException)
+            {
+                // handle eventual consistency exception
+            }
+            finally
+            {
+                await transaction.DisposeAsync();
+            }
+        });
 
-		await next(context);
-	}
+        await next(context);
+    }
 }
