@@ -81,5 +81,4 @@ if (!app.Environment.IsEnvironment("Testing"))
 }
 app.UseExceptionHandler();
 app.AddInfrastructureMiddleware();
-app.MapControllers();
 await app.RunAsync();
