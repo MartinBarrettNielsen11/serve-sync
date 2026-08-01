@@ -4,7 +4,7 @@
 
 namespace SharedKernel.Results;
 
-public class Result
+public sealed class Result
 {
 	protected Result(bool isSuccess, Error error)
 	{

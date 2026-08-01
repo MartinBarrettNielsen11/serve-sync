@@ -1,5 +1,6 @@
 <Solution>
     <Folder Name="/Analyzers/">
+        <Project Path="Analyzers.CodeFix/Analyzers.CodeFix.csproj" />
         <Project Path="Analyzers.Tests/Analyzers.Tests.csproj" />
         <Project Path="Analyzers/Analyzers.csproj" />
     </Folder>

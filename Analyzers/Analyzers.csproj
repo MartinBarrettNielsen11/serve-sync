@@ -24,5 +24,8 @@
     </PackageReference>
 </ItemGroup>
 
-    
+<ItemGroup>
+    <InternalsVisibleTo Include="Analyzers.CodeFix"/>
+</ItemGroup>
+
 </Project>

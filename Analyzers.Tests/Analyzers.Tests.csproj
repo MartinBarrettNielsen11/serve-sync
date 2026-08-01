@@ -20,6 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Analyzers.CodeFix\Analyzers.CodeFix.csproj" />
       <ProjectReference Include="..\Analyzers\Analyzers.csproj" />
     </ItemGroup>
 

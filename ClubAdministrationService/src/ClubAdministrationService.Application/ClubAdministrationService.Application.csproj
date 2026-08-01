@@ -8,6 +8,11 @@
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"
                           PrivateAssets="all"/>
+
+        <ProjectReference Include="../../../Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Mediator.Abstractions"/>

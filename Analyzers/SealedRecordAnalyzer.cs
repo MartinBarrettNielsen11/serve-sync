@@ -9,7 +9,7 @@ namespace Analyzers;
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class SealedRecordAnalyzer : DiagnosticAnalyzer
 {
-    private const string RuleId = "RULE0002";
+    internal const string RuleId = "RULE0002";
 
     private static readonly DiagnosticDescriptor Rule = new(
         RuleId,

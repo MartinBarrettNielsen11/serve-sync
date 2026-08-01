@@ -1,6 +1,6 @@
 namespace SharedKernel.Results;
 
-public record Error
+public sealed record Error
 {
 	public static readonly Error None = new(
 		string.Empty,
