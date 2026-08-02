@@ -4,7 +4,7 @@
 
 namespace SharedKernel.Results;
 
-public sealed class Result
+public class Result
 {
 	protected Result(bool isSuccess, Error error)
 	{
@@ -26,22 +26,22 @@ public sealed class Result
 
 	public static Result Success()
 	{
-		return new Result(true, Error.None);
+		return new Result(isSuccess: true, Error.None);
 	}
 
 	public static Result<TValue> Success<TValue>(TValue value)
 	{
-		return new Result<TValue>(value, true, Error.None);
+		return new Result<TValue>(value, isSuccess: true, Error.None);
 	}
 
 	public static Result Failure(Error error)
 	{
-		return new Result(false, error);
+		return new Result(isSuccess: false, error);
 	}
 
 	public static Result<TValue> Failure<TValue>(Error error)
 	{
-		return new Result<TValue>(default, false, error);
+		return new Result<TValue>(default, isSuccess: false, error);
 	}
 }
 
@@ -69,6 +69,6 @@ public sealed class Result<TValue>(TValue? value, bool isSuccess, Error error) :
 
 	public Result<TValue> ValidationFailure(Error error)
 	{
-		return new Result<TValue>(default, false, error);
+		return new Result<TValue>(default, isSuccess: false, error);
 	}
 }

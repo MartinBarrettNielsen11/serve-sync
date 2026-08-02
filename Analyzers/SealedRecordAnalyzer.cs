@@ -13,99 +13,133 @@ public sealed class SealedRecordAnalyzer : DiagnosticAnalyzer
 
     private static readonly DiagnosticDescriptor Rule = new(
         RuleId,
-        title: "The record have to be sealed",
-        messageFormat: "Record can be sealed",
-        category: "Unknown",
-        DiagnosticSeverity.Warning,
+        title: "Record can be sealed",
+        messageFormat: "Record '{0}' can be sealed",
+        category: "Design",
+        defaultSeverity: DiagnosticSeverity.Warning,
         isEnabledByDefault: true);
+
+    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
 
     public override void Initialize(AnalysisContext context)
     {
         context.EnableConcurrentExecution();
-        context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
-        context.RegisterSyntaxNodeAction(AnalyzeSealedRecord, SyntaxKind.RecordDeclaration);
+        context.ConfigureGeneratedCodeAnalysis(
+            GeneratedCodeAnalysisFlags.None);
+
+        context.RegisterCompilationStartAction(compilationContext =>
+        {
+            Lazy<HashSet<INamedTypeSymbol>> inheritedTypes = new(
+                () => FindInheritedTypes(compilationContext.Compilation));
+
+            compilationContext.RegisterSyntaxNodeAction(
+                action: syntaxContext => AnalyzeRecord(
+                    syntaxContext,
+                    inheritedTypes.Value),
+                syntaxKinds: SyntaxKind.RecordDeclaration);
+        });
     }
 
-    private static void AnalyzeSealedRecord(SyntaxNodeAnalysisContext context)
+    private static void AnalyzeRecord(
+        SyntaxNodeAnalysisContext context,
+        HashSet<INamedTypeSymbol> inheritedTypes)
     {
-        RecordDeclarationSyntax recordSyntax = (RecordDeclarationSyntax)context.Node;
+        RecordDeclarationSyntax recordSyntax =
+            (RecordDeclarationSyntax)context.Node;
 
-        var skipRuleGeneration = recordSyntax.Modifiers.Any(modifier => modifier.IsKind(SyntaxKind.AbstractKeyword) ||
-                                                                       modifier.IsKind(SyntaxKind.SealedKeyword) ||
-                                                                       modifier.IsKind(SyntaxKind.StaticKeyword));
+        INamedTypeSymbol? recordSymbol =
+            context.SemanticModel.GetDeclaredSymbol(
+                declarationSyntax: recordSyntax,
+                context.CancellationToken);
 
-        if (skipRuleGeneration)
+        if (recordSymbol is null)
         {
             return;
         }
 
-        Diagnostic diagnostic = Diagnostic.Create(Rule, recordSyntax.Keyword.GetLocation());
+        if (!CanBeSealed(recordSymbol, inheritedTypes))
+        {
+            return;
+        }
+
+        Diagnostic diagnostic = Diagnostic.Create(
+            Rule,
+            recordSyntax.Identifier.GetLocation(),
+            recordSymbol.Name);
+
         context.ReportDiagnostic(diagnostic);
     }
 
-    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
-}
-
-/*
-[DiagnosticAnalyzer(LanguageNames.CSharp)]
-public class SealedClassAnalyzer : DiagnosticAnalyzer
-{
-    internal const string RuleId = "RULE0001";
-
-    private static readonly DiagnosticDescriptor Rule = new(
-        RuleId,
-        title: "The class have to be sealed",
-        messageFormat: "Class can be sealed",
-        category: "Unknown",
-        DiagnosticSeverity.Warning,
-        isEnabledByDefault: true);
-
-    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } =
-        ImmutableArray.Create(_rule);
-
-    public override void Initialize(AnalysisContext context)
+    private static bool CanBeSealed(
+        INamedTypeSymbol type,
+        HashSet<INamedTypeSymbol> inheritedTypes)
     {
-        // You must call this method to avoid analyzing generated code.
-        context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
+        // IsRecord includes record classes and record structs.
+        // Only record classes can be sealed.
+        if (!type.IsRecord || type.TypeKind != TypeKind.Class)
+        {
+            return false;
+        }
 
-        // You must call this method to enable the Concurrent Execution.
-        context.EnableConcurrentExecution();
+        if (type.IsAbstract || type.IsSealed)
+        {
+            return false;
+        }
 
-        context.RegisterSyntaxNodeAction(AnalyzeSymbol, SyntaxKind.IdentifierName);
+        return !inheritedTypes.Contains(type.OriginalDefinition);
     }
 
-    private static readonly string[] _forbiddenPropertyNames = new[]
+    private static HashSet<INamedTypeSymbol> FindInheritedTypes(
+        Compilation compilation)
     {
-        nameof(DateTime.Now), nameof(DateTime.Today), nameof(DateTime.UtcNow)
-    };
+        List<INamedTypeSymbol> declaredTypes = new();
 
-    private static void AnalyzeSymbol(SyntaxNodeAnalysisContext context)
-    {
-        SyntaxToken token = context.Node.GetFirstToken();
+        CollectTypes(
+            compilation.Assembly.GlobalNamespace,
+            declaredTypes);
 
-        if (!token.ToString().Equals(nameof(DateTime), StringComparison.Ordinal))
+        HashSet<INamedTypeSymbol> inheritedTypes = new(
+            comparer: SymbolEqualityComparer.Default);
+
+#pragma warning disable S3267
+        foreach (INamedTypeSymbol type in declaredTypes)
+#pragma warning restore S3267
         {
-            return;
-        }
-
-        SyntaxToken nextToken = token.GetNextToken();
-
-        if (!nextToken.IsKind(SyntaxKind.DotToken))
-        {
-            return;
-        }
-
-        SyntaxToken dateTimeProperty = nextToken.GetNextToken();
-        foreach (var forbiddenPropertyName in _forbiddenPropertyNames)
-        {
-            if (!dateTimeProperty.ToString().Equals(forbiddenPropertyName, StringComparison.Ordinal))
+            if (type.BaseType is not null)
             {
-                continue;
+                inheritedTypes.Add(type.BaseType.OriginalDefinition);
             }
+        }
 
-            context.ReportDiagnostic(Diagnostic.Create(_rule, context.Node.Parent!.GetLocation(), forbiddenPropertyName));
-            break;
+        return inheritedTypes;
+    }
+
+    private static void CollectTypes(
+        INamespaceSymbol namespaceSymbol,
+        List<INamedTypeSymbol> types)
+    {
+        foreach (INamespaceSymbol childNamespace
+                 in namespaceSymbol.GetNamespaceMembers())
+        {
+            CollectTypes(childNamespace, types);
+        }
+
+        foreach (INamedTypeSymbol type
+                 in namespaceSymbol.GetTypeMembers())
+        {
+            CollectTypeAndNestedTypes(type, types);
+        }
+    }
+
+    private static void CollectTypeAndNestedTypes(
+        INamedTypeSymbol type,
+        List<INamedTypeSymbol> types)
+    {
+        types.Add(type);
+
+        foreach (INamedTypeSymbol nestedType in type.GetTypeMembers())
+        {
+            CollectTypeAndNestedTypes(nestedType, types);
         }
     }
 }
-*/

@@ -27,35 +27,47 @@ public sealed class SealedClassAnalyzerTests
 
         DiagnosticResult expected = VerifyAnalyzer
             .Diagnostic()
-            .WithLocation(3, 8);
+            .WithLocation(3, 14)
+            .WithArguments("MyClass");
 
         await VerifyAnalyzer.VerifyAnalyzerAsync(
-            testCode,
-            expected);
+            source: testCode,
+            expected: expected);
     }
 
-    [Theory]
-    [InlineData(
-        $$"""
-          public sealed class MyClass
-          {
-          }
-          """)]
-    [InlineData(
-        $$"""
-          public abstract class MyClass
-          {
-          }
-          """)]
-    [InlineData(
-        $$"""
-          public static class MyClass
-          {
-          }
-          """)]
-    public async Task ClassThatCannotOrShouldNotBeSealed_ShouldNotProduceDiagnostic(
-        string testCode)
+
+    [Fact]
+    public async Task ClassThatCannotOrShouldNotBeSealed_ShouldNotProduceDiagnostic()
     {
+        const string testCode = $$"""
+                                  public sealed class MyClass
+                                  {
+                                  }
+                                  """;
+        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+    }
+
+    [Fact]
+    public async Task ClassThatCannotOrShouldNotBeSealed_ShouldNotProduceDiagnostic_2()
+    {
+        const string testCode = $$"""
+                                  public static class MyClass
+                                  {
+                                  }
+                                  """;
+        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+    }
+
+    [Fact]
+#pragma warning disable S4144
+    public async Task ClassThatCannotOrShouldNotBeSealed_ShouldNotProduceDiagnostic_3()
+#pragma warning restore S4144
+    {
+        const string testCode = $$"""
+                                  public static class MyClass
+                                  {
+                                  }
+                                  """;
         await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
     }
 
@@ -74,11 +86,13 @@ public sealed class SealedClassAnalyzerTests
 
         DiagnosticResult firstDiagnostic = VerifyAnalyzer
             .Diagnostic()
-            .WithLocation(1, 8);
+            .WithLocation(1, 14)
+            .WithArguments("FirstClass");
 
         DiagnosticResult secondDiagnostic = VerifyAnalyzer
             .Diagnostic()
-            .WithLocation(5, 10);
+            .WithLocation(5, 16)
+            .WithArguments("SecondClass");
 
         await VerifyAnalyzer.VerifyAnalyzerAsync(
             testCode,
@@ -107,7 +121,8 @@ public sealed class SealedClassAnalyzerTests
 
         DiagnosticResult expected = VerifyAnalyzer
             .Diagnostic()
-            .WithLocation(3, 8);
+            .WithLocation(3, 14)
+            .WithArguments("MyClass");
 
         VerifyCodeFix test = new()
         {
@@ -137,7 +152,8 @@ public sealed class SealedClassAnalyzerTests
 
         DiagnosticResult expected = VerifyAnalyzer
             .Diagnostic()
-            .WithLocation(1, 10);
+            .WithLocation(1, 16)
+            .WithArguments("MyClass");
 
         VerifyCodeFix test = new()
         {
@@ -177,7 +193,8 @@ public sealed class SealedClassAnalyzerTests
 
         DiagnosticResult expected = VerifyAnalyzer
             .Diagnostic()
-            .WithLocation(1, 8);
+            .WithLocation(1, 14)
+            .WithArguments("MyClass");
 
         VerifyCodeFix test = new()
         {
