@@ -13,19 +13,16 @@ public sealed class SealedClassCodeFix : CodeFixProvider
 {
     public override ImmutableArray<string> FixableDiagnosticIds => [SealedClassAnalyzer.RuleId];
 
-    public override FixAllProvider GetFixAllProvider()
-    {
-        return WellKnownFixAllProviders.BatchFixer;
-    }
+    public override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
     public override async Task RegisterCodeFixesAsync(CodeFixContext context)
     {
         Diagnostic diagnostic = context.Diagnostics.First();
         TextSpan diagnosticSpan = diagnostic.Location.SourceSpan;
 
-        SyntaxNode? root = await context.Document.GetSyntaxRootAsync(context.CancellationToken);
+        SyntaxNode? syntaxNode = await context.Document.GetSyntaxRootAsync(context.CancellationToken);
 
-        ClassDeclarationSyntax? classDeclaration = root?
+        ClassDeclarationSyntax? classDeclaration = syntaxNode?
             .FindToken(diagnosticSpan.Start).Parent?
             .AncestorsAndSelf()
             .OfType<ClassDeclarationSyntax>()
@@ -37,19 +34,21 @@ public sealed class SealedClassCodeFix : CodeFixProvider
         }
 
         context.RegisterCodeFix(
-            CodeAction.Create(
+            action: CodeAction.Create(
                 title: "Make the class sealed",
-                createChangedDocument: _ => MakeClassSealedAsync(root!, context.Document, classDeclaration),
+                createChangedDocument: _ => MakeClassSealedAsync(syntaxNode!, context.Document, classDeclaration),
                 equivalenceKey: nameof(SealedClassCodeFix)),
-            diagnostic);
+            diagnostic: diagnostic);
     }
 
-    private static Task<Document> MakeClassSealedAsync(SyntaxNode root, Document document, ClassDeclarationSyntax @class)
+    private static Task<Document> MakeClassSealedAsync(SyntaxNode syntaxNode, Document document, ClassDeclarationSyntax classDeclaration)
     {
-        ClassDeclarationSyntax newClass = @class.WithModifiers(@class.Modifiers.Add(SyntaxFactory.Token(SyntaxKind.SealedKeyword)));
+        ClassDeclarationSyntax newClass = classDeclaration.WithModifiers(classDeclaration.Modifiers.Add(SyntaxFactory.Token(SyntaxKind.SealedKeyword)));
 
-        SyntaxNode newRoot = root.ReplaceNode(@class, newClass);
+        SyntaxNode newSyntaxNode = syntaxNode.ReplaceNode(classDeclaration, newClass);
 
-        return Task.FromResult(document.WithSyntaxRoot(newRoot));
+        Document createChangedDocument = document.WithSyntaxRoot(newSyntaxNode);
+
+        return Task.FromResult(createChangedDocument);
     }
 }

@@ -8,48 +8,47 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace Analyzers.CodeFix;
 
-[ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(SealedClassCodeFix))]
+[ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(SealedRecordCodeFix))]
 public sealed class SealedRecordCodeFix : CodeFixProvider
 {
     public override ImmutableArray<string> FixableDiagnosticIds => [SealedRecordAnalyzer.RuleId];
 
-    public override FixAllProvider GetFixAllProvider()
-    {
-        return WellKnownFixAllProviders.BatchFixer;
-    }
+    public override FixAllProvider GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 
     public override async Task RegisterCodeFixesAsync(CodeFixContext context)
     {
         Diagnostic diagnostic = context.Diagnostics.First();
         TextSpan diagnosticSpan = diagnostic.Location.SourceSpan;
 
-        SyntaxNode? root = await context.Document.GetSyntaxRootAsync(context.CancellationToken);
+        SyntaxNode? syntaxNode = await context.Document.GetSyntaxRootAsync(context.CancellationToken);
 
-        ClassDeclarationSyntax? classDeclaration = root?
+        RecordDeclarationSyntax? recordDeclaration = syntaxNode?
             .FindToken(diagnosticSpan.Start).Parent?
             .AncestorsAndSelf()
-            .OfType<ClassDeclarationSyntax>()
+            .OfType<RecordDeclarationSyntax>()
             .FirstOrDefault();
 
-        if (classDeclaration is null)
+        if (recordDeclaration is null)
         {
             return;
         }
 
         context.RegisterCodeFix(
-            CodeAction.Create(
-                title: "Make the class sealed",
-                createChangedDocument: _ => MakeRecordSealedAsync(root!, context.Document, classDeclaration),
+            action: CodeAction.Create(
+                title: "Make the record sealed",
+                createChangedDocument: _ => MakeRecordSealedAsync(syntaxNode!, context.Document, recordDeclaration),
                 equivalenceKey: nameof(SealedRecordCodeFix)),
-            diagnostic);
+            diagnostic: diagnostic);
     }
 
-    private static Task<Document> MakeRecordSealedAsync(SyntaxNode root, Document document, ClassDeclarationSyntax @class)
+    private static Task<Document> MakeRecordSealedAsync(SyntaxNode root, Document document, RecordDeclarationSyntax recordDeclaration)
     {
-        ClassDeclarationSyntax newClass = @class.WithModifiers(@class.Modifiers.Add(SyntaxFactory.Token(SyntaxKind.SealedKeyword)));
+        RecordDeclarationSyntax newRecord = recordDeclaration.WithModifiers(recordDeclaration.Modifiers.Add(SyntaxFactory.Token(SyntaxKind.SealedKeyword)));
 
-        SyntaxNode newRoot = root.ReplaceNode(@class, newClass);
+        SyntaxNode newSyntaxNode = root.ReplaceNode(recordDeclaration, newRecord);
 
-        return Task.FromResult(document.WithSyntaxRoot(newRoot));
+        Document createChangedDocument = document.WithSyntaxRoot(newSyntaxNode);
+
+        return Task.FromResult(createChangedDocument);
     }
 }

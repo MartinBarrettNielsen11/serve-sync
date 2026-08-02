@@ -35,6 +35,21 @@ public sealed class SealedClassAnalyzerTests
             expected: expected);
     }
 
+    [Fact]
+    public async Task ClassWithDerivedClass_ShouldNotProduceDiagnostic()
+    {
+        const string testCode = """
+                                public class BaseClass
+                                {
+                                }
+
+                                public sealed class DerivedClass : BaseClass
+                                {
+                                }
+                                """;
+
+        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+    }
 
     [Fact]
     public async Task ClassThatCannotOrShouldNotBeSealed_ShouldNotProduceDiagnostic()
