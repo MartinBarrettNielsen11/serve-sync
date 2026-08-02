@@ -26,6 +26,7 @@
 
 <ItemGroup>
     <InternalsVisibleTo Include="Analyzers.CodeFix"/>
+    <InternalsVisibleTo Include="Analyzers.Tests"/>
 </ItemGroup>
 
 </Project>

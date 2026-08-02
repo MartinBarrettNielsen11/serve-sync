@@ -9,7 +9,7 @@ using Microsoft.CodeAnalysis.Text;
 namespace Analyzers.CodeFix;
 
 [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(SealedRecordCodeFix))]
-public sealed class SealedRecordCodeFix : CodeFixProvider
+internal sealed class SealedRecordCodeFix : CodeFixProvider
 {
     public override ImmutableArray<string> FixableDiagnosticIds => [SealedRecordAnalyzer.RuleId];
 

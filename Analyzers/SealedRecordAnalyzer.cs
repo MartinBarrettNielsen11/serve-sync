@@ -7,7 +7,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 namespace Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
-public sealed class SealedRecordAnalyzer : DiagnosticAnalyzer
+internal sealed class SealedRecordAnalyzer : DiagnosticAnalyzer
 {
     internal const string RuleId = "RULE0002";
 
