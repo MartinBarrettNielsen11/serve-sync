@@ -24,7 +24,7 @@ public sealed class CreateCourtTests(ApiTestFixture fixture) : BaseApiTest(fixtu
 
 		// Act
 		HttpResponseMessage response = await Client.PostAsJsonAsync(
-			$"subscriptions/{sub.Id}/clubs",
+			$"api/v1/subscriptions/{sub.Id}/clubs",
 			request);
 
 		// Assert
