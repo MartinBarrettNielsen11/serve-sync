@@ -74,13 +74,12 @@ if (app.Environment.IsDevelopment())
 	});
 }
 
-/*
 if (!app.Environment.IsEnvironment("Testing"))
 {
 	using IServiceScope scope = app.Services.CreateScope();
 	ClubDbContext dbContext = scope.ServiceProvider.GetRequiredService<ClubDbContext>();
 	await dbContext.Database.MigrateAsync();
-}*/
+}
 
 app.UseExceptionHandler();
 app.AddInfrastructureMiddleware();
