@@ -18,19 +18,14 @@ public sealed class SealedRecordAnalyzerTests
     public async Task Success()
     {
         const string source = """
-                                public record MyRecord
-                                {
-                                }
-                                """;
+                              public record SUT
+                              {
+                              }
+                              """;
 
-        DiagnosticResult expected = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(1, 15)
-            .WithArguments("MyRecord");
+        DiagnosticResult expected = VerifyAnalyzer.Diagnostic().WithLocation(1, 15).WithArguments("SUT");
 
-        await VerifyAnalyzer.VerifyAnalyzerAsync(
-            source,
-            expected);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source, expected);
     }
 
     [Fact]
@@ -49,10 +44,10 @@ public sealed class SealedRecordAnalyzerTests
     public async Task When_RecordHasAbstractModifier_Then_NoDiagnosticIsReported()
     {
         const string source = """
-                                public abstract record MyRecord
-                                {
-                                }
-                                """;
+                              public abstract record SUT
+                              {
+                              }
+                              """;
 
         await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
@@ -61,10 +56,10 @@ public sealed class SealedRecordAnalyzerTests
     public async Task When_RecordHasStructModifier_Then_NoDiagnosticIsReported()
     {
         const string source = """
-                                public record struct MyRecord
-                                {
-                                }
-                                """;
+                              public record struct SUT
+                              {
+                              }
+                              """;
 
         await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
@@ -73,14 +68,14 @@ public sealed class SealedRecordAnalyzerTests
     public async Task When_RecordIsDerived_Then_NoDiagnosticIsReported()
     {
         const string source = """
-                                public record BaseRecord
-                                {
-                                }
+                              public record SUT
+                              {
+                              }
 
-                                public sealed record DerivedRecord : BaseRecord
-                                {
-                                }
-                                """;
+                              public sealed record SUT2 : SUT
+                              {
+                              }
+                              """;
 
         await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
@@ -106,13 +101,13 @@ public sealed class SealedRecordAnalyzerTests
 
 
     [Fact]
-    public async Task ConcreteRecord_CodeFixShouldAddSealedModifier()
+    public async Task When_ApplyingCodeFix_Then_SealedModifierIsAdded()
     {
         const string source = """
-                                public record SUT
-                                {
-                                }
-                                """;
+                              public record SUT
+                              {
+                              }
+                              """;
 
         const string fixedCode = """
                                  public sealed record SUT
@@ -134,24 +129,21 @@ public sealed class SealedRecordAnalyzerTests
     }
 
     [Fact]
-    public async Task InternalRecord_CodeFixShouldPreserveExistingModifier()
+    public async Task When_ApplyingCodeFix_Then_ExistingModifierIsKept()
     {
         const string source = """
-                                internal record MyRecord
-                                {
-                                }
-                                """;
+                              internal record SUT
+                              {
+                              }
+                              """;
 
         const string fixedCode = """
-                                 internal sealed record MyRecord
+                                 internal sealed record SUT
                                  {
                                  }
                                  """;
 
-        DiagnosticResult expected = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(1, 17)
-            .WithArguments("MyRecord");
+        DiagnosticResult expected = VerifyAnalyzer.Diagnostic().WithLocation(1, 17).WithArguments("SUT");
 
         VerifyCodeFix test = new()
         {
@@ -165,21 +157,21 @@ public sealed class SealedRecordAnalyzerTests
     }
 
     [Fact]
-    public async Task RecordWithMembers_CodeFixShouldOnlyChangeDeclaration()
+    public async Task When_ApplyingCodeFix_Then_ClassMembersAreKeptTheSame()
     {
         const string source = """
-                                public record MyRecord
-                                {
-                                    public string Name { get; init; } = string.Empty;
+                              public record SUT
+                              {
+                                  public string Name { get; init; } = string.Empty;
 
-                                    public void Execute()
-                                    {
-                                    }
-                                }
-                                """;
+                                  public void Execute()
+                                  {
+                                  }
+                              }
+                              """;
 
         const string fixedCode = """
-                                 public sealed record MyRecord
+                                 public sealed record SUT
                                  {
                                      public string Name { get; init; } = string.Empty;
 
@@ -189,7 +181,7 @@ public sealed class SealedRecordAnalyzerTests
                                  }
                                  """;
 
-        DiagnosticResult expected = VerifyAnalyzer.Diagnostic().WithLocation(1, 15).WithArguments("MyRecord");
+        DiagnosticResult expected = VerifyAnalyzer.Diagnostic().WithLocation(1, 15).WithArguments("SUT");
 
         VerifyCodeFix test = new()
         {

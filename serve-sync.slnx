@@ -1,8 +1,8 @@
 <Solution>
     <Folder Name="/Analyzers/">
-        <Project Path="Analyzers.CodeFix/Analyzers.CodeFix.csproj" />
-        <Project Path="Analyzers.Tests/Analyzers.Tests.csproj" />
-        <Project Path="Analyzers/Analyzers.csproj" />
+        <Project Path="Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj" />
+        <Project Path="Analyzers/Analyzers.Tests/Analyzers.Tests.csproj" />
+        <Project Path="Analyzers/Analyzers/Analyzers.csproj" />
     </Folder>
     <Folder Name="/ClubAdministrationService/" />
     <Folder Name="/ClubAdministrationService/src/">

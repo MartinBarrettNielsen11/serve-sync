@@ -9,11 +9,11 @@
         <ProjectReference Include="..\SessionBookingService.Application\SessionBookingService.Application.csproj"/>
         <ProjectReference Include="..\SessionBookingService.Contracts\SessionBookingService.Contracts.csproj"/>
         <ProjectReference Include="..\SessionBookingService.Infrastructure\SessionBookingService.Infrastructure.csproj"/>
-        <ProjectReference Include="../../../Analyzers/Analyzers.csproj"
+        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"
                           PrivateAssets="all"/>
-        <ProjectReference Include="../../../Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
                           OutputItemType="Analyzer"
                           ReferenceOutputAssembly="false"
                           PrivateAssets="all" />
