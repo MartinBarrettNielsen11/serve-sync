@@ -15,30 +15,51 @@ namespace Analyzers.Tests;
 public sealed class SealedClassAnalyzerTests
 {
     [Fact]
-    public async Task ConcreteClass_ShouldProduceDiagnostic()
+    public async Task Success()
     {
-        const string testCode = $$"""
+        const string source = $$"""
                                   using System;
 
-                                  public class MyClass
+                                  public class SUT
                                   {
                                   }
                                   """;
 
-        DiagnosticResult expected = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(3, 14)
-            .WithArguments("MyClass");
+        DiagnosticResult expected = VerifyAnalyzer.Diagnostic().WithLocation(3, 14).WithArguments("SUT");
 
-        await VerifyAnalyzer.VerifyAnalyzerAsync(
-            source: testCode,
-            expected: expected);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source, expected);
     }
 
     [Fact]
-    public async Task ClassWithDerivedClass_ShouldNotProduceDiagnostic()
+    public async Task TwoClasses_ShouldReportDiagnosticForBothClasses()
     {
-        const string testCode = """
+        const string source = """
+                                public class FirstClass
+                                {
+                                }
+
+                                public class SecondClass
+                                {
+                                }
+                                """;
+
+        DiagnosticResult firstDiagnostic = VerifyAnalyzer
+            .Diagnostic()
+            .WithLocation(1, 14)
+            .WithArguments("FirstClass");
+
+        DiagnosticResult secondDiagnostic = VerifyAnalyzer
+            .Diagnostic()
+            .WithLocation(5, 14)
+            .WithArguments("SecondClass");
+
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source, expected: [firstDiagnostic, secondDiagnostic]);
+    }
+
+    [Fact]
+    public async Task When_ClassIsDerived_Then_NoDiagnosticIsProduced()
+    {
+        const string source = """
                                 public class BaseClass
                                 {
                                 }
@@ -48,77 +69,66 @@ public sealed class SealedClassAnalyzerTests
                                 }
                                 """;
 
-        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
 
     [Fact]
-    public async Task ClassThatCannotOrShouldNotBeSealed_ShouldNotProduceDiagnostic()
+    public async Task When_ClassHasSealedModifier_Then_NoDiagnosticIsReported()
     {
-        const string testCode = $$"""
+        const string source = $$"""
                                   public sealed class MyClass
                                   {
                                   }
                                   """;
-        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
 
     [Fact]
-    public async Task ClassThatCannotOrShouldNotBeSealed_ShouldNotProduceDiagnostic_2()
+    public async Task When_ClassHasAbstractModifier_Then_NoDiagnosticIsReported()
     {
-        const string testCode = $$"""
+        const string source = $$"""
+                                public abstract class MyClass
+                                {
+                                }
+                                """;
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source);
+    }
+
+    [Fact]
+    public async Task When_ClassHasStaticModifier_Then_NoDiagnosticIsProduced()
+    {
+        const string source = $$"""
                                   public static class MyClass
                                   {
                                   }
                                   """;
-        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
 
-    [Fact]
-#pragma warning disable S4144
-    public async Task ClassThatCannotOrShouldNotBeSealed_ShouldNotProduceDiagnostic_3()
-#pragma warning restore S4144
-    {
-        const string testCode = $$"""
-                                  public static class MyClass
-                                  {
-                                  }
-                                  """;
-        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
-    }
 
     [Fact]
-    public async Task MultipleConcreteClasses_ShouldProduceMultipleDiagnostics()
+    public async Task When_MultipleCandidatesExistInOneFile_Then_MultipleDiagnosticsAreReported()
     {
-        const string testCode = $$"""
-                                  public class FirstClass
+        const string source = $$"""
+                                  public class SUT1
                                   {
                                   }
 
-                                  internal class SecondClass
+                                  internal class SUT2
                                   {
                                   }
                                   """;
 
-        DiagnosticResult firstDiagnostic = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(1, 14)
-            .WithArguments("FirstClass");
+        DiagnosticResult firstDiagnostic = VerifyAnalyzer.Diagnostic().WithLocation(1, 14).WithArguments("SUT1");
+        DiagnosticResult secondDiagnostic = VerifyAnalyzer.Diagnostic().WithLocation(5, 16).WithArguments("SUT2");
 
-        DiagnosticResult secondDiagnostic = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(5, 16)
-            .WithArguments("SecondClass");
-
-        await VerifyAnalyzer.VerifyAnalyzerAsync(
-            testCode,
-            firstDiagnostic,
-            secondDiagnostic);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source, expected: [firstDiagnostic, secondDiagnostic]);
     }
 
     [Fact]
-    public async Task ConcreteClass_CodeFixShouldAddSealedModifier()
+    public async Task When_ApplyingCodeFix_Then_SealedModifierIsAdded()
     {
-        const string testCode = $$"""
+        const string source = $$"""
                                   using System;
 
                                   public class MyClass
@@ -141,7 +151,7 @@ public sealed class SealedClassAnalyzerTests
 
         VerifyCodeFix test = new()
         {
-            TestCode = testCode,
+            TestCode = source,
             FixedCode = fixedCode
         };
 
@@ -151,9 +161,9 @@ public sealed class SealedClassAnalyzerTests
     }
 
     [Fact]
-    public async Task InternalClass_CodeFixShouldPreserveExistingModifier()
+    public async Task When_ApplyingCodeFix_Then_ExistingModifierIsKept()
     {
-        const string testCode = $$"""
+        const string source = $$"""
                                   internal class MyClass
                                   {
                                   }
@@ -172,7 +182,7 @@ public sealed class SealedClassAnalyzerTests
 
         VerifyCodeFix test = new()
         {
-            TestCode = testCode,
+            TestCode = source,
             FixedCode = fixedCode
         };
 
@@ -182,9 +192,9 @@ public sealed class SealedClassAnalyzerTests
     }
 
     [Fact]
-    public async Task ClassWithMembers_CodeFixShouldOnlyChangeClassDeclaration()
+    public async Task When_ApplyingCodeFix_Then_ClassMembersAreKeptTheSame()
     {
-        const string testCode = $$"""
+        const string source = $$"""
                                   public class MyClass
                                   {
                                       public string Name { get; set; } = string.Empty;
@@ -213,7 +223,7 @@ public sealed class SealedClassAnalyzerTests
 
         VerifyCodeFix test = new()
         {
-            TestCode = testCode,
+            TestCode = source,
             FixedCode = fixedCode
         };
 

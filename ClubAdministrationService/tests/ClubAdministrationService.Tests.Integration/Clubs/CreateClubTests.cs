@@ -10,7 +10,7 @@ using Xunit;
 
 namespace ClubAdministrationService.Tests.Integration.Clubs;
 
-public sealed class CreateCourtTests(ApiTestFixture fixture) : BaseApiTest(fixture), IClassFixture<ApiTestFixture>
+public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixture), IClassFixture<ApiTestFixture>
 {
 	[Fact]
 	public async Task Create_Club()

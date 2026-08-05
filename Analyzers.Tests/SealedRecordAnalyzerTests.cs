@@ -15,9 +15,9 @@ namespace Analyzers.Tests;
 public sealed class SealedRecordAnalyzerTests
 {
     [Fact]
-    public async Task ConcreteRecord_ShouldProduceDiagnostic()
+    public async Task Success()
     {
-        const string testCode = """
+        const string source = """
                                 public record MyRecord
                                 {
                                 }
@@ -29,50 +29,50 @@ public sealed class SealedRecordAnalyzerTests
             .WithArguments("MyRecord");
 
         await VerifyAnalyzer.VerifyAnalyzerAsync(
-            testCode,
+            source,
             expected);
     }
 
     [Fact]
-    public async Task SealedRecord_ShouldNotProduceDiagnostic()
+    public async Task When_RecordHasSealedModifier_Then_NoDiagnosticIsProduced()
     {
-        const string testCode = """
-                                public sealed record MyRecord
-                                {
-                                }
-                                """;
+        const string source = """
+                              public sealed record MyRecord
+                              {
+                              }
+                              """;
 
-        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
 
     [Fact]
-    public async Task AbstractRecord_ShouldNotProduceDiagnostic()
+    public async Task When_RecordHasAbstractModifier_Then_NoDiagnosticIsReported()
     {
-        const string testCode = """
+        const string source = """
                                 public abstract record MyRecord
                                 {
                                 }
                                 """;
 
-        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
 
     [Fact]
-    public async Task RecordStruct_ShouldNotProduceDiagnostic()
+    public async Task When_RecordHasStructModifier_Then_NoDiagnosticIsReported()
     {
-        const string testCode = """
+        const string source = """
                                 public record struct MyRecord
                                 {
                                 }
                                 """;
 
-        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
 
     [Fact]
-    public async Task RecordWithDerivedRecord_ShouldNotProduceDiagnostic()
+    public async Task When_RecordIsDerived_Then_NoDiagnosticIsReported()
     {
-        const string testCode = """
+        const string source = """
                                 public record BaseRecord
                                 {
                                 }
@@ -82,61 +82,49 @@ public sealed class SealedRecordAnalyzerTests
                                 }
                                 """;
 
-        await VerifyAnalyzer.VerifyAnalyzerAsync(testCode);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source);
     }
 
     [Fact]
-    public async Task MultipleConcreteRecords_ShouldProduceMultipleDiagnostics()
+    public async Task When_MultipleCandidatesExistInOneFile_Then_MultipleDiagnosticsAreReported()
     {
-        const string testCode = """
-                                public record FirstRecord
-                                {
-                                }
+        const string source = """
+                              public record SUT1
+                              {
+                              }
 
-                                internal record SecondRecord
-                                {
-                                }
-                                """;
+                              public record SUT2
+                              {
+                              }
+                              """;
 
-        DiagnosticResult firstDiagnostic = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(1, 15)
-            .WithArguments("FirstRecord");
+        DiagnosticResult firstDiagnostic = VerifyAnalyzer.Diagnostic().WithLocation(1, 15).WithArguments("SUT1");
+        DiagnosticResult secondDiagnostic = VerifyAnalyzer.Diagnostic().WithLocation(5, 15).WithArguments("SUT2");
 
-        DiagnosticResult secondDiagnostic = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(5, 17)
-            .WithArguments("SecondRecord");
-
-        await VerifyAnalyzer.VerifyAnalyzerAsync(
-            testCode,
-            firstDiagnostic,
-            secondDiagnostic);
+        await VerifyAnalyzer.VerifyAnalyzerAsync(source, expected: [firstDiagnostic, secondDiagnostic]);
     }
+
 
     [Fact]
     public async Task ConcreteRecord_CodeFixShouldAddSealedModifier()
     {
-        const string testCode = """
-                                public record MyRecord
+        const string source = """
+                                public record SUT
                                 {
                                 }
                                 """;
 
         const string fixedCode = """
-                                 public sealed record MyRecord
+                                 public sealed record SUT
                                  {
                                  }
                                  """;
 
-        DiagnosticResult expected = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(1, 15)
-            .WithArguments("MyRecord");
+        DiagnosticResult expected = VerifyAnalyzer.Diagnostic().WithLocation(1, 15).WithArguments("SUT");
 
         VerifyCodeFix test = new()
         {
-            TestCode = testCode,
+            TestCode = source,
             FixedCode = fixedCode
         };
 
@@ -148,7 +136,7 @@ public sealed class SealedRecordAnalyzerTests
     [Fact]
     public async Task InternalRecord_CodeFixShouldPreserveExistingModifier()
     {
-        const string testCode = """
+        const string source = """
                                 internal record MyRecord
                                 {
                                 }
@@ -167,7 +155,7 @@ public sealed class SealedRecordAnalyzerTests
 
         VerifyCodeFix test = new()
         {
-            TestCode = testCode,
+            TestCode = source,
             FixedCode = fixedCode
         };
 
@@ -179,7 +167,7 @@ public sealed class SealedRecordAnalyzerTests
     [Fact]
     public async Task RecordWithMembers_CodeFixShouldOnlyChangeDeclaration()
     {
-        const string testCode = """
+        const string source = """
                                 public record MyRecord
                                 {
                                     public string Name { get; init; } = string.Empty;
@@ -201,14 +189,11 @@ public sealed class SealedRecordAnalyzerTests
                                  }
                                  """;
 
-        DiagnosticResult expected = VerifyAnalyzer
-            .Diagnostic()
-            .WithLocation(1, 15)
-            .WithArguments("MyRecord");
+        DiagnosticResult expected = VerifyAnalyzer.Diagnostic().WithLocation(1, 15).WithArguments("MyRecord");
 
         VerifyCodeFix test = new()
         {
-            TestCode = testCode,
+            TestCode = source,
             FixedCode = fixedCode
         };
 

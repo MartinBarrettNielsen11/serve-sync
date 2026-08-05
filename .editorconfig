@@ -60,6 +60,9 @@ dotnet_style_prefer_is_null_check_over_reference_equality_method = true:error
 
 dotnet_diagnostic.IDE0045.severity = suggestion
 
+
+dotnet_diagnostic.S3878.severity = none
+
 [*.{cs,vb}]
 dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
 dotnet_style_prefer_simplified_interpolation = true:suggestion

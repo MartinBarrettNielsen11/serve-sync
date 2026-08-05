@@ -10,6 +10,8 @@ public abstract class BaseIntegrationTest
 	private readonly IServiceScope _scope;
 	internal readonly ClubDbContext InitialDbContext;
 
+    protected ApiTestFixture Fixture { get; }
+
 	protected BaseIntegrationTest(ApiTestFixture fixture)
 	{
 		Fixture = fixture;
@@ -24,8 +26,6 @@ public abstract class BaseIntegrationTest
 
         ResetLoggingStorage();
 	}
-
-	protected ApiTestFixture Fixture { get; }
 
 	internal ClubDbContext GetDbContext()
 	{
