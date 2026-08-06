@@ -27,6 +27,7 @@
         <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure"/>
         <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit"/>
         <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
+        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Architecture"/>
         <InternalsVisibleTo Include="ClubAdministrationService.Tests.Data"/>
     </ItemGroup>
 </Project>
