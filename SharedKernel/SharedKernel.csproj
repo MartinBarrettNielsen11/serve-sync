@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <RootNamespace>SharedKernel</RootNamespace>
-</PropertyGroup>
-<ItemGroup>
-    <PackageReference Include="Mediator.Abstractions"/>
-    <ProjectReference Include="../Analyzers/Analyzers/Analyzers.csproj"
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false"
-                      PrivateAssets="all"/>
-    <ProjectReference Include="../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false"
-                      PrivateAssets="all" />
-</ItemGroup>
+    <PropertyGroup>
+        <RootNamespace>SharedKernel</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Mediator.Abstractions"/>
+        <ProjectReference Include="../Analyzers/Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+        <ProjectReference Include="../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
 </Project>

@@ -6,22 +6,24 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Players.Queries.ListPlayerSessions;
 
-internal sealed class ListPlayersSessionsQueryHandler(IPlayersRepository playersRepository,
-													ISessionsRepository sessionsRepository)
+internal sealed class ListPlayersSessionsQueryHandler(
+	IPlayersRepository playersRepository,
+	ISessionsRepository sessionsRepository)
 	: IRequestHandler<ListPlayersSessionsQuery, Result<List<Session>>>
 {
-	public async ValueTask<Result<List<Session>>> Handle(ListPlayersSessionsQuery query, CancellationToken cancellationToken)
+	public async ValueTask<Result<List<Session>>> Handle(ListPlayersSessionsQuery query,
+		CancellationToken cancellationToken)
 	{
 		Player? participant = await playersRepository.GetByIdAsync(query.PlayerId, cancellationToken);
 
 		if (participant is null)
 		{
-			return Result.Failure<List<Session>>(Error.NotFound(code: "PlayerNotFound", description: "Player not found"));
+			return Result.Failure<List<Session>>(Error.NotFound("PlayerNotFound", "Player not found"));
 		}
 
-		List<Session> result = await sessionsRepository.ListByIds(sessionIds: participant.SessionIds,
-																  startDateTime: query.StartDateTime,
-																  endDateTime: query.EndDateTime);
+		List<Session> result = await sessionsRepository.ListByIds(participant.SessionIds,
+			query.StartDateTime,
+			query.EndDateTime);
 
 		return Result.Success<List<Session>>(result);
 	}

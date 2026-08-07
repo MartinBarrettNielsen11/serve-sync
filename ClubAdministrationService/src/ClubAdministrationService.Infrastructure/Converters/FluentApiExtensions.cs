@@ -7,7 +7,7 @@ public static class FluentApiExtensions
 	public static PropertyBuilder<T> HasListOfIdsConverter<T>(this PropertyBuilder<T> propertyBuilder)
 	{
 		return propertyBuilder.HasConversion(
-			converter: new ListOfIdsConverter(),
-			valueComparer: new ListOfIdsComparer());
+			new ListOfIdsConverter(),
+			new ListOfIdsComparer());
 	}
 }

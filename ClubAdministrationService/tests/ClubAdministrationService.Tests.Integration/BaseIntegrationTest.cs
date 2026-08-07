@@ -7,10 +7,8 @@ namespace ClubAdministrationService.Tests.Integration;
 
 public abstract class BaseIntegrationTest
 {
-	private readonly IServiceScope _scope;
 	internal readonly ClubDbContext InitialDbContext;
-
-    protected ApiTestFixture Fixture { get; }
+	private readonly IServiceScope _scope;
 
 	protected BaseIntegrationTest(ApiTestFixture fixture)
 	{
@@ -20,12 +18,14 @@ public abstract class BaseIntegrationTest
 
 		// remove this - and apply in composition root at some later day
 		if (InitialDbContext.Database.GetPendingMigrations().Any())
-        {
-            InitialDbContext.Database.Migrate();
-        }
+		{
+			InitialDbContext.Database.Migrate();
+		}
 
-        ResetLoggingStorage();
+		ResetLoggingStorage();
 	}
+
+	protected ApiTestFixture Fixture { get; }
 
 	internal ClubDbContext GetDbContext()
 	{

@@ -36,14 +36,14 @@ internal sealed class OutboxWriterEventHandler(UserDbContext userDbContext)
 		await AddOutboxIntegrationEventAsync(integrationEvent);
 	}
 
-	# pragma warning disable S1172
+# pragma warning disable S1172
 	private async Task AddOutboxIntegrationEventAsync(IIntegrationEvent integrationEvent)
-	# pragma warning restore S1172
+# pragma warning restore S1172
 	{
 		// Add interaction with dbContext for adding OutboxIntegrationEvents entry
 		await userDbContext.OutboxIntegrationEvents.AddAsync(new OutboxIntegrationEvent(
-			EventName: integrationEvent.GetType().Name,
-			EventContent: JsonSerializer.Serialize(integrationEvent)));
+			integrationEvent.GetType().Name,
+			JsonSerializer.Serialize(integrationEvent)));
 
 		await userDbContext.SaveChangesAsync();
 	}

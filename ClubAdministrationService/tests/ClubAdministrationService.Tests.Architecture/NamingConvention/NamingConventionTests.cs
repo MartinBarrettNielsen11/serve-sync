@@ -4,5 +4,4 @@ namespace ClubAdministrationService.Tests.Architecture.NamingConvention;
 public sealed class NamingConventionTests
 #pragma warning restore S2094
 {
-
 }

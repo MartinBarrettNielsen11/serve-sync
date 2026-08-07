@@ -23,11 +23,11 @@ internal sealed class UserDbContext(DbContextOptions<UserDbContext> options, IHt
 	public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
 	{
 		if (httpContextAccessor.HttpContext is null)
-        {
-            return await base.SaveChangesAsync(cancellationToken);
-        }
+		{
+			return await base.SaveChangesAsync(cancellationToken);
+		}
 
-        List<IDomainEvent> domainEvents = ChangeTracker.Entries<RootAggregate>()
+		List<IDomainEvent> domainEvents = ChangeTracker.Entries<RootAggregate>()
 			.Select(entry => entry.Entity.PopDomainEvents())
 			.SelectMany(x => x)
 			.ToList();
@@ -47,7 +47,7 @@ internal sealed class UserDbContext(DbContextOptions<UserDbContext> options, IHt
 			domainEventsQueue = new Queue<IDomainEvent>();
 		}
 
-        domainEvents.ForEach(domainEventsQueue.Enqueue);
+		domainEvents.ForEach(domainEventsQueue.Enqueue);
 		httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
 
 		return result;

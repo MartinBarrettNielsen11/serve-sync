@@ -50,11 +50,11 @@ public sealed class Schedule : Entity
 		}
 
 		if (timeSlots is not null && timeSlots.Exists(ts => ts.IsOverlappingWith(time)))
-        {
-            return Result.Failure<bool>(Error.Failure("no good", "dunno"));
-        }
+		{
+			return Result.Failure<bool>(Error.Failure("no good", "dunno"));
+		}
 
-        timeSlots!.Add(time);
+		timeSlots!.Add(time);
 
 		return Result.Success(true);
 	}
@@ -62,10 +62,10 @@ public sealed class Schedule : Entity
 	public Result<bool> RemoveBooking(DateOnly date, TimeSlot time)
 	{
 		if (!_calendar.TryGetValue(date, out List<TimeSlot>? timeSlots) || !timeSlots.Contains(time))
-        {
-            return Result.Failure<bool>(Error.NotFound("", ""));
-        }
+		{
+			return Result.Failure<bool>(Error.NotFound("", ""));
+		}
 
-        return Result.Success(true);
+		return Result.Success(true);
 	}
 }

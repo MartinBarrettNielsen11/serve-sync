@@ -13,11 +13,11 @@ public sealed class TimeSlot(TimeOnly start, TimeOnly end) : ValueObject
 		if (start.Date != end.Date || start >= end)
 		{
 			// Add Validation Err type and return that instead
-			return Result.Failure<TimeSlot>(Error.Failure(code: "ValidationFailure", description: "ValidationFailure"));
+			return Result.Failure<TimeSlot>(Error.Failure("ValidationFailure", "ValidationFailure"));
 		}
 
-		return new TimeSlot(start: TimeOnly.FromDateTime(start),
-							end: TimeOnly.FromDateTime(end));
+		return new TimeSlot(TimeOnly.FromDateTime(start),
+			TimeOnly.FromDateTime(end));
 	}
 
 	public override IEnumerable<object?> GetEqualityComponents()
@@ -32,6 +32,7 @@ public sealed class TimeSlot(TimeOnly start, TimeOnly end) : ValueObject
 		{
 			return false;
 		}
+
 		if (other.Start >= End)
 		{
 			return false;

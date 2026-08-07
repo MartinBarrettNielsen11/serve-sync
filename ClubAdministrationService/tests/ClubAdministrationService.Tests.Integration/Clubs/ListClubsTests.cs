@@ -6,14 +6,10 @@ using Xunit;
 namespace ClubAdministrationService.Tests.Integration.Clubs;
 
 // note: you need to add a some abstraction that includes setting up a database, a fake logger, and some InitialDbContext, whcih can be worked with in the arrange step.
-public class ListClubsTests : IClassFixture<WebApplicationFactory<IApiMarker>>
+public class ListClubsTests(WebApplicationFactory<IApiMarker> appFactory)
+	: IClassFixture<WebApplicationFactory<IApiMarker>>
 {
-	private readonly HttpClient _httpClient;
-
-	public ListClubsTests(WebApplicationFactory<IApiMarker> appFactory)
-	{
-		_httpClient = appFactory.CreateClient();
-	}
+	private readonly HttpClient _httpClient = appFactory.CreateClient();
 
 	[Fact]
 	public async Task ListClubs_happy_path()

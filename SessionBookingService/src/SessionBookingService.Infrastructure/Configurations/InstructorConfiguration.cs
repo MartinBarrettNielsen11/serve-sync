@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SessionBookingService.Domain.Common;
 using SessionBookingService.Domain.InstructorAggregate;
 using SessionBookingService.Infrastructure.Converters;
-using SessionBookingService.Domain.Common;
 
 namespace SessionBookingService.Infrastructure.Configurations;
 

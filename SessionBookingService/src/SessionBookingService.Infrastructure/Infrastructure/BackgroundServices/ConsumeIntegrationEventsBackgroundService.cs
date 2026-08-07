@@ -1,6 +1,5 @@
-
-
 // in future, you need to upgrade the RabbitMQ client - and change the various method calls to their new way of doing things.
+
 #pragma warning disable S3261
 namespace SessionBookingService.Infrastructure.Infrastructure.BackgroundServices;
 #pragma warning restore S3261

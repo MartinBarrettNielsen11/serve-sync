@@ -18,12 +18,12 @@ public sealed class CreateCourt : IEndpoint
 				{
 					if (!Domain.SubscriptionAggregate.SubscriptionType.TryFromName(request.SubscriptionType.ToString(),
 							out Domain.SubscriptionAggregate.SubscriptionType? subscriptionType))
-                    {
-                        return Results.Problem("Invalid subscription type",
-                            statusCode: StatusCodes.Status400BadRequest);
-                    }
+					{
+						return Results.Problem("Invalid subscription type",
+							statusCode: StatusCodes.Status400BadRequest);
+					}
 
-                    CreateSubscriptionCommand command = new(subscriptionType, request.AdminId);
+					CreateSubscriptionCommand command = new(subscriptionType, request.AdminId);
 
 					Result<Domain.SubscriptionAggregate.Subscription> createSubscriptionResult =
 						await sender.Send(command, cancellationToken);

@@ -25,7 +25,7 @@ public sealed class CancelBooking : IEndpoint
 
 					return response;
 				})
-            .WithTags(Tags.Players)
+			.WithTags(Tags.Players)
 			.WithSummary("Cancel booking")
 			.WithDescription("Cancel booking for a session for a player");
 	}

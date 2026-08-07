@@ -4,7 +4,6 @@ namespace ClubAdministrationService.Tests.Architecture.Colocation;
 public sealed class ColocationTests
 #pragma warning restore S2094
 {
-
 }
 
 // https://milanjovanovic.tech/blog/5-architecture-tests-you-should-add-to-your-dotnet-projects

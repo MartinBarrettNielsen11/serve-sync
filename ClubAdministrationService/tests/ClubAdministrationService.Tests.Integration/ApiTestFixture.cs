@@ -20,15 +20,21 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 		.WithEnvironment("POSTGRES_USER", "postgres")
 		.WithEnvironment("POSTGRES_PASSWORD", "postgres")
 		.WithEnvironment("POSTGRES_DB", "postgres")
-		.WithPortBinding(5432, assignRandomHostPort: true)
+		.WithPortBinding(5432, true)
 		//.WithWaitStrategy(Wait.ForUnixContainer())
 		.Build();
 
 	private string ConnectionString => _dbContainer.GetConnectionString();
 
-	public async Task InitializeAsync() => await _dbContainer.StartAsync();
+	public async Task InitializeAsync()
+	{
+		await _dbContainer.StartAsync();
+	}
 
-	public new async Task DisposeAsync() => await _dbContainer.DisposeAsync();
+	public new async Task DisposeAsync()
+	{
+		await _dbContainer.DisposeAsync();
+	}
 
 	protected override void ConfigureWebHost(IWebHostBuilder builder)
 	{
@@ -61,6 +67,6 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 			.UseNpgsql(ConnectionString)
 			.Options;
 
-		return new ClubDbContext(options: options, httpContextAccessor: new HttpContextAccessor(), publisher: null!);
+		return new ClubDbContext(options, new HttpContextAccessor(), null!);
 	}
 }

@@ -31,33 +31,33 @@ builder.Services
 //.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddApiVersioning(options =>
-    {
-        options.DefaultApiVersion = new ApiVersion(1);
-        options.ReportApiVersions = true;
-        options.AssumeDefaultVersionWhenUnspecified = true;
-        options.ApiVersionReader = ApiVersionReader.Combine(
-            new UrlSegmentApiVersionReader(),
-            new HeaderApiVersionReader("X-Api-Version"));
-    })
-    .AddApiExplorer(options =>
-    {
-        options.GroupNameFormat = "'v'V";
-        options.SubstituteApiVersionInUrl = true;
-    });
+	{
+		options.DefaultApiVersion = new ApiVersion(1);
+		options.ReportApiVersions = true;
+		options.AssumeDefaultVersionWhenUnspecified = true;
+		options.ApiVersionReader = ApiVersionReader.Combine(
+			new UrlSegmentApiVersionReader(),
+			new HeaderApiVersionReader("X-Api-Version"));
+	})
+	.AddApiExplorer(options =>
+	{
+		options.GroupNameFormat = "'v'V";
+		options.SubstituteApiVersionInUrl = true;
+	});
 
 builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 WebApplication app = builder.Build();
 
 ApiVersionSet apiVersionSet = app.NewApiVersionSet()
-    .HasApiVersion(new ApiVersion(1))
-    .HasApiVersion(new ApiVersion(2))
-    .ReportApiVersions()
-    .Build();
+	.HasApiVersion(new ApiVersion(1))
+	.HasApiVersion(new ApiVersion(2))
+	.ReportApiVersions()
+	.Build();
 
 RouteGroupBuilder versionedGroup = app
-    .MapGroup("api/v{version:apiVersion}")
-    .WithApiVersionSet(apiVersionSet);
+	.MapGroup("api/v{version:apiVersion}")
+	.WithApiVersionSet(apiVersionSet);
 
 app.MapEndpoints(versionedGroup);
 

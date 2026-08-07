@@ -22,9 +22,10 @@ public sealed class CreateCourt : IEndpoint
 					Result<Court> createCourtResult = await sender.Send(command, cancellationToken);
 
 					IResult result = createCourtResult.Match(
-						r => TypedResults.CreatedAtRoute(routeName: "GetCourt", // this is not right - you dont have that endpoint
-														 routeValues: new { clubId, courtId = r.Id },
-														 value: new CourtResponse(r.Id, r.Name)),
+						r => TypedResults.CreatedAtRoute(
+							routeName: "GetCourt", // this is not right - you dont have that endpoint
+							routeValues: new { clubId, courtId = r.Id },
+							value: new CourtResponse(r.Id, r.Name)),
 						err => ProblemDetailsMapper.Problem([err.Error]));
 
 					return result;

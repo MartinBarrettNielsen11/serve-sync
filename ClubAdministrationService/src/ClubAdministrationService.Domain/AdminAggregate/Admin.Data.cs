@@ -7,11 +7,11 @@ internal sealed partial class Admin
 	internal void SetSubscription(Subscription subscription)
 	{
 		if (SubscriptionId is not null)
-        {
-            throw new InvalidOperationException();
-        }
+		{
+			throw new InvalidOperationException();
+		}
 
-        SubscriptionId = subscription.Id;
+		SubscriptionId = subscription.Id;
 
 		// add domain event
 	}

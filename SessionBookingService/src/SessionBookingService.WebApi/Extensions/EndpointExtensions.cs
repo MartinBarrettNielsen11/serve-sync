@@ -1,12 +1,6 @@
 using System.Reflection;
-using Asp.Versioning;
-using Asp.Versioning.Builder;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SessionBookingService.WebApi.Endpoints;
-using SessionBookingService.WebApi.Endpoints.Bookings;
-using SessionBookingService.WebApi.Endpoints.Courts;
-using SessionBookingService.WebApi.Endpoints.Players;
-using SessionBookingService.WebApi.Endpoints.Sessions;
 
 namespace SessionBookingService.WebApi.Extensions;
 
@@ -23,18 +17,18 @@ internal static class EndpointExtensions
 		services.TryAddEnumerable(serviceDescriptors);
 	}
 
-    public static void MapEndpoints(this WebApplication app,
-        RouteGroupBuilder? routeGroupBuilder = null)
-    {
-        IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
+	public static void MapEndpoints(this WebApplication app,
+		RouteGroupBuilder? routeGroupBuilder = null)
+	{
+		IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
 
-        IEndpointRouteBuilder builder = routeGroupBuilder is null ? app : routeGroupBuilder;
+		IEndpointRouteBuilder builder = routeGroupBuilder is null ? app : routeGroupBuilder;
 
-        foreach (IEndpoint endpoint in endpoints)
-        {
-            endpoint.MapEndpoint(builder);
-        }
-    }
+		foreach (IEndpoint endpoint in endpoints)
+		{
+			endpoint.MapEndpoint(builder);
+		}
+	}
 
 	public static RouteHandlerBuilder HasPermission(this RouteHandlerBuilder app, string permission)
 	{

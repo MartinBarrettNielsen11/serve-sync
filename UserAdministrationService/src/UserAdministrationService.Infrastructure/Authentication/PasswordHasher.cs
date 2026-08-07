@@ -8,9 +8,6 @@ internal sealed partial class PasswordHasher : IPasswordHasher
 {
 	private static readonly Regex PasswordRegex = StrongPasswordRegex();
 
-    [GeneratedRegex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", RegexOptions.Compiled)]
-    private static partial Regex StrongPasswordRegex();
-
 	public Result<string> HashPassword(string password)
 	{
 		return !PasswordRegex.IsMatch(password)
@@ -22,4 +19,7 @@ internal sealed partial class PasswordHasher : IPasswordHasher
 	{
 		return BCrypt.Net.BCrypt.EnhancedVerify(password, hash);
 	}
+
+	[GeneratedRegex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$", RegexOptions.Compiled)]
+	private static partial Regex StrongPasswordRegex();
 }

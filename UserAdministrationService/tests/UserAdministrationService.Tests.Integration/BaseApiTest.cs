@@ -1,13 +1,6 @@
-using UserAdministrationService.Tests.Integration;
-
 namespace UserAdministrationService.Tests.Integration;
 
-public abstract class BaseApiTest : BaseIntegrationTest
+public abstract class BaseApiTest(ApiTestFixture fixture) : BaseIntegrationTest(fixture)
 {
-	protected HttpClient Client { get; }
-
-	protected BaseApiTest(ApiTestFixture fixture) : base(fixture)
-	{
-		Client = fixture.CreateClient();
-	}
+	protected HttpClient Client { get; } = fixture.CreateClient();
 }

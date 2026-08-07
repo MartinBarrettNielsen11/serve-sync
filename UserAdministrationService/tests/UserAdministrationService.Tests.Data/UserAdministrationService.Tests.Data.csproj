@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <RootNamespace>UserAdministrationService.Tests.Data</RootNamespace>
-</PropertyGroup>
+    <PropertyGroup>
+        <RootNamespace>UserAdministrationService.Tests.Data</RootNamespace>
+    </PropertyGroup>
 </Project>

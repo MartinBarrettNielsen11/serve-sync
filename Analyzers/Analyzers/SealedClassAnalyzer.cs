@@ -9,129 +9,129 @@ namespace Analyzers;
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 internal sealed class SealedClassAnalyzer : DiagnosticAnalyzer
 {
-    internal const string RuleId = "RULE0001";
+	internal const string RuleId = "RULE0001";
 
-    private static readonly DiagnosticDescriptor Rule = new(
-        RuleId,
-        title: "Class can be sealed",
-        messageFormat: "Class '{0}' can be sealed",
-        category: "Design",
-        defaultSeverity: DiagnosticSeverity.Warning,
-        isEnabledByDefault: true);
+	private static readonly DiagnosticDescriptor Rule = new(
+		RuleId,
+		"Class can be sealed",
+		"Class '{0}' can be sealed",
+		"Design",
+		DiagnosticSeverity.Warning,
+		true);
 
-    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
+	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
 
-    public override void Initialize(AnalysisContext context)
-    {
-        context.EnableConcurrentExecution();
-        context.ConfigureGeneratedCodeAnalysis(
-            GeneratedCodeAnalysisFlags.None);
+	public override void Initialize(AnalysisContext context)
+	{
+		context.EnableConcurrentExecution();
+		context.ConfigureGeneratedCodeAnalysis(
+			GeneratedCodeAnalysisFlags.None);
 
-        context.RegisterCompilationStartAction(compilationContext =>
-        {
-            Lazy<HashSet<INamedTypeSymbol>> inheritedTypes = new(
-                () => FindInheritedTypes(compilationContext.Compilation));
+		context.RegisterCompilationStartAction(compilationContext =>
+		{
+			Lazy<HashSet<INamedTypeSymbol>> inheritedTypes =
+				new(() => FindInheritedTypes(compilationContext.Compilation));
 
-            compilationContext.RegisterSyntaxNodeAction(
-                action: syntaxContext => AnalyzeClass(
-                    syntaxContext,
-                    inheritedTypes.Value),
-                syntaxKinds: SyntaxKind.ClassDeclaration);
-        });
-    }
+			compilationContext.RegisterSyntaxNodeAction(
+				syntaxContext => AnalyzeClass(
+					syntaxContext,
+					inheritedTypes.Value),
+				SyntaxKind.ClassDeclaration);
+		});
+	}
 
-    private static void AnalyzeClass(
-        SyntaxNodeAnalysisContext context,
-        HashSet<INamedTypeSymbol> inheritedTypes)
-    {
-        ClassDeclarationSyntax classSyntax = (ClassDeclarationSyntax)context.Node;
+	private static void AnalyzeClass(
+		SyntaxNodeAnalysisContext context,
+		HashSet<INamedTypeSymbol> inheritedTypes)
+	{
+		ClassDeclarationSyntax classSyntax = (ClassDeclarationSyntax)context.Node;
 
-        INamedTypeSymbol? classSymbol = context.SemanticModel.GetDeclaredSymbol(
-            declarationSyntax: classSyntax, context.CancellationToken);
+		INamedTypeSymbol? classSymbol = context.SemanticModel.GetDeclaredSymbol(
+			classSyntax, context.CancellationToken);
 
-        if (classSymbol is null)
-        {
-            return;
-        }
+		if (classSymbol is null)
+		{
+			return;
+		}
 
-        if (!CanBeSealed(classSymbol, inheritedTypes))
-        {
-            return;
-        }
+		if (!CanBeSealed(classSymbol, inheritedTypes))
+		{
+			return;
+		}
 
-        Diagnostic diagnostic = Diagnostic.Create(
-            Rule,
-            classSyntax.Identifier.GetLocation(),
-            classSymbol.Name);
+		Diagnostic diagnostic = Diagnostic.Create(
+			Rule,
+			classSyntax.Identifier.GetLocation(),
+			classSymbol.Name);
 
-        context.ReportDiagnostic(diagnostic);
-    }
+		context.ReportDiagnostic(diagnostic);
+	}
 
-    private static bool CanBeSealed(
-        INamedTypeSymbol type,
-        HashSet<INamedTypeSymbol> inheritedTypes)
-    {
-        if (type.TypeKind != TypeKind.Class || type.IsRecord)
-        {
-            return false;
-        }
+	private static bool CanBeSealed(
+		INamedTypeSymbol type,
+		HashSet<INamedTypeSymbol> inheritedTypes)
+	{
+		if (type.TypeKind != TypeKind.Class || type.IsRecord)
+		{
+			return false;
+		}
 
-        if (type.IsAbstract || type.IsSealed || type.IsStatic)
-        {
-            return false;
-        }
+		if (type.IsAbstract || type.IsSealed || type.IsStatic)
+		{
+			return false;
+		}
 
-        return !inheritedTypes.Contains(type.OriginalDefinition);
-    }
+		return !inheritedTypes.Contains(type.OriginalDefinition);
+	}
 
-    private static HashSet<INamedTypeSymbol> FindInheritedTypes(
-        Compilation compilation)
-    {
-        List<INamedTypeSymbol> declaredTypes = new();
+	private static HashSet<INamedTypeSymbol> FindInheritedTypes(
+		Compilation compilation)
+	{
+		List<INamedTypeSymbol> declaredTypes = new();
 
-        CollectTypes(compilation.Assembly.GlobalNamespace, declaredTypes);
+		CollectTypes(compilation.Assembly.GlobalNamespace, declaredTypes);
 
-        HashSet<INamedTypeSymbol> inheritedTypes = new(comparer: SymbolEqualityComparer.Default);
+		HashSet<INamedTypeSymbol> inheritedTypes = new(SymbolEqualityComparer.Default);
 
 #pragma warning disable S3267
-        foreach (INamedTypeSymbol type in declaredTypes)
+		foreach (INamedTypeSymbol type in declaredTypes)
 #pragma warning restore S3267
-        {
-            if (type.BaseType is not null)
-            {
-                inheritedTypes.Add(type.BaseType.OriginalDefinition);
-            }
-        }
+		{
+			if (type.BaseType is not null)
+			{
+				inheritedTypes.Add(type.BaseType.OriginalDefinition);
+			}
+		}
 
-        return inheritedTypes;
-    }
+		return inheritedTypes;
+	}
 
-    private static void CollectTypes(
-        INamespaceSymbol namespaceSymbol,
-        List<INamedTypeSymbol> types)
-    {
-        foreach (INamespaceSymbol childNamespace
-                 in namespaceSymbol.GetNamespaceMembers())
-        {
-            CollectTypes(childNamespace, types);
-        }
+	private static void CollectTypes(
+		INamespaceSymbol namespaceSymbol,
+		List<INamedTypeSymbol> types)
+	{
+		foreach (INamespaceSymbol childNamespace
+				in namespaceSymbol.GetNamespaceMembers())
+		{
+			CollectTypes(childNamespace, types);
+		}
 
-        foreach (INamedTypeSymbol type
-                 in namespaceSymbol.GetTypeMembers())
-        {
-            CollectTypeAndNestedTypes(type, types);
-        }
-    }
+		foreach (INamedTypeSymbol type
+				in namespaceSymbol.GetTypeMembers())
+		{
+			CollectTypeAndNestedTypes(type, types);
+		}
+	}
 
-    private static void CollectTypeAndNestedTypes(
-        INamedTypeSymbol type,
-        List<INamedTypeSymbol> types)
-    {
-        types.Add(type);
+	private static void CollectTypeAndNestedTypes(
+		INamedTypeSymbol type,
+		List<INamedTypeSymbol> types)
+	{
+		types.Add(type);
 
-        foreach (INamedTypeSymbol nestedType in type.GetTypeMembers())
-        {
-            CollectTypeAndNestedTypes(nestedType, types);
-        }
-    }
+		foreach (INamedTypeSymbol nestedType in type.GetTypeMembers())
+		{
+			CollectTypeAndNestedTypes(nestedType, types);
+		}
+	}
 }

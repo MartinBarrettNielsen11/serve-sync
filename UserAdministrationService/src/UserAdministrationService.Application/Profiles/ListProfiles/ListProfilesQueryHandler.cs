@@ -14,12 +14,12 @@ internal sealed class ListProfilesQueryHandler(IUsersRepository usersRepository)
 		User? user = await usersRepository.GetByIdAsync(query.UserId, cancellationToken);
 
 		if (user is null)
-        {
-            return Result.Failure<ListProfilesResult>(Error.NotFound(description: "User not found",
-                code: "UserNotFound"));
-        }
+		{
+			return Result.Failure<ListProfilesResult>(Error.NotFound(description: "User not found",
+				code: "UserNotFound"));
+		}
 
-        ListProfilesResult result = new(user.AdminId, user.PlayerId, user.InstructorId);
+		ListProfilesResult result = new(user.AdminId, user.PlayerId, user.InstructorId);
 
 		return result;
 	}

@@ -1,32 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <RootNamespace>SessionBookingService.Infrastructure</RootNamespace>
-    <NoWarn>$(NoWarn);MA0048;IDE0161</NoWarn>
-</PropertyGroup>
-<ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-</ItemGroup>
-<ItemGroup>
-    <PackageReference Include="Mediator.Abstractions"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore"/>
-    <PackageReference Include="RabbitMQ.Client"/>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"/>
-</ItemGroup>
-<ItemGroup>
-    <InternalsVisibleTo Include="SessionBookingService.WebApi"/>
-    <InternalsVisibleTo Include="SessionBookingService.Tests.Integration"/>
-    <InternalsVisibleTo Include="SessionBookingService.Tests.Architecture"/>
-</ItemGroup>
-<ItemGroup>
-    <ProjectReference Include="..\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
-    <ProjectReference Include="..\SessionBookingService.Application\SessionBookingService.Application.csproj"/>
-    <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false"
-                      PrivateAssets="all"/>
-    <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false"
-                      PrivateAssets="all" />
-</ItemGroup>
+    <PropertyGroup>
+        <RootNamespace>SessionBookingService.Infrastructure</RootNamespace>
+        <NoWarn>$(NoWarn);MA0048;IDE0161</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Mediator.Abstractions"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+        <PackageReference Include="RabbitMQ.Client"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"/>
+    </ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="SessionBookingService.WebApi"/>
+        <InternalsVisibleTo Include="SessionBookingService.Tests.Integration"/>
+        <InternalsVisibleTo Include="SessionBookingService.Tests.Architecture"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
+        <ProjectReference Include="..\SessionBookingService.Application\SessionBookingService.Application.csproj"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
 </Project>

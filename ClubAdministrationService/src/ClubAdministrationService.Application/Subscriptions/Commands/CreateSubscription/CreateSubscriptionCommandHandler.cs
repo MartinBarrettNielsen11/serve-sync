@@ -15,10 +15,10 @@ internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsR
 	{
 		Admin? admin = await adminsRepository.GetByIdAsync(command.AdminId, cancellationToken);
 
-        if (admin is null)
-        {
-            return Result.Failure<Subscription>(Error.NotFound("AdminNotFound", "Admin not found"));
-        }
+		if (admin is null)
+		{
+			return Result.Failure<Subscription>(Error.NotFound("AdminNotFound", "Admin not found"));
+		}
 
 		if (admin.SubscriptionId is not null)
 		{

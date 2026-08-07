@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <RootNamespace>UserAdministrationService.Application</RootNamespace>
-</PropertyGroup>
-<ItemGroup>
-    <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
-    <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false"
-                      PrivateAssets="all"/>
-    <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false"
-                      PrivateAssets="all" />
-</ItemGroup>
-<ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore"/>
-    <PackageReference Include="Mediator.Abstractions"/>
-</ItemGroup>
-<ItemGroup>
-    <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
-    <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
-    <InternalsVisibleTo Include="UserAdministrationService.Infrastructure"/>
-    <InternalsVisibleTo Include="UserAdministrationService.Tests.Architecture"/>
-</ItemGroup>
+    <PropertyGroup>
+        <RootNamespace>UserAdministrationService.Application</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+        <PackageReference Include="Mediator.Abstractions"/>
+    </ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Infrastructure"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Tests.Architecture"/>
+    </ItemGroup>
 </Project>

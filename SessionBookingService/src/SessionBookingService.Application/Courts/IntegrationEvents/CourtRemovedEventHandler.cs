@@ -13,8 +13,8 @@ internal sealed class CourtRemovedEventHandler(ICourtsRepository courtsRepositor
 		Court? court = await courtsRepository.GetByIdAsync(notification.CourtId, cancellationToken);
 
 		if (court is not null)
-        {
-            await courtsRepository.DeleteAsync(court, cancellationToken);
-        }
-    }
+		{
+			await courtsRepository.DeleteAsync(court, cancellationToken);
+		}
+	}
 }

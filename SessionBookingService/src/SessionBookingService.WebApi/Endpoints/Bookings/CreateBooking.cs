@@ -26,7 +26,7 @@ public sealed class CreateBooking : IEndpoint
 
 					return response;
 				})
-            .WithTags(Tags.Bookings)
+			.WithTags(Tags.Bookings)
 			.WithSummary("Create booking")
 			.WithDescription("Create booking for a session");
 		//.RequireAuthorization();

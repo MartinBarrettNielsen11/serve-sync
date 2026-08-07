@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <IsTestProject>true</IsTestProject>
-    <RootNamespace>ClubAdministrationService.Tests.Integration</RootNamespace>
-</PropertyGroup>
-<ItemGroup>
-    <PackageReference Include="DotNet.Testcontainers"/>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing"/>
-    <PackageReference Include="Testcontainers"/>
-    <PackageReference Include="Testcontainers.PostgreSql"/>
-    <PackageReference Include="xunit"/>
-    <PackageReference Include="Microsoft.NET.Test.Sdk"/>
-</ItemGroup>
-<ItemGroup>
-    <ProjectReference Include="..\..\src\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj"/>
-    <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
-    <ProjectReference Include="..\ClubAdministrationService.Tests.Data\ClubAdministrationService.Tests.Data.csproj"/>
-</ItemGroup>
-<ItemGroup>
-    <Folder Include="Courts\"/>
-    <Folder Include="Subscriptions\"/>
-</ItemGroup>
+    <PropertyGroup>
+        <IsTestProject>true</IsTestProject>
+        <RootNamespace>ClubAdministrationService.Tests.Integration</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="DotNet.Testcontainers"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing"/>
+        <PackageReference Include="Testcontainers"/>
+        <PackageReference Include="Testcontainers.PostgreSql"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\ClubAdministrationService.WebApi\ClubAdministrationService.WebApi.csproj"/>
+        <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
+        <ProjectReference Include="..\ClubAdministrationService.Tests.Data\ClubAdministrationService.Tests.Data.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Courts\"/>
+        <Folder Include="Subscriptions\"/>
+    </ItemGroup>
 </Project>

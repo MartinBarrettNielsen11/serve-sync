@@ -13,11 +13,11 @@ internal sealed class CreatePlayerProfileCommandHandler(IUsersRepository usersRe
 		User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 
 		if (user is null)
-        {
-            return Result.Failure<Guid>(Error.NotFound("UserNotFound", "User not found"));
-        }
+		{
+			return Result.Failure<Guid>(Error.NotFound("UserNotFound", "User not found"));
+		}
 
-        Result<Guid> createParticipantProfileResult = user.CreatePlayerProfile();
+		Result<Guid> createParticipantProfileResult = user.CreatePlayerProfile();
 
 		await usersRepository.UpdateAsync(user, cancellationToken);
 

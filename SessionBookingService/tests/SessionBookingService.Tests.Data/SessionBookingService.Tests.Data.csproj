@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <RootNamespace>SessionBookingService.Tests.Data</RootNamespace>
-</PropertyGroup>
+    <PropertyGroup>
+        <RootNamespace>SessionBookingService.Tests.Data</RootNamespace>
+    </PropertyGroup>
 </Project>

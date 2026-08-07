@@ -11,11 +11,11 @@ public class Result
 		var hasInvalidErrorState = isSuccess && error != Error.None || !isSuccess && error == Error.None;
 
 		if (hasInvalidErrorState)
-        {
-            throw new ArgumentException("Invalid error", nameof(error));
-        }
+		{
+			throw new ArgumentException("Invalid error", nameof(error));
+		}
 
-        IsSuccess = isSuccess;
+		IsSuccess = isSuccess;
 		Error = error;
 	}
 
@@ -26,22 +26,22 @@ public class Result
 
 	public static Result Success()
 	{
-		return new Result(isSuccess: true, Error.None);
+		return new Result(true, Error.None);
 	}
 
 	public static Result<TValue> Success<TValue>(TValue value)
 	{
-		return new Result<TValue>(value, isSuccess: true, Error.None);
+		return new Result<TValue>(value, true, Error.None);
 	}
 
 	public static Result Failure(Error error)
 	{
-		return new Result(isSuccess: false, error);
+		return new Result(false, error);
 	}
 
 	public static Result<TValue> Failure<TValue>(Error error)
 	{
-		return new Result<TValue>(default, isSuccess: false, error);
+		return new Result<TValue>(default, false, error);
 	}
 }
 
@@ -58,17 +58,17 @@ public sealed class Result<TValue>(TValue? value, bool isSuccess, Error error) :
 	public static implicit operator Result<TValue>(TValue? value)
 	{
 		if (value is null)
-        {
-            return Failure<TValue>(Error.NullValue);
-        }
+		{
+			return Failure<TValue>(Error.NullValue);
+		}
 
-        Result<TValue> success = Success(value);
+		Result<TValue> success = Success(value);
 
 		return success;
 	}
 
 	public Result<TValue> ValidationFailure(Error error)
 	{
-		return new Result<TValue>(default, isSuccess: false, error);
+		return new Result<TValue>(default, false, error);
 	}
 }

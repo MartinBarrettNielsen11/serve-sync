@@ -48,10 +48,10 @@ internal sealed class SessionBookingDbContext(
 	private async Task PublishDomainEvents(List<IDomainEvent> domainEvents)
 	{
 		foreach (IDomainEvent domainEvent in domainEvents)
-        {
-            await publisher.Publish(domainEvent);
-        }
-    }
+		{
+			await publisher.Publish(domainEvent);
+		}
+	}
 
 	private bool IsUserWaitingOnline()
 	{
@@ -60,18 +60,18 @@ internal sealed class SessionBookingDbContext(
 
 	private void AddDomainEventsToOfflineProcessingQueue(List<IDomainEvent> domainEvents)
 	{
-        Queue<IDomainEvent> domainEventsQueue;
-        IDictionary<object, object?> items = httpContextAccessor.HttpContext!.Items;
+		Queue<IDomainEvent> domainEventsQueue;
+		IDictionary<object, object?> items = httpContextAccessor.HttpContext!.Items;
 
-        if (items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
-            value is Queue<IDomainEvent> existingDomainEvents)
-        {
-            domainEventsQueue = existingDomainEvents;
-        }
-        else
-        {
-            domainEventsQueue = new Queue<IDomainEvent>();
-        }
+		if (items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
+			value is Queue<IDomainEvent> existingDomainEvents)
+		{
+			domainEventsQueue = existingDomainEvents;
+		}
+		else
+		{
+			domainEventsQueue = new Queue<IDomainEvent>();
+		}
 
 		domainEvents.ForEach(domainEventsQueue.Enqueue);
 		httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;

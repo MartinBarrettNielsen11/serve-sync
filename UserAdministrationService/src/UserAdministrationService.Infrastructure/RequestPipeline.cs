@@ -5,8 +5,8 @@ namespace UserAdministrationService.Infrastructure;
 
 internal static class RequestPipeline
 {
-    public static void AddInfrastructureMiddleware(this IApplicationBuilder app)
-    {
-        app.UseMiddleware<EventualConsistencyMiddleware>();
-    }
+	public static void AddInfrastructureMiddleware(this IApplicationBuilder app)
+	{
+		app.UseMiddleware<EventualConsistencyMiddleware>();
+	}
 }

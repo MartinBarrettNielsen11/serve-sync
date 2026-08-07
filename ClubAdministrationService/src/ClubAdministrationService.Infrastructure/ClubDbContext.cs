@@ -12,7 +12,7 @@ using SharedKernel;
 namespace ClubAdministrationService.Infrastructure;
 
 internal sealed class ClubDbContext(
-    DbContextOptions<ClubDbContext> options,
+	DbContextOptions<ClubDbContext> options,
 	IHttpContextAccessor httpContextAccessor,
 	IPublisher publisher)
 	: DbContext(options)
@@ -20,7 +20,7 @@ internal sealed class ClubDbContext(
 	public DbSet<Admin> Admins { get; set; } = null!;
 	public DbSet<Subscription> Subscriptions { get; set; } = null!;
 	public DbSet<Club> Clubs { get; set; } = null!;
-    public DbSet<OutboxIntegrationEvent> OutboxIntegrationEvents { get; set; } = null!;
+	public DbSet<OutboxIntegrationEvent> OutboxIntegrationEvents { get; set; } = null!;
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
@@ -36,42 +36,45 @@ internal sealed class ClubDbContext(
 			.SelectMany(x => x)
 			.ToList();
 
-        if (IsUserWaitingOnline())
-        {
-            AddDomainEventsToOfflineProcessingQueue(domainEvents);
-            return await base.SaveChangesAsync(cancellationToken);
-        }
+		if (IsUserWaitingOnline())
+		{
+			AddDomainEventsToOfflineProcessingQueue(domainEvents);
+			return await base.SaveChangesAsync(cancellationToken);
+		}
 
 		await PublishDomainEventsAsync(domainEvents);
 		return await base.SaveChangesAsync(cancellationToken);
 	}
 
-    private bool IsUserWaitingOnline() => httpContextAccessor.HttpContext is not null;
+	private bool IsUserWaitingOnline()
+	{
+		return httpContextAccessor.HttpContext is not null;
+	}
 
-    private async Task PublishDomainEventsAsync(List<IDomainEvent> domainEvents)
-    {
-        foreach (IDomainEvent domainEvent in domainEvents)
-        {
-            await publisher.Publish(domainEvent);
-        }
-    }
+	private async Task PublishDomainEventsAsync(List<IDomainEvent> domainEvents)
+	{
+		foreach (IDomainEvent domainEvent in domainEvents)
+		{
+			await publisher.Publish(domainEvent);
+		}
+	}
 
-    private void AddDomainEventsToOfflineProcessingQueue(List<IDomainEvent> domainEvents)
-    {
-        Queue<IDomainEvent> domainEventsQueue;
-        IDictionary<object, object?> items = httpContextAccessor.HttpContext!.Items;
+	private void AddDomainEventsToOfflineProcessingQueue(List<IDomainEvent> domainEvents)
+	{
+		Queue<IDomainEvent> domainEventsQueue;
+		IDictionary<object, object?> items = httpContextAccessor.HttpContext!.Items;
 
-        if (items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
-            value is Queue<IDomainEvent> existingDomainEvents)
-        {
-            domainEventsQueue = existingDomainEvents;
-        }
-        else
-        {
-            domainEventsQueue = new Queue<IDomainEvent>();
-        }
+		if (items.TryGetValue(EventualConsistencyMiddleware.DomainEventsKey, out var value) &&
+			value is Queue<IDomainEvent> existingDomainEvents)
+		{
+			domainEventsQueue = existingDomainEvents;
+		}
+		else
+		{
+			domainEventsQueue = new Queue<IDomainEvent>();
+		}
 
-        domainEvents.ForEach(domainEventsQueue.Enqueue);
-        httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
-    }
+		domainEvents.ForEach(domainEventsQueue.Enqueue);
+		httpContextAccessor.HttpContext.Items[EventualConsistencyMiddleware.DomainEventsKey] = domainEventsQueue;
+	}
 }

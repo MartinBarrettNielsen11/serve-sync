@@ -7,8 +7,8 @@ namespace ClubAdministrationService.Tests.Architecture;
 
 public abstract class TestBase
 {
-    protected static readonly Assembly DomainAssembly = typeof(Club).Assembly;
-    protected static readonly Assembly ApplicationAssembly = typeof(IClubsRepository).Assembly;
-    protected static readonly Assembly InfrastructureAssembly = typeof(ClubDbContext).Assembly;
-    protected static readonly Assembly PresentationAssembly = typeof(Program).Assembly;
+	protected static readonly Assembly DomainAssembly = typeof(Club).Assembly;
+	protected static readonly Assembly ApplicationAssembly = typeof(IClubsRepository).Assembly;
+	protected static readonly Assembly InfrastructureAssembly = typeof(ClubDbContext).Assembly;
+	protected static readonly Assembly PresentationAssembly = typeof(Program).Assembly;
 }

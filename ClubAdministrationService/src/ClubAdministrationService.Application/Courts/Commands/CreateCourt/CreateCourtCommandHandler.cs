@@ -7,9 +7,10 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Courts.Commands.CreateCourt;
 
-internal sealed class CreateCourtCommandHandler(IClubsRepository clubsRepository,
-												ISubscriptionsRepository subscriptionsRepository)
-												: IRequestHandler<CreateCourtCommand, Result<Court>>
+internal sealed class CreateCourtCommandHandler(
+	IClubsRepository clubsRepository,
+	ISubscriptionsRepository subscriptionsRepository)
+	: IRequestHandler<CreateCourtCommand, Result<Court>>
 {
 	public async ValueTask<Result<Court>> Handle(CreateCourtCommand command, CancellationToken cancellationToken)
 	{
@@ -28,9 +29,9 @@ internal sealed class CreateCourtCommandHandler(IClubsRepository clubsRepository
 				"Subscription not found"));
 		}
 
-		Court court = new(name: command.CourtName,
-						  clubId: club.Id,
-						  maxDailySessions: subscription.GetMaxDailySessionsAllowed());
+		Court court = new(command.CourtName,
+			club.Id,
+			subscription.GetMaxDailySessionsAllowed());
 
 		Result<bool> addClubResult = club.AddCourt(court);
 

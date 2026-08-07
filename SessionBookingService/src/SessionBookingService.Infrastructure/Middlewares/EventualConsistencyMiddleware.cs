@@ -19,14 +19,14 @@ internal sealed class EventualConsistencyMiddleware(RequestDelegate next)
 			{
 				if (context.Items.TryGetValue(DomainEventsKey, out var value) &&
 					value is Queue<IDomainEvent> domainEvents)
-                {
-                    while (domainEvents.TryDequeue(out IDomainEvent? nextEvent))
-                    {
-                        await publisher.Publish(nextEvent, context.RequestAborted);
-                    }
-                }
+				{
+					while (domainEvents.TryDequeue(out IDomainEvent? nextEvent))
+					{
+						await publisher.Publish(nextEvent, context.RequestAborted);
+					}
+				}
 
-                await transaction.CommitAsync(context.RequestAborted);
+				await transaction.CommitAsync(context.RequestAborted);
 			}
 			catch (EventualConsistencyException)
 			{

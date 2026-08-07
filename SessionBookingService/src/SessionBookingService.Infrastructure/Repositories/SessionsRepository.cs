@@ -72,7 +72,6 @@ internal sealed class SessionsRepository(SessionBookingDbContext dbContext) : IS
 	}
 }
 
-
 file static class DbContextSessionExtensions
 {
 	public static IQueryable<Session> WhereBetweenDateAndTimes(this IQueryable<Session> query, DateTime? start,
@@ -89,7 +88,7 @@ file static class DbContextSessionExtensions
 		IQueryable<Session> result = query
 			.AsNoTracking()
 			.Where(session => session.Date >= DateOnly.FromDateTime(start.Value) &&
-							  session.Date <= DateOnly.FromDateTime(end.Value))
+							session.Date <= DateOnly.FromDateTime(end.Value))
 			.Where(session => session.Time.Start >= TimeOnly.FromDateTime(start.Value));
 
 		return result;

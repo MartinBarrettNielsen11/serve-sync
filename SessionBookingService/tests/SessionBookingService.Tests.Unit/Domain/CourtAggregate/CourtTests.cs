@@ -13,7 +13,7 @@ public class CourtTests
 	public void ScheduleSession_WhenMoreThanSubscriptionAllows_ShouldFail()
 	{
 		// Arrange
-		Court court = CourtFactory.Create("yo", 1);
+		Court court = CourtFactory.Create("yo");
 		Session session1 = SessionFactory.CreateSession(id: Guid.NewGuid());
 		Session session2 = SessionFactory.CreateSession(id: Guid.NewGuid());
 

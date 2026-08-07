@@ -20,12 +20,12 @@ internal static class SubscriptionFactory
 		Subscription subscription = Create(subscriptionType, id);
 		Result<bool> result = subscription.AddClub(club);
 		if (result.IsFailure)
-        {
-            throw new InvalidOperationException(
-                $"Failed arranging test data: {result.Error.Description}");
-        }
+		{
+			throw new InvalidOperationException(
+				$"Failed arranging test data: {result.Error.Description}");
+		}
 
-        return subscription;
+		return subscription;
 	}
 
 
@@ -40,11 +40,11 @@ internal static class SubscriptionFactory
 			Result<bool> result = subscription.AddClub(club);
 
 			if (result.IsFailure)
-            {
-                throw new InvalidOperationException(
-                    $"Failed to add club: {club.Id} with error: {result.Error.Description}");
-            }
-        }
+			{
+				throw new InvalidOperationException(
+					$"Failed to add club: {club.Id} with error: {result.Error.Description}");
+			}
+		}
 
 		return subscription;
 	}

@@ -1,4 +1,3 @@
-using SharedKernel;
 using Schedule = SessionBookingService.Domain.Common.Schedule;
 
 namespace SessionBookingService.Domain.CourtsAggregate;

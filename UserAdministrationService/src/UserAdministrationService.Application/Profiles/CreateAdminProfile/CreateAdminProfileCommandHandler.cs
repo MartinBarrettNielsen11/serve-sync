@@ -13,11 +13,11 @@ internal sealed class CreateAdminProfileCommandHandler(IUsersRepository usersRep
 		User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 
 		if (user is null)
-        {
-            return Result.Failure<Guid>(Error.NotFound("UserNotFound", "User not found"));
-        }
+		{
+			return Result.Failure<Guid>(Error.NotFound("UserNotFound", "User not found"));
+		}
 
-        Result<Guid> instructorId = user.CreateInstructorProfile();
+		Result<Guid> instructorId = user.CreateInstructorProfile();
 
 		await usersRepository.UpdateAsync(user, cancellationToken);
 

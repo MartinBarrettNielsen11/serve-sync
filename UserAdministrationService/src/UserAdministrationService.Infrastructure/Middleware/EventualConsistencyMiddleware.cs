@@ -15,31 +15,31 @@ internal sealed class EventualConsistencyMiddleware(RequestDelegate next)
 		IDbContextTransaction transaction = await dbContext.Database.BeginTransactionAsync();
 		context.Response.OnCompleted(async () =>
 		{
-            try
-            {
-                if (context.Items.TryGetValue(DomainEventsKey, out var value) &&
-                    value is Queue<IDomainEvent> domainEvents)
-                {
-                    while (domainEvents.TryDequeue(out IDomainEvent? nextEvent))
-                    {
-                        await publisher.Publish(nextEvent, context.RequestAborted);
-                    }
-                }
+			try
+			{
+				if (context.Items.TryGetValue(DomainEventsKey, out var value) &&
+					value is Queue<IDomainEvent> domainEvents)
+				{
+					while (domainEvents.TryDequeue(out IDomainEvent? nextEvent))
+					{
+						await publisher.Publish(nextEvent, context.RequestAborted);
+					}
+				}
 
-                await transaction.CommitAsync(context.RequestAborted);
-            }
-            catch (EventualConsistencyException)
-            {
-                // handle eventual consistency exception
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                Console.WriteLine(
-                    $"Root cause: {e.GetBaseException().Message}");
+				await transaction.CommitAsync(context.RequestAborted);
+			}
+			catch (EventualConsistencyException)
+			{
+				// handle eventual consistency exception
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+				Console.WriteLine(
+					$"Root cause: {e.GetBaseException().Message}");
 
-                throw;
-            }
+				throw;
+			}
 			finally
 			{
 				await transaction.DisposeAsync();

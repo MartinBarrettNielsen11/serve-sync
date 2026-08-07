@@ -19,15 +19,15 @@ public sealed class Register : IEndpoint
 
 				Result<AuthenticationResult> authResult = await sender.Send(command, cancellationToken);
 
-                IResult response = authResult.Match(
-                    onSuccess: p => Results.Ok(new AuthenticationResponse(p.User.Id, "", "", "", "")),
-                    onFailure: p => ProblemDetailsMapper.Problem([p.Error]));
+				IResult response = authResult.Match(
+					p => Results.Ok(new AuthenticationResponse(p.User.Id, "", "", "", "")),
+					p => ProblemDetailsMapper.Problem([p.Error]));
 
 				return response;
 			})
-		.WithTags(Tags.Authentication)
-		.WithSummary("Register")
-		.WithDescription("Register")
-		.Produces<ProfileResponse>(StatusCodes.Status201Created);
+			.WithTags(Tags.Authentication)
+			.WithSummary("Register")
+			.WithDescription("Register")
+			.Produces<ProfileResponse>(StatusCodes.Status201Created);
 	}
 }

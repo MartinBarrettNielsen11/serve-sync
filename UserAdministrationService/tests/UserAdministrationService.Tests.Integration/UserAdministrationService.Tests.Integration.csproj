@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <IsTestProject>true</IsTestProject>
-    <RootNamespace>UserAdministrationService.Tests.Integration</RootNamespace>
-</PropertyGroup>
-<ItemGroup>
-    <PackageReference Include="DotNet.Testcontainers"/>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing"/>
-    <PackageReference Include="Testcontainers"/>
-    <PackageReference Include="Testcontainers.PostgreSql"/>
-    <PackageReference Include="xunit"/>
-    <PackageReference Include="Microsoft.NET.Test.Sdk"/>
-</ItemGroup>
-<ItemGroup>
-    <ProjectReference Include="..\..\src\UserAdministrationService.Infrastructure\UserAdministrationService.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj"/>
-    <ProjectReference Include="..\..\src\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
-    <ProjectReference Include="..\..\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj" />
-    <ProjectReference Include="..\UserAdministrationService.Tests.Data\UserAdministrationService.Tests.Data.csproj"/>
-</ItemGroup>
+    <PropertyGroup>
+        <IsTestProject>true</IsTestProject>
+        <RootNamespace>UserAdministrationService.Tests.Integration</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="DotNet.Testcontainers"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing"/>
+        <PackageReference Include="Testcontainers"/>
+        <PackageReference Include="Testcontainers.PostgreSql"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\UserAdministrationService.Infrastructure\UserAdministrationService.Infrastructure.csproj"/>
+        <ProjectReference Include="..\..\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj"/>
+        <ProjectReference Include="..\..\src\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
+        <ProjectReference Include="..\..\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj"/>
+        <ProjectReference Include="..\UserAdministrationService.Tests.Data\UserAdministrationService.Tests.Data.csproj"/>
+    </ItemGroup>
 </Project>

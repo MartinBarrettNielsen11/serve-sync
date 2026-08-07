@@ -16,7 +16,7 @@ internal static class AssertLoggingExtensions
 		(string Key, string Value)[] expectedProperties =
 		[
 			("{OriginalFormat}", messageTemplate),
-			..properties
+			.. properties
 		];
 
 		FakeLogRecord? matchingLog = logs

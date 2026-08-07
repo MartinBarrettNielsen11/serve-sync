@@ -24,7 +24,7 @@ public sealed class ListPlayers : IEndpoint
 					Result<List<Session>> listPlayerSessionsResult = await sender.Send(query, cancellationToken);
 
 					IResult result = listPlayerSessionsResult.Match(
-						onSuccess: sessions => Results.Ok(sessions.ConvertAll(s => new SessionResponse(
+						sessions => Results.Ok(sessions.ConvertAll(s => new SessionResponse(
 							s.Id,
 							s.Name,
 							s.Description,
@@ -33,7 +33,7 @@ public sealed class ListPlayers : IEndpoint
 							s.Date.ToDateTime(s.Time.Start),
 							s.Date.ToDateTime(s.Time.End),
 							s.Categories.Select(category => category.Name).ToList()))),
-						onFailure: errors => ProblemDetailsMapper.Problem([errors.Error]));
+						errors => ProblemDetailsMapper.Problem([errors.Error]));
 
 					return result;
 				})

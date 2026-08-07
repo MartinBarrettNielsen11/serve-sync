@@ -22,8 +22,8 @@ public sealed class GetCourt : IEndpoint
 					Result<Court> getRoomResult = await sender.Send(query, cancellationToken);
 
 					IResult response = getRoomResult.Match(
-						onSuccess: c => Results.Ok(new CourtResponse(c.Id, c.Name)),
-						onFailure: e => ProblemDetailsMapper.Problem([e.Error]));
+						c => Results.Ok(new CourtResponse(c.Id, c.Name)),
+						e => ProblemDetailsMapper.Problem([e.Error]));
 
 					return response;
 				})

@@ -1,41 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <RootNamespace>UserAdministrationService.Infrastructure</RootNamespace>
-    <NoWarn>$(NoWarn);MA0048;IDE0161</NoWarn>
-</PropertyGroup>
-<ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-</ItemGroup>
-<ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design"/>
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt"/>
-    <PackageReference Include="Mediator.Abstractions"/>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"/>
-</ItemGroup>
-<ItemGroup>
-    <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
-    <InternalsVisibleTo Include="UserAdministrationService.Domain"/>
-    <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
-    <InternalsVisibleTo Include="UserAdministrationService.Application"/>
-    <InternalsVisibleTo Include="UserAdministrationService.Tests.Integration"/>
-    <InternalsVisibleTo Include="UserAdministrationService.Tests.Architecture"/>
-</ItemGroup>
-<ItemGroup>
-    <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
-    <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj"/>
-    <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
-    <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false"
-                      PrivateAssets="all"/>
-    <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                      OutputItemType="Analyzer"
-                      ReferenceOutputAssembly="false"
-                      PrivateAssets="all" />
-</ItemGroup>
-<ItemGroup>
-    <Folder Include="Migrations\"/>
-</ItemGroup>
+    <PropertyGroup>
+        <RootNamespace>UserAdministrationService.Infrastructure</RootNamespace>
+        <NoWarn>$(NoWarn);MA0048;IDE0161</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="BCrypt.Net-Next"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design"/>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt"/>
+        <PackageReference Include="Mediator.Abstractions"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"/>
+    </ItemGroup>
+    <ItemGroup>
+        <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Domain"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Application"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Tests.Integration"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Tests.Architecture"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
+        <ProjectReference Include="..\UserAdministrationService.Application\UserAdministrationService.Application.csproj"/>
+        <ProjectReference Include="..\UserAdministrationService.Domain\UserAdministrationService.Domain.csproj"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Migrations\"/>
+    </ItemGroup>
 </Project>

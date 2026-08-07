@@ -1,6 +1,6 @@
 namespace SharedKernel.Results;
 
-public record Error
+public record Error(string Code, string Description, ErrorType Type, string? StackTrace = null)
 {
 	public static readonly Error None = new(
 		string.Empty,
@@ -12,18 +12,10 @@ public record Error
 		"Null value was provided",
 		ErrorType.Failure);
 
-	public Error(string code, string description, ErrorType type, string? stackTrace = null)
-	{
-		Code = code;
-		Description = description;
-		Type = type;
-		StackTrace = stackTrace;
-	}
-
-	public string Code { get; set; }
-	public string Description { get; set; }
-	public ErrorType Type { get; set; }
-	public string? StackTrace { get; set; }
+	public string Code { get; set; } = Code;
+	public string Description { get; set; } = Description;
+	public ErrorType Type { get; set; } = Type;
+	public string? StackTrace { get; set; } = StackTrace;
 
 	public static Error Failure(string code, string description)
 	{

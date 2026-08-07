@@ -14,24 +14,26 @@ public sealed class CreatePlayerProfile : IEndpoint
 		app.MapPost("users/{userId:guid}/profiles/player",
 				async (Guid userId, ClaimsPrincipal user, ISender sender, CancellationToken cancellationToken) =>
 				{
-					var requestUserIdClaim = user.FindFirstValue(claimType: "id");
+					var requestUserIdClaim = user.FindFirstValue("id");
 
 					if (!Guid.TryParse(requestUserIdClaim, out Guid requestUserId))
 					{
 						// You should somehow parse "StatusCodes.Status401Unauthorized here"
 						return ProblemDetailsMapper.Problem([
-							new Error(code: "UnauthorizedToCreatePlayerProfileForThisUser",
-								description: "You are not authorized to create an admin profile for this user",
-								type: ErrorType.Problem)]);
+							new Error("UnauthorizedToCreatePlayerProfileForThisUser",
+								"You are not authorized to create an admin profile for this user",
+								ErrorType.Problem)
+						]);
 					}
 
 					if (requestUserId != userId)
 					{
 						// You should somehow parse "StatusCodes.Status403Unauthorized here"
 						return ProblemDetailsMapper.Problem([
-							new Error(code: "UnauthorizedToCreatePlayerProfileForThisUser",
-								description: "You are not authorized to create an player profile for this user",
-								type: ErrorType.Problem)]);
+							new Error("UnauthorizedToCreatePlayerProfileForThisUser",
+								"You are not authorized to create an player profile for this user",
+								ErrorType.Problem)
+						]);
 					}
 
 					CreatePlayerProfileCommand command = new(userId);
@@ -39,10 +41,10 @@ public sealed class CreatePlayerProfile : IEndpoint
 					Result<Guid> createPlayerProfileResult = await sender.Send(command, cancellationToken);
 
 					IResult response = createPlayerProfileResult.Match(
-						onSuccess: id => TypedResults.CreatedAtRoute(routeName: nameof(ListProfiles),
-																	 routeValues: new { userId },
-																	 value: new ProfileResponse(id)),
-						onFailure: f => ProblemDetailsMapper.Problem([f.Error]));
+						id => TypedResults.CreatedAtRoute(routeName: nameof(ListProfiles),
+							routeValues: new { userId },
+							value: new ProfileResponse(id)),
+						f => ProblemDetailsMapper.Problem([f.Error]));
 
 					return response;
 				})

@@ -49,16 +49,16 @@ builder.Services.AddEndpoints(typeof(Program).Assembly);
 WebApplication app = builder.Build();
 
 ApiVersionSet apiVersionSet = app.NewApiVersionSet()
-    .HasApiVersion(new ApiVersion(1))
-    .HasApiVersion(new ApiVersion(2))
-    .ReportApiVersions()
-    .Build();
+	.HasApiVersion(new ApiVersion(1))
+	.HasApiVersion(new ApiVersion(2))
+	.ReportApiVersions()
+	.Build();
 
 RouteGroupBuilder versionedGroup = app
-    .MapGroup("api/v{version:apiVersion}")
-    .WithApiVersionSet(apiVersionSet);
+	.MapGroup("api/v{version:apiVersion}")
+	.WithApiVersionSet(apiVersionSet);
 
-app.MapEndpoints(routeGroupBuilder: versionedGroup);
+app.MapEndpoints(versionedGroup);
 
 // Configure the HTTP request pipeline for DEVELOPMENT only
 if (app.Environment.IsDevelopment())

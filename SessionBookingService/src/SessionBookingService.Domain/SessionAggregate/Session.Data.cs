@@ -1,4 +1,3 @@
-using SharedKernel;
 using TimeSlot = SessionBookingService.Domain.Common.TimeSlot;
 
 namespace SessionBookingService.Domain.SessionAggregate;

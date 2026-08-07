@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <IsTestProject>true</IsTestProject>
-    <RootNamespace>SessionBookingService.Tests.Architecture</RootNamespace>
-</PropertyGroup>
-<ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" />
-    <PackageReference Include="NetArchTest.Rules" />
-    <PackageReference Include="Shouldly" />
-    <PackageReference Include="xunit" />
-    <PackageReference Include="xunit.runner.visualstudio">
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector">
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-</ItemGroup>
-<ItemGroup>
-  <ProjectReference Include="..\..\src\SessionBookingService.Application\SessionBookingService.Application.csproj" />
-  <ProjectReference Include="..\..\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj" />
-  <ProjectReference Include="..\..\src\SessionBookingService.Infrastructure\SessionBookingService.Infrastructure.csproj" />
-  <ProjectReference Include="..\..\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj" />
-</ItemGroup>
+    <PropertyGroup>
+        <IsTestProject>true</IsTestProject>
+        <RootNamespace>SessionBookingService.Tests.Architecture</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+        <PackageReference Include="NetArchTest.Rules"/>
+        <PackageReference Include="Shouldly"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="xunit.runner.visualstudio">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\SessionBookingService.Application\SessionBookingService.Application.csproj"/>
+        <ProjectReference Include="..\..\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
+        <ProjectReference Include="..\..\src\SessionBookingService.Infrastructure\SessionBookingService.Infrastructure.csproj"/>
+        <ProjectReference Include="..\..\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj"/>
+    </ItemGroup>
 </Project>

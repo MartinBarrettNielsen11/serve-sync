@@ -4,5 +4,4 @@ namespace UserAdministrationService.Tests.Architecture.DependencyGuard;
 public sealed class DependencyGuardTests
 #pragma warning restore S2094
 {
-
 }

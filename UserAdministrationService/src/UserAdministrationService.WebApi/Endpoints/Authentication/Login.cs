@@ -23,8 +23,8 @@ public sealed class Login : IEndpoint
 				}
 
 				IResult response = authResult.Match(
-					onSuccess: p => Results.Ok(new AuthenticationResponse(p.User.Id, "", "", "", "")),
-					onFailure: p => ProblemDetailsMapper.Problem([p.Error]));
+					p => Results.Ok(new AuthenticationResponse(p.User.Id, "", "", "", "")),
+					p => ProblemDetailsMapper.Problem([p.Error]));
 
 				return response;
 			})

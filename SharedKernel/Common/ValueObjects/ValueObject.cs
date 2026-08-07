@@ -7,11 +7,11 @@ public abstract class ValueObject
 	public override bool Equals(object? obj)
 	{
 		if (obj is null || obj.GetType() != GetType())
-        {
-            return false;
-        }
+		{
+			return false;
+		}
 
-        return ((ValueObject)obj)
+		return ((ValueObject)obj)
 			.GetEqualityComponents()
 			.SequenceEqual(GetEqualityComponents());
 	}

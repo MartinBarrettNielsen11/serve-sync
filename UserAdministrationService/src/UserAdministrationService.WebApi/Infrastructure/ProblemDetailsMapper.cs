@@ -8,16 +8,16 @@ internal static class ProblemDetailsMapper
 	public static IResult Problem(List<Error> errors)
 	{
 		if (errors.Count is 0)
-        {
-            return Results.Problem();
-        }
+		{
+			return Results.Problem();
+		}
 
-        if (errors.TrueForAll(e => e.Type == ErrorType.Validation))
-        {
-            return ValidationProblem(errors);
-        }
+		if (errors.TrueForAll(e => e.Type == ErrorType.Validation))
+		{
+			return ValidationProblem(errors);
+		}
 
-        return Problem(errors[0]);
+		return Problem(errors[0]);
 	}
 
 	private static IResult ValidationProblem(List<Error> errors)
@@ -26,11 +26,11 @@ internal static class ProblemDetailsMapper
 			.SelectMany(e =>
 			{
 				if (e is ValidationError validationError)
-                {
-                    return validationError.Errors;
-                }
+				{
+					return validationError.Errors;
+				}
 
-                return [e];
+				return [e];
 			})
 			.GroupBy(e => e.Code, StringComparer.Ordinal)
 			.ToDictionary(

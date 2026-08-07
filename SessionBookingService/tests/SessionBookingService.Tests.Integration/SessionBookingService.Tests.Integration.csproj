@@ -1,19 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup>
-    <IsTestProject>true</IsTestProject>
-    <RootNamespace>SessionBookingService.Tests.Integration</RootNamespace>
-</PropertyGroup>
-<ItemGroup>
-    <PackageReference Include="DotNet.Testcontainers"/>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing"/>
-    <PackageReference Include="Testcontainers"/>
-    <PackageReference Include="Testcontainers.PostgreSql"/>
-    <PackageReference Include="xunit"/>
-    <PackageReference Include="Microsoft.NET.Test.Sdk"/>
-</ItemGroup>
-<ItemGroup>
-    <ProjectReference Include="..\..\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj"/>
-    <ProjectReference Include="..\..\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
-</ItemGroup>
+    <PropertyGroup>
+        <IsTestProject>true</IsTestProject>
+        <RootNamespace>SessionBookingService.Tests.Integration</RootNamespace>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="DotNet.Testcontainers"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing"/>
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing"/>
+        <PackageReference Include="Testcontainers"/>
+        <PackageReference Include="Testcontainers.PostgreSql"/>
+        <PackageReference Include="xunit"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj"/>
+        <ProjectReference Include="..\..\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
+    </ItemGroup>
 </Project>

@@ -1,9 +1,9 @@
 using Mediator;
 using SessionBookingService.Application.Common;
+using SessionBookingService.Domain.Common;
 using SessionBookingService.Domain.CourtsAggregate;
 using SessionBookingService.Domain.InstructorAggregate;
 using SessionBookingService.Domain.SessionAggregate;
-using SessionBookingService.Domain.Common;
 using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Bookings.Commands.CreateSession;
@@ -29,8 +29,8 @@ internal sealed class CreateSessionCommandHandler(
 			return Result.Failure<Session>(Error.NotFound("InstructorNotFound", "Instructor not found"));
 		}
 
-		Result<TimeSlot> createTimeSlotResult = TimeSlot.FromDateTimes(start: command.StartDateTime,
-																	   end: command.EndDateTime);
+		Result<TimeSlot> createTimeSlotResult = TimeSlot.FromDateTimes(command.StartDateTime,
+			command.EndDateTime);
 
 		// change returned error type to Error.Validation
 		if (createTimeSlotResult is { IsFailure: true, Error.Type: ErrorType.Failure })
@@ -40,8 +40,8 @@ internal sealed class CreateSessionCommandHandler(
 
 		if (!instructor.IsTimeSlotFree(DateOnly.FromDateTime(command.StartDateTime), createTimeSlotResult.Value))
 		{
-			return Result.Failure<Session>(Error.Conflict(code: "InstructorsCalenderIsNotFreeForTheEntireDuration",
-				description: "Instructor's calendar is not free for the entire session duration"));
+			return Result.Failure<Session>(Error.Conflict("InstructorsCalenderIsNotFreeForTheEntireDuration",
+				"Instructor's calendar is not free for the entire session duration"));
 		}
 
 		// insert some time slot entry here,
