@@ -1,10 +1,9 @@
 namespace SessionBookingService.Contracts.Sessions;
 
-internal sealed record CreateSessionRequest(
-	string Name,
-	string Description,
-	int MaxPlayerCapacity,
-	DateTime StartDateTime,
-	DateTime EndDateTime,
-	Guid InstructorId,
-	List<string> Categories);
+internal sealed record CreateSessionRequest(string Name,
+											string Description,
+											int MaxPlayerCapacity,
+											DateTime StartDateTime,
+											DateTime EndDateTime,
+											Guid InstructorId,
+											List<string> Categories);

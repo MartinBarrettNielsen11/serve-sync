@@ -32,8 +32,8 @@ internal sealed class CourtsRepository(SessionBookingDbContext dbContext) : ICou
 	public async Task<List<Court>> ListByClubIdAsync(Guid clubId)
 	{
 		return await dbContext.Courts
-			.AsNoTracking()
-			.Where(c => c.ClubId == clubId)
-			.ToListAsync();
+							.AsNoTracking()
+							.Where(c => c.ClubId == clubId)
+							.ToListAsync();
 	}
 }

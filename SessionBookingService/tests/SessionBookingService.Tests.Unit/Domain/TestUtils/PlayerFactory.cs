@@ -9,8 +9,7 @@ internal static class PlayerFactory
 		Guid? userId = null,
 		Guid? id = null)
 	{
-		return new Player(
-			userId ?? UserConstants.Id,
-			id: id ?? PlayerConstants.Id);
+		return new Player(userId ?? UserConstants.Id,
+						id: id ?? PlayerConstants.Id);
 	}
 }

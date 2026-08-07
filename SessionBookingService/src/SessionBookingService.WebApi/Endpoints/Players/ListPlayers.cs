@@ -12,31 +12,44 @@ public sealed class ListPlayers : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapGet("{playerId:guid}/sessions",
-				async (
-					Guid playerId,
-					ISender sender,
-					CancellationToken cancellationToken,
-					DateTime? startDateTime = null,
-					DateTime? endDateTime = null) =>
-				{
-					ListPlayersSessionsQuery query = new(playerId, endDateTime, startDateTime);
+					async (
+						Guid playerId,
+						ISender sender,
+						CancellationToken cancellationToken,
+						DateTime? startDateTime = null,
+						DateTime? endDateTime = null) =>
+					{
+						ListPlayersSessionsQuery query = new(playerId, endDateTime, startDateTime);
 
-					Result<List<Session>> listPlayerSessionsResult = await sender.Send(query, cancellationToken);
+						Result<List<Session>> listPlayerSessionsResult = await sender.Send(query, cancellationToken);
 
-					IResult result = listPlayerSessionsResult.Match(
-						sessions => Results.Ok(sessions.ConvertAll(s => new SessionResponse(
-							s.Id,
-							s.Name,
-							s.Description,
-							s.NumPlayers,
-							s.MaxPlayerCapacity,
-							s.Date.ToDateTime(s.Time.Start),
-							s.Date.ToDateTime(s.Time.End),
-							s.Categories.Select(category => category.Name).ToList()))),
-						errors => ProblemDetailsMapper.Problem([errors.Error]));
+						IResult result =
+							listPlayerSessionsResult.Match(sessions =>
+																Results.Ok(sessions.ConvertAll(s =>
+																									new
+																										SessionResponse(
+																											s.Id,
+																											s.Name,
+																											s.Description,
+																											s.NumPlayers,
+																											s.MaxPlayerCapacity,
+																											s.Date
+																											.ToDateTime(
+																												s.Time
+																												.Start),
+																											s.Date
+																											.ToDateTime(
+																												s.Time
+																												.End),
+																											s.Categories
+																											.Select(category =>
+																														category
+																															.Name)
+																											.ToList()))),
+															errors => ProblemDetailsMapper.Problem([errors.Error]));
 
-					return result;
-				})
+						return result;
+					})
 			.WithTags(Tags.Players)
 			.WithSummary("List players for a session")
 			.WithDescription("List players for a session")

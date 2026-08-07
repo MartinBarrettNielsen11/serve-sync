@@ -26,30 +26,32 @@ internal sealed class SealedRecordCodeFix : CodeFixProvider
 		SyntaxNode? syntaxNode = await context.Document.GetSyntaxRootAsync(context.CancellationToken);
 
 		RecordDeclarationSyntax? recordDeclaration = syntaxNode?
-			.FindToken(diagnosticSpan.Start).Parent?
-			.AncestorsAndSelf()
-			.OfType<RecordDeclarationSyntax>()
-			.FirstOrDefault();
+													.FindToken(diagnosticSpan.Start)
+													.Parent
+													?
+													.AncestorsAndSelf()
+													.OfType<RecordDeclarationSyntax>()
+													.FirstOrDefault();
 
 		if (recordDeclaration is null)
 		{
 			return;
 		}
 
-		context.RegisterCodeFix(
-			CodeAction.Create(
-				"Make the record sealed",
-				_ => MakeRecordSealedAsync(syntaxNode!, context.Document, recordDeclaration),
-				nameof(SealedRecordCodeFix)),
-			diagnostic);
+		context.RegisterCodeFix(CodeAction.Create("Make the record sealed",
+												_ => MakeRecordSealedAsync(syntaxNode!,
+																			context.Document,
+																			recordDeclaration),
+												nameof(SealedRecordCodeFix)),
+								diagnostic);
 	}
 
 	private static Task<Document> MakeRecordSealedAsync(SyntaxNode root, Document document,
-		RecordDeclarationSyntax recordDeclaration)
+														RecordDeclarationSyntax recordDeclaration)
 	{
 		RecordDeclarationSyntax newRecord =
-			recordDeclaration.WithModifiers(
-				recordDeclaration.Modifiers.Add(SyntaxFactory.Token(SyntaxKind.SealedKeyword)));
+			recordDeclaration.WithModifiers(recordDeclaration.Modifiers
+															.Add(SyntaxFactory.Token(SyntaxKind.SealedKeyword)));
 
 		SyntaxNode newSyntaxNode = root.ReplaceNode(recordDeclaration, newRecord);
 

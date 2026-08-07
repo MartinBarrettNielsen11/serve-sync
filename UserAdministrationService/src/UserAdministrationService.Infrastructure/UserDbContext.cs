@@ -28,9 +28,9 @@ internal sealed class UserDbContext(DbContextOptions<UserDbContext> options, IHt
 		}
 
 		List<IDomainEvent> domainEvents = ChangeTracker.Entries<RootAggregate>()
-			.Select(entry => entry.Entity.PopDomainEvents())
-			.SelectMany(x => x)
-			.ToList();
+														.Select(entry => entry.Entity.PopDomainEvents())
+														.SelectMany(x => x)
+														.ToList();
 
 		var result = await base.SaveChangesAsync(cancellationToken);
 

@@ -5,9 +5,9 @@ namespace ClubAdministrationService.Domain.CourtAggregate;
 internal sealed class Court : RootAggregate
 {
 	internal Court(string name,
-		Guid clubId,
-		int maxDailySessions,
-		Guid? id = null) : base(id ?? Guid.NewGuid())
+					Guid clubId,
+					int maxDailySessions,
+					Guid? id = null) : base(id ?? Guid.NewGuid())
 	{
 		Name = name;
 		ClubId = clubId;

@@ -11,32 +11,28 @@ internal sealed class SealedRecordAnalyzer : DiagnosticAnalyzer
 {
 	internal const string RuleId = "RULE0002";
 
-	private static readonly DiagnosticDescriptor Rule = new(
-		RuleId,
-		"Record can be sealed",
-		"Record '{0}' can be sealed",
-		"Design",
-		DiagnosticSeverity.Warning,
-		true);
+	private static readonly DiagnosticDescriptor Rule = new(RuleId,
+															"Record can be sealed",
+															"Record '{0}' can be sealed",
+															"Design",
+															DiagnosticSeverity.Warning,
+															true);
 
 	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
 
 	public override void Initialize(AnalysisContext context)
 	{
 		context.EnableConcurrentExecution();
-		context.ConfigureGeneratedCodeAnalysis(
-			GeneratedCodeAnalysisFlags.None);
+		context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
 
 		context.RegisterCompilationStartAction(compilationContext =>
 		{
 			Lazy<HashSet<INamedTypeSymbol>> inheritedTypes =
 				new(() => FindInheritedTypes(compilationContext.Compilation));
 
-			compilationContext.RegisterSyntaxNodeAction(
-				syntaxContext => AnalyzeRecord(
-					syntaxContext,
-					inheritedTypes.Value),
-				SyntaxKind.RecordDeclaration);
+			compilationContext.RegisterSyntaxNodeAction(syntaxContext => AnalyzeRecord(syntaxContext,
+																						inheritedTypes.Value),
+														SyntaxKind.RecordDeclaration);
 		});
 	}
 
@@ -48,9 +44,8 @@ internal sealed class SealedRecordAnalyzer : DiagnosticAnalyzer
 			(RecordDeclarationSyntax)context.Node;
 
 		INamedTypeSymbol? recordSymbol =
-			context.SemanticModel.GetDeclaredSymbol(
-				recordSyntax,
-				context.CancellationToken);
+			context.SemanticModel.GetDeclaredSymbol(recordSyntax,
+													context.CancellationToken);
 
 		if (recordSymbol is null)
 		{
@@ -62,10 +57,9 @@ internal sealed class SealedRecordAnalyzer : DiagnosticAnalyzer
 			return;
 		}
 
-		Diagnostic diagnostic = Diagnostic.Create(
-			Rule,
-			recordSyntax.Identifier.GetLocation(),
-			recordSymbol.Name);
+		Diagnostic diagnostic = Diagnostic.Create(Rule,
+												recordSyntax.Identifier.GetLocation(),
+												recordSymbol.Name);
 
 		context.ReportDiagnostic(diagnostic);
 	}
@@ -94,12 +88,10 @@ internal sealed class SealedRecordAnalyzer : DiagnosticAnalyzer
 	{
 		List<INamedTypeSymbol> declaredTypes = new();
 
-		CollectTypes(
-			compilation.Assembly.GlobalNamespace,
-			declaredTypes);
+		CollectTypes(compilation.Assembly.GlobalNamespace,
+					declaredTypes);
 
-		HashSet<INamedTypeSymbol> inheritedTypes = new(
-			SymbolEqualityComparer.Default);
+		HashSet<INamedTypeSymbol> inheritedTypes = new(SymbolEqualityComparer.Default);
 
 #pragma warning disable S3267
 		foreach (INamedTypeSymbol type in declaredTypes)

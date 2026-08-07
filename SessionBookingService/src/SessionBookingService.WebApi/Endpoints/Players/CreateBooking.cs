@@ -10,21 +10,20 @@ public sealed class CreateBooking : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapPost("{playerId:guid}/sessions/{sessionId:guid}/booking",
-				async (Guid playerId,
-					Guid sessionId,
-					ISender sender,
-					CancellationToken cancellationToken) =>
-				{
-					CreateBookingCommand command = new(sessionId, playerId);
+					async (Guid playerId,
+							Guid sessionId,
+							ISender sender,
+							CancellationToken cancellationToken) =>
+					{
+						CreateBookingCommand command = new(sessionId, playerId);
 
-					Result<Guid> createBookingResult = await sender.Send(command, cancellationToken);
+						Result<Guid> createBookingResult = await sender.Send(command, cancellationToken);
 
-					IResult response = createBookingResult.Match(
-						Results.NoContent,
-						err => ProblemDetailsMapper.Problem([err.Error]));
+						IResult response = createBookingResult.Match(Results.NoContent,
+																	err => ProblemDetailsMapper.Problem([err.Error]));
 
-					return response;
-				})
+						return response;
+					})
 			.WithTags(Tags.Players)
 			.WithSummary("Create booking")
 			.WithDescription("Create booking for a player");

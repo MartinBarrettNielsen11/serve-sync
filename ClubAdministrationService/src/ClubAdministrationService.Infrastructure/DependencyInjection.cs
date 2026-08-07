@@ -17,7 +17,7 @@ internal static class DependencyInjection
 	{
 		var connectionString = config.GetConnectionString("Database");
 
-		services.AddDbContext<ClubDbContext>(options => { options.UseNpgsql(connectionString); });
+		services.AddDbContext<ClubDbContext>(opts => { opts.UseNpgsql(connectionString); });
 
 		services.AddScoped<IAdminsRepository, AdminsRepository>();
 		services.AddScoped<IClubsRepository, ClubsRepository>();

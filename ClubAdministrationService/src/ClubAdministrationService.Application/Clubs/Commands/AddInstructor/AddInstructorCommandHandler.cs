@@ -7,9 +7,8 @@ using SharedKernel.Results;
 namespace ClubAdministrationService.Application.Clubs.Commands.AddInstructor;
 
 // ReSharper disable once UnusedType.Global
-internal sealed class AddInstructorCommandHandler(
-	IClubsRepository clubsRepository,
-	ISubscriptionsRepository subscriptionsRepository)
+internal sealed class AddInstructorCommandHandler(IClubsRepository clubsRepository,
+												ISubscriptionsRepository subscriptionsRepository)
 	: IRequestHandler<AddInstructorCommand, Result>
 {
 	public async ValueTask<Result> Handle(AddInstructorCommand command, CancellationToken cancellationToken)

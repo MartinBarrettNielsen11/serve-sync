@@ -12,22 +12,23 @@ public sealed class Login : IEndpoint
 {
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
-		app.MapPost("login", async (LoginRequest request, ISender sender, CancellationToken cancellationToken) =>
-			{
-				LoginQuery query = new(request.Email, request.Password);
-				Result<AuthenticationResult> authResult = await sender.Send(query, cancellationToken);
+		app.MapPost("login",
+					async (LoginRequest request, ISender sender, CancellationToken cancellationToken) =>
+					{
+						LoginQuery query = new(request.Email, request.Password);
+						Result<AuthenticationResult> authResult = await sender.Send(query, cancellationToken);
 
-				if (authResult.IsFailure && authResult.Error == AuthenticationErrors.InvalidCredentials)
-				{
-					return Results.Unauthorized();
-				}
+						if (authResult.IsFailure && authResult.Error == AuthenticationErrors.InvalidCredentials)
+						{
+							return Results.Unauthorized();
+						}
 
-				IResult response = authResult.Match(
-					p => Results.Ok(new AuthenticationResponse(p.User.Id, "", "", "", "")),
-					p => ProblemDetailsMapper.Problem([p.Error]));
+						IResult response =
+							authResult.Match(p => Results.Ok(new AuthenticationResponse(p.User.Id, "", "", "", "")),
+											p => ProblemDetailsMapper.Problem([p.Error]));
 
-				return response;
-			})
+						return response;
+					})
 			.WithTags(Tags.Authentication)
 			.WithSummary("Login")
 			.WithDescription("Login")

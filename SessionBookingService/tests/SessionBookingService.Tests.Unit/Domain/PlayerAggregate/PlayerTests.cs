@@ -23,15 +23,15 @@ public class PlayerTests
 		// Arrange
 		Player player = PlayerFactory.Create();
 
-		Session session1 = SessionFactory.CreateSession(
-			date: SessionConstants.Date,
-			timeSlot: TimeSlotFactory.Create(startHourSession1, endHourSession1),
-			id: Guid.NewGuid());
+		Session session1 = SessionFactory.CreateSession(date: SessionConstants.Date,
+														timeSlot: TimeSlotFactory.Create(startHourSession1,
+																						endHourSession1),
+														id: Guid.NewGuid());
 
-		Session session2 = SessionFactory.CreateSession(
-			date: SessionConstants.Date,
-			timeSlot: TimeSlotFactory.Create(startHourSession2, endHourSession2),
-			id: Guid.CreateVersion7());
+		Session session2 = SessionFactory.CreateSession(date: SessionConstants.Date,
+														timeSlot: TimeSlotFactory.Create(startHourSession2,
+																						endHourSession2),
+														id: Guid.CreateVersion7());
 
 		// Act
 		Result<bool> addSession1Result = player.AddToSchedule(session1);

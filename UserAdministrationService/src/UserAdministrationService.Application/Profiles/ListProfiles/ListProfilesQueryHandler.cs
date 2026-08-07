@@ -9,14 +9,14 @@ internal sealed class ListProfilesQueryHandler(IUsersRepository usersRepository)
 	: IRequestHandler<ListProfilesQuery, Result<ListProfilesResult>>
 {
 	public async ValueTask<Result<ListProfilesResult>> Handle(ListProfilesQuery query,
-		CancellationToken cancellationToken)
+															CancellationToken cancellationToken)
 	{
 		User? user = await usersRepository.GetByIdAsync(query.UserId, cancellationToken);
 
 		if (user is null)
 		{
 			return Result.Failure<ListProfilesResult>(Error.NotFound(description: "User not found",
-				code: "UserNotFound"));
+																	code: "UserNotFound"));
 		}
 
 		ListProfilesResult result = new(user.AdminId, user.PlayerId, user.InstructorId);

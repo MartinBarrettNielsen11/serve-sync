@@ -5,7 +5,8 @@ namespace SessionBookingService.Domain.EventualConsistency;
 public sealed class EventualConsistencyException : Exception
 {
 	public EventualConsistencyException(Result eventualConsistencyError,
-		ICollection<Result>? underlyingErrors = null) : base(eventualConsistencyError.Error.Description)
+										ICollection<Result>? underlyingErrors = null) : base(eventualConsistencyError
+																							.Error.Description)
 	{
 		EventualConsistencyError = eventualConsistencyError;
 		UnderlyingErrors = underlyingErrors ?? [];

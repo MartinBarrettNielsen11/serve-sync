@@ -17,12 +17,12 @@ namespace UserAdministrationService.Tests.Integration;
 public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLifetime
 {
 	private readonly PostgreSqlContainer _dbContainer = new PostgreSqlBuilder("postgres:17")
-		.WithEnvironment("POSTGRES_USER", "postgres")
-		.WithEnvironment("POSTGRES_PASSWORD", "postgres")
-		.WithEnvironment("POSTGRES_DB", "postgres")
-		.WithPortBinding(5432, true)
-		//.WithWaitStrategy(Wait.ForUnixContainer())
-		.Build();
+														.WithEnvironment("POSTGRES_USER", "postgres")
+														.WithEnvironment("POSTGRES_PASSWORD", "postgres")
+														.WithEnvironment("POSTGRES_DB", "postgres")
+														.WithPortBinding(5432, true)
+														//.WithWaitStrategy(Wait.ForUnixContainer())
+														.Build();
 
 	private string ConnectionString => _dbContainer.GetConnectionString();
 
@@ -52,7 +52,7 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 			services.RemoveAll<DbContextOptions<UserDbContext>>();
 			services.RemoveAll<UserDbContext>();
 
-			services.AddDbContext<UserDbContext>(options => { options.UseNpgsql(ConnectionString); });
+			services.AddDbContext<UserDbContext>(opts => opts.UseNpgsql(ConnectionString));
 
 
 			// replace clock
@@ -64,8 +64,8 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 	internal UserDbContext CreateDbContext()
 	{
 		DbContextOptions<UserDbContext> options = new DbContextOptionsBuilder<UserDbContext>()
-			.UseNpgsql(ConnectionString)
-			.Options;
+												.UseNpgsql(ConnectionString)
+												.Options;
 
 		return new UserDbContext(options, new HttpContextAccessor());
 	}

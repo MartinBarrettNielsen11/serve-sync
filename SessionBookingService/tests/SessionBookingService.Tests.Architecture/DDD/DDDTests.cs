@@ -12,11 +12,11 @@ public sealed class DDDTests : TestBase
 	public void Entities_Should_Have_PrivateSetter()
 	{
 		IEnumerable<Type> entityTypes = Types.InAssembly(DomainAssembly)
-			.That()
-			.AreClasses()
-			.And()
-			.Inherit(typeof(RootAggregate))
-			.GetTypes();
+											.That()
+											.AreClasses()
+											.And()
+											.Inherit(typeof(RootAggregate))
+											.GetTypes();
 
 		foreach (Type entityType in entityTypes)
 		{

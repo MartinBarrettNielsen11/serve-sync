@@ -15,8 +15,8 @@ internal sealed class SubscriptionsRepository(ClubDbContext clubDbContext) : ISu
 	public async Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken)
 	{
 		return await clubDbContext.Subscriptions
-			.AsNoTracking()
-			.AnyAsync(s => s.Id == id, cancellationToken);
+								.AsNoTracking()
+								.AnyAsync(s => s.Id == id, cancellationToken);
 	}
 
 	public async Task<Subscription?> GetByIdAsync(Guid id, CancellationToken cancellationToken)

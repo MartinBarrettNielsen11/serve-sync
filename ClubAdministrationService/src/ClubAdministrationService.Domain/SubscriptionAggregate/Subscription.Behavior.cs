@@ -21,9 +21,8 @@ internal sealed partial class Subscription : RootAggregate
 
 		_clubIds.Add(club.Id);
 
-		DomainEvents.Add(
-			new ClubAddedToSubscriptionEvent(this,
-				club)); // consider usingsome fake puslisher or something - such that you can use that for your integation test setup and assert that an integartion event was raised
+		DomainEvents.Add(new ClubAddedToSubscriptionEvent(this,
+														club)); // consider usingsome fake puslisher or something - such that you can use that for your integation test setup and assert that an integartion event was raised
 		return Result.Success(true);
 	}
 

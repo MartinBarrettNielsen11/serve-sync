@@ -25,13 +25,11 @@ internal sealed class JwtTokenGenerator(IOptions<JwtOptions> jwtOptions) : IJwtT
 			new Claim("id", user.Id.ToString())
 		};
 
-		JwtSecurityToken token = new(
-			_jwtOptions.Issuer,
-			_jwtOptions.Audience,
-			claims,
-			expires: DateTime.UtcNow.AddMinutes(_jwtOptions.TokenExpirationInMinutes),
-			signingCredentials: credentials
-		);
+		JwtSecurityToken token = new(_jwtOptions.Issuer,
+									_jwtOptions.Audience,
+									claims,
+									expires: DateTime.UtcNow.AddMinutes(_jwtOptions.TokenExpirationInMinutes),
+									signingCredentials: credentials);
 
 		return new JwtSecurityTokenHandler().WriteToken(token);
 	}

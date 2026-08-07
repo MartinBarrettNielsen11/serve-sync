@@ -11,10 +11,9 @@ internal static class ClubFactory
 		Guid? subscriptionId = null,
 		Guid? id = null)
 	{
-		return new Club(
-			name,
-			maxRooms,
-			subscriptionId ?? Guid.NewGuid(),
-			id ?? ClubConstants.Id);
+		return new Club(name,
+						maxRooms,
+						subscriptionId ?? Guid.NewGuid(),
+						id ?? ClubConstants.Id);
 	}
 }

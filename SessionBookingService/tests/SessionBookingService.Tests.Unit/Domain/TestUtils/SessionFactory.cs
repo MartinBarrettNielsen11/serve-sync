@@ -17,15 +17,14 @@ internal static class SessionFactory
 		List<SessionCategory>? categories = null,
 		Guid? id = null)
 	{
-		return new Session(
-			name,
-			description,
-			instructorId: instructorId ?? Guid.CreateVersion7(),
-			courtId: courtId ?? Guid.CreateVersion7(),
-			date: date ?? SessionConstants.Date,
-			time: timeSlot ?? SessionConstants.Time,
-			maxPlayerCapacity: maxPlayerCapacity,
-			categories: categories ?? SessionConstants.Categories,
-			id: id ?? Guid.NewGuid());
+		return new Session(name,
+							description,
+							instructorId: instructorId ?? Guid.CreateVersion7(),
+							courtId: courtId ?? Guid.CreateVersion7(),
+							date: date ?? SessionConstants.Date,
+							time: timeSlot ?? SessionConstants.Time,
+							maxPlayerCapacity: maxPlayerCapacity,
+							categories: categories ?? SessionConstants.Categories,
+							id: id ?? Guid.NewGuid());
 	}
 }

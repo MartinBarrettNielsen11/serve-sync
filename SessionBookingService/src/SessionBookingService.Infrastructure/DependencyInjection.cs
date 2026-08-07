@@ -21,7 +21,7 @@ internal static class DependencyInjection
 	{
 		var connectionString = config.GetConnectionString("Database");
 
-		services.AddDbContext<SessionBookingDbContext>(options => { options.UseNpgsql(connectionString); });
+		services.AddDbContext<SessionBookingDbContext>(opts => opts.UseNpgsql(connectionString));
 
 		services.AddScoped<IInstructorsRepository, InstructorsRepository>();
 		services.AddScoped<ICourtsRepository, CourtsRepository>();

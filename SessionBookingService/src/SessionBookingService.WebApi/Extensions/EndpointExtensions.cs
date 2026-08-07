@@ -9,16 +9,19 @@ internal static class EndpointExtensions
 	public static void AddEndpoints(this IServiceCollection services, Assembly assembly)
 	{
 		ServiceDescriptor[] serviceDescriptors = assembly.DefinedTypes
-			.Where(type => type is { IsAbstract: false, IsInterface: false } &&
-							type.IsAssignableTo(typeof(IEndpoint)))
-			.Select(type => ServiceDescriptor.Transient(typeof(IEndpoint), type))
-			.ToArray();
+														.Where(type =>
+																	type is { IsAbstract: false, IsInterface: false } &&
+																	type.IsAssignableTo(typeof(IEndpoint)))
+														.Select(type => ServiceDescriptor.Transient(
+																	typeof(IEndpoint),
+																	type))
+														.ToArray();
 
 		services.TryAddEnumerable(serviceDescriptors);
 	}
 
 	public static void MapEndpoints(this WebApplication app,
-		RouteGroupBuilder? routeGroupBuilder = null)
+									RouteGroupBuilder? routeGroupBuilder = null)
 	{
 		IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
 

@@ -14,9 +14,9 @@ internal sealed class OutboxWriterEventHandler(ClubDbContext clubDbContext)
 	public async ValueTask Handle(CourtAddedToClubEvent notification, CancellationToken cancellationToken)
 	{
 		CourtAddedIntegrationEvent integrationEvent = new(notification.Court.Name,
-			notification.Court.Id,
-			notification.Club.Id,
-			notification.Court.MaxDailySessions);
+														notification.Court.Id,
+														notification.Club.Id,
+														notification.Court.MaxDailySessions);
 
 		await AddOutboxIntegrationEventAsync(integrationEvent);
 	}

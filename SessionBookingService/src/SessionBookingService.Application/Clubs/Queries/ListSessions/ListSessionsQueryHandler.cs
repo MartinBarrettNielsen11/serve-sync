@@ -11,6 +11,8 @@ internal sealed class ListSessionsQueryHandler(ISessionsRepository sessionsRepos
 	public async ValueTask<Result<List<Session>>> Handle(ListSessionsQuery query, CancellationToken cancellationToken)
 	{
 		return await sessionsRepository.ListByClubIdAsync(query.ClubId,
-			query.StartDateTime, query.EndDateTime, query.Categories);
+														query.StartDateTime,
+														query.EndDateTime,
+														query.Categories);
 	}
 }

@@ -37,21 +37,21 @@ internal sealed class SessionsRepository(SessionBookingDbContext dbContext) : IS
 		List<SessionCategory>? categories = null)
 	{
 		return await dbContext.Sessions
-			.AsNoTracking()
-			.Where(session => sessionIds.Contains(session.Id))
-			.WhereBetweenDateAndTimes(startDateTime, endDateTime)
-			.ToListAsync();
+							.AsNoTracking()
+							.Where(session => sessionIds.Contains(session.Id))
+							.WhereBetweenDateAndTimes(startDateTime, endDateTime)
+							.ToListAsync();
 	}
 
 	public async Task<List<Session>> ListByClubIdAsync(Guid clubId,
-		DateTime? startDateTime = null,
-		DateTime? endDateTime = null,
-		List<SessionCategory>? categories = null)
+														DateTime? startDateTime = null,
+														DateTime? endDateTime = null,
+														List<SessionCategory>? categories = null)
 	{
 		List<Court> courts = await dbContext.Courts
-			.AsNoTracking()
-			.Where(room => room.ClubId == clubId)
-			.ToListAsync();
+											.AsNoTracking()
+											.Where(room => room.ClubId == clubId)
+											.ToListAsync();
 
 		List<Guid> sessionIds = courts.SelectMany(room => room.SessionIds).ToList();
 
@@ -61,8 +61,8 @@ internal sealed class SessionsRepository(SessionBookingDbContext dbContext) : IS
 	public async Task<List<Session>> ListByCourtId(Guid courtId)
 	{
 		return await dbContext.Sessions
-			.Where(session => session.CourtId == courtId)
-			.ToListAsync();
+							.Where(session => session.CourtId == courtId)
+							.ToListAsync();
 	}
 
 	public async Task RemoveRangeAsync(List<Session> sessions)
@@ -75,7 +75,7 @@ internal sealed class SessionsRepository(SessionBookingDbContext dbContext) : IS
 file static class DbContextSessionExtensions
 {
 	public static IQueryable<Session> WhereBetweenDateAndTimes(this IQueryable<Session> query, DateTime? start,
-		DateTime? end)
+																DateTime? end)
 	{
 		if (start is null && end is null)
 		{
@@ -86,10 +86,10 @@ file static class DbContextSessionExtensions
 		end ??= DateTime.MaxValue;
 
 		IQueryable<Session> result = query
-			.AsNoTracking()
-			.Where(session => session.Date >= DateOnly.FromDateTime(start.Value) &&
-							session.Date <= DateOnly.FromDateTime(end.Value))
-			.Where(session => session.Time.Start >= TimeOnly.FromDateTime(start.Value));
+									.AsNoTracking()
+									.Where(session => session.Date >= DateOnly.FromDateTime(start.Value) &&
+													session.Date <= DateOnly.FromDateTime(end.Value))
+									.Where(session => session.Time.Start >= TimeOnly.FromDateTime(start.Value));
 
 		return result;
 	}

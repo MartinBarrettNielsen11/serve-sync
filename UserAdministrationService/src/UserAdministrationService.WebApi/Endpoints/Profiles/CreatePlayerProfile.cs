@@ -12,42 +12,44 @@ public sealed class CreatePlayerProfile : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapPost("users/{userId:guid}/profiles/player",
-				async (Guid userId, ClaimsPrincipal user, ISender sender, CancellationToken cancellationToken) =>
-				{
-					var requestUserIdClaim = user.FindFirstValue("id");
-
-					if (!Guid.TryParse(requestUserIdClaim, out Guid requestUserId))
+					async (Guid userId, ClaimsPrincipal user, ISender sender, CancellationToken cancellationToken) =>
 					{
-						// You should somehow parse "StatusCodes.Status401Unauthorized here"
-						return ProblemDetailsMapper.Problem([
-							new Error("UnauthorizedToCreatePlayerProfileForThisUser",
-								"You are not authorized to create an admin profile for this user",
-								ErrorType.Problem)
-						]);
-					}
+						var requestUserIdClaim = user.FindFirstValue("id");
 
-					if (requestUserId != userId)
-					{
-						// You should somehow parse "StatusCodes.Status403Unauthorized here"
-						return ProblemDetailsMapper.Problem([
-							new Error("UnauthorizedToCreatePlayerProfileForThisUser",
-								"You are not authorized to create an player profile for this user",
-								ErrorType.Problem)
-						]);
-					}
+						if (!Guid.TryParse(requestUserIdClaim, out Guid requestUserId))
+						{
+							// You should somehow parse "StatusCodes.Status401Unauthorized here"
+							return ProblemDetailsMapper.Problem([
+								new Error("UnauthorizedToCreatePlayerProfileForThisUser",
+										"You are not authorized to create an admin profile for this user",
+										ErrorType.Problem)
+							]);
+						}
 
-					CreatePlayerProfileCommand command = new(userId);
+						if (requestUserId != userId)
+						{
+							// You should somehow parse "StatusCodes.Status403Unauthorized here"
+							return ProblemDetailsMapper.Problem([
+								new Error("UnauthorizedToCreatePlayerProfileForThisUser",
+										"You are not authorized to create an player profile for this user",
+										ErrorType.Problem)
+							]);
+						}
 
-					Result<Guid> createPlayerProfileResult = await sender.Send(command, cancellationToken);
+						CreatePlayerProfileCommand command = new(userId);
 
-					IResult response = createPlayerProfileResult.Match(
-						id => TypedResults.CreatedAtRoute(routeName: nameof(ListProfiles),
-							routeValues: new { userId },
-							value: new ProfileResponse(id)),
-						f => ProblemDetailsMapper.Problem([f.Error]));
+						Result<Guid> createPlayerProfileResult = await sender.Send(command, cancellationToken);
 
-					return response;
-				})
+						IResult response =
+							createPlayerProfileResult.Match(id => TypedResults.CreatedAtRoute(routeName: nameof(
+																								ListProfiles),
+																							routeValues: new { userId },
+																							value: new
+																								ProfileResponse(id)),
+															f => ProblemDetailsMapper.Problem([f.Error]));
+
+						return response;
+					})
 			.WithTags(Tags.Profile)
 			.WithSummary("Create player profile")
 			.WithDescription("Create player profile")

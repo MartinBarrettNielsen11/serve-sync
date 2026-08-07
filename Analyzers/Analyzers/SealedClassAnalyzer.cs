@@ -11,32 +11,28 @@ internal sealed class SealedClassAnalyzer : DiagnosticAnalyzer
 {
 	internal const string RuleId = "RULE0001";
 
-	private static readonly DiagnosticDescriptor Rule = new(
-		RuleId,
-		"Class can be sealed",
-		"Class '{0}' can be sealed",
-		"Design",
-		DiagnosticSeverity.Warning,
-		true);
+	private static readonly DiagnosticDescriptor Rule = new(RuleId,
+															"Class can be sealed",
+															"Class '{0}' can be sealed",
+															"Design",
+															DiagnosticSeverity.Warning,
+															true);
 
 	public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule];
 
 	public override void Initialize(AnalysisContext context)
 	{
 		context.EnableConcurrentExecution();
-		context.ConfigureGeneratedCodeAnalysis(
-			GeneratedCodeAnalysisFlags.None);
+		context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
 
 		context.RegisterCompilationStartAction(compilationContext =>
 		{
 			Lazy<HashSet<INamedTypeSymbol>> inheritedTypes =
 				new(() => FindInheritedTypes(compilationContext.Compilation));
 
-			compilationContext.RegisterSyntaxNodeAction(
-				syntaxContext => AnalyzeClass(
-					syntaxContext,
-					inheritedTypes.Value),
-				SyntaxKind.ClassDeclaration);
+			compilationContext.RegisterSyntaxNodeAction(syntaxContext => AnalyzeClass(syntaxContext,
+																					inheritedTypes.Value),
+														SyntaxKind.ClassDeclaration);
 		});
 	}
 
@@ -46,8 +42,7 @@ internal sealed class SealedClassAnalyzer : DiagnosticAnalyzer
 	{
 		ClassDeclarationSyntax classSyntax = (ClassDeclarationSyntax)context.Node;
 
-		INamedTypeSymbol? classSymbol = context.SemanticModel.GetDeclaredSymbol(
-			classSyntax, context.CancellationToken);
+		INamedTypeSymbol? classSymbol = context.SemanticModel.GetDeclaredSymbol(classSyntax, context.CancellationToken);
 
 		if (classSymbol is null)
 		{
@@ -59,10 +54,9 @@ internal sealed class SealedClassAnalyzer : DiagnosticAnalyzer
 			return;
 		}
 
-		Diagnostic diagnostic = Diagnostic.Create(
-			Rule,
-			classSyntax.Identifier.GetLocation(),
-			classSymbol.Name);
+		Diagnostic diagnostic = Diagnostic.Create(Rule,
+												classSyntax.Identifier.GetLocation(),
+												classSymbol.Name);
 
 		context.ReportDiagnostic(diagnostic);
 	}

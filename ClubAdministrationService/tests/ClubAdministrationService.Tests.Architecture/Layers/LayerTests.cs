@@ -10,9 +10,9 @@ public sealed class LayerTests : TestBase
 	public void Domain_Should_NotHaveDependencyOnApplication()
 	{
 		TestResult result = Types.InAssembly(DomainAssembly)
-			.Should()
-			.NotHaveDependencyOn(ApplicationAssembly.GetName().Name)
-			.GetResult();
+								.Should()
+								.NotHaveDependencyOn(ApplicationAssembly.GetName().Name)
+								.GetResult();
 
 		result.IsSuccessful.ShouldBeTrue();
 	}
@@ -21,9 +21,9 @@ public sealed class LayerTests : TestBase
 	public void DomainLayer_ShouldNotHaveDependencyOn_InfrastructureLayer()
 	{
 		TestResult result = Types.InAssembly(DomainAssembly)
-			.Should()
-			.NotHaveDependencyOn(InfrastructureAssembly.GetName().Name)
-			.GetResult();
+								.Should()
+								.NotHaveDependencyOn(InfrastructureAssembly.GetName().Name)
+								.GetResult();
 
 		result.IsSuccessful.ShouldBeTrue();
 	}
@@ -32,9 +32,9 @@ public sealed class LayerTests : TestBase
 	public void DomainLayer_ShouldNotHaveDependencyOn_PresentationLayer()
 	{
 		TestResult result = Types.InAssembly(DomainAssembly)
-			.Should()
-			.NotHaveDependencyOn(PresentationAssembly.GetName().Name)
-			.GetResult();
+								.Should()
+								.NotHaveDependencyOn(PresentationAssembly.GetName().Name)
+								.GetResult();
 
 		result.IsSuccessful.ShouldBeTrue();
 	}
@@ -43,9 +43,9 @@ public sealed class LayerTests : TestBase
 	public void ApplicationLayer_ShouldNotHaveDependencyOn_InfrastructureLayer()
 	{
 		TestResult result = Types.InAssembly(ApplicationAssembly)
-			.Should()
-			.NotHaveDependencyOn(InfrastructureAssembly.GetName().Name)
-			.GetResult();
+								.Should()
+								.NotHaveDependencyOn(InfrastructureAssembly.GetName().Name)
+								.GetResult();
 
 		result.IsSuccessful.ShouldBeTrue();
 	}
@@ -54,9 +54,9 @@ public sealed class LayerTests : TestBase
 	public void ApplicationLayer_ShouldNotHaveDependencyOn_PresentationLayer()
 	{
 		TestResult result = Types.InAssembly(ApplicationAssembly)
-			.Should()
-			.NotHaveDependencyOn(PresentationAssembly.GetName().Name)
-			.GetResult();
+								.Should()
+								.NotHaveDependencyOn(PresentationAssembly.GetName().Name)
+								.GetResult();
 
 		result.IsSuccessful.ShouldBeTrue();
 	}
@@ -65,9 +65,9 @@ public sealed class LayerTests : TestBase
 	public void InfrastructureLayer_ShouldNotHaveDependencyOn_PresentationLayer()
 	{
 		TestResult result = Types.InAssembly(InfrastructureAssembly)
-			.Should()
-			.NotHaveDependencyOn(PresentationAssembly.GetName().Name)
-			.GetResult();
+								.Should()
+								.NotHaveDependencyOn(PresentationAssembly.GetName().Name)
+								.GetResult();
 
 		result.IsSuccessful.ShouldBeTrue();
 	}

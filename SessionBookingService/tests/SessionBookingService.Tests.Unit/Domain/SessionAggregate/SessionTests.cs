@@ -37,9 +37,8 @@ public class SessionTests
 
 		// Act
 		Result<bool> reservationResult = session.BookSpot(player);
-		Result<bool> cancellationResult = session.CancelBooking(
-			player.Id,
-			new TestDateTimeProvider(dateAndTimeOfCancellation));
+		Result<bool> cancellationResult = session.CancelBooking(player.Id,
+																new TestDateTimeProvider(dateAndTimeOfCancellation));
 
 		// Assert
 		Assert.True(reservationResult.IsSuccess);

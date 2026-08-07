@@ -8,9 +8,9 @@ internal sealed partial class Club
 	private readonly int _maxCourtCapacity;
 
 	internal Club(string name,
-		int maxCourtCapacity,
-		Guid subscriptionId,
-		Guid? id = null) : base(id ?? Guid.CreateVersion7())
+				int maxCourtCapacity,
+				Guid subscriptionId,
+				Guid? id = null) : base(id ?? Guid.CreateVersion7())
 	{
 		Name = name;
 		SubscriptionId = subscriptionId;

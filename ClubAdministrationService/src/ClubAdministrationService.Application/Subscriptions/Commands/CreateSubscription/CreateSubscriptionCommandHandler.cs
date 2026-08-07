@@ -11,7 +11,7 @@ internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsR
 	: IRequestHandler<CreateSubscriptionCommand, Result<Subscription>>
 {
 	public async ValueTask<Result<Subscription>> Handle(CreateSubscriptionCommand command,
-		CancellationToken cancellationToken)
+														CancellationToken cancellationToken)
 	{
 		Admin? admin = await adminsRepository.GetByIdAsync(command.AdminId, cancellationToken);
 
@@ -23,7 +23,7 @@ internal sealed class CreateSubscriptionCommandHandler(IAdminsRepository adminsR
 		if (admin.SubscriptionId is not null)
 		{
 			return Result.Failure<Subscription>(Error.Conflict("AdminAlreadyHasActiveSubscription",
-				"Admin already has active subscription"));
+																"Admin already has active subscription"));
 		}
 
 		Subscription subscription = new(command.SubscriptionType, command.AdminId);

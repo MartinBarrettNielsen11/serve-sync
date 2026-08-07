@@ -7,8 +7,7 @@ internal static class InstructorFactory
 {
 	internal static Instructor Create(Guid? userId = null, Guid? id = null)
 	{
-		return new Instructor(
-			userId ?? Guid.CreateVersion7(),
-			id: id ?? InstructorConstants.Id);
+		return new Instructor(userId ?? Guid.CreateVersion7(),
+							id: id ?? InstructorConstants.Id);
 	}
 }

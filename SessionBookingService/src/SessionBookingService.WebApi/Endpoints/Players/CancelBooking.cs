@@ -10,21 +10,20 @@ public sealed class CancelBooking : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapDelete("{playerId:guid}/sessions/{sessionId:guid}/booking",
-				async (Guid playerId,
-					Guid sessionId,
-					ISender sender,
-					CancellationToken cancellationToken) =>
-				{
-					CancelBookingCommand command = new(playerId, sessionId);
+					async (Guid playerId,
+							Guid sessionId,
+							ISender sender,
+							CancellationToken cancellationToken) =>
+					{
+						CancelBookingCommand command = new(playerId, sessionId);
 
-					Result cancelBookingResult = await sender.Send(command, cancellationToken);
+						Result cancelBookingResult = await sender.Send(command, cancellationToken);
 
-					IResult response = cancelBookingResult.Match(
-						Results.NoContent,
-						err => ProblemDetailsMapper.Problem([err.Error]));
+						IResult response = cancelBookingResult.Match(Results.NoContent,
+																	err => ProblemDetailsMapper.Problem([err.Error]));
 
-					return response;
-				})
+						return response;
+					})
 			.WithTags(Tags.Players)
 			.WithSummary("Cancel booking")
 			.WithDescription("Cancel booking for a session for a player");

@@ -15,8 +15,8 @@ public class SubscriptionTests
 		Subscription subscription = SubscriptionFactory.Create(SubscriptionType.Pro);
 
 		List<Club> gyms = Enumerable.Range(0, subscription.GetMaxCourtsAllowed() + 1)
-			.Select(_ => ClubFactory.Create(id: Guid.NewGuid()))
-			.ToList();
+									.Select(_ => ClubFactory.Create(id: Guid.NewGuid()))
+									.ToList();
 
 		// Act
 		List<Result<bool>> addGymResults = gyms.ConvertAll(subscription.AddClub);

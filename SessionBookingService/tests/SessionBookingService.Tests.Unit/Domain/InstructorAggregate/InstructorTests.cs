@@ -23,15 +23,15 @@ public class InstructorTests
 		// Arrange
 		Instructor sut = InstructorFactory.Create();
 
-		Session session1 = SessionFactory.CreateSession(
-			date: SessionConstants.Date,
-			timeSlot: TimeSlotFactory.Create(startHourSession1, endHourSession1),
-			id: Guid.CreateVersion7());
+		Session session1 = SessionFactory.CreateSession(date: SessionConstants.Date,
+														timeSlot: TimeSlotFactory.Create(startHourSession1,
+																						endHourSession1),
+														id: Guid.CreateVersion7());
 
-		Session session2 = SessionFactory.CreateSession(
-			date: SessionConstants.Date,
-			timeSlot: TimeSlotFactory.Create(startHourSession2, endHourSession2),
-			id: Guid.CreateVersion7());
+		Session session2 = SessionFactory.CreateSession(date: SessionConstants.Date,
+														timeSlot: TimeSlotFactory.Create(startHourSession2,
+																						endHourSession2),
+														id: Guid.CreateVersion7());
 
 		// Act
 		Result<bool> addSession1Result = sut.AddSessionToSchedule(session1);

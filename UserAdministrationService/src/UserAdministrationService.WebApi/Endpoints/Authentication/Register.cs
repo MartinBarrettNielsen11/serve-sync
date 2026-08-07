@@ -13,18 +13,20 @@ public sealed class Register : IEndpoint
 {
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
-		app.MapPost("register", async (RegisterRequest request, ISender sender, CancellationToken cancellationToken) =>
-			{
-				RegisterCommand command = new(request.FirstName, request.LastName, request.Email, request.Password);
+		app.MapPost("register",
+					async (RegisterRequest request, ISender sender, CancellationToken cancellationToken) =>
+					{
+						RegisterCommand command =
+							new(request.FirstName, request.LastName, request.Email, request.Password);
 
-				Result<AuthenticationResult> authResult = await sender.Send(command, cancellationToken);
+						Result<AuthenticationResult> authResult = await sender.Send(command, cancellationToken);
 
-				IResult response = authResult.Match(
-					p => Results.Ok(new AuthenticationResponse(p.User.Id, "", "", "", "")),
-					p => ProblemDetailsMapper.Problem([p.Error]));
+						IResult response =
+							authResult.Match(p => Results.Ok(new AuthenticationResponse(p.User.Id, "", "", "", "")),
+											p => ProblemDetailsMapper.Problem([p.Error]));
 
-				return response;
-			})
+						return response;
+					})
 			.WithTags(Tags.Authentication)
 			.WithSummary("Register")
 			.WithDescription("Register")

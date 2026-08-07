@@ -8,8 +8,8 @@ internal sealed partial class Player
 	private readonly List<Guid> _sessionIds = [];
 
 	public Player(Guid userId,
-		Schedule? schedule = null,
-		Guid? id = null) : base(id ?? Guid.CreateVersion7())
+				Schedule? schedule = null,
+				Guid? id = null) : base(id ?? Guid.CreateVersion7())
 	{
 		UserId = userId;
 		_schedule = schedule ?? Schedule.Empty();

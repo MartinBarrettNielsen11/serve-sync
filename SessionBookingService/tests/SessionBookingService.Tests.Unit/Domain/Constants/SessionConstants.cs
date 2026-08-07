@@ -11,7 +11,7 @@ internal static class SessionConstants
 	internal static readonly DateOnly Date = DateOnly.FromDateTime(DateTime.UtcNow);
 
 	internal static readonly TimeSlot Time = new(TimeOnly.MinValue.AddHours(8),
-		TimeOnly.MaxValue.AddHours(9));
+												TimeOnly.MaxValue.AddHours(9));
 
 	public static readonly List<SessionCategory> Categories = [];
 }

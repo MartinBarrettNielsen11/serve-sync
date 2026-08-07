@@ -14,15 +14,15 @@ internal sealed class ClubConfiguration : IEntityTypeConfiguration<Club>
 		builder.Property(g => g.Id).ValueGeneratedNever();
 
 		builder.Property("_maxCourtCapacity")
-			.HasColumnName("MaxCourtCapacity");
+				.HasColumnName("MaxCourtCapacity");
 
 		builder.Property<List<Guid>>("_courtIds")
-			.HasColumnName("CourtIds")
-			.HasListOfIdsConverter();
+				.HasColumnName("CourtIds")
+				.HasListOfIdsConverter();
 
 		builder.Property<List<Guid>>("_instructorIds")
-			.HasColumnName("InstructorIds")
-			.HasListOfIdsConverter();
+				.HasColumnName("InstructorIds")
+				.HasListOfIdsConverter();
 
 		builder.Property(g => g.Name);
 		builder.Property(g => g.SubscriptionId);

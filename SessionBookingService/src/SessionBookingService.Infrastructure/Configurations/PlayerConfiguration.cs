@@ -13,20 +13,21 @@ internal sealed class PlayerConfiguration : IEntityTypeConfiguration<Player>
 		builder.HasKey(g => g.Id);
 
 		builder.Property(g => g.Id)
-			.ValueGeneratedNever();
+				.ValueGeneratedNever();
 
-		builder.OwnsOne<Schedule>("_schedule", sb =>
-		{
-			sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
-				.HasColumnName("ScheduleCalender")
-				.HasValueJsonConverter();
+		builder.OwnsOne<Schedule>("_schedule",
+								sb =>
+								{
+									sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
+									.HasColumnName("ScheduleCalender")
+									.HasValueJsonConverter();
 
-			sb.Property(s => s.Id).HasColumnName("ScheduleId");
-		});
+									sb.Property(s => s.Id).HasColumnName("ScheduleId");
+								});
 
 		builder.Property<List<Guid>>("_sessionIds")
-			.HasColumnName("SessionIds")
-			.HasListOfIdsConverter();
+				.HasColumnName("SessionIds")
+				.HasListOfIdsConverter();
 
 		builder.Property(g => g.UserId);
 	}

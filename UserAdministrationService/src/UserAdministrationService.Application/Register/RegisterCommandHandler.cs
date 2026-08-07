@@ -7,14 +7,13 @@ using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Application.Register;
 
-internal sealed class RegisterCommandHandler(
-	IUsersRepository usersRepository,
-	IPasswordHasher passwordHasher,
-	IJwtTokenGenerator jwtTokenGenerator)
+internal sealed class RegisterCommandHandler(IUsersRepository usersRepository,
+											IPasswordHasher passwordHasher,
+											IJwtTokenGenerator jwtTokenGenerator)
 	: IRequestHandler<RegisterCommand, Result<AuthenticationResult>>
 {
 	public async ValueTask<Result<AuthenticationResult>> Handle(RegisterCommand command,
-		CancellationToken cancellationToken)
+																CancellationToken cancellationToken)
 	{
 		var userExists = await usersRepository.ExistsByEmailAsync(command.Email, cancellationToken);
 
@@ -31,9 +30,9 @@ internal sealed class RegisterCommandHandler(
 		}
 
 		User user = new(command.FirstName,
-			command.LastName,
-			command.Email,
-			hashPasswordResult.Value);
+						command.LastName,
+						command.Email,
+						hashPasswordResult.Value);
 
 		await usersRepository.AddUserAsync(user, cancellationToken);
 

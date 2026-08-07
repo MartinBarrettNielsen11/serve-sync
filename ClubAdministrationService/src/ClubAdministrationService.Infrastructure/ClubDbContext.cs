@@ -11,10 +11,9 @@ using SharedKernel;
 
 namespace ClubAdministrationService.Infrastructure;
 
-internal sealed class ClubDbContext(
-	DbContextOptions<ClubDbContext> options,
-	IHttpContextAccessor httpContextAccessor,
-	IPublisher publisher)
+internal sealed class ClubDbContext(DbContextOptions<ClubDbContext> options,
+									IHttpContextAccessor httpContextAccessor,
+									IPublisher publisher)
 	: DbContext(options)
 {
 	public DbSet<Admin> Admins { get; set; } = null!;
@@ -32,9 +31,9 @@ internal sealed class ClubDbContext(
 	public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
 	{
 		List<IDomainEvent> domainEvents = ChangeTracker.Entries<RootAggregate>()
-			.Select(entry => entry.Entity.PopDomainEvents())
-			.SelectMany(x => x)
-			.ToList();
+														.Select(entry => entry.Entity.PopDomainEvents())
+														.SelectMany(x => x)
+														.ToList();
 
 		if (IsUserWaitingOnline())
 		{

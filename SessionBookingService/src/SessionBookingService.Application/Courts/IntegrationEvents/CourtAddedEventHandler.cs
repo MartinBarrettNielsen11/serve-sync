@@ -11,9 +11,9 @@ internal sealed class CourtAddedEventHandler(ICourtsRepository courtsRepository)
 	public async ValueTask Handle(CourtAddedIntegrationEvent notification, CancellationToken cancellationToken)
 	{
 		Court court = new(notification.Name,
-			notification.MaxDailySessions,
-			notification.ClubId,
-			id: notification.CourtId);
+						notification.MaxDailySessions,
+						notification.ClubId,
+						id: notification.CourtId);
 
 		await courtsRepository.AddCourtAsync(court, cancellationToken);
 	}

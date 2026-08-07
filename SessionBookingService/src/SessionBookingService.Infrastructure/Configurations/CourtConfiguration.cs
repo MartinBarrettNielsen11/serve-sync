@@ -18,14 +18,15 @@ internal sealed class CourtConfiguration : IEntityTypeConfiguration<Court>
 
 		builder.Property<List<Guid>>("_sessionIds").HasColumnName("SessionIds").HasListOfIdsConverter();
 
-		builder.OwnsOne<Schedule>("_schedule", sb =>
-		{
-			sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
-				.HasColumnName("ScheduleCalendar")
-				.HasValueJsonConverter();
+		builder.OwnsOne<Schedule>("_schedule",
+								sb =>
+								{
+									sb.Property<Dictionary<DateOnly, List<TimeSlot>>>("_calendar")
+									.HasColumnName("ScheduleCalendar")
+									.HasValueJsonConverter();
 
-			sb.Property(s => s.Id).HasColumnName("ScheduleId");
-		});
+									sb.Property(s => s.Id).HasColumnName("ScheduleId");
+								});
 
 		builder.Property(r => r.Name);
 		builder.Property(r => r.ClubId);

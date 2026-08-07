@@ -26,30 +26,32 @@ internal sealed class SealedClassCodeFix : CodeFixProvider
 		SyntaxNode? syntaxNode = await context.Document.GetSyntaxRootAsync(context.CancellationToken);
 
 		ClassDeclarationSyntax? classDeclaration = syntaxNode?
-			.FindToken(diagnosticSpan.Start).Parent?
-			.AncestorsAndSelf()
-			.OfType<ClassDeclarationSyntax>()
-			.FirstOrDefault();
+													.FindToken(diagnosticSpan.Start)
+													.Parent
+													?
+													.AncestorsAndSelf()
+													.OfType<ClassDeclarationSyntax>()
+													.FirstOrDefault();
 
 		if (classDeclaration is null)
 		{
 			return;
 		}
 
-		context.RegisterCodeFix(
-			CodeAction.Create(
-				"Make the class sealed",
-				_ => MakeClassSealedAsync(syntaxNode!, context.Document, classDeclaration),
-				nameof(SealedClassCodeFix)),
-			diagnostic);
+		context.RegisterCodeFix(CodeAction.Create("Make the class sealed",
+												_ => MakeClassSealedAsync(syntaxNode!,
+																		context.Document,
+																		classDeclaration),
+												nameof(SealedClassCodeFix)),
+								diagnostic);
 	}
 
 	private static Task<Document> MakeClassSealedAsync(SyntaxNode syntaxNode, Document document,
-		ClassDeclarationSyntax classDeclaration)
+														ClassDeclarationSyntax classDeclaration)
 	{
 		ClassDeclarationSyntax newClass =
-			classDeclaration.WithModifiers(
-				classDeclaration.Modifiers.Add(SyntaxFactory.Token(SyntaxKind.SealedKeyword)));
+			classDeclaration.WithModifiers(classDeclaration.Modifiers
+															.Add(SyntaxFactory.Token(SyntaxKind.SealedKeyword)));
 
 		SyntaxNode newSyntaxNode = syntaxNode.ReplaceNode(classDeclaration, newClass);
 

@@ -20,11 +20,14 @@ internal static class AssertLoggingExtensions
 		];
 
 		FakeLogRecord? matchingLog = logs
-			.Where(log => log.Level == LogLevel.Information)
-			.FirstOrDefault(log =>
-				log.StructuredState is not null &&
-				expectedProperties.All(property =>
-					HasProperty(log, property.Key, property.Value)));
+									.Where(log => log.Level == LogLevel.Information)
+									.FirstOrDefault(log =>
+														log.StructuredState is not null &&
+														expectedProperties.All(property =>
+																					HasProperty(
+																						log,
+																						property.Key,
+																						property.Value)));
 
 		Assert.NotNull(matchingLog);
 	}
@@ -32,7 +35,9 @@ internal static class AssertLoggingExtensions
 	private static bool HasProperty(FakeLogRecord log, string key, string expectedValue)
 	{
 		return log.StructuredState?.Any(kvp =>
-			string.Equals(kvp.Key, key, StringComparison.OrdinalIgnoreCase) &&
-			string.Equals(kvp.Value, expectedValue, StringComparison.OrdinalIgnoreCase)) == true;
+											string.Equals(kvp.Key, key, StringComparison.OrdinalIgnoreCase) &&
+											string.Equals(kvp.Value,
+														expectedValue,
+														StringComparison.OrdinalIgnoreCase)) == true;
 	}
 }

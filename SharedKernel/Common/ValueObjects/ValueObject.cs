@@ -12,14 +12,14 @@ public abstract class ValueObject
 		}
 
 		return ((ValueObject)obj)
-			.GetEqualityComponents()
-			.SequenceEqual(GetEqualityComponents());
+				.GetEqualityComponents()
+				.SequenceEqual(GetEqualityComponents());
 	}
 
 	public override int GetHashCode()
 	{
 		return GetEqualityComponents()
-			.Select(x => x?.GetHashCode() ?? 0)
-			.Aggregate((x, y) => x ^ y);
+				.Select(x => x?.GetHashCode() ?? 0)
+				.Aggregate((x, y) => x ^ y);
 	}
 }

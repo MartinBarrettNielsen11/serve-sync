@@ -31,7 +31,7 @@ internal sealed class ClubsRepository(ClubDbContext dbContext) : IClubsRepositor
 	public async Task<List<Club>> ListSubscriptionClubs(Guid subscriptionId, CancellationToken cancellationToken)
 	{
 		return await dbContext.Clubs
-			.Where(c => c.SubscriptionId == subscriptionId)
-			.ToListAsync(cancellationToken);
+							.Where(c => c.SubscriptionId == subscriptionId)
+							.ToListAsync(cancellationToken);
 	}
 }

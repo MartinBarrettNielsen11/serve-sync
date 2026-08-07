@@ -5,9 +5,8 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.Queries.ListClubs;
 
-internal sealed class ListClubsQueryHandler(
-	IClubsRepository clubsRepository,
-	ISubscriptionsRepository subscriptionsRepository)
+internal sealed class ListClubsQueryHandler(IClubsRepository clubsRepository,
+											ISubscriptionsRepository subscriptionsRepository)
 	: IRequestHandler<ListClubsQuery, Result<List<Club>>>
 {
 	public async ValueTask<Result<List<Club>>> Handle(ListClubsQuery query, CancellationToken cancellationToken)

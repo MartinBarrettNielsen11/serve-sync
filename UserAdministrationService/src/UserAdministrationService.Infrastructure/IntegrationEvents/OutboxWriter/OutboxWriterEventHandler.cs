@@ -17,7 +17,7 @@ internal sealed class OutboxWriterEventHandler(UserDbContext userDbContext)
 	public async ValueTask Handle(AdminProfileCreatedEvent notification, CancellationToken cancellationToken)
 	{
 		AdminProfileCreatedIntegrationEvent integrationEvent = new(notification.UserId,
-			notification.AdminId);
+																	notification.AdminId);
 
 		await AddOutboxIntegrationEventAsync(integrationEvent);
 	}
@@ -25,14 +25,14 @@ internal sealed class OutboxWriterEventHandler(UserDbContext userDbContext)
 	public async ValueTask Handle(InstructorProfileCreatedEvent notification, CancellationToken cancellationToken)
 	{
 		InstructorProfileCreatedIntegrationEvent integrationEvent = new(notification.UserId,
-			notification.InstructorId);
+																		notification.InstructorId);
 		await AddOutboxIntegrationEventAsync(integrationEvent);
 	}
 
 	public async ValueTask Handle(PlayerProfileCreatedEvent notification, CancellationToken cancellationToken)
 	{
 		PlayerProfileCreatedIntegrationEvent integrationEvent = new(notification.UserId,
-			notification.PlayerId);
+																	notification.PlayerId);
 		await AddOutboxIntegrationEventAsync(integrationEvent);
 	}
 
@@ -41,9 +41,10 @@ internal sealed class OutboxWriterEventHandler(UserDbContext userDbContext)
 # pragma warning restore S1172
 	{
 		// Add interaction with dbContext for adding OutboxIntegrationEvents entry
-		await userDbContext.OutboxIntegrationEvents.AddAsync(new OutboxIntegrationEvent(
-			integrationEvent.GetType().Name,
-			JsonSerializer.Serialize(integrationEvent)));
+		await userDbContext.OutboxIntegrationEvents.AddAsync(new OutboxIntegrationEvent(integrationEvent.GetType().Name,
+																						JsonSerializer
+																							.Serialize(
+																								integrationEvent)));
 
 		await userDbContext.SaveChangesAsync();
 	}

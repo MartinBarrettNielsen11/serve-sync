@@ -23,9 +23,9 @@ public sealed class AddInstructorTests(ApiTestFixture fixture) : BaseApiTest(fix
 		AddInstructorRequest request = new(Guid.NewGuid());
 
 		// Act
-		HttpResponseMessage response = await Client.PostAsJsonAsync(
-			$"subscriptions/{sub.Id}/clubs/{club.Id}/instructors",
-			request);
+		HttpResponseMessage response =
+			await Client.PostAsJsonAsync($"subscriptions/{sub.Id}/clubs/{club.Id}/instructors",
+										request);
 
 		// Assert
 		//Assert.Equal(HttpStatusCode.Created, response.StatusCode);
@@ -34,20 +34,29 @@ public sealed class AddInstructorTests(ApiTestFixture fixture) : BaseApiTest(fix
 		IReadOnlyList<FakeLogRecord> logs = GetFakeLogCollector().GetSnapshot();
 
 		IReadOnlyList<KeyValuePair<string, string?>>? record = logs
-			.Where(l => l.Level == LogLevel.Information)
-			.Where(l => l.StructuredState is not null &&
-						l.StructuredState.Any(kvp =>
-							string.Equals(kvp.Key, "Name", StringComparison.OrdinalIgnoreCase) &&
-							string.Equals(kvp.Value, "Test Club", StringComparison.OrdinalIgnoreCase)))
-			.Select(l => l.StructuredState)
-			.FirstOrDefault();
+																.Where(l => l.Level == LogLevel.Information)
+																.Where(l => l.StructuredState is not null &&
+																			l.StructuredState.Any(kvp =>
+																									string.Equals(
+																										kvp.Key,
+																										"Name",
+																										StringComparison
+																											.OrdinalIgnoreCase) &&
+																									string.Equals(
+																										kvp.Value,
+																										"Test Club",
+																										StringComparison
+																											.OrdinalIgnoreCase)))
+																.Select(l => l.StructuredState)
+																.FirstOrDefault();
 
 		Assert.NotNull(record);
 
 		Assert.Contains(record,
-			kvp => string.Equals(kvp.Key, "{OriginalFormat}", StringComparison.OrdinalIgnoreCase) &&
-					string.Equals(kvp.Value, "Club was not created yet :) but here is some text: {Name}",
-						StringComparison.OrdinalIgnoreCase));
+						kvp => string.Equals(kvp.Key, "{OriginalFormat}", StringComparison.OrdinalIgnoreCase) &&
+								string.Equals(kvp.Value,
+											"Club was not created yet :) but here is some text: {Name}",
+											StringComparison.OrdinalIgnoreCase));
 
 		Assert.NotNull(record);
 	}

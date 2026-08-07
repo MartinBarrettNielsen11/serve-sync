@@ -11,36 +11,38 @@ internal sealed class SessionConfiguration : IEntityTypeConfiguration<Session>
 		builder.HasKey(g => g.Id);
 
 		builder.Property(g => g.Id)
-			.ValueGeneratedNever();
+				.ValueGeneratedNever();
 
 		builder.Property(s => s.InstructorId);
 
-		builder.OwnsMany<Booking>("_bookings", b =>
-		{
-			b.ToTable("SessionBookings");
+		builder.OwnsMany<Booking>("_bookings",
+								b =>
+								{
+									b.ToTable("SessionBookings");
 
-			b.HasKey(r => r.Id);
+									b.HasKey(r => r.Id);
 
-			b.Property(r => r.Id).ValueGeneratedNever();
+									b.Property(r => r.Id).ValueGeneratedNever();
 
-			b.WithOwner().HasForeignKey("SessionId");
+									b.WithOwner().HasForeignKey("SessionId");
 
-			b.Property(r => r.PlayerId);
-		});
+									b.Property(r => r.PlayerId);
+								});
 
 
-		builder.OwnsMany(s => s.Categories, cb =>
-			{
-				cb.ToTable("SessionCategories");
+		builder.OwnsMany(s => s.Categories,
+						cb =>
+						{
+							cb.ToTable("SessionCategories");
 
-				cb.WithOwner().HasForeignKey("SessionId");
-				cb.HasKey("Id");
+							cb.WithOwner().HasForeignKey("SessionId");
+							cb.HasKey("Id");
 
-				cb.Property(c => c.Name);
-				cb.Property(c => c.Value);
-			})
-			.Metadata
-			.SetPropertyAccessMode(PropertyAccessMode.Field);
+							cb.Property(c => c.Name);
+							cb.Property(c => c.Value);
+						})
+				.Metadata
+				.SetPropertyAccessMode(PropertyAccessMode.Field);
 
 
 		builder.Property(s => s.MaxPlayerCapacity);

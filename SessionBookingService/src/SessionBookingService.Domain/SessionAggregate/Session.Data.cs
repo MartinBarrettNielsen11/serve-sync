@@ -8,14 +8,14 @@ internal sealed partial class Session
 	private readonly List<SessionCategory> _categories = [];
 
 	internal Session(string name,
-		string description,
-		int maxPlayerCapacity,
-		Guid instructorId,
-		Guid courtId,
-		DateOnly date,
-		TimeSlot time,
-		List<SessionCategory> categories,
-		Guid? id = null) : base(id ?? Guid.CreateVersion7())
+					string description,
+					int maxPlayerCapacity,
+					Guid instructorId,
+					Guid courtId,
+					DateOnly date,
+					TimeSlot time,
+					List<SessionCategory> categories,
+					Guid? id = null) : base(id ?? Guid.CreateVersion7())
 	{
 		Name = name;
 		Description = description;

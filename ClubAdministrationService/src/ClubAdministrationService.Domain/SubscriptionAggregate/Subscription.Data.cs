@@ -6,7 +6,7 @@ internal sealed partial class Subscription
 	private readonly int _maxCourtsAllowed;
 
 	internal Subscription(SubscriptionType subscriptionType,
-		Guid? id = null) : base(id ?? Guid.CreateVersion7())
+						Guid? id = null) : base(id ?? Guid.CreateVersion7())
 	{
 		SubscriptionType = subscriptionType;
 		_maxCourtsAllowed = GetMaxCourtsAllowed();

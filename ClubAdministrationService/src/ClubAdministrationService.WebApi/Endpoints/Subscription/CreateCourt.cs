@@ -11,29 +11,32 @@ public sealed class CreateCourt : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapPost("subscriptions",
-				async (
-					CreateSubscriptionRequest request,
-					ISender sender,
-					CancellationToken cancellationToken) =>
-				{
-					if (!Domain.SubscriptionAggregate.SubscriptionType.TryFromName(request.SubscriptionType.ToString(),
-							out Domain.SubscriptionAggregate.SubscriptionType? subscriptionType))
+					async (
+						CreateSubscriptionRequest request,
+						ISender sender,
+						CancellationToken cancellationToken) =>
 					{
-						return Results.Problem("Invalid subscription type",
-							statusCode: StatusCodes.Status400BadRequest);
-					}
+						if (!Domain.SubscriptionAggregate.SubscriptionType
+									.TryFromName(request.SubscriptionType.ToString(),
+												out Domain.SubscriptionAggregate.SubscriptionType? subscriptionType))
+						{
+							return Results.Problem("Invalid subscription type",
+													statusCode: StatusCodes.Status400BadRequest);
+						}
 
-					CreateSubscriptionCommand command = new(subscriptionType, request.AdminId);
+						CreateSubscriptionCommand command = new(subscriptionType, request.AdminId);
 
-					Result<Domain.SubscriptionAggregate.Subscription> createSubscriptionResult =
-						await sender.Send(command, cancellationToken);
+						Result<Domain.SubscriptionAggregate.Subscription> createSubscriptionResult =
+							await sender.Send(command, cancellationToken);
 
-					IResult response = createSubscriptionResult.Match(
-						s => Results.Ok(new SubscriptionResponse(s.Id, ToDto(s.SubscriptionType))),
-						errors => ProblemDetailsMapper.Problem([errors.Error]));
+						IResult response =
+							createSubscriptionResult.Match(s => Results.Ok(new SubscriptionResponse(s.Id,
+																									ToDto(
+																										s.SubscriptionType))),
+															errors => ProblemDetailsMapper.Problem([errors.Error]));
 
-					return response;
-				})
+						return response;
+					})
 			.WithTags(Tags.Subscription)
 			.WithSummary("Create subscription")
 			.WithDescription("Create subscription");

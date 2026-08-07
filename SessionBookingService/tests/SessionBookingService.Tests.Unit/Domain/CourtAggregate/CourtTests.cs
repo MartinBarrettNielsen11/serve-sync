@@ -30,22 +30,22 @@ public class CourtTests
 	[InlineData(1, 3, 2, 4)] // second session ends after session, but overlaps
 	[InlineData(1, 3, 0, 2)] // second session starts before second session, but overlaps
 	public void ScheduleSession_WhenSessionOverlapsWithAnotherSession_ShouldFail(int startHourSession1,
-		int endHourSession1,
-		int startHourSession2,
-		int endHourSession2)
+																				int endHourSession1,
+																				int startHourSession2,
+																				int endHourSession2)
 	{
 		// Arrange
 		Court court = CourtFactory.Create("yo", 2);
 
-		Session session1 = SessionFactory.CreateSession(
-			date: SessionConstants.Date,
-			timeSlot: TimeSlotFactory.Create(startHourSession1, endHourSession1),
-			id: Guid.NewGuid());
+		Session session1 = SessionFactory.CreateSession(date: SessionConstants.Date,
+														timeSlot: TimeSlotFactory.Create(startHourSession1,
+																						endHourSession1),
+														id: Guid.NewGuid());
 
-		Session session2 = SessionFactory.CreateSession(
-			date: SessionConstants.Date,
-			timeSlot: TimeSlotFactory.Create(startHourSession2, endHourSession2),
-			id: Guid.NewGuid());
+		Session session2 = SessionFactory.CreateSession(date: SessionConstants.Date,
+														timeSlot: TimeSlotFactory.Create(startHourSession2,
+																						endHourSession2),
+														id: Guid.NewGuid());
 
 		// Act
 		Result<bool> scheduleSession1Result = court.ScheduleSession(session1);

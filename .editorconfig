@@ -16,6 +16,24 @@ resharper_csharp_wrap_chained_method_calls = chop_if_long
 resharper_csharp_wrap_after_property_in_chained_method_calls = true
 resharper_csharp_wrap_before_first_method_call = false
 
+# Primary constructors
+resharper_csharp_keep_existing_primary_constructor_declaration_parens_arrangement = false
+resharper_csharp_wrap_primary_constructor_parameters_style = wrap_if_long
+resharper_csharp_wrap_after_primary_constructor_declaration_lpar = false
+
+# Chained method calls
+resharper_csharp_align_multiline_calls_chain = true
+resharper_csharp_allow_far_alignment = true
+resharper_csharp_outdent_dots = false
+
+# Align subsequent parameters with the first parameter
+resharper_csharp_align_multiline_parameter = true
+
+# Method and constructor arguments
+resharper_csharp_wrap_arguments_style = chop_if_long
+resharper_csharp_align_multiline_argument = true
+resharper_csharp_keep_existing_invocation_parens_arrangement = false
+
 # New line preferences
 end_of_line = crlf
 insert_final_newline = true

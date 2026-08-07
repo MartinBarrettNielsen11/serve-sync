@@ -7,10 +7,9 @@ using UserAdministrationService.Domain.UserAggregate;
 
 namespace UserAdministrationService.Application.Login;
 
-internal sealed class LoginQueryHandler(
-	IPasswordHasher passwordHasher,
-	IUsersRepository usersRepository,
-	IJwtTokenGenerator jwtTokenGenerator)
+internal sealed class LoginQueryHandler(IPasswordHasher passwordHasher,
+										IUsersRepository usersRepository,
+										IJwtTokenGenerator jwtTokenGenerator)
 	: IRequestHandler<LoginQuery, Result<AuthenticationResult>>
 {
 	public async ValueTask<Result<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)

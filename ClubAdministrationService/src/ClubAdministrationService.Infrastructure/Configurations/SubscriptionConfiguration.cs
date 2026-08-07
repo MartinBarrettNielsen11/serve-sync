@@ -15,8 +15,8 @@ internal sealed class SubscriptionConfiguration : IEntityTypeConfiguration<Subsc
 		builder.Property("_maxCourtsAllowed").HasColumnName("MaxCourtsAllowed");
 
 		builder.Property(s => s.SubscriptionType)
-			.HasConversion(subscriptionType => subscriptionType.Value,
-				value => SubscriptionType.FromValue(value));
+				.HasConversion(subscriptionType => subscriptionType.Value,
+								value => SubscriptionType.FromValue(value));
 
 		builder.Property<List<Guid>>("_clubIds").HasColumnName("ClubIds").HasListOfIdsConverter();
 	}

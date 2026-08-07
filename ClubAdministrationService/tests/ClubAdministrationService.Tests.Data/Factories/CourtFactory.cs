@@ -10,10 +10,9 @@ internal static class CourtFactory
 		Guid? gymId = null,
 		Guid? id = null)
 	{
-		return new Court(
-			CourtConstants.Name,
-			maxDailySessions: maxDailySessions,
-			clubId: gymId ?? ClubConstants.Id,
-			id: id ?? CourtConstants.Id);
+		return new Court(CourtConstants.Name,
+						maxDailySessions: maxDailySessions,
+						clubId: gymId ?? ClubConstants.Id,
+						id: id ?? CourtConstants.Id);
 	}
 }

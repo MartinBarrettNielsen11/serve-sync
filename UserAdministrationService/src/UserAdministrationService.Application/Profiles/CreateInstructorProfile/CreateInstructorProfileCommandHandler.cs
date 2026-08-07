@@ -9,7 +9,7 @@ internal sealed class CreateInstructorProfileCommandHandler(IUsersRepository use
 	: IRequestHandler<CreateInstructorProfileCommand, Result<Guid>>
 {
 	public async ValueTask<Result<Guid>> Handle(CreateInstructorProfileCommand command,
-		CancellationToken cancellationToken)
+												CancellationToken cancellationToken)
 	{
 		User? user = await usersRepository.GetByIdAsync(command.UserId, cancellationToken);
 

@@ -6,9 +6,9 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Bookings.Commands.CreateBooking;
 
-internal sealed class CreateBookingCommandHandler(
-	ISessionsRepository sessionsRepository,
-	IPlayersRepository playersRepository) : IRequestHandler<CreateBookingCommand, Result>
+internal sealed class CreateBookingCommandHandler(ISessionsRepository sessionsRepository,
+												IPlayersRepository playersRepository)
+	: IRequestHandler<CreateBookingCommand, Result>
 {
 	public async ValueTask<Result> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
 	{
@@ -22,7 +22,7 @@ internal sealed class CreateBookingCommandHandler(
 		if (session.HasBookingForPlayer(command.PlayerId))
 		{
 			return Result.Failure<Guid>(Error.Conflict("PlayerAlreadyHasBooking",
-				"Player already has booking"));
+														"Player already has booking"));
 		}
 
 		Player? player = await playersRepository.GetByIdAsync(command.PlayerId, cancellationToken);
@@ -35,7 +35,7 @@ internal sealed class CreateBookingCommandHandler(
 		if (player.HasBookingForSession(session.Id))
 		{
 			return Result.Failure<Guid>(Error.Unexpected("PlayerNotExpectedToHaveReservationToSession",
-				"Player not expected to have reservation to session"));
+														"Player not expected to have reservation to session"));
 		}
 
 		Result<bool> bookSpotResult = session.BookSpot(player);

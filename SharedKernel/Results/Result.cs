@@ -51,8 +51,7 @@ public sealed class Result<TValue>(TValue? value, bool isSuccess, Error error) :
 	public TValue Value => IsSuccess switch
 	{
 		true => value!,
-		false => throw new InvalidOperationException(
-			"The value of a failure result can't be accessed.")
+		false => throw new InvalidOperationException("The value of a failure result can't be accessed.")
 	};
 
 	public static implicit operator Result<TValue>(TValue? value)

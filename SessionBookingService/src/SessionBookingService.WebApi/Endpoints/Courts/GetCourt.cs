@@ -12,21 +12,20 @@ public sealed class GetCourt : IEndpoint
 	public void MapEndpoint(IEndpointRouteBuilder app)
 	{
 		app.MapGet("clubs/{clubId:Guid}/courts/{courtId:Guid}",
-				async (Guid clubId,
-					Guid courtId,
-					ISender sender,
-					CancellationToken cancellationToken) =>
-				{
-					GetCourtQuery query = new(clubId, courtId);
+					async (Guid clubId,
+							Guid courtId,
+							ISender sender,
+							CancellationToken cancellationToken) =>
+					{
+						GetCourtQuery query = new(clubId, courtId);
 
-					Result<Court> getRoomResult = await sender.Send(query, cancellationToken);
+						Result<Court> getRoomResult = await sender.Send(query, cancellationToken);
 
-					IResult response = getRoomResult.Match(
-						c => Results.Ok(new CourtResponse(c.Id, c.Name)),
-						e => ProblemDetailsMapper.Problem([e.Error]));
+						IResult response = getRoomResult.Match(c => Results.Ok(new CourtResponse(c.Id, c.Name)),
+																e => ProblemDetailsMapper.Problem([e.Error]));
 
-					return response;
-				})
+						return response;
+					})
 			.WithTags(Tags.Courts)
 			.WithName("GetCourt")
 			.WithSummary("Get court")

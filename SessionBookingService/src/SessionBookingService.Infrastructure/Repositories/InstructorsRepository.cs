@@ -15,7 +15,7 @@ internal sealed class InstructorsRepository(SessionBookingDbContext dbContext) :
 	public async Task<Instructor?> GetByIdAsync(Guid instructorId, CancellationToken cancellationToken)
 	{
 		return await dbContext.Instructors.FirstOrDefaultAsync(instructor => instructor.Id == instructorId,
-			cancellationToken);
+																cancellationToken);
 	}
 
 	public async Task UpdateAsync(Instructor instructor, CancellationToken cancellationToken)

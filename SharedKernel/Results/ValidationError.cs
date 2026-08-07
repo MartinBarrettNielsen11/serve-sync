@@ -8,8 +8,8 @@ public sealed record ValidationError(Error[] Errors) :
 	public static ValidationError FromResult(IEnumerable<Result> results)
 	{
 		Error[] errors = results.Where(r => r.IsFailure)
-			.Select(r => r.Error)
-			.ToArray();
+								.Select(r => r.Error)
+								.ToArray();
 
 		ValidationError validationError = new(errors);
 

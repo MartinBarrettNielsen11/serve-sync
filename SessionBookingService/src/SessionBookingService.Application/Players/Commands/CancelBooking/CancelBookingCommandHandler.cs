@@ -7,10 +7,9 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Players.Commands.CancelBooking;
 
-internal sealed class CancelBookingCommandHandler(
-	IPlayersRepository playersRepository,
-	ISessionsRepository sessionsRepository,
-	IDateTimeProvider dateTimeProvider)
+internal sealed class CancelBookingCommandHandler(IPlayersRepository playersRepository,
+												ISessionsRepository sessionsRepository,
+												IDateTimeProvider dateTimeProvider)
 	: IRequestHandler<CancelBookingCommand, Result>
 {
 	public async ValueTask<Result> Handle(CancelBookingCommand command, CancellationToken cancellationToken)
@@ -24,9 +23,9 @@ internal sealed class CancelBookingCommandHandler(
 
 		if (!session.HasBookingForPlayer(command.PlayerId))
 		{
-			return Result.Failure<Result>(
-				Error.NotFound(description: "User does not have a reservation for the given session",
-					code: "BLablbla"));
+			return Result.Failure<Result>(Error.NotFound(description:
+														"User does not have a reservation for the given session",
+														code: "BLablbla"));
 		}
 
 		Player? player = await playersRepository.GetByIdAsync(command.PlayerId, cancellationToken);
@@ -38,8 +37,9 @@ internal sealed class CancelBookingCommandHandler(
 
 		if (!player.HasBookingForSession(session.Id))
 		{
-			return Result.Failure<Result>(
-				Error.Unexpected(description: "Participant expected to have reservation to session", code: "BLablbla"));
+			return Result.Failure<Result>(Error.Unexpected(description:
+															"Participant expected to have reservation to session",
+															code: "BLablbla"));
 		}
 
 		Result<bool> cancelReservationResult = session.CancelBooking(command.PlayerId, dateTimeProvider);

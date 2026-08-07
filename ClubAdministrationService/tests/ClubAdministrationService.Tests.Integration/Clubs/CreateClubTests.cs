@@ -23,9 +23,8 @@ public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixtur
 		CreateClubRequest request = new("Test Club");
 
 		// Act
-		HttpResponseMessage response = await Client.PostAsJsonAsync(
-			$"api/v1/subscriptions/{sub.Id}/clubs",
-			request);
+		HttpResponseMessage response = await Client.PostAsJsonAsync($"api/v1/subscriptions/{sub.Id}/clubs",
+																	request);
 
 		// Assert
 		Assert.Equal(HttpStatusCode.Created, response.StatusCode);
@@ -38,8 +37,7 @@ public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixtur
 		Assert.NotEmpty(updatedSubscription.ClubIds);
 
 		GetFakeLogCollector()
-			.ShouldHaveInformationLog(
-				"Club created: {Name}",
-				("Name", "Test Club"));
+			.ShouldHaveInformationLog("Club created: {Name}",
+									("Name", "Test Club"));
 	}
 }

@@ -17,7 +17,7 @@ public sealed class TimeSlot(TimeOnly start, TimeOnly end) : ValueObject
 		}
 
 		return new TimeSlot(TimeOnly.FromDateTime(start),
-			TimeOnly.FromDateTime(end));
+							TimeOnly.FromDateTime(end));
 	}
 
 	public override IEnumerable<object?> GetEqualityComponents()

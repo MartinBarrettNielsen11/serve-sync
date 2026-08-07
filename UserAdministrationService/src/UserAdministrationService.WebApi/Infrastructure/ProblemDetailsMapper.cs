@@ -23,23 +23,22 @@ internal static class ProblemDetailsMapper
 	private static IResult ValidationProblem(List<Error> errors)
 	{
 		Dictionary<string, string[]> validationErrors = errors
-			.SelectMany(e =>
-			{
-				if (e is ValidationError validationError)
-				{
-					return validationError.Errors;
-				}
+														.SelectMany(e =>
+														{
+															if (e is ValidationError validationError)
+															{
+																return validationError.Errors;
+															}
 
-				return [e];
-			})
-			.GroupBy(e => e.Code, StringComparer.Ordinal)
-			.ToDictionary(
-				group => group.Key,
-				group => group
-					.Select(error => error.Description)
-					.Distinct(StringComparer.Ordinal)
-					.ToArray(),
-				StringComparer.Ordinal);
+															return [e];
+														})
+														.GroupBy(e => e.Code, StringComparer.Ordinal)
+														.ToDictionary(group => group.Key,
+																	group => group
+																			.Select(error => error.Description)
+																			.Distinct(StringComparer.Ordinal)
+																			.ToArray(),
+																	StringComparer.Ordinal);
 
 		return Results.ValidationProblem(validationErrors);
 	}
@@ -47,9 +46,9 @@ internal static class ProblemDetailsMapper
 	private static IResult Problem(Error error)
 	{
 		return Results.Problem(title: GetTitle(error),
-			detail: GetDetail(error),
-			type: GetType(error.Type),
-			statusCode: GetStatusCode(error.Type));
+								detail: GetDetail(error),
+								type: GetType(error.Type),
+								statusCode: GetStatusCode(error.Type));
 	}
 
 	private static string GetTitle(Error error)

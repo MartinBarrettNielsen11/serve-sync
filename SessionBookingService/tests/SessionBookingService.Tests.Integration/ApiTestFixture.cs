@@ -17,12 +17,12 @@ namespace SessionBookingService.Tests.Integration;
 public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLifetime
 {
 	private readonly PostgreSqlContainer _dbContainer = new PostgreSqlBuilder("postgres:17")
-		.WithEnvironment("POSTGRES_USER", "postgres")
-		.WithEnvironment("POSTGRES_PASSWORD", "postgres")
-		.WithEnvironment("POSTGRES_DB", "postgres")
-		.WithPortBinding(5432, true)
-		//.WithWaitStrategy(Wait.ForUnixContainer())
-		.Build();
+														.WithEnvironment("POSTGRES_USER", "postgres")
+														.WithEnvironment("POSTGRES_PASSWORD", "postgres")
+														.WithEnvironment("POSTGRES_DB", "postgres")
+														.WithPortBinding(5432, true)
+														//.WithWaitStrategy(Wait.ForUnixContainer())
+														.Build();
 
 	private string ConnectionString => _dbContainer.GetConnectionString();
 
@@ -64,8 +64,8 @@ public sealed class ApiTestFixture : WebApplicationFactory<IApiMarker>, IAsyncLi
 	internal SessionBookingDbContext CreateDbContext()
 	{
 		DbContextOptions<SessionBookingDbContext> options = new DbContextOptionsBuilder<SessionBookingDbContext>()
-			.UseNpgsql(ConnectionString)
-			.Options;
+															.UseNpgsql(ConnectionString)
+															.Options;
 
 		return new SessionBookingDbContext(options, new HttpContextAccessor(), null!);
 	}

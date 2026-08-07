@@ -11,10 +11,9 @@ using SharedKernel;
 
 namespace SessionBookingService.Infrastructure;
 
-internal sealed class SessionBookingDbContext(
-	DbContextOptions<SessionBookingDbContext> options,
-	IHttpContextAccessor httpContextAccessor,
-	IPublisher publisher) : DbContext(options)
+internal sealed class SessionBookingDbContext(DbContextOptions<SessionBookingDbContext> options,
+											IHttpContextAccessor httpContextAccessor,
+											IPublisher publisher) : DbContext(options)
 {
 	public DbSet<Court> Courts { get; set; } = null!;
 	public DbSet<Session> Sessions { get; set; } = null!;
@@ -31,9 +30,9 @@ internal sealed class SessionBookingDbContext(
 	public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
 	{
 		List<IDomainEvent> domainEvents = ChangeTracker.Entries<RootAggregate>()
-			.Select(entry => entry.Entity.PopDomainEvents())
-			.SelectMany(x => x)
-			.ToList();
+														.Select(entry => entry.Entity.PopDomainEvents())
+														.SelectMany(x => x)
+														.ToList();
 
 		if (IsUserWaitingOnline())
 		{

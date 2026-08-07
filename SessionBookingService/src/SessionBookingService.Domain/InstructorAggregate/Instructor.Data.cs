@@ -9,8 +9,8 @@ internal sealed partial class Instructor : RootAggregate
 	private readonly List<Guid> _sessionIds = [];
 
 	internal Instructor(Guid userId,
-		Schedule? sch = null,
-		Guid? id = null) : base(id ?? Guid.CreateVersion7())
+						Schedule? sch = null,
+						Guid? id = null) : base(id ?? Guid.CreateVersion7())
 	{
 		UserId = userId;
 		_schedule = sch ?? _schedule;

@@ -16,9 +16,7 @@ internal static class TimeSlotFactory
 			throw new ArgumentOutOfRangeException(nameof(endHour));
 		}
 
-		return new TimeSlot(
-			TimeOnly.MinValue.AddHours(startHour),
-			TimeOnly.MinValue.AddHours(endHour)
-		);
+		return new TimeSlot(TimeOnly.MinValue.AddHours(startHour),
+							TimeOnly.MinValue.AddHours(endHour));
 	}
 }

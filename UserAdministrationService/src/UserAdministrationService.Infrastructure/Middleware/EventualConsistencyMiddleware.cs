@@ -35,8 +35,7 @@ internal sealed class EventualConsistencyMiddleware(RequestDelegate next)
 			catch (Exception e)
 			{
 				Console.WriteLine(e);
-				Console.WriteLine(
-					$"Root cause: {e.GetBaseException().Message}");
+				Console.WriteLine($"Root cause: {e.GetBaseException().Message}");
 
 				throw;
 			}

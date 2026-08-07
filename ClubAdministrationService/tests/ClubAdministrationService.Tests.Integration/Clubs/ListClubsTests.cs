@@ -19,9 +19,8 @@ public class ListClubsTests(WebApplicationFactory<IApiMarker> appFactory)
 
 		// Act
 
-		Uri requestUri = new(
-			$"/subscriptions/{subscriptionId}/clubs",
-			UriKind.Relative);
+		Uri requestUri = new($"/subscriptions/{subscriptionId}/clubs",
+							UriKind.Relative);
 
 		HttpResponseMessage response = await _httpClient.GetAsync(requestUri);
 
@@ -41,9 +40,8 @@ public class ListClubsTests(WebApplicationFactory<IApiMarker> appFactory)
 		Guid subscriptionId = Guid.Parse("11111111-1111-1111-1111-111111111111");
 
 		// Act
-		Uri requestUri = new(
-			$"/subscriptions/{subscriptionId}/clubs",
-			UriKind.Relative);
+		Uri requestUri = new($"/subscriptions/{subscriptionId}/clubs",
+							UriKind.Relative);
 
 		HttpResponseMessage response = await _httpClient.GetAsync(requestUri);
 

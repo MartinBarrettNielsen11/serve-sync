@@ -10,10 +10,8 @@ internal sealed partial class Instructor
 	{
 		if (_sessionIds.Contains(session.Id))
 		{
-			return Result.Failure<bool>(Error.Conflict(
-				"",
-				"Session already exists in the schedule of the Instructor")
-			);
+			return Result.Failure<bool>(Error.Conflict("",
+														"Session already exists in the schedule of the Instructor"));
 		}
 
 		Result bookingTimeSlotResult = _schedule.BookTimeSlot(session.Date, session.Time);

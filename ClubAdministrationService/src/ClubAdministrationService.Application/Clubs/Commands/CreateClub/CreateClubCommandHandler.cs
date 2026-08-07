@@ -7,9 +7,8 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.Commands.CreateClub;
 
-internal sealed class CreateClubCommandHandler(
-	ISubscriptionsRepository subscriptionsRepository,
-	ILogger<CreateClubCommandHandler> logger)
+internal sealed class CreateClubCommandHandler(ISubscriptionsRepository subscriptionsRepository,
+												ILogger<CreateClubCommandHandler> logger)
 	: IRequestHandler<CreateClubCommand, Result<Club>>
 {
 	public async ValueTask<Result<Club>> Handle(CreateClubCommand command, CancellationToken cancellationToken)
@@ -23,8 +22,8 @@ internal sealed class CreateClubCommandHandler(
 		}
 
 		Club club = new(command.Name,
-			subscription.GetMaxCourtsAllowed(),
-			subscription.Id);
+						subscription.GetMaxCourtsAllowed(),
+						subscription.Id);
 
 		Result<bool> addClubResult = subscription.AddClub(club);
 

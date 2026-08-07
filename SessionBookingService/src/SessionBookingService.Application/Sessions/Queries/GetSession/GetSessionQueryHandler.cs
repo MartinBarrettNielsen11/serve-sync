@@ -6,9 +6,8 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Sessions.Queries.GetSession;
 
-internal sealed class GetSessionQueryHandler(
-	ISessionsRepository sessionsRepository,
-	ICourtsRepository courtsRepository)
+internal sealed class GetSessionQueryHandler(ISessionsRepository sessionsRepository,
+											ICourtsRepository courtsRepository)
 	: IRequestHandler<GetSessionQuery, Result<Session>>
 {
 	public async ValueTask<Result<Session>> Handle(GetSessionQuery query, CancellationToken cancellationToken)

@@ -6,13 +6,12 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Players.Queries.ListPlayerSessions;
 
-internal sealed class ListPlayersSessionsQueryHandler(
-	IPlayersRepository playersRepository,
-	ISessionsRepository sessionsRepository)
+internal sealed class ListPlayersSessionsQueryHandler(IPlayersRepository playersRepository,
+													ISessionsRepository sessionsRepository)
 	: IRequestHandler<ListPlayersSessionsQuery, Result<List<Session>>>
 {
 	public async ValueTask<Result<List<Session>>> Handle(ListPlayersSessionsQuery query,
-		CancellationToken cancellationToken)
+														CancellationToken cancellationToken)
 	{
 		Player? participant = await playersRepository.GetByIdAsync(query.PlayerId, cancellationToken);
 
@@ -22,8 +21,8 @@ internal sealed class ListPlayersSessionsQueryHandler(
 		}
 
 		List<Session> result = await sessionsRepository.ListByIds(participant.SessionIds,
-			query.StartDateTime,
-			query.EndDateTime);
+																query.StartDateTime,
+																query.EndDateTime);
 
 		return Result.Success<List<Session>>(result);
 	}
