@@ -1,22 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <RootNamespace>ClubAdministrationService.Contracts</RootNamespace>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all"/>
-
-        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
-    </ItemGroup>
+<PropertyGroup>
+    <RootNamespace>ClubAdministrationService.Contracts</RootNamespace>
+</PropertyGroup>
+<ItemGroup>
+    <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all"/>
+    <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all" />
+</ItemGroup>
+<ItemGroup>
+    <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
+    <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
+</ItemGroup>
 </Project>

@@ -1,33 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <RootNamespace>UserAdministrationService.Domain</RootNamespace>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
-        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all"/>
-        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <InternalsVisibleTo Include="UserAdministrationService.Application"/>
-        <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
-        <InternalsVisibleTo Include="UserAdministrationService.Infrastructure"/>
-        <InternalsVisibleTo Include="UserAdministrationService.Tests.Architecture"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Mediator.Abstractions"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Interfaces\"/>
-    </ItemGroup>
+<PropertyGroup>
+    <RootNamespace>UserAdministrationService.Domain</RootNamespace>
+</PropertyGroup>
+<ItemGroup>
+    <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
+    <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all"/>
+    <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all" />
+</ItemGroup>
+<ItemGroup>
+    <InternalsVisibleTo Include="UserAdministrationService.Application"/>
+    <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
+    <InternalsVisibleTo Include="UserAdministrationService.Infrastructure"/>
+    <InternalsVisibleTo Include="UserAdministrationService.Tests.Architecture"/>
+</ItemGroup>
+<ItemGroup>
+    <PackageReference Include="Mediator.Abstractions"/>
+</ItemGroup>
+<ItemGroup>
+    <Folder Include="Interfaces\"/>
+</ItemGroup>
 </Project>

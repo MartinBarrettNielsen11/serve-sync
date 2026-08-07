@@ -1,31 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <RootNamespace>SessionBookingService.Domain</RootNamespace>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
-        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all"/>
-        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <InternalsVisibleTo Include="SessionBookingService.Tests.Unit"/>
-        <InternalsVisibleTo Include="SessionBookingService.Application"/>
-        <InternalsVisibleTo Include="SessionBookingService.Infrastructure"/>
-        <InternalsVisibleTo Include="SessionBookingService.WebApi"/>
-        <InternalsVisibleTo Include="SessionBookingService.Tests.Architecture"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Ardalis.SmartEnum"/>
-        <PackageReference Include="Mediator.Abstractions"/>
-    </ItemGroup>
+<PropertyGroup>
+    <RootNamespace>SessionBookingService.Domain</RootNamespace>
+</PropertyGroup>
+<ItemGroup>
+    <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
+    <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all"/>
+    <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all" />
+</ItemGroup>
+<ItemGroup>
+    <InternalsVisibleTo Include="SessionBookingService.Tests.Unit"/>
+    <InternalsVisibleTo Include="SessionBookingService.Application"/>
+    <InternalsVisibleTo Include="SessionBookingService.Infrastructure"/>
+    <InternalsVisibleTo Include="SessionBookingService.WebApi"/>
+    <InternalsVisibleTo Include="SessionBookingService.Tests.Architecture"/>
+</ItemGroup>
+<ItemGroup>
+    <PackageReference Include="Ardalis.SmartEnum"/>
+    <PackageReference Include="Mediator.Abstractions"/>
+</ItemGroup>
 </Project>

@@ -1,16 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <RootNamespace>ClubAdministrationService.Tests.Unit</RootNamespace>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit"/>
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
-    </ItemGroup>
-
+<PropertyGroup>
+    <RootNamespace>ClubAdministrationService.Tests.Unit</RootNamespace>
+</PropertyGroup>
+<ItemGroup>
+    <ProjectReference Include="..\..\src\ClubAdministrationService.Domain\ClubAdministrationService.Domain.csproj"/>
+</ItemGroup>
+<ItemGroup>
+    <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit"/>
+    <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
+</ItemGroup>
 </Project>

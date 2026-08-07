@@ -1,33 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <RootNamespace>ClubAdministrationService.Domain</RootNamespace>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
-        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all"/>
-        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Ardalis.SmartEnum"/>
-        <PackageReference Include="Mediator.Abstractions"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
-        <InternalsVisibleTo Include="ClubAdministrationService.Application"/>
-        <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure"/>
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit"/>
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Architecture"/>
-        <InternalsVisibleTo Include="ClubAdministrationService.Tests.Data"/>
-    </ItemGroup>
+<PropertyGroup>
+    <RootNamespace>ClubAdministrationService.Domain</RootNamespace>
+</PropertyGroup>
+<ItemGroup>
+    <ProjectReference Include="..\..\..\SharedKernel\SharedKernel.csproj"/>
+    <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all"/>
+    <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all" />
+</ItemGroup>
+<ItemGroup>
+    <PackageReference Include="Ardalis.SmartEnum"/>
+    <PackageReference Include="Mediator.Abstractions"/>
+</ItemGroup>
+<ItemGroup>
+    <InternalsVisibleTo Include="ClubAdministrationService.WebApi"/>
+    <InternalsVisibleTo Include="ClubAdministrationService.Application"/>
+    <InternalsVisibleTo Include="ClubAdministrationService.Infrastructure"/>
+    <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit"/>
+    <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
+    <InternalsVisibleTo Include="ClubAdministrationService.Tests.Architecture"/>
+    <InternalsVisibleTo Include="ClubAdministrationService.Tests.Data"/>
+</ItemGroup>
 </Project>

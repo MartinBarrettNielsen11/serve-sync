@@ -1,20 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <RootNamespace>UserAdministrationService.Contracts</RootNamespace>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all"/>
-        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
-                          OutputItemType="Analyzer"
-                          ReferenceOutputAssembly="false"
-                          PrivateAssets="all" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
-    </ItemGroup>
+<PropertyGroup>
+    <RootNamespace>UserAdministrationService.Contracts</RootNamespace>
+</PropertyGroup>
+<ItemGroup>
+    <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all"/>
+    <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all" />
+</ItemGroup>
+<ItemGroup>
+    <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
+</ItemGroup>
 </Project>
