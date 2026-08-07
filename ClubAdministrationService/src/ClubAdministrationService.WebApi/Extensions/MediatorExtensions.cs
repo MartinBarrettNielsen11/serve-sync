@@ -1,4 +1,5 @@
 using ClubAdministrationService.Application.Admins.IntegrationEvents;
+using ClubAdministrationService.Application.Courts.Commands.CreateCourt;
 using Mediator;
 using SharedKernel.IntegrationEvents.ClubManagement;
 using SharedKernel.IntegrationEvents.UserManagement;
@@ -11,18 +12,13 @@ internal static class MediatorExtensions
 	{
 		services.AddMediator(options =>
 		{
-			options.ServiceLifetime = ServiceLifetime.Singleton;
+			options.ServiceLifetime = ServiceLifetime.Scoped;
 			options.GenerateTypesAsInternal = true;
 			options.NotificationPublisherType = typeof(ForeachAwaitPublisher);
 			options.CachingMode = CachingMode.Eager;
 			options.Assemblies =
 			[
 				typeof(AdminProfileCreatedEventHandler).Assembly
-			];
-			options.Types =
-			[
-				typeof(AdminProfileCreatedIntegrationEvent),
-				typeof(SessionScheduledIntegrationEvent)
 			];
 		});
 

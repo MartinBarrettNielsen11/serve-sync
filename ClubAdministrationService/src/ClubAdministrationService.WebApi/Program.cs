@@ -9,11 +9,11 @@ using Scalar.AspNetCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
-builder.Host.UseDefaultServiceProvider((_, options) =>
+builder.WebHost.UseKestrel(opts => opts.AddServerHeader = false);
+builder.Host.UseDefaultServiceProvider((_, opts) =>
 	{
-		options.ValidateScopes = true;
-		options.ValidateOnBuild = true;
+		opts.ValidateScopes = true;
+		opts.ValidateOnBuild = true;
 	}
 );
 

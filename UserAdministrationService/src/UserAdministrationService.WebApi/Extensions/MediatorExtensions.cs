@@ -12,7 +12,7 @@ internal static class MediatorExtensions
 			options.ServiceLifetime = ServiceLifetime.Singleton;
 			options.GenerateTypesAsInternal = true;
 			options.NotificationPublisherType = typeof(ForeachAwaitPublisher);
-			// options.CachingMode = CachingMode.Eager;
+			options.CachingMode = CachingMode.Eager;
 			options.Assemblies =
 			[
 				typeof(OutboxWriterEventHandler).Assembly

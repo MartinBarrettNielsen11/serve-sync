@@ -10,17 +10,13 @@ internal static class MediatorExtensions
 	{
 		services.AddMediator(opts =>
 		{
-			opts.ServiceLifetime = ServiceLifetime.Singleton;
+			opts.ServiceLifetime = ServiceLifetime.Scoped;
 			opts.GenerateTypesAsInternal = true;
 			opts.NotificationPublisherType = typeof(ForeachAwaitPublisher);
 			opts.CachingMode = CachingMode.Eager;
 			opts.Assemblies =
 			[
 				typeof(CourtAddedEventHandler).Assembly
-			];
-			opts.Types =
-			[
-				typeof(CourtAddedIntegrationEvent)
 			];
 		});
 

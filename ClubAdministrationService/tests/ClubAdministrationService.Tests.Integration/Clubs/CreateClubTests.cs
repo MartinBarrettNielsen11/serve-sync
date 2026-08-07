@@ -13,7 +13,7 @@ namespace ClubAdministrationService.Tests.Integration.Clubs;
 public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixture), IClassFixture<ApiTestFixture>
 {
 	[Fact]
-	public async Task Create_Club()
+	public async Task Success()
 	{
 		// Arrange
 		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro);
@@ -37,8 +37,9 @@ public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixtur
 		Assert.NotNull(updatedSubscription);
 		Assert.NotEmpty(updatedSubscription.ClubIds);
 
-		GetFakeLogCollector().ShouldHaveInformationLog(
-			"Club was not created yet :) but here is some text: {Name}",
-			("Name", "Test Club"));
+		GetFakeLogCollector()
+			.ShouldHaveInformationLog(
+				"Club created: {Name}",
+				("Name", "Test Club"));
 	}
 }

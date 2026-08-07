@@ -11,7 +11,10 @@ indent_style = tab
 tab_width = 4
 
 csharp_prefer_braces = true:error
-resharper_csharp_braces_for_ifelse = required
+max_line_length = 120
+resharper_csharp_wrap_chained_method_calls = chop_if_long
+resharper_csharp_wrap_after_property_in_chained_method_calls = true
+resharper_csharp_wrap_before_first_method_call = false
 
 # New line preferences
 end_of_line = crlf
