@@ -25,5 +25,6 @@
         <InternalsVisibleTo Include="UserAdministrationService.WebApi"/>
         <InternalsVisibleTo Include="UserAdministrationService.Persistence"/>
         <InternalsVisibleTo Include="UserAdministrationService.Infrastructure"/>
+        <InternalsVisibleTo Include="UserAdministrationService.Tests.Architecture"/>
     </ItemGroup>
 </Project>
