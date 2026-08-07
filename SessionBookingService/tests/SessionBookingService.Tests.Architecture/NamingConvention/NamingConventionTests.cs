@@ -1,4 +1,4 @@
-namespace ClubAdministrationService.Tests.Architecture.NamingConvention;
+namespace SessionBookingService.Tests.Architecture.NamingConvention;
 
 #pragma warning disable S2094
 public sealed class NamingConventionTests

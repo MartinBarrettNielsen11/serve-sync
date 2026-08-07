@@ -1,4 +1,4 @@
-namespace ClubAdministrationService.Tests.Architecture.DependencyGuard;
+namespace SessionBookingService.Tests.Architecture.DependencyGuard;
 
 #pragma warning disable S2094
 public sealed class DependencyGuardTests
