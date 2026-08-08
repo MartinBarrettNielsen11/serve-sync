@@ -10,7 +10,8 @@ using Xunit;
 
 namespace ClubAdministrationService.Tests.Integration.Clubs;
 
-public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixture), IClassFixture<ApiTestFixture>
+public sealed class CreateClubTests(ApiTestFixture fixture) :
+	BaseApiTest(fixture, apiVersion: 1), IClassFixture<ApiTestFixture>
 {
 	[Fact]
 	public async Task Success()
@@ -23,11 +24,16 @@ public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixtur
 		CreateClubRequest request = new("Test Club");
 
 		// Act
-		HttpResponseMessage response = await Client.PostAsJsonAsync($"api/v1/subscriptions/{sub.Id}/clubs",
-																	request);
+		HttpResponseMessage response = await Client.PostAsJsonAsync(
+			requestUri: $"api/v1/subscriptions/{sub.Id}/clubs",
+			value: request);
 
 		// Assert
 		Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+		ClubResponse? clubResponse = await response.Content.ReadFromJsonAsync<ClubResponse>();
+
+		Assert.NotNull(clubResponse);
+		Assert.Equal(clubResponse.Name, request.Name);
 
 		await using ClubDbContext assertionContext = Fixture.CreateDbContext();
 		Subscription? updatedSubscription =
@@ -36,8 +42,23 @@ public sealed class CreateClubTests(ApiTestFixture fixture) : BaseApiTest(fixtur
 		Assert.NotNull(updatedSubscription);
 		Assert.NotEmpty(updatedSubscription.ClubIds);
 
-		GetFakeLogCollector()
-			.ShouldHaveInformationLog("Club created: {Name}",
-									("Name", "Test Club"));
+		GetFakeLogCollector().ShouldHaveInformationLog(messageTemplate: "Club created: {Name}",
+													  (Key: "Name", Value: "Test Club"));
+	}
+
+	[Fact]
+	public async Task When_SubscriptionDoesNotExist_Then_ErrorIsThrown()
+	{
+		// Arrange
+		Guid subscriptionId = Guid.NewGuid();
+		CreateClubRequest request = new("Test Club");
+
+		// Act
+		HttpResponseMessage response = await Client.PostAsJsonAsync(
+			requestUri: $"api/v1/subscriptions/{subscriptionId}/clubs",
+			value: request);
+
+		// Assert
+		Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
 	}
 }

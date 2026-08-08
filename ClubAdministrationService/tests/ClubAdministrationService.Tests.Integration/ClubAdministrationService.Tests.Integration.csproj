@@ -2,6 +2,7 @@
     <PropertyGroup>
         <IsTestProject>true</IsTestProject>
         <RootNamespace>ClubAdministrationService.Tests.Integration</RootNamespace>
+        <NoWarn>$(NoWarn);VSTHRD200</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DotNet.Testcontainers"/>
