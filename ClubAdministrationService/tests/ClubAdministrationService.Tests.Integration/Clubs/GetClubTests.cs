@@ -9,7 +9,6 @@ using Xunit;
 
 namespace ClubAdministrationService.Tests.Integration.Clubs;
 
-
 public sealed class GetClubTests(ApiTestFixture fixture) :
 	BaseApiTest(fixture, apiVersion: 1), IClassFixture<ApiTestFixture>
 {
