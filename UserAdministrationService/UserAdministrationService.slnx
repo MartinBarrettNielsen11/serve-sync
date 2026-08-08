@@ -1,3 +1,18 @@
 <Solution>
-  <Project Path="Context2/Context2.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/UserAdministrationService.Application/UserAdministrationService.Application.csproj" />
+    <Project Path="src/UserAdministrationService.Contracts/UserAdministrationService.Contracts.csproj" />
+    <Project Path="src/UserAdministrationService.Domain/UserAdministrationService.Domain.csproj" />
+    <Project Path="src/UserAdministrationService.Persistence/UserAdministrationService.Persistence.csproj" />
+    <Project Path="src/UserAdministrationService.WebApi/UserAdministrationService.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/UserAdministrationService.Tests.Architecture/UserAdministrationService.Tests.Architecture.csproj" />
+    <Project Path="tests/UserAdministrationService.Tests.Data/UserAdministrationService.Tests.Data.csproj" />
+    <Project Path="tests/UserAdministrationService.Tests.Integration/UserAdministrationService.Tests.Integration.csproj" />
+    <Project Path="tests/UserAdministrationService.Tests.Unit/UserAdministrationService.Tests.Unit.csproj" />
+  </Folder>
+  <Project Path="../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj" />
+  <Project Path="../Analyzers/Analyzers/Analyzers.csproj" />
+  <Project Path="../SharedKernel/SharedKernel.csproj" />
 </Solution>

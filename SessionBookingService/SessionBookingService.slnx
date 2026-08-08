@@ -1,3 +1,18 @@
 <Solution>
-  <Project Path="Domain1/Domain1.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/SessionBookingService.Application/SessionBookingService.Application.csproj" />
+    <Project Path="src/SessionBookingService.Contracts/SessionBookingService.Contracts.csproj" />
+    <Project Path="src/SessionBookingService.Domain/SessionBookingService.Domain.csproj" />
+    <Project Path="src/SessionBookingService.Infrastructure/SessionBookingService.Infrastructure.csproj" />
+    <Project Path="src/SessionBookingService.WebApi/SessionBookingService.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SessionBookingService.Tests.Architecture/SessionBookingService.Tests.Architecture.csproj" />
+    <Project Path="tests/SessionBookingService.Tests.Data/SessionBookingService.Tests.Data.csproj" />
+    <Project Path="tests/SessionBookingService.Tests.Integration/SessionBookingService.Tests.Integration.csproj" />
+    <Project Path="tests/SessionBookingService.Tests.Unit/SessionBookingService.Tests.Unit.csproj" />
+  </Folder>
+  <Project Path="../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj" />
+  <Project Path="../Analyzers/Analyzers/Analyzers.csproj" />
+  <Project Path="../SharedKernel/SharedKernel.csproj" />
 </Solution>

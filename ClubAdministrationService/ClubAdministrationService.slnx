@@ -1,3 +1,18 @@
 <Solution>
-  <Project Path="Context3/Context3.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/ClubAdministrationService.Application/ClubAdministrationService.Application.csproj" />
+    <Project Path="src/ClubAdministrationService.Contracts/ClubAdministrationService.Contracts.csproj" />
+    <Project Path="src/ClubAdministrationService.Domain/ClubAdministrationService.Domain.csproj" />
+    <Project Path="src/ClubAdministrationService.Infrastructure/ClubAdministrationService.Infrastructure.csproj" />
+    <Project Path="src/ClubAdministrationService.WebApi/ClubAdministrationService.WebApi.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ClubAdministrationService.Tests.Architecture/ClubAdministrationService.Tests.Architecture.csproj" />
+    <Project Path="tests/ClubAdministrationService.Tests.Data/ClubAdministrationService.Tests.Data.csproj" />
+    <Project Path="tests/ClubAdministrationService.Tests.Integration/ClubAdministrationService.Tests.Integration.csproj" />
+    <Project Path="tests/ClubAdministrationService.Tests.Unit/ClubAdministrationService.Tests.Unit.csproj" />
+  </Folder>
+  <Project Path="../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj" />
+  <Project Path="../Analyzers/Analyzers/Analyzers.csproj" />
+  <Project Path="../SharedKernel/SharedKernel.csproj" />
 </Solution>
