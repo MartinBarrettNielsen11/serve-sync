@@ -5,6 +5,7 @@ using ClubAdministrationService.Domain.SubscriptionAggregate;
 using ClubAdministrationService.Infrastructure;
 using ClubAdministrationService.Tests.Integration.Extensions;
 using ClubAdministrationService.Tests.Unit.Factories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
@@ -25,19 +26,19 @@ public sealed class CreateClubTests(ApiTestFixture fixture) :
 
 		// Act
 		HttpResponseMessage response = await Client.PostAsJsonAsync(
-			requestUri: $"api/v1/subscriptions/{sub.Id}/clubs",
+			requestUri: $"subscriptions/{sub.Id}/clubs",
 			value: request);
 
 		// Assert
-		Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+		Assert.Equal(expected: HttpStatusCode.Created, actual: response.StatusCode);
 		ClubResponse? clubResponse = await response.Content.ReadFromJsonAsync<ClubResponse>();
 
 		Assert.NotNull(clubResponse);
-		Assert.Equal(clubResponse.Name, request.Name);
+		Assert.Equal(expected: clubResponse.Name, actual: request.Name);
 
 		await using ClubDbContext assertionContext = Fixture.CreateDbContext();
-		Subscription? updatedSubscription =
-			await assertionContext.Subscriptions.FirstOrDefaultAsync(s => s.Id == sub.Id);
+		Subscription? updatedSubscription = await assertionContext.Subscriptions
+			.FirstOrDefaultAsync(s => s.Id == sub.Id);
 
 		Assert.NotNull(updatedSubscription);
 		Assert.NotEmpty(updatedSubscription.ClubIds);
@@ -47,7 +48,7 @@ public sealed class CreateClubTests(ApiTestFixture fixture) :
 	}
 
 	[Fact]
-	public async Task When_SubscriptionDoesNotExist_Then_ErrorIsThrown()
+	public async Task When_SubscriptionDoesNotExist_Then_ErrorIsReturned()
 	{
 		// Arrange
 		Guid subscriptionId = Guid.NewGuid();
@@ -55,10 +56,13 @@ public sealed class CreateClubTests(ApiTestFixture fixture) :
 
 		// Act
 		HttpResponseMessage response = await Client.PostAsJsonAsync(
-			requestUri: $"api/v1/subscriptions/{subscriptionId}/clubs",
+			requestUri: $"subscriptions/{subscriptionId}/clubs",
 			value: request);
 
 		// Assert
-		Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+		Assert.Equal(expected: HttpStatusCode.NotFound, actual: response.StatusCode);
+		ProblemDetails? problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>();
+		Assert.NotNull(problemDetails);
+		Assert.Equal(expected: "Subscription not found", actual: problemDetails.Detail!);
 	}
 }
