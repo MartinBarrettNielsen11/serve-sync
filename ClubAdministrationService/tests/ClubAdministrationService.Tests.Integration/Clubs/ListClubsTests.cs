@@ -56,7 +56,7 @@ public sealed class ListClubsTests(ApiTestFixture fixture) :
 	public async Task When_NoClubsExistForSubscription_Then_EmptyResponseIsReturned()
 	{
 		// Arrange
-		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro);
+		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro, id: Guid.CreateVersion7());
 		InitialDbContext.Subscriptions.Add(sub);
 		await InitialDbContext.SaveChangesAsync();
 
@@ -75,8 +75,8 @@ public sealed class ListClubsTests(ApiTestFixture fixture) :
 	public async Task When_SubscriptionIdIsInvalid_Then_ErrorIsReturned()
 	{
 		// Arrange
-		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro);
-		Club club = ClubFactory.Create(subscriptionId: sub.Id);
+		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro, id: Guid.CreateVersion7());
+		Club club = ClubFactory.Create(subscriptionId: sub.Id, id: Guid.CreateVersion7());
 		InitialDbContext.Subscriptions.Add(sub);
 		InitialDbContext.Clubs.Add(club);
 		await InitialDbContext.SaveChangesAsync();

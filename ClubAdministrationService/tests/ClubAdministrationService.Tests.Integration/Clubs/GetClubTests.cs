@@ -39,8 +39,8 @@ public sealed class GetClubTests(ApiTestFixture fixture) :
 	public async Task When_SubscriptionIdIsInvalid_Then_ErrorIsReturned()
 	{
 		// Arrange
-		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro);
-		Club club = ClubFactory.Create(subscriptionId: sub.Id);
+		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro, id: Guid.CreateVersion7());
+		Club club = ClubFactory.Create(subscriptionId: sub.Id, id: Guid.CreateVersion7());
 		InitialDbContext.Subscriptions.Add(sub);
 		InitialDbContext.Clubs.Add(club);
 		await InitialDbContext.SaveChangesAsync();
@@ -62,8 +62,8 @@ public sealed class GetClubTests(ApiTestFixture fixture) :
 	public async Task When_ClubIdIsInvalid_Then_ErrorIsReturned()
 	{
 		// Arrange
-		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro);
-		Club club = ClubFactory.Create(subscriptionId: sub.Id);
+		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro, id: Guid.CreateVersion7());
+		Club club = ClubFactory.Create(subscriptionId: sub.Id, id: Guid.CreateVersion7());
 		InitialDbContext.Subscriptions.Add(sub);
 		InitialDbContext.Clubs.Add(club);
 		await InitialDbContext.SaveChangesAsync();
