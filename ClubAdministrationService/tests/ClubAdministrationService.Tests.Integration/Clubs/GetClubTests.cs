@@ -3,11 +3,8 @@ using System.Net.Http.Json;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
-using ClubAdministrationService.Infrastructure;
-using ClubAdministrationService.Tests.Integration.Extensions;
 using ClubAdministrationService.Tests.Unit.Factories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 namespace ClubAdministrationService.Tests.Integration.Clubs;
@@ -49,9 +46,8 @@ public sealed class GetClubTests(ApiTestFixture fixture) :
 		InitialDbContext.Clubs.Add(club);
 		await InitialDbContext.SaveChangesAsync();
 
-		Guid invalidSubscriptionId = Guid.NewGuid();
-
 		// Act
+		Guid invalidSubscriptionId = Guid.NewGuid();
 		HttpResponseMessage response = await Client.GetAsync(
 			requestUri: new Uri($"subscriptions/{invalidSubscriptionId}/clubs/{club.Id}",
 								UriKind.Relative));
@@ -73,9 +69,8 @@ public sealed class GetClubTests(ApiTestFixture fixture) :
 		InitialDbContext.Clubs.Add(club);
 		await InitialDbContext.SaveChangesAsync();
 
-		Guid invalidClubId = Guid.NewGuid();
-
 		// Act
+		Guid invalidClubId = Guid.NewGuid();
 		HttpResponseMessage response = await Client.GetAsync(
 			requestUri: new Uri($"subscriptions/{sub.Id}/clubs/{invalidClubId}",
 								UriKind.Relative));

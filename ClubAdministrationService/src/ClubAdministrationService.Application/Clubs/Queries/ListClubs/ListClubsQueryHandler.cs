@@ -15,7 +15,7 @@ internal sealed class ListClubsQueryHandler(IClubsRepository clubsRepository,
 
 		if (!subscriptionExists)
 		{
-			return Result.Failure<List<Club>>(Error.NotFound("", "Subscription not found"));
+			return Result.Failure<List<Club>>(Error.NotFound("SubscriptionNotFound", "Subscription not found"));
 		}
 
 		List<Club> clubs = await clubsRepository.ListSubscriptionClubs(query.SubscriptionId, cancellationToken);

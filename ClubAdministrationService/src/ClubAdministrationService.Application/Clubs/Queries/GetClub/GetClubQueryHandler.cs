@@ -11,8 +11,8 @@ internal sealed class GetClubQueryHandler(IClubsRepository clubsRepository,
 {
 	public async ValueTask<Result<Club>> Handle(GetClubQuery request, CancellationToken cancellationToken)
 	{
-		var exists = await subscriptionsRepository.ExistsAsync(request.SubscriptionId, cancellationToken);
-		if (!exists)
+		var subscriptionExist = await subscriptionsRepository.ExistsAsync(request.SubscriptionId, cancellationToken);
+		if (!subscriptionExist)
 		{
 			return Result.Failure<Club>(Error.NotFound(code: "SubscriptionNotFound",
 													   description: "Subscription not found"));

@@ -1,55 +1,96 @@
 using System.Net;
-using ClubAdministrationService.WebApi;
-using Microsoft.AspNetCore.Mvc.Testing;
+using System.Net.Http.Json;
+using ClubAdministrationService.Contracts.Clubs;
+using ClubAdministrationService.Domain.ClubAggregate;
+using ClubAdministrationService.Domain.SubscriptionAggregate;
+using ClubAdministrationService.Tests.Unit.Factories;
+using Microsoft.AspNetCore.Mvc;
 using Xunit;
 
 namespace ClubAdministrationService.Tests.Integration.Clubs;
 
-// note: you need to add a some abstraction that includes setting up a database, a fake logger, and some InitialDbContext, whcih can be worked with in the arrange step.
-public class ListClubsTests(WebApplicationFactory<IApiMarker> appFactory)
-	: IClassFixture<WebApplicationFactory<IApiMarker>>
-{
-	private readonly HttpClient _httpClient = appFactory.CreateClient();
 
+public sealed class ListClubsTests(ApiTestFixture fixture) :
+	BaseApiTest(fixture, apiVersion: 1), IClassFixture<ApiTestFixture>
+{
 	[Fact]
-	public async Task ListClubs_happy_path()
+	public async Task Success()
 	{
 		// Arrange
-		Guid subscriptionId = Guid.Parse("019e9d1e-b2fa-7ada-baad-97bb06ac3889");
+		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro);
+		Club club1 = ClubFactory.Create(name: "Club1", subscriptionId: sub.Id, id: Guid.CreateVersion7());
+		Club club2 = ClubFactory.Create(name: "Club2", subscriptionId: sub.Id, id: Guid.CreateVersion7());
+		InitialDbContext.Subscriptions.Add(sub);
+		await InitialDbContext.Clubs.AddRangeAsync(club1, club2);
+		await InitialDbContext.SaveChangesAsync();
 
 		// Act
-
-		Uri requestUri = new($"/subscriptions/{subscriptionId}/clubs",
-							UriKind.Relative);
-
-		HttpResponseMessage response = await _httpClient.GetAsync(requestUri);
+		HttpResponseMessage response = await Client.GetAsync(
+			requestUri: new Uri(uriString: $"subscriptions/{sub.Id}/clubs", uriKind: UriKind.Relative));
 
 		// Assert
-		Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+		Assert.Equal(expected: HttpStatusCode.OK, actual: response.StatusCode);
+		List<ClubResponse>? clubResponse = await response.Content.ReadFromJsonAsync<List<ClubResponse>>();
+		Assert.NotNull(clubResponse);
+		var expected = new[]
+		{
+			new
+			{
+				club1.Id,
+				club1.Name
+			},
+			new
+			{
+				club2.Id,
+				club2.Name
+			}
+		};
 
-		var result = await response.Content.ReadAsStringAsync();
-
-		Assert.NotEqual("", result);
+		Assert.Equivalent(
+			expected: expected,
+			actual: clubResponse,
+			strict: true);
 	}
 
-
 	[Fact]
-	public async Task ListClubs_unhappy_path()
+	public async Task When_NoClubsExistForSubscription_Then_EmptyResponseIsReturned()
 	{
 		// Arrange
-		Guid subscriptionId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro);
+		InitialDbContext.Subscriptions.Add(sub);
+		await InitialDbContext.SaveChangesAsync();
 
 		// Act
-		Uri requestUri = new($"/subscriptions/{subscriptionId}/clubs",
-							UriKind.Relative);
-
-		HttpResponseMessage response = await _httpClient.GetAsync(requestUri);
+		HttpResponseMessage response = await Client.GetAsync(
+			requestUri: new Uri(uriString: $"subscriptions/{sub.Id}/clubs", uriKind: UriKind.Relative));
 
 		// Assert
-		Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+		Assert.Equal(expected: HttpStatusCode.OK, actual: response.StatusCode);
+		List<ClubResponse>? clubResponse = await response.Content.ReadFromJsonAsync<List<ClubResponse>>();
+		Assert.NotNull(clubResponse);
+		Assert.Empty(clubResponse);
+	}
 
-		var result = await response.Content.ReadAsStringAsync();
+	[Fact]
+	public async Task When_SubscriptionIdIsInvalid_Then_ErrorIsReturned()
+	{
+		// Arrange
+		Subscription sub = SubscriptionFactory.Create(SubscriptionType.Pro);
+		Club club = ClubFactory.Create(subscriptionId: sub.Id);
+		InitialDbContext.Subscriptions.Add(sub);
+		InitialDbContext.Clubs.Add(club);
+		await InitialDbContext.SaveChangesAsync();
 
-		Assert.NotEqual("", result);
+		// Act
+		Guid invalidSubscriptionId = Guid.NewGuid();
+		HttpResponseMessage response = await Client.GetAsync(
+			requestUri: new Uri($"subscriptions/{invalidSubscriptionId}/clubs",
+								UriKind.Relative));
+
+		// Assert
+		Assert.Equal(expected: HttpStatusCode.NotFound, actual: response.StatusCode);
+		ProblemDetails? problemDetails = await response.Content.ReadFromJsonAsync<ProblemDetails>();
+		Assert.NotNull(problemDetails);
+		Assert.Equal(expected: "Subscription not found", problemDetails.Detail!);
 	}
 }
