@@ -1,6 +1,6 @@
-namespace SessionBookingService.Infrastructure.Infrastructure;
+namespace SessionBookingService.Infrastructure.Infrastructure.Settings;
 
-public sealed class MessageBrokerSettings
+internal sealed class MessageBrokerSettings
 {
 	public const string Section = "MessageBroker";
 
