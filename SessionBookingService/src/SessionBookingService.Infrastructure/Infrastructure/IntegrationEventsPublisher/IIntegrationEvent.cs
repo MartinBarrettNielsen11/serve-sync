@@ -1,6 +1,8 @@
+using SharedKernel.IntegrationEvents;
+
 namespace SessionBookingService.Infrastructure.Infrastructure.IntegrationEventsPublisher;
 
-public interface IIntegrationEvent
+internal interface IIntegrationEventsPublisher
 {
-	
+	void PublishEvent(IIntegrationEvent integrationEvent);
 }
