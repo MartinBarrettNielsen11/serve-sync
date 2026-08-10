@@ -12,7 +12,7 @@ public sealed class ClubTests
 	public void AddCourt_WhenMoreThanSubscriptionAllows_ShouldFail()
 	{
 		// Arrange
-		Club club = ClubFactory.Create(maxRooms: 1);
+		Club club = ClubFactory.Create(maxCourtCapacity: 1);
 		Court court1 = CourtFactory.Create(id: Guid.CreateVersion7());
 		Court court2 = CourtFactory.Create(id: Guid.CreateVersion7());
 

@@ -8,24 +8,20 @@ public sealed class Schedule : Entity
 	private readonly Dictionary<DateOnly, List<TimeSlot>> _calendar = [];
 
 	public Schedule(
-#pragma warning disable MA0016
-#pragma warning disable S3427
-		Dictionary<DateOnly, List<TimeSlot>>? calendar = null,
-#pragma warning restore S3427
-#pragma warning restore MA0016
+		IReadOnlyDictionary<DateOnly, List<TimeSlot>> calendar,
 		Guid? id = null) : base(id ?? Guid.CreateVersion7())
 	{
-		_calendar = calendar ?? new Dictionary<DateOnly, List<TimeSlot>>();
+		_calendar = calendar.ToDictionary(
+			entry => entry.Key,
+			entry => entry.Value.ToList());
 	}
 
 	private Schedule()
 	{
 	} // For EF / serialization
 
-	public static Schedule Empty()
-	{
-		return new Schedule(null, Guid.CreateVersion7());
-	}
+	public static Schedule Empty() => new(calendar: new Dictionary<DateOnly, List<TimeSlot>>(),
+										  id: Guid.CreateVersion7());
 
 	internal bool CanBookTimeSlot(DateOnly date, TimeSlot time)
 	{
@@ -66,6 +62,6 @@ public sealed class Schedule : Entity
 			return Result.Failure<bool>(Error.NotFound("", ""));
 		}
 
-		return Result.Success(true);
+		return Result.Success(value: true);
 	}
 }

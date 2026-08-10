@@ -2,9 +2,7 @@ namespace SharedKernel;
 
 public abstract class RootAggregate : Entity
 {
-#pragma warning disable CA1051
-	protected readonly ICollection<IDomainEvent> DomainEvents = [];
-#pragma warning restore CA1051
+	private readonly List<IDomainEvent> _domainEvents = [];
 	protected RootAggregate(Guid id) : base(id)
 	{
 	}
@@ -13,10 +11,18 @@ public abstract class RootAggregate : Entity
 	{
 	}
 
+	protected void RaiseDomainEvent(IDomainEvent domainEvent)
+	{
+		ArgumentNullException.ThrowIfNull(domainEvent);
+
+		_domainEvents.Add(domainEvent);
+	}
+
+
 	public ICollection<IDomainEvent> PopDomainEvents()
 	{
-		List<IDomainEvent> copy = DomainEvents.ToList();
-		DomainEvents.Clear();
+		List<IDomainEvent> copy = _domainEvents.ToList();
+		_domainEvents.Clear();
 
 		return copy;
 	}

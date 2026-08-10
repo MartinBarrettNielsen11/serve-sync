@@ -10,7 +10,7 @@ namespace SessionBookingService.Tests.Unit.Domain.SessionAggregate;
 public sealed class SessionTests
 {
 	[Fact]
-	public void BookSpot_WhenNoMoreRoom_ShouldFailReservation()
+	public void BookSpot_WhenNoMoreCourts_ShouldFailReservation()
 	{
 		// Arrange
 		Session session = SessionFactory.CreateSession(maxPlayerCapacity: 1);

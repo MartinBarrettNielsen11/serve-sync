@@ -22,7 +22,7 @@ internal sealed partial class Session : RootAggregate
 		}
 
 		_bookings.Add(booking);
-		DomainEvents.Add(new SessionSpotBookedEvent(this, booking));
+		RaiseDomainEvent(new SessionSpotBookedEvent(this, booking));
 
 		return Result.Success(true);
 	}
@@ -47,7 +47,7 @@ internal sealed partial class Session : RootAggregate
 		Booking booking = _bookings.First(b => b.PlayerId == playerId);
 
 		_bookings.Remove(booking);
-		DomainEvents.Add(new BookingCanceledEvent(this, booking));
+		RaiseDomainEvent(new BookingCanceledEvent(this, booking));
 
 		return Result.Success(true);
 	}
@@ -68,13 +68,7 @@ internal sealed partial class Session : RootAggregate
 		return exceedsLimit;
 	}
 
-	public bool HasBookingForPlayer(Guid playerId)
-	{
-		return _bookings.Exists(b => b.PlayerId == playerId);
-	}
+	public bool HasBookingForPlayer(Guid playerId) => _bookings.Exists(b => b.PlayerId == playerId);
 
-	public void Cancel()
-	{
-		DomainEvents.Add(new SessionCanceledEvent(this));
-	}
+	public void Cancel() => RaiseDomainEvent(new SessionCanceledEvent(this));
 }

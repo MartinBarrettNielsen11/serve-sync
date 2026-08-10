@@ -15,7 +15,7 @@ internal sealed partial class User : RootAggregate
 		}
 
 		AdminId = Guid.CreateVersion7();
-		DomainEvents.Add(new AdminProfileCreatedEvent(Id, AdminId.Value));
+		RaiseDomainEvent(new AdminProfileCreatedEvent(Id, AdminId.Value));
 
 		return Result.Success(AdminId.Value);
 	}
@@ -28,7 +28,7 @@ internal sealed partial class User : RootAggregate
 		}
 
 		PlayerId = Guid.CreateVersion7();
-		DomainEvents.Add(new PlayerProfileCreatedEvent(Id, PlayerId.Value));
+		RaiseDomainEvent(new PlayerProfileCreatedEvent(Id, PlayerId.Value));
 
 		return Result.Success(PlayerId.Value);
 	}
@@ -41,7 +41,7 @@ internal sealed partial class User : RootAggregate
 		}
 
 		InstructorId = Guid.CreateVersion7();
-		DomainEvents.Add(new InstructorProfileCreatedEvent(Id, InstructorId.Value));
+		RaiseDomainEvent(new InstructorProfileCreatedEvent(Id, InstructorId.Value));
 
 		return Result.Success(InstructorId.Value);
 	}

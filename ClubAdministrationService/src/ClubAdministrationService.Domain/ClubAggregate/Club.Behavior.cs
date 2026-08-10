@@ -21,9 +21,9 @@ internal sealed partial class Club : RootAggregate
 
 		_courtIds.Add(court.Id);
 
-		DomainEvents.Add(new CourtAddedToClubEvent(this, court));
+		RaiseDomainEvent(new CourtAddedToClubEvent(this, court));
 
-		return Result.Success(true);
+		return Result.Success(value: true);
 	}
 
 	internal Result<bool> AddInstructor(Guid instructorId)
@@ -35,22 +35,16 @@ internal sealed partial class Club : RootAggregate
 
 		_instructorIds.Add(instructorId);
 
-		return Result.Success(true);
+		return Result.Success(value: true);
 	}
 
 	internal void RemoveCourt(Guid courtId)
 	{
 		_courtIds.Remove(courtId);
-		DomainEvents.Add(new CourtRemovedFromClubEvent(this, courtId));
+		RaiseDomainEvent(new CourtRemovedFromClubEvent(this, courtId));
 	}
 
-	internal bool HasInstructor(Guid instructorId)
-	{
-		return _instructorIds.Contains(instructorId);
-	}
+	internal bool HasInstructor(Guid instructorId) => _instructorIds.Contains(instructorId);
 
-	internal bool HasCourt(Guid courtId)
-	{
-		return _courtIds.Contains(courtId);
-	}
+	internal bool HasCourt(Guid courtId) => _courtIds.Contains(courtId);
 }

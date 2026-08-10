@@ -6,10 +6,6 @@ using ClubAdministrationService.WebApi.Infrastructure;
 using Mediator;
 using SharedKernel.Results;
 
-#pragma warning disable CS1572 // XML comment has a param tag, but there is no parameter by that name
-#pragma warning disable CS1573 // Parameter has no matching param tag in the XML comment (but other parameters do)
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-
 namespace ClubAdministrationService.WebApi.Endpoints.Clubs;
 
 public sealed class CreateClub : IEndpoint
