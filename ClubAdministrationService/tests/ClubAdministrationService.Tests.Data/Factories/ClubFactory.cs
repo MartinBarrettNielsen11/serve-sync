@@ -7,12 +7,12 @@ internal static class ClubFactory
 {
 	internal static Club Create(
 		string name = ClubConstants.Name,
-		int maxRooms = 5,
+		int maxCourtCapacity = 5,
 		Guid? subscriptionId = null,
 		Guid? id = null)
 	{
 		return new Club(name,
-						maxRooms,
+						maxCourtCapacity,
 						subscriptionId ?? Guid.NewGuid(),
 						id ?? ClubConstants.Id);
 	}

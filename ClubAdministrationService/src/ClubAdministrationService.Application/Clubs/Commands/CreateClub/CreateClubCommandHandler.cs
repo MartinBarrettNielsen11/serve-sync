@@ -32,12 +32,10 @@ internal sealed class CreateClubCommandHandler(ISubscriptionsRepository subscrip
 			return Result.Failure<Club>(addClubResult.Error);
 		}
 
-#pragma warning disable CA1848
-		logger.LogInformation("Club created: {Name}", club.Name);
-#pragma warning restore CA1848
+		logger.ClubCreated(club.Name);
 
 		await subscriptionsRepository.UpdateAsync(subscription, cancellationToken);
 
-		return Result.Success<Club>(club);
+		return Result.Success(club);
 	}
 }

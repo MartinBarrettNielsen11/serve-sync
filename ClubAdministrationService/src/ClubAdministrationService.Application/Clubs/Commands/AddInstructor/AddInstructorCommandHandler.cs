@@ -6,7 +6,6 @@ using SharedKernel.Results;
 
 namespace ClubAdministrationService.Application.Clubs.Commands.AddInstructor;
 
-// ReSharper disable once UnusedType.Global
 internal sealed class AddInstructorCommandHandler(IClubsRepository clubsRepository,
 												ISubscriptionsRepository subscriptionsRepository)
 	: IRequestHandler<AddInstructorCommand, Result>
@@ -21,20 +20,19 @@ internal sealed class AddInstructorCommandHandler(IClubsRepository clubsReposito
 			return Result.Failure(Error.NotFound("SubscriptionNotFound", "Subscription not found"));
 		}
 
-		if (!subscription.HasClub(command.ClubId))
+		var hasClub = subscription.HasClub(command.ClubId);
+		if (!hasClub)
 		{
 			return Result.Failure(Error.NotFound("ClubNotFound", "Club not found"));
 		}
 
 		Club? club = await clubsRepository.GetByIdAsync(command.ClubId, cancellationToken);
-
 		if (club is null)
 		{
 			return Result.Failure(Error.NotFound("ClubNotFound", "Club not found"));
 		}
 
 		Result<bool> addInstructorResult = club.AddInstructor(command.InstructorId);
-
 		if (addInstructorResult.IsFailure)
 		{
 			return Result.Failure(addInstructorResult.Error);
@@ -42,6 +40,6 @@ internal sealed class AddInstructorCommandHandler(IClubsRepository clubsReposito
 
 		await clubsRepository.UpdateAsync(club, cancellationToken);
 
-		return Result.Success(true);
+		return Result.Success(value: true);
 	}
 }

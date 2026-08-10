@@ -12,17 +12,17 @@ internal sealed class SessionCanceledEventHandler(IInstructorsRepository instruc
 {
 	public async ValueTask Handle(SessionCanceledForCourtEvent notification, CancellationToken cancellationToken)
 	{
-		Instructor trainer =
+		Instructor instructor =
 			await instructorsRepository.GetByIdAsync(notification.Session.InstructorId, cancellationToken)
 			?? throw new EventualConsistencyException(SessionCanceledForCourtEvent.InstructorNotFound);
 
-		Result<bool> removeFromScheduleResult = trainer.RemoveFromSchedule(notification.Session);
+		Result<bool> removeFromScheduleResult = instructor.RemoveFromSchedule(notification.Session);
 
 		if (removeFromScheduleResult.IsFailure)
 		{
 			// throw something in here
 		}
 
-		await instructorsRepository.UpdateAsync(trainer, cancellationToken);
+		await instructorsRepository.UpdateAsync(instructor, cancellationToken);
 	}
 }

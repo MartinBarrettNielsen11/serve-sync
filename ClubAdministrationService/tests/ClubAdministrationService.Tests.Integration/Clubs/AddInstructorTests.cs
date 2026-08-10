@@ -1,19 +1,53 @@
+using System.Net;
 using System.Net.Http.Json;
+using Asp.Versioning;
 using ClubAdministrationService.Contracts.Clubs;
 using ClubAdministrationService.Domain.ClubAggregate;
 using ClubAdministrationService.Domain.SubscriptionAggregate;
+using ClubAdministrationService.Infrastructure;
+using ClubAdministrationService.Tests.Integration.Extensions;
 using ClubAdministrationService.Tests.Unit.Factories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Testing;
 using Xunit;
 
 namespace ClubAdministrationService.Tests.Integration.Clubs;
 
-public sealed class AddInstructorTests(ApiTestFixture fixture) : BaseApiTest(fixture), IClassFixture<ApiTestFixture>
+public sealed class AddInstructorTests(ApiTestFixture fixture) :
+	BaseApiTest(fixture, apiVersion: 1), IClassFixture<ApiTestFixture>
 {
-	/*
+
 	[Fact]
-	public async Task Add_Instructor()
+	public async Task Success()
 	{
-	} */
+		// Arrange
+		Guid subscriptionId = Guid.CreateVersion7();
+		Club club = ClubFactory.Create(name: "Club1",
+									   subscriptionId: subscriptionId,
+									   id: Guid.CreateVersion7());
+
+		Subscription sub = SubscriptionFactory.CreateWithClub(club: club,
+															  subscriptionType: SubscriptionType.Pro,
+															  id: subscriptionId);
+
+		InitialDbContext.Subscriptions.Add(sub);
+		InitialDbContext.Clubs.Add(club);
+		await InitialDbContext.SaveChangesAsync();
+
+		AddInstructorRequest request = new(Guid.CreateVersion7());
+
+		// Act
+		HttpResponseMessage response = await Client.PostAsJsonAsync(
+			requestUri: $"subscriptions/{sub.Id}/clubs/{club.Id}/instructors",
+			value: request);
+
+		// Assert
+		Assert.Equal(expected: HttpStatusCode.OK, actual: response.StatusCode);
+		Guid? clubResponse = await response.Content.ReadFromJsonAsync<Guid>();
+
+		Assert.NotNull(clubResponse);
+	}
+
+
 }

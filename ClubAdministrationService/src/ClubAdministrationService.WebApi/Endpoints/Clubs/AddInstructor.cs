@@ -19,10 +19,11 @@ public sealed class AddInstructor : IEndpoint
 					{
 						AddInstructorCommand command = new(subscriptionId, clubId, request.InstructorId);
 
-						Result addTrainerResult = await sender.Send(command, cancellationToken);
+						Result addInstructorResult = await sender.Send(command, cancellationToken);
 
-						IResult result = addTrainerResult.Match(() => Results.Ok(clubId),
-																err => ProblemDetailsMapper.Problem([err.Error]));
+						IResult result = addInstructorResult.Match(
+							onSuccess: () => Results.Ok(clubId),
+							onFailure: err => ProblemDetailsMapper.Problem([err.Error]));
 
 						return result;
 					})
