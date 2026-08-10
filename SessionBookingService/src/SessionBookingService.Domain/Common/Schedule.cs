@@ -34,7 +34,9 @@ public sealed class Schedule : Entity
 			return true;
 		}
 
-		return !timeSlots.Exists(ts => ts.IsOverlappingWith(time));
+		var timeSlotExists = timeSlots.Exists(ts => ts.IsOverlappingWith(time));
+
+		return timeSlotExists;
 	}
 
 	public Result<bool> BookTimeSlot(DateOnly date, TimeSlot time)
@@ -54,7 +56,7 @@ public sealed class Schedule : Entity
 
 		timeSlots!.Add(time);
 
-		return Result.Success(true);
+		return Result.Success(value: true);
 	}
 
 	public Result<bool> RemoveBooking(DateOnly date, TimeSlot time)
