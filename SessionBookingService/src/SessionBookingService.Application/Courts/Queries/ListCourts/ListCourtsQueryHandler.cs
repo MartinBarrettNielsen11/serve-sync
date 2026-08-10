@@ -10,6 +10,7 @@ internal sealed class ListCourtsQueryHandler(ICourtsRepository courtsRepository)
 {
 	public async ValueTask<Result<List<Court>>> Handle(ListCourtsQuery request, CancellationToken cancellationToken)
 	{
-		return await courtsRepository.ListByClubIdAsync(request.ClubId);
+		Result<List<Court>> courts = await courtsRepository.ListByClubIdAsync(request.ClubId);
+		return courts;
 	}
 }

@@ -5,13 +5,18 @@ using SharedKernel.Results;
 
 namespace SessionBookingService.Application.Courts.Queries.GetCourt;
 
-internal sealed class GetCourtQueryHandler(ICourtsRepository roomsRepository)
+internal sealed class GetCourtQueryHandler(ICourtsRepository courtsRepository)
 	: IRequestHandler<GetCourtQuery, Result<Court>>
 {
 	public async ValueTask<Result<Court>> Handle(GetCourtQuery query, CancellationToken cancellationToken)
 	{
-		return await roomsRepository.GetByIdAsync(query.CourtId, cancellationToken) is not Court court
-			? Result.Failure<Court>(Error.NotFound("", "Room not found"))
-			: Result.Success<Court>(court);
+		Court? court = await courtsRepository.GetByIdAsync(query.CourtId, cancellationToken);
+
+		if (court is null)
+		{
+			return Result.Failure<Court>(Error.NotFound(code: "", description: "Court not found"));
+		}
+
+		return Result.Success(court);
 	}
 }

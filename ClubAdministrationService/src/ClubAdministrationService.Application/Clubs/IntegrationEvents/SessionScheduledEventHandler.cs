@@ -10,11 +10,11 @@ internal sealed class SessionScheduledEventHandler(IClubsRepository clubsReposit
 {
 	public async ValueTask Handle(SessionScheduledIntegrationEvent notification, CancellationToken cancellationToken)
 	{
-		Club? club = await clubsRepository.GetByIdAsync(notification.RoomId, cancellationToken);
+		Club? club = await clubsRepository.GetByIdAsync(notification.CourtId, cancellationToken);
 
 		if (club is null)
 		{
-			throw new InvalidOperationException($"No club found with id {notification.RoomId}");
+			throw new InvalidOperationException($"No club found with id {notification.CourtId}");
 		}
 
 		club.AddInstructor(notification.InstructorId);

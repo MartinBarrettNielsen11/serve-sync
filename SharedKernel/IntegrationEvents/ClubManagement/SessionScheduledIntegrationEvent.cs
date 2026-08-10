@@ -1,3 +1,3 @@
 namespace SharedKernel.IntegrationEvents.ClubManagement;
 
-public sealed record SessionScheduledIntegrationEvent(Guid RoomId, Guid InstructorId) : IIntegrationEvent;
+public sealed record SessionScheduledIntegrationEvent(Guid CourtId, Guid InstructorId) : IIntegrationEvent;

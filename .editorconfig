@@ -15,6 +15,7 @@ max_line_length = 120
 resharper_csharp_wrap_chained_method_calls = chop_if_long
 resharper_csharp_wrap_after_property_in_chained_method_calls = true
 resharper_csharp_wrap_before_first_method_call = false
+resharper_convert_if_statement_to_return_statement_highlighting = none
 
 # Primary constructors
 resharper_csharp_keep_existing_primary_constructor_declaration_parens_arrangement = false
