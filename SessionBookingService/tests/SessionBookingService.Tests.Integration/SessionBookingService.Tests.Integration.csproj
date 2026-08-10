@@ -16,4 +16,14 @@
         <ProjectReference Include="..\..\src\SessionBookingService.WebApi\SessionBookingService.WebApi.csproj"/>
         <ProjectReference Include="..\..\src\SessionBookingService.Domain\SessionBookingService.Domain.csproj"/>
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
 </Project>

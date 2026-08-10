@@ -7,7 +7,7 @@ using Xunit;
 
 namespace SessionBookingService.Tests.Unit.Domain.CourtAggregate;
 
-public class CourtTests
+public sealed class CourtTests
 {
 	[Fact]
 	public void ScheduleSession_WhenMoreThanSubscriptionAllows_ShouldFail()

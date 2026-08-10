@@ -9,4 +9,14 @@
         <InternalsVisibleTo Include="ClubAdministrationService.Tests.Unit"/>
         <InternalsVisibleTo Include="ClubAdministrationService.Tests.Integration"/>
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
 </Project>

@@ -7,7 +7,7 @@ using Xunit;
 
 namespace SessionBookingService.Tests.Unit.Domain.PlayerAggregate;
 
-public class PlayerTests
+public sealed class PlayerTests
 {
 	[Theory]
 	[InlineData(1, 3, 1, 3)]
@@ -40,7 +40,6 @@ public class PlayerTests
 		// Assert
 		Assert.False(addSession1Result.IsFailure);
 		Assert.True(addSession2Result.IsFailure);
-		// this error is not being throw - better change that.
 		Assert.Equal(addSession2Result.Error, PlayerErrors.CannotHaveTwoOrMoreOverlappingSessions);
 	}
 }

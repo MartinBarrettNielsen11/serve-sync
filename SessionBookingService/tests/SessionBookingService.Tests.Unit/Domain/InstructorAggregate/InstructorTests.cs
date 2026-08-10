@@ -7,7 +7,7 @@ using Xunit;
 
 namespace SessionBookingService.Tests.Unit.Domain.InstructorAggregate;
 
-public class InstructorTests
+public sealed class InstructorTests
 {
 	[Theory]
 	[InlineData(1, 3, 1, 3)]

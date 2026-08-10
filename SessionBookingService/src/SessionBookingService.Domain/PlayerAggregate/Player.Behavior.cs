@@ -17,13 +17,20 @@ internal sealed partial class Player : RootAggregate
 
 		if (bookTimeSlotResult.IsFailure)
 		{
-			return bookTimeSlotResult.Error.Type == ErrorType.Conflict
-				? Result.Failure<bool>(PlayerErrors.CannotHaveTwoOrMoreOverlappingSessions)
-				: Result.Failure<bool>(bookTimeSlotResult.Error);
+			if (bookTimeSlotResult.Error.Type == ErrorType.Conflict)
+			{
+				Result<bool> failure = Result.Failure<bool>(PlayerErrors.CannotHaveTwoOrMoreOverlappingSessions);
+				return failure;
+			}
+			else
+			{
+				Result<bool> failure = Result.Failure<bool>(bookTimeSlotResult.Error);
+				return failure;
+			}
 		}
 
 		_sessionIds.Add(session.Id);
-		return Result.Success(true);
+		return Result.Success(value: true);
 	}
 
 	public Result<bool> RemoveFromSchedule(Session session)
@@ -40,11 +47,8 @@ internal sealed partial class Player : RootAggregate
 		}
 
 		_sessionIds.Remove(session.Id);
-		return Result.Success(true);
+		return Result.Success(value: true);
 	}
 
-	public bool HasBookingForSession(Guid sessionId)
-	{
-		return _sessionIds.Contains(sessionId);
-	}
+	public bool HasBookingForSession(Guid sessionId) => _sessionIds.Contains(sessionId);
 }

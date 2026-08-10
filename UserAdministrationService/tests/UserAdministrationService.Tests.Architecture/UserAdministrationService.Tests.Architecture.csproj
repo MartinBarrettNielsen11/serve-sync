@@ -23,4 +23,14 @@
         <ProjectReference Include="..\..\src\UserAdministrationService.Infrastructure\UserAdministrationService.Infrastructure.csproj"/>
         <ProjectReference Include="..\..\src\UserAdministrationService.WebApi\UserAdministrationService.WebApi.csproj"/>
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../../../Analyzers/Analyzers/Analyzers.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+        <ProjectReference Include="../../../Analyzers/Analyzers.CodeFix/Analyzers.CodeFix.csproj"
+                          OutputItemType="Analyzer"
+                          ReferenceOutputAssembly="false"
+                          PrivateAssets="all"/>
+    </ItemGroup>
 </Project>

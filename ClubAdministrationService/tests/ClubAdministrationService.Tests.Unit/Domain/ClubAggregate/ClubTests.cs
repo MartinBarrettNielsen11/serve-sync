@@ -6,7 +6,7 @@ using Xunit;
 
 namespace ClubAdministrationService.Tests.Unit.Domain.ClubAggregate;
 
-public class ClubTests
+public sealed class ClubTests
 {
 	[Fact]
 	public void AddCourt_WhenMoreThanSubscriptionAllows_ShouldFail()

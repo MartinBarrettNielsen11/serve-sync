@@ -5,18 +5,17 @@ using RabbitMQ.Client;
 using SessionBookingService.Infrastructure.Infrastructure.Settings;
 using SharedKernel.IntegrationEvents;
 
-namespace SessionBookingService.Infrastructure.Infrastructure.IntegrationEventsPublisher;
+namespace SessionBookingService.Infrastructure.Infrastructure.IntegrationEvents;
 
 internal sealed class IntegrationEventsPublisher : IIntegrationEventsPublisher
 {
 	private readonly MessageBrokerSettings _messageBrokerSettings;
-	private readonly IConnection _connection;
 	private readonly IModel _channel;
 
 	public IntegrationEventsPublisher(IOptions<MessageBrokerSettings> messageBrokerOptions)
 	{
 		_messageBrokerSettings = messageBrokerOptions.Value;
-		IConnectionFactory connectionFactory = new ConnectionFactory
+		ConnectionFactory connectionFactory = new()
 		{
 			HostName = _messageBrokerSettings.HostName,
 			Port = _messageBrokerSettings.Port,
@@ -24,9 +23,9 @@ internal sealed class IntegrationEventsPublisher : IIntegrationEventsPublisher
 			Password = _messageBrokerSettings.Password
 		};
 
-		_connection = connectionFactory.CreateConnection();
+		IConnection connection = connectionFactory.CreateConnection();
 
-		_channel = _connection.CreateModel();
+		_channel = connection.CreateModel();
 		_channel.ExchangeDeclare(
 			_messageBrokerSettings.ExchangeName,
 			ExchangeType.Fanout,

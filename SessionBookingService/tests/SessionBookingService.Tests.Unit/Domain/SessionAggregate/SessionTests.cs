@@ -7,7 +7,7 @@ using Xunit;
 
 namespace SessionBookingService.Tests.Unit.Domain.SessionAggregate;
 
-public class SessionTests
+public sealed class SessionTests
 {
 	[Fact]
 	public void BookSpot_WhenNoMoreRoom_ShouldFailReservation()

@@ -39,9 +39,7 @@ public sealed class Schedule : Entity
 
 	public Result<bool> BookTimeSlot(DateOnly date, TimeSlot time)
 	{
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
-		var entryExists = _calendar.TryGetValue(date, out List<TimeSlot> timeSlots);
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+		var entryExists = _calendar.TryGetValue(date, out List<TimeSlot>? timeSlots);
 
 		if (!entryExists)
 		{
@@ -51,7 +49,7 @@ public sealed class Schedule : Entity
 
 		if (timeSlots is not null && timeSlots.Exists(ts => ts.IsOverlappingWith(time)))
 		{
-			return Result.Failure<bool>(Error.Failure("no good", "dunno"));
+			return Result.Failure<bool>(Error.Conflict(code: "no good", description: "dunno"));
 		}
 
 		timeSlots!.Add(time);
