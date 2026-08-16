@@ -29,7 +29,9 @@ public sealed class AddInstructor : IEndpoint
 					})
 			.WithTags(Tags.Clubs)
 			.WithSummary("Add instructor")
-			.WithDescription("Add instructor for a subscription (and a club)");
+			.WithDescription("Add instructor for a subscription (and a club)")
+			.Produces(StatusCodes.Status200OK)
+			.ProducesProblem(StatusCodes.Status404NotFound);
 		//.RequireAuthorization();
 	}
 }
