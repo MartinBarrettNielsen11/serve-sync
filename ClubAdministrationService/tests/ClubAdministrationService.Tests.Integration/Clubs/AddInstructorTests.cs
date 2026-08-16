@@ -35,7 +35,8 @@ public sealed class AddInstructorTests(ApiTestFixture fixture) :
 		InitialDbContext.Clubs.Add(club);
 		await InitialDbContext.SaveChangesAsync();
 
-		AddInstructorRequest request = new(Guid.CreateVersion7());
+		Guid instructorId = Guid.CreateVersion7();
+		AddInstructorRequest request = new(instructorId);
 
 		// Act
 		HttpResponseMessage response = await Client.PostAsJsonAsync(
@@ -47,6 +48,11 @@ public sealed class AddInstructorTests(ApiTestFixture fixture) :
 		Guid? clubResponse = await response.Content.ReadFromJsonAsync<Guid>();
 
 		Assert.NotNull(clubResponse);
+
+		await using ClubDbContext assertionContext = Fixture.CreateDbContext();
+		Club updatedClub = await assertionContext.Clubs.FirstAsync(c => c.Id == clubResponse.Value);
+		var hasInstructor = updatedClub.HasInstructor(instructorId);
+		Assert.True(hasInstructor);
 	}
 
 
