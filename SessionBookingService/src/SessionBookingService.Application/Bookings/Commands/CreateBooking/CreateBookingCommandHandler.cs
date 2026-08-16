@@ -8,9 +8,9 @@ namespace SessionBookingService.Application.Bookings.Commands.CreateBooking;
 
 internal sealed class CreateBookingCommandHandler(ISessionsRepository sessionsRepository,
 												IPlayersRepository playersRepository)
-	: IRequestHandler<CreateBookingCommand, Result>
+	: IRequestHandler<CreateBookingCommand, Result<Guid>>
 {
-	public async ValueTask<Result> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
+	public async ValueTask<Result<Guid>> Handle(CreateBookingCommand command, CancellationToken cancellationToken)
 	{
 		Session? session = await sessionsRepository.GetByIdAsync(command.SessionId, cancellationToken);
 
@@ -47,7 +47,7 @@ internal sealed class CreateBookingCommandHandler(ISessionsRepository sessionsRe
 
 		await sessionsRepository.UpdateAsync(session, cancellationToken);
 
-		Result res = Result.Success();
-		return res;
+		// This is an issue which you should address!
+		return Result.Success(Guid.NewGuid());
 	}
 }
